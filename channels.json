@@ -1,0 +1,21 @@
+{
+  "channels": [
+    {
+      "id": "kids",
+      "name": "Kids Learning",
+      "genre": "kids",
+      "builtin": true,
+      "lessons_file": "",
+      "voice": "en-US-AriaNeural",
+      "made_for_kids": true,
+      "privacy": "public",
+      "category_id": "27",
+      "seo_suffix": "for Kids | Fun Learning Shorts",
+      "image_style": "cute colorful cartoon for kids, bright, friendly",
+      "client_secret": "client_secret_kids.json",
+      "token": "token.json",
+      "topics_per_day": 2,
+      "slot": 1
+    }
+  ]
+}

@@ -1,0 +1,755 @@
+from __future__ import annotations
+
+import json
+import random
+import sqlite3
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+
+from .config import settings
+from .db import acquire_generation_lock, release_generation_lock
+from .channels import Channel, default_channel
+from .lessons import load_lesson_for, load_topics_for
+from .pipeline import run_pipeline
+
+
+@dataclass(frozen=True)
+class TopicHistory:
+    count: int
+    last_created_at: str
+
+
+def _resolve(channel: Channel | None) -> Channel:
+    return channel if channel is not None else default_channel()
+
+
+class NoFreshTopic(RuntimeError):
+    """Nothing suitable to make today. The run skips instead of making a weak video."""
+
+
+def _channel_pool(channel: Channel) -> dict:
+    """The saved scripts this channel may publish, or take ideas from.
+
+    A fact-only channel only gets scripts written from a source. The news
+    channel only gets scripts written from real headlines (their keys start with
+    "trend_"): the others in its file came from the generic story writer when no
+    trend could be found, and a video about cats in boxes is not world news.
+    """
+    from .trending import is_trending_channel
+    from .verified_facts import only_verified
+
+    lessons = only_verified(channel, load_topics_for(channel))
+    if is_trending_channel(channel):
+        lessons = {key: raw for key, raw in lessons.items() if key.startswith("trend_")}
+    return lessons
+
+
+# Long videos are saved under their own "long_..." topic key, so the short-video
+# history never saw which seed topic a long video came from and the same seed was
+# picked every day. This file counts the seeds the long videos used. It sits in
+# data/, so the daily GitHub run carries it forward with the rest of the state.
+_SEED_HISTORY_FILE = settings.root / "data" / "long_seed_history.json"
+
+
+def _load_seed_history() -> dict:
+    try:
+        data = json.loads(_SEED_HISTORY_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def _record_seeds(channel_id: str, keys: list[str]) -> None:
+    data = _load_seed_history()
+    bucket = data.setdefault(channel_id, {})
+    now = datetime.now().isoformat(timespec="seconds")
+    for key in keys:
+        entry = bucket.get(key) or {}
+        bucket[key] = {"count": int(entry.get("count", 0) or 0) + 1, "last": now}
+    try:
+        _SEED_HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+        _SEED_HISTORY_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    except OSError as exc:
+        # Losing the count only means a seed may come round sooner; never a blocker.
+        print(f"[daily_runner] could not save the seed history ({exc})")
+
+
+def _pick_long_seeds(channel: Channel, count: int) -> list[tuple[str, dict]]:
+    """`count` seed topics for long videos: the least used first, ties picked at random.
+
+    "Used" adds the short videos made from a topic to the long videos that took it
+    as their seed. The seeds picked are recorded, so the next call moves on. When
+    there are fewer topics than `count` the list wraps round. Empty if the channel
+    has no topic to take a seed from.
+    """
+    pool = [(key, raw) for key, raw in _channel_pool(channel).items() if not key.startswith("long_")]
+    if not pool or count < 1:
+        return []
+    history = _topic_history(channel.id)
+    seeds = _load_seed_history().get(channel.id, {})
+
+    def rank(item: tuple[str, dict]):
+        key = item[0]
+        short = history.get(key, TopicHistory(0, ""))
+        long_ = seeds.get(key) or {}
+        used = short.count + int(long_.get("count", 0) or 0)
+        return (used, str(long_.get("last") or short.last_created_at), random.random())
+
+    pool.sort(key=rank)
+    picked = [pool[index % len(pool)] for index in range(count)]
+    _record_seeds(channel.id, list(dict.fromkeys(key for key, _raw in picked)))
+    return picked
+
+
+def _long_idea_prompt(channel: Channel, seed_title: str) -> str:
+    """The brief for one long video, built round a seed topic.
+
+    It keeps the "inspired by:" and "Creator guideline:" markers that
+    genre_topics._story_subject and seo.py already read. The old brief ended in
+    "Date seed: <date>", and the writer took "date seed" for part of the story.
+    """
+    return (
+        f"Create a complete, original {channel.genre} video inspired by: {seed_title}. "
+        "Creator guideline: keep the same subject area but tell a brand-new story with new "
+        f"characters, a new title and a new angle. Never reuse the title \"{seed_title}\"."
+    )
+
+
+def _topic_history(channel_id: str) -> dict[str, TopicHistory]:
+    if not settings.db_path.exists():
+        return {}
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        rows = conn.execute(
+            """
+            SELECT topic, COUNT(*) AS total, MAX(created_at) AS last_created_at
+            FROM videos WHERE channel = ?
+            GROUP BY topic
+            """,
+            (channel_id,),
+        ).fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    finally:
+        conn.close()
+    return {
+        topic: TopicHistory(count=int(total), last_created_at=last_created_at or "")
+        for topic, total, last_created_at in rows
+    }
+
+
+def _topics_generated_today(channel_id: str) -> set[str]:
+    if not settings.db_path.exists():
+        return set()
+    today = datetime.now().date()
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        rows = conn.execute("SELECT topic, created_at FROM videos WHERE channel = ? AND status NOT IN ('quality_failed', 'duplicate_blocked')", (channel_id,)).fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    finally:
+        conn.close()
+
+    topics: set[str] = set()
+    for topic, created_at in rows:
+        try:
+            if datetime.fromisoformat(created_at).date() == today:
+                topics.add(topic)
+        except Exception:
+            continue
+    return topics
+
+
+def short_videos_generated_today_count(channel_id: str = "kids") -> int:
+    if not settings.db_path.exists():
+        return 0
+    today = datetime.now().date()
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        rows = conn.execute(
+            """SELECT created_at FROM videos
+               WHERE channel = ? AND COALESCE(content_type, 'short') = 'short'
+                 AND status NOT IN ('quality_failed', 'duplicate_blocked')""",
+            (channel_id,),
+        ).fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    finally:
+        conn.close()
+    return sum(
+        1 for (created_at,) in rows
+        if created_at and datetime.fromisoformat(created_at).date() == today
+    )
+
+
+def videos_generated_today_count(channel_id: str = "kids") -> int:
+    if not settings.db_path.exists():
+        return 0
+    today = datetime.now().date()
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        rows = conn.execute("SELECT created_at FROM videos WHERE channel = ? AND status NOT IN ('quality_failed', 'duplicate_blocked')", (channel_id,)).fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    finally:
+        conn.close()
+
+    count = 0
+    for (created_at,) in rows:
+        try:
+            if datetime.fromisoformat(created_at).date() == today:
+                count += 1
+        except Exception:
+            continue
+    return count
+
+
+def _analytics_category_scores(channel: Channel, lessons: dict) -> dict[str, float]:
+    """Score categories from cached top-video views/retention; no live API call."""
+    if not settings.db_path.exists():
+        return {}
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        cached = conn.execute(
+            "SELECT payload FROM analytics_cache WHERE channel = ?", (channel.id,)
+        ).fetchone()
+        rows = conn.execute(
+            "SELECT topic, video_url FROM videos WHERE channel = ? AND video_url IS NOT NULL",
+            (channel.id,),
+        ).fetchall()
+    except sqlite3.OperationalError:
+        return {}
+    finally:
+        conn.close()
+    if not cached:
+        return {}
+    try:
+        top = json.loads(cached[0]).get("top_videos", [])
+    except Exception:
+        return {}
+    topic_by_video: dict[str, str] = {}
+    for topic, url in rows:
+        video_id = str(url).split("v=")[-1].split("&")[0] if "v=" in str(url) else str(url).rstrip("/").split("/")[-1]
+        topic_by_video[video_id] = topic
+    scores: dict[str, float] = {}
+    for rank, row in enumerate(top, start=1):
+        topic = topic_by_video.get(str(row.get("video", "")))
+        raw = lessons.get(topic or "")
+        if not raw:
+            continue
+        category = raw.get("category", "General")
+        views = float(row.get("views", 0) or 0)
+        retention = float(row.get("averageViewPercentage", 0) or 0)
+        scores[category] = scores.get(category, 0.0) + (views * (1.0 + retention / 100.0)) / rank
+    return scores
+
+
+def _lesson_signature(raw: dict) -> set[str]:
+    """Semantic scene signature used to reject near-duplicate lesson variants."""
+    signature: set[str] = set()
+    for scene in raw.get("scenes", []):
+        value = str(scene.get("label") or scene.get("line") or "").lower()
+        value = "".join(ch if ch.isalnum() else " " for ch in value)
+        normalized = " ".join(value.split())
+        if normalized:
+            signature.add(normalized)
+    return signature
+
+
+# A shorter lesson than this has too few scene labels for an overlap ratio to
+# mean anything. Kids lessons carry three one-word labels ("red", "blue",
+# "yellow"), so two shared colour words scored 0.66 and quietly blocked all
+# 1,203 kids topics against the 144 already published — the daily run then had
+# nothing to pick and produced no video at all.
+_MIN_SIGNATURE_FOR_SIMILARITY = 4
+
+
+def _too_similar_signature(left: set[str], right: set[str]) -> bool:
+    if not left or not right:
+        return False
+    if min(len(left), len(right)) < _MIN_SIGNATURE_FOR_SIMILARITY:
+        return False
+    return len(left & right) / min(len(left), len(right)) >= 0.66
+
+def load_custom_lessons_safe(channel: Channel) -> dict:
+    """Written topics for a channel; empty when none have been generated yet."""
+    try:
+        from .genre_topics import load_custom_lessons
+
+        return load_custom_lessons(channel)
+    except Exception:
+        return {}
+
+
+def select_daily_topics(count: int = 2, channel: Channel | None = None) -> list[str]:
+    channel = _resolve(channel)
+
+    # A fact-only channel must never pick up an older free-written script, and
+    # the news channel only publishes scripts written from real headlines.
+    lessons = _channel_pool(channel)
+    history = _topic_history(channel.id)
+    today_topics = _topics_generated_today(channel.id)
+
+    # The kids bank holds 1,200 bare-word entries that all render into the same
+    # four sentences. Freshly written topics are mixed in daily so the channel
+    # is not just that one template over and over.
+    if channel.builtin and settings.kids_fresh_topics_per_day > 0:
+        fresh_today = sum(
+            1 for key in today_topics if key in load_custom_lessons_safe(channel)
+        )
+        shortage = max(0, settings.kids_fresh_topics_per_day - fresh_today)
+        if shortage:
+            try:
+                from .genre_topics import generate_genre_topics
+
+                new_keys = generate_genre_topics(channel, count=shortage, scenes=6)
+                if new_keys:
+                    print(f"[daily_runner] kids: wrote {len(new_keys)} fresh topic(s)")
+                    lessons = load_topics_for(channel)
+            except Exception as exc:
+                # A written topic is a bonus, never a blocker: the 1,200-entry
+                # bank still carries the day if the model is unreachable.
+                print(f"[daily_runner] kids: could not write fresh topics ({exc})")
+
+    # Genre channels start with a small seed bank. Replenish it before selection
+    # and never auto-publish a genre topic that already exists in video history.
+    if not channel.builtin:
+        unused = [
+            key for key in lessons
+            if not key.startswith("long_") and key not in history and key not in today_topics
+        ]
+        shortage = max(0, count - len(unused))
+        if shortage:
+            from .trending import is_trending_channel
+            try:
+                if is_trending_channel(channel):
+                    # This channel follows the world instead of inventing topics:
+                    # today's live trends become today's videos. When no fresh
+                    # trend can be found it makes fewer videos, or none. The
+                    # generic story writer used to fill the gap, which put videos
+                    # about squirrels and cats on a world-news channel.
+                    from .trending import generate_trending_topics
+                    if not generate_trending_topics(channel, count=shortage):
+                        print(f"[daily_runner] {channel.id}: no fresh world trends; "
+                              "not making off-topic videos to fill the gap")
+                else:
+                    from .genre_topics import generate_genre_topics
+                    generate_genre_topics(channel, count=shortage)
+                lessons = _channel_pool(channel)
+            except Exception as exc:
+                print(f"[daily_runner] {channel.id}: could not replenish unique topics ({exc})")
+
+    category_scores = _analytics_category_scores(channel, lessons)
+    used_signatures = [
+        _lesson_signature(lessons[key])
+        for key in history
+        if key in lessons and not key.startswith("long_")
+    ]
+
+    candidates = [
+        (key, raw.get("category", "General"))
+        for key, raw in lessons.items()
+        if key not in today_topics and not key.startswith("long_")
+        and (channel.builtin or key not in history)
+        and not any(_too_similar_signature(_lesson_signature(raw), sig) for sig in used_signatures)
+    ]
+    from .trending import is_trending_channel
+
+    if is_trending_channel(channel):
+        # News goes stale fast: publish the freshest scripts (the ones written
+        # last, which are today's trends) before any leftover from earlier days.
+        order = {key: index for index, key in enumerate(lessons)}
+        candidates.sort(key=lambda item: -order.get(item[0], 0))
+    else:
+        candidates.sort(
+            key=lambda item: (
+                history.get(item[0], TopicHistory(0, "")).count,
+                -category_scores.get(item[1], 0.0),
+                history.get(item[0], TopicHistory(0, "")).last_created_at,
+                item[0],
+            )
+        )
+
+    selected: list[str] = []
+    selected_categories: set[str] = set()
+    selected_signatures: list[set[str]] = []
+
+    for topic_key, category in candidates:
+        if len(selected) >= count:
+            break
+        if category in selected_categories:
+            continue
+        signature = _lesson_signature(lessons[topic_key])
+        if any(_too_similar_signature(signature, other) for other in selected_signatures):
+            continue
+        selected.append(topic_key)
+        selected_categories.add(category)
+        selected_signatures.append(signature)
+
+    for topic_key, _category in candidates:
+        if len(selected) >= count:
+            break
+        if topic_key not in selected:
+            signature = _lesson_signature(lessons[topic_key])
+            if any(_too_similar_signature(signature, other) for other in selected_signatures):
+                continue
+            selected.append(topic_key)
+            selected_signatures.append(signature)
+
+    return selected[:count]
+
+
+def publish_targets(channel: Channel) -> list[Channel]:
+    """One Channel per connected YouTube account of this channel.
+
+    A channel may publish to several YouTube channels at once. Each target is
+    the same channel wearing a different login, and the batch below gives every
+    target its OWN topics: topic history is kept per channel, so a topic used on
+    one account is never offered to another. That is what keeps the accounts
+    from carrying the same video, which YouTube would treat as reused content.
+
+    With nothing configured this returns exactly one target — the original
+    single-account behaviour.
+    """
+    try:
+        from .youtube_accounts import channel_for_account, connected_accounts
+
+        targets = [
+            channel_for_account(channel.id, account.id)
+            for account in connected_accounts(channel.id)
+        ]
+        if targets:
+            return targets
+    except Exception:
+        pass
+    return [channel]
+
+
+def _can_publish(channel: Channel, targets: list[Channel] | None = None) -> bool:
+    """True when a finished video has somewhere to go: a YouTube login, or a
+    Facebook Page that posts by itself."""
+    for target in targets or [channel]:
+        try:
+            if target.token_path.is_file():
+                return True
+        except Exception:
+            continue
+    try:
+        from .social_accounts import facebook_auto_ready
+
+        return facebook_auto_ready(channel.id)
+    except Exception:
+        return False
+
+
+def _run_short_batch(
+    count: int, upload: bool, channel: Channel, acquire_lock: bool,
+    queue: bool | None = None, is_daily: bool = False,
+) -> list[tuple[str, str]]:
+    lock_name = f"generation:{channel.id}"
+    locked = False
+    if acquire_lock:
+        locked = acquire_generation_lock(lock_name)
+        if not locked:
+            return [("lock", "SKIPPED another generation job is already running for this channel")]
+    try:
+        results: list[tuple[str, str]] = []
+        targets = publish_targets(channel)
+        # Building for a channel nobody signed in to only produces videos that
+        # cannot be published. Skip it when an upload was asked for; a
+        # build-only run still renders, which is what a first-time setup wants.
+        # A channel that posts to its Facebook Page still has somewhere to go.
+        if upload and not _can_publish(channel, targets):
+            return [(channel.id, "SKIPPED not connected to YouTube or Facebook")]
+        for target in targets:
+            # Topics are chosen inside the loop, after the previous account's
+            # videos are already recorded, so no two accounts get the same one.
+            topic_keys = select_daily_topics(count, target)
+            if not topic_keys:
+                results.append((target.id, "SKIPPED no fresh topic available today"))
+            for topic_key in topic_keys:
+                label = topic_key if target.account == "main" else f"{topic_key} -> {target.account}"
+                try:
+                    assets = run_pipeline(
+                        load_lesson_for(target, topic_key), upload=upload,
+                        channel=target, queue=queue, is_daily=is_daily,
+                    )
+                    results.append((label, f"OK {assets.job_id}"))
+                except Exception as exc:
+                    results.append((label, f"FAILED {exc}"))
+        return results
+    finally:
+        if locked:
+            release_generation_lock(lock_name)
+
+
+def run_daily_batch(
+    count: int = 2, upload: bool = True, channel: Channel | None = None,
+    acquire_lock: bool = True, queue: bool | None = None,
+) -> list[tuple[str, str]]:
+    channel = _resolve(channel)
+    return _run_short_batch(count, upload, channel, acquire_lock, queue=queue, is_daily=True)
+
+
+def run_buffer_batch(
+    count: int = 30, upload: bool = True, channel: Channel | None = None,
+    acquire_lock: bool = True,
+) -> list[tuple[str, str]]:
+    """Build videos now and schedule them while the PC can later be offline."""
+    channel = _resolve(channel)
+    return _run_short_batch(count, upload, channel, acquire_lock)
+
+
+def run_daily_catchup(target_count: int = 3, upload: bool = True, start_hour: int = 8,
+                      channel: Channel | None = None,
+                      queue: bool | None = None) -> list[tuple[str, str]]:
+    channel = _resolve(channel)
+    if datetime.now().hour < start_hour:
+        return [("catchup", f"SKIPPED before {start_hour:02}:00 local time")]
+    missing = max(0, target_count - short_videos_generated_today_count(channel.id))
+    if missing == 0:
+        return [("catchup", "OK daily target already reached")]
+    return run_daily_batch(count=missing, upload=upload, channel=channel, queue=queue)
+
+def long_videos_generated_today_count(channel_id: str) -> int:
+    """Count today's completed/attempted long-form jobs independently of Shorts."""
+    if not settings.db_path.exists():
+        return 0
+    today = datetime.now().date()
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        rows = conn.execute(
+            "SELECT created_at FROM videos WHERE channel = ? AND content_type = 'long' AND status NOT IN ('quality_failed', 'duplicate_blocked')",
+            (channel_id,),
+        ).fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    finally:
+        conn.close()
+    return sum(
+        1 for (created_at,) in rows
+        if created_at and datetime.fromisoformat(created_at).date() == today
+    )
+
+
+def _automatic_long_idea(channel: Channel) -> str:
+    today_label = datetime.now().strftime("%B %d, %Y")
+    from .trending import is_trending_channel, trending_long_idea
+
+    if is_trending_channel(channel):
+        try:
+            idea = trending_long_idea(channel)
+        except Exception as exc:
+            print(f"[daily_runner] {channel.id}: trend lookup failed ({exc})")
+            idea = None
+        if idea:
+            return idea
+        # A news channel stays on the news. Falling back to an old script here
+        # made a "world news" video out of a story about cats in boxes.
+        raise NoFreshTopic("no fresh world trend today; skipped instead of making an off-topic video")
+    seeds = _pick_long_seeds(channel, 1)
+    if not seeds:
+        # A channel made from a topic starts with a handful of planned ideas:
+        # one a day, then fresh topics of its own.
+        ideas = list(getattr(channel, "ideas", ()) or ())
+        try:
+            day = (datetime.now() - datetime.fromisoformat(channel.created_at)).days
+        except (TypeError, ValueError):
+            day = len(ideas)
+        if 0 <= day < len(ideas):
+            return f"Create a complete, original {channel.genre} video about: {ideas[day]}."
+        return f"Create a fresh original {channel.genre} video for {today_label}."
+    key, raw = seeds[0]
+    return _long_idea_prompt(channel, str(raw.get("title") or key))
+
+
+def run_long_video(
+    channel: Channel,
+    prompt: str | None = None,
+    upload: bool = True,
+    scenes: int = 20,
+    queue: bool | None = None, is_daily: bool = False,
+):
+    """Create one new ~5-minute 16:9 video for a selected channel."""
+    from .genre_topics import generate_from_prompt
+
+    from . import run_log
+
+    if upload and not _can_publish(channel):
+        raise RuntimeError(f"{channel.name} is not connected to YouTube or Facebook")
+    title = ""
+    try:
+        idea = (prompt or "").strip() or _automatic_long_idea(channel)
+        key = generate_from_prompt(channel, idea, scenes=scenes, long_form=True)
+        lesson = load_lesson_for(channel, key)
+        title = lesson.title
+        assets = run_pipeline(
+            lesson, upload=upload, channel=channel,
+            content_type="long", queue=queue, is_daily=is_daily,
+        )
+    except NoFreshTopic:
+        # Nothing to make today is not a failure; the caller reports it as skipped.
+        raise
+    except Exception as exc:
+        run_log.record(channel.id, "long", False, str(exc), title)
+        raise
+    run_log.record(channel.id, "long", True, assets.job_id, title)
+    return key, assets
+
+
+def run_long_batch(
+    channel: Channel, count: int = 1, upload: bool = True,
+    prompts: list[str | None] | None = None, scenes: int = 20,
+    queue: bool | None = None,
+) -> list[tuple[str, str]]:
+    """Create one or more long videos for one channel without overlapping jobs."""
+    count = max(1, min(20, int(count)))
+    lock_name = f"generation:{channel.id}"
+    if not acquire_generation_lock(lock_name):
+        return [("lock", "SKIPPED another generation job is already running for this channel")]
+    try:
+        ideas = list(prompts or _offline_long_ideas(channel, count))[:count]
+        while len(ideas) < count:
+            ideas.append(None)
+        results: list[tuple[str, str]] = []
+        # Each connected YouTube account gets its own freshly written long
+        # video, never a copy of another account's: generate_from_prompt writes
+        # a new script per call, so the accounts never share a topic.
+        for target in publish_targets(channel):
+            for idea in ideas:
+                try:
+                    key, assets = run_long_video(
+                        target, prompt=idea, upload=upload, scenes=scenes,
+                        queue=queue,
+                    )
+                    label = key if target.account == "main" else f"{key} -> {target.account}"
+                    results.append((label, f"OK {assets.job_id}"))
+                except NoFreshTopic as exc:
+                    results.append((str(idea or "auto")[:50], f"SKIPPED {exc}"))
+                except Exception as exc:
+                    results.append((str(idea or "auto")[:50], f"FAILED {exc}"))
+        return results
+    finally:
+        release_generation_lock(lock_name)
+
+
+def long_day_today(channel: Channel) -> bool:
+    """True on a day this channel makes its long video (its long_days, in the
+    dashboard's time zone). A channel without long_days makes one every day."""
+    days = {str(day).strip()[:3].lower() for day in (getattr(channel, "long_days", ()) or ())}
+    if not days:
+        return True
+    from .slots import _zone
+
+    return datetime.now(_zone()).strftime("%a").lower() in days
+
+
+def run_daily_long_all(
+    upload: bool = True, scenes: int = 20, slot: set[int] | int | None = None,
+) -> list[tuple[str, str]]:
+    """Create one ~5-minute 16:9 video for every connected YouTube channel.
+
+    With `slot`, only the channels of those daily build slots (slots.py); None
+    builds every channel. A channel that already has today's video is skipped
+    either way, so running a slot twice never makes a second one.
+    """
+    from .channels import load_channels
+    from .slots import channel_slot
+
+    slots = {slot} if isinstance(slot, int) else slot
+    results: list[tuple[str, str]] = []
+    for channel in load_channels():
+        if slots is not None and channel_slot(channel) not in slots:
+            continue
+        if not _can_publish(channel):
+            results.append((channel.id, "SKIPPED not connected"))
+            continue
+        if not long_day_today(channel):
+            results.append((channel.id, "SKIPPED not one of this channel's long-video days"))
+            continue
+        if long_videos_generated_today_count(channel.id) >= 1:
+            results.append((channel.id, "SKIPPED today's long video already exists"))
+            continue
+        lock_name = f"generation:{channel.id}"
+        if not acquire_generation_lock(lock_name):
+            results.append((channel.id, "SKIPPED another generation job is already running"))
+            continue
+        try:
+            key, assets = run_long_video(
+                channel, upload=upload, scenes=int(getattr(channel, "long_scenes", 0) or scenes),
+                queue=False, is_daily=True,
+            )
+            results.append((channel.id, f"OK {key} {assets.job_id}"))
+        except NoFreshTopic as exc:
+            results.append((channel.id, f"SKIPPED {exc}"))
+        except Exception as exc:
+            results.append((channel.id, f"FAILED {exc}"))
+        finally:
+            release_generation_lock(lock_name)
+    return results
+
+def _offline_long_ideas(channel: Channel, days: int, guideline: str = "") -> list[str]:
+    seeds = _pick_long_seeds(channel, days)
+    ideas: list[str] = []
+    for index in range(days):
+        target = (datetime.now() + timedelta(days=index + 1)).strftime("%B %d, %Y")
+        seed = (
+            str(seeds[index][1].get("title") or seeds[index][0])
+            if seeds else f"a fresh original {channel.genre} topic"
+        )
+        direction = guideline.strip() or "Keep it original, engaging, and appropriate for this channel."
+        ideas.append(
+            f"Create a unique {channel.genre} episode intended for {target}, inspired by: "
+            f"{seed}. Creator guideline: {direction} Do not repeat another episode in this buffer."
+        )
+    return ideas
+
+
+def run_offline_buffer(
+    days: int,
+    guideline: str = "",
+    content_mode: str = "both",
+    channel: Channel | None = None,
+) -> list[tuple[str, str]]:
+    """Create and upload a multi-day private/scheduled buffer while online."""
+    from .channels import load_channels
+
+    days = max(1, min(14, int(days)))
+    if content_mode not in {"short", "long", "both"}:
+        raise ValueError("content_mode must be short, long, or both")
+    results: list[tuple[str, str]] = []
+    channels = [channel] if channel is not None else load_channels()
+    for selected_channel in channels:
+        channel = selected_channel
+        if not channel.token_path.exists():
+            results.append((channel.id, "SKIPPED not connected"))
+            continue
+        lock_name = f"generation:{channel.id}"
+        if not acquire_generation_lock(lock_name):
+            results.append((channel.id, "SKIPPED another generation job is already running"))
+            continue
+        try:
+            if content_mode in {"short", "both"}:
+                count = days * max(1, channel.topics_per_day)
+                short_results = run_buffer_batch(
+                    count=count, upload=True, channel=channel, acquire_lock=False,
+                )
+                ok = sum(1 for _topic, status in short_results if status.startswith("OK"))
+                results.append((channel.id, f"short buffer {ok}/{count} queued"))
+            if content_mode in {"long", "both"}:
+                ideas = _offline_long_ideas(channel, days, guideline)
+                ok = 0
+                errors: list[str] = []
+                for idea in ideas:
+                    try:
+                        run_long_video(channel, prompt=idea, upload=True, scenes=20)
+                        ok += 1
+                    except Exception as exc:
+                        errors.append(str(exc))
+                detail = f"long buffer {ok}/{days} queued"
+                if errors:
+                    detail += f"; last error: {errors[-1]}"
+                results.append((channel.id, detail))
+        finally:
+            release_generation_lock(lock_name)
+    return results

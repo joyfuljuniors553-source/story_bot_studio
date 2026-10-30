@@ -1,0 +1,85 @@
+# ============================================================
+#  SECRETS — never commit these
+# ============================================================
+.env
+.env.*
+!.env.example
+credentials/
+*token*.json
+*token*.json.*
+*token*.bak
+*.bak
+client_secret*.json
+*.WRONG-kids-bak
+# API keys and tokens the dashboard saves to disk
+data/*_api_key.txt
+data/*_api_token.txt
+data/cloudflare_account_id.txt
+
+# ============================================================
+#  Python
+# ============================================================
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# ============================================================
+#  PyInstaller build output
+# ============================================================
+build/
+dist/
+*.spec
+
+# ============================================================
+#  Runtime data & generated media (large / machine-specific)
+# ============================================================
+runs/
+logs/
+*.log
+*.sqlite3
+# Per-machine runtime state, not source
+data/thumbnail_disabled_channels.json
+data/thumbnail_reenabled_channels.json
+data/trending_history.json
+# Which seed topics the long videos already used (the daily GitHub run force-adds it to bot-state)
+data/long_seed_history.json
+# Which YouTube accounts are connected on THIS machine
+data/youtube_accounts.json
+# Which Gmail each YouTube account signed in with
+data/account_emails.json
+# Which Gmail owns each Google Cloud project (its upload quota)
+data/project_emails.json
+# Hand-made thumbnails you drop in (large, machine-specific)
+data/thumbnails/
+# Downloaded on first use (170 MB cut-out model for the layered animation)
+data/models/
+# Setup-guide screenshots: taken from real accounts, may show email addresses
+data/guide/
+data/comfyui_workflow.json
+assets/
+audio/
+videos/
+thumbnails/
+channels/*/assets/
+channels/*/audio/
+channels/*/videos/
+channels/*/thumbnails/
+data/*_lessons.json
+*.mp4
+*.mp3
+*.wav
+
+# ============================================================
+#  OS
+# ============================================================
+Thumbs.db
+.DS_Store
+# Last "Send to GitHub" fingerprint (per PC)
+data/github_sync.json
+# This PC's dashboard automation switch
+data/dashboard_automation.txt
+
+# Owner music for the videos (src/music_moods.py: data/music/<channel id>/)
+!data/music/**/*.mp3

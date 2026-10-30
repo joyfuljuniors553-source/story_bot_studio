@@ -1,0 +1,203 @@
+name: Daily videos
+
+# Builds today's videos and uploads them to YouTube without this PC being on.
+#
+# State (the database and the generated topic banks) lives on a separate
+# "bot-state" branch. Without it every run would start blank, pick the same
+# topics again and re-upload videos that are already on YouTube.
+
+on:
+  schedule:
+    # Ten build slots a day, two hours apart through the US day (src/slots.py):
+    # 00:30, 02:30, 04:30, 10:30 ... 22:30 UTC. Each run builds only the channels of its own slot, so adding
+    # channels adds runs instead of making one run longer. GitHub's scheduler
+    # is often 5-20 minutes late; the slot is worked out from the clock.
+    - cron: "30 0,2,4,10,12,14,16,18,20,22 * * *"
+  workflow_dispatch:
+    inputs:
+      shorts_per_channel:
+        description: "Shorts per channel (0 = skip shorts)"
+        default: "2"
+      long_videos:
+        description: "Also make one ~5-minute video per channel"
+        type: boolean
+        default: true
+      upload:
+        description: "Upload to YouTube (off = build only)"
+        type: boolean
+        default: true
+      slot:
+        description: "Channels to build: all, or one slot 0-9 (UTC: 0=00:30 1=02:30 2=04:30 3=10:30 4=12:30 5=14:30 6=16:30 7=18:30 8=20:30 9=22:30)"
+        default: "all"
+
+permissions:
+  contents: write
+  actions: read       # fetch a kept video back for a later upload
+  pages: write        # publish the status page
+  id-token: write     # required by actions/deploy-pages
+
+env:
+  # Nobody can click a Google sign-in here, so fail loudly instead of hanging
+  # on a browser prompt for a channel that was never connected.
+  NO_INTERACTIVE_AUTH: "1"
+
+  # A scheduled run has no inputs, so github.event.inputs.* is null, and
+  # comparing null with '0' in an `if:` turned into 0 != 0 and silently
+  # skipped the Shorts on every scheduled run. Resolve the defaults once here
+  # and compare strings.
+  SHORTS_PER_CHANNEL: ${{ github.event.inputs.shorts_per_channel || '2' }}
+  LONG_VIDEOS: ${{ github.event.inputs.long_videos || 'true' }}
+  UPLOAD: ${{ github.event.inputs.upload || 'true' }}
+  SLOT: ${{ github.event.inputs.slot || 'auto' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    # Never let two runs build at once: they would pick the same topics and
+    # fight over the same state branch. Kept on this job only, so a status
+    # page publish that hangs cannot hold back the next day's videos.
+    concurrency:
+      group: daily-videos
+      cancel-in-progress: false
+    env:
+      # Print each line as it happens, so a killed step still shows how far it got.
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Restore the bot's state
+        run: |
+          set -e
+          if git ls-remote --exit-code --heads origin bot-state >/dev/null 2>&1; then
+            git fetch --depth=1 origin bot-state
+            git archive origin/bot-state | tar -x -C .
+            # Settings kept in the repository, not run state: the copy saved
+            # in bot-state is older and must not replace the committed one.
+            git checkout HEAD -- data/verified_subjects.json
+            echo "State restored from the bot-state branch:"
+            ls -la bot.sqlite3 2>/dev/null || echo "  (no database yet)"
+          else
+            echo "No bot-state branch yet — this run starts fresh and creates it."
+          fi
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          ffmpeg -version | head -1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python packages
+        run: |
+          python -m pip install --upgrade pip -q
+          pip install -q -r requirements.txt
+
+      - name: Restore private files
+        env:
+          BOT_SECRETS_B64: ${{ secrets.BOT_SECRETS_B64 }}
+        run: python scripts/ci_secrets.py unpack
+
+      - name: Use Linux ffmpeg, not the Windows paths from .env
+        run: |
+          sed -i '/^FFMPEG_BIN=/d;/^FFPROBE_BIN=/d' .env
+          echo "FFMPEG_BIN=$(which ffmpeg)"   >> .env
+          echo "FFPROBE_BIN=$(which ffprobe)" >> .env
+
+      - name: Show what each channel is allowed to upload today
+        run: python -m src.cli quota-status
+
+      # The long video first: it matters most, and it is then never squeezed
+      # out by the Shorts if a run gets long or the upload budget runs low.
+      # Each makes only what this slot's channels are still missing today.
+      - name: Build and upload today's long videos
+        if: ${{ env.LONG_VIDEOS != 'false' }}
+        # A long video that dies must not cost the day's Shorts or the saved state.
+        continue-on-error: true
+        run: python -m src.cli daily-long-all --upload "$UPLOAD" --slot "$SLOT"
+
+      - name: Build and upload today's Shorts
+        if: ${{ env.SHORTS_PER_CHANNEL != '0' }}
+        run: python -m src.cli daily-all --upload "$UPLOAD" --count "$SHORTS_PER_CHANNEL" --slot "$SLOT"
+
+      # One picture post a day for each Page that has it switched on.
+      - name: Post today's picture to the Facebook Pages
+        if: ${{ env.UPLOAD != 'false' }}
+        run: python -m src.cli page-posts --slot "$SLOT"
+
+      # A video left from an earlier run is fetched back from that run's kept
+      # artifact first; the runner itself starts empty every time.
+      - name: Upload anything still waiting
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m src.cli retry-uploads --limit 20
+
+      - name: Report
+        if: always()
+        run: python -m src.cli quota-status
+
+      # A readable table on the run's own page, instead of digging through logs.
+      - name: Write the run summary
+        if: always()
+        run: python scripts/build_status_page.py --summary >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build the status page
+        if: always()
+        run: python scripts/build_status_page.py site
+
+      - name: Package the status page
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      # Saved even when a step failed, so a half-finished run is not repeated
+      # from scratch and its videos are not built twice.
+      - name: Save the bot's state
+        if: always()
+        run: |
+          set -e
+          git config user.name  "storybot"
+          git config user.email "storybot@users.noreply.github.com"
+          git checkout --orphan state-push
+          git rm -rf --cached . >/dev/null
+          # Only state travels: no source, no videos, no private files.
+          git add -f bot.sqlite3 data/*.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -q -m "state $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push -f origin state-push:bot-state
+            echo "State saved to the bot-state branch."
+          fi
+
+      - name: Keep the finished videos for a week
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-${{ github.run_number }}
+          path: |
+            runs/**/video.mp4
+            runs/**/thumbnail.jpg
+          retention-days: 7
+          if-no-files-found: ignore
+
+  publish-status-page:
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4

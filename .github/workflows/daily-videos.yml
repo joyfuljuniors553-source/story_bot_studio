@@ -33,8 +33,6 @@ on:
 permissions:
   contents: write
   actions: read       # fetch a kept video back for a later upload
-  pages: write        # publish the status page
-  id-token: write     # required by actions/deploy-pages
 
 env:
   # Nobody can click a Google sign-in here, so fail loudly instead of hanging
@@ -153,11 +151,28 @@ jobs:
         if: always()
         run: python scripts/build_status_page.py site
 
-      - name: Package the status page
+      # This repo is private, so the page lives in a small public repo of its own.
+      # The key can write to that repo only. A failure here must not cost the videos.
+      - name: Publish the status page
         if: always()
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
+        continue-on-error: true
+        env:
+          DEPLOY_KEY: ${{ secrets.STATUS_PAGE_DEPLOY_KEY }}
+        run: |
+          set -e
+          key="$RUNNER_TEMP/status_page_key"
+          printf '%s\n' "$DEPLOY_KEY" > "$key"
+          chmod 600 "$key"
+          touch site/.nojekyll
+          cd site
+          git init -q -b main
+          git config user.name  "storybot"
+          git config user.email "storybot@users.noreply.github.com"
+          git add -A
+          git commit -q -m "status $(date -u '+%Y-%m-%d %H:%M UTC')"
+          GIT_SSH_COMMAND="ssh -i $key -o StrictHostKeyChecking=accept-new" \
+            git push -f git@github.com:joyfuljuniors553-source/story-bot-studio.git main
+          rm -rf .git "$key"
 
       # Saved even when a step failed, so a half-finished run is not repeated
       # from scratch and its videos are not built twice.
@@ -189,17 +204,3 @@ jobs:
             runs/**/thumbnail.jpg
           retention-days: 7
           if-no-files-found: ignore
-
-  publish-status-page:
-    needs: build
-    if: always()
-    # A private repo on the free plan has no GitHub Pages; that must not mark a good video run as failed.
-    continue-on-error: true
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - name: Publish to GitHub Pages
-        id: deploy
-        uses: actions/deploy-pages@v4

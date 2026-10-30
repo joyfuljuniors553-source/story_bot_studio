@@ -236,6 +236,12 @@ _SUGGEST_BRIEF = {
         "article, settled long ago (before 2015). No cases whose victims were children, no "
         "serial or mass killings, nobody who was never charged, no living politicians."
     ),
+    "celebrity": (
+        "Name 15 real, famous, well-documented celebrities from the United States or Europe only: "
+        "film and TV stars, musicians, sports stars, models. Born there or best known as its "
+        "citizens. Only people with their own English Wikipedia article. No politicians, nobody "
+        "from any other region, and nobody best known for a crime, a court case or a scandal."
+    ),
 }
 
 

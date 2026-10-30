@@ -1,21 +1,38 @@
 {
   "channels": [
     {
-      "id": "kids",
-      "name": "Kids Learning",
-      "genre": "kids",
-      "builtin": true,
-      "lessons_file": "",
-      "voice": "en-US-AriaNeural",
-      "made_for_kids": true,
-      "privacy": "public",
-      "category_id": "27",
-      "seo_suffix": "for Kids | Fun Learning Shorts",
-      "image_style": "cute colorful cartoon for kids, bright, friendly",
-      "client_secret": "client_secret_kids.json",
-      "token": "token.json",
+      "id": "star_life_stories",
+      "name": "Star Life Stories",
+      "genre": "celebrity",
+      "builtin": false,
+      "lessons_file": "data/star_life_stories_lessons.json",
+      "voice": "en-US-AndrewNeural",
+      "made_for_kids": false,
+      "privacy": "private",
+      "category_id": "24",
+      "seo_suffix": "| True Celebrity Story",
+      "image_style": "cinematic, natural light, documentary look, no people, no faces",
+      "client_secret": "client_secret_star_life_stories.json",
+      "token": "token_star_life_stories.json",
       "topics_per_day": 2,
-      "slot": 1
+      "slot": 5,
+      "language": "en",
+      "tone": "warm, respectful, factual documentary narration with no gossip",
+      "keywords": [
+        "celebrity life story",
+        "celebrity biography",
+        "hollywood stars",
+        "famous people true story",
+        "british celebrities",
+        "european celebrities",
+        "how they became famous",
+        "movie star biography",
+        "music legends",
+        "sports legends"
+      ],
+      "visuals": "stock",
+      "topic": "True life stories of famous celebrities from the United States and Europe",
+      "verified_facts": true
     }
   ]
 }

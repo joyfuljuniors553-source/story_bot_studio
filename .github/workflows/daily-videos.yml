@@ -193,6 +193,8 @@ jobs:
   publish-status-page:
     needs: build
     if: always()
+    # A private repo on the free plan has no GitHub Pages; that must not mark a good video run as failed.
+    continue-on-error: true
     runs-on: ubuntu-latest
     environment:
       name: github-pages

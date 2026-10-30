@@ -24,7 +24,7 @@ CONSOLE = "https://console.cloud.google.com"
 # The public GitHub Pages site carries the home, privacy and terms pages that
 # Google needs on the Branding page before an app can be published
 # (scripts/legal_pages.py). One set of links serves every channel's project.
-SITE = os.getenv("STATUS_PAGE_URL", "https://YOUR-USERNAME.github.io/YOUR-REPO/").rstrip("/") + "/"
+SITE = os.getenv("STATUS_PAGE_URL", "https://joyfuljuniors553-source.github.io/").rstrip("/") + "/"
 SITE_DOMAIN = SITE.split("//", 1)[-1].split("/", 1)[0]
 BRANDING = [
     ("Application home page", SITE),

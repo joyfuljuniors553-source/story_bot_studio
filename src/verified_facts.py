@@ -31,7 +31,7 @@ from .language import is_urdu, script_rules
 WIKI_API = "https://en.wikipedia.org/w/api.php"
 SUBJECTS_FILE = settings.root / "data" / "verified_subjects.json"
 # Wikimedia asks for a client that says who it is, and throttles ones that do not.
-USER_AGENT = "StoryBotStudio/1.0 (https://joyfuljuniors553-source.github.io/; fact-checked scripts)"
+USER_AGENT = "StoryBotStudio/1.0 (https://joyfuljuniors553-source.github.io/story-bot-studio/; fact-checked scripts)"
 
 # Sections that are lists of links or trivia, not the person's story.
 _CUT_SECTIONS = (

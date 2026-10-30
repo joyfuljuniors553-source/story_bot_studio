@@ -190,7 +190,7 @@ def _commons_search(query: str) -> list[dict]:
         "prop": "videoinfo", "viprop": "url|size|mediatype|derivatives|extmetadata",
     })
     request = urllib.request.Request(f"{_COMMONS}?{params}", headers={
-        "User-Agent": "StoryBotStudio/1.0 (https://joyfuljuniors553-source.github.io/)"})
+        "User-Agent": "StoryBotStudio/1.0 (https://joyfuljuniors553-source.github.io/story-bot-studio/)"})
     with urllib.request.urlopen(request, timeout=30) as response:
         pages = json.loads(response.read().decode("utf-8")).get("query", {}).get("pages") or []
     _COMMONS_CACHE[query] = pages

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 from .models import Scene
@@ -16,9 +17,16 @@ from .models import Scene
 _STATE_FILE = "archive_photos.json"
 # Pictures that say nothing on screen: flags, logos, icons, signatures.
 _SKIP_NAMES = re.compile(r"flag|logo|icon|signature|coat[ _]of[ _]arms|seal[ _.]|ribbon|commons-|"
-                         r"symbol|emblem|question_book|edit-clear|disambig", re.I)
+                         r"symbol|emblem|question_book|edit-clear|disambig|ticket|statue|fullsig|"
+                         r"grave|memorial|mural| & ", re.I)
 _MIN_SIDE = 320
 _MAX_PHOTOS = 4
+
+
+def _plain_name(text: str) -> str:
+    """Lower-case without accents, so "Beyoncé" also finds "Beyonce_2011.jpg"."""
+    decomposed = unicodedata.normalize("NFKD", str(text))
+    return "".join(ch for ch in decomposed if not unicodedata.combining(ch)).lower()
 
 
 def _subject(run_dir: Path) -> str:
@@ -38,13 +46,19 @@ def _photos(title: str) -> list[tuple[str, dict]]:
     pages = _api({"action": "query", "generator": "images", "gimlimit": "50", "redirects": "1",
                   "titles": title, **_PHOTO_INFO}).get("query", {}).get("pages") or []
     lead_name = lead.replace("_", " ")
+    surname = title.split("(")[0].split()[-1]
     pages.sort(key=lambda page: 0 if lead_name and str(page.get("title", "")).endswith(lead_name) else 1)
     found: list[tuple[str, dict]] = []
     for page in pages:
         name = str(page.get("title", ""))
         if _SKIP_NAMES.search(name):
             continue
-        usable = _usable(page, own_repository=page.get("imagerepository") == "shared")
+        # An article also shows people the subject only knew or admired. A photo
+        # counts as the subject's only as the lead photo or with their name on the file.
+        is_lead = bool(lead_name) and name.endswith(lead_name)
+        if not is_lead and _plain_name(surname) not in _plain_name(name):
+            continue
+        usable =_usable(page, own_repository=page.get("imagerepository") == "shared")
         if not usable or usable[2] < _MIN_SIDE:
             continue
         info = (page.get("imageinfo") or [{}])[0]

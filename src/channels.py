@@ -68,6 +68,13 @@ class Channel:
     # the daily run's default (~5 minutes).
     long_days: tuple = ()
     long_scenes: int = 0
+    # Scripts told as a documentary story: a hook, then the question the video
+    # answers, the clues, and the answer near the end (language.script_rules).
+    # On for every channel but the preschool one; "story_arc": false turns it off.
+    story_arc: bool = True
+    # The look of a topic channel's thumbnail: "space" (space_thumbnail.py) or
+    # "earth" (earth_thumbnail.py); empty keeps the ordinary one.
+    thumbnail_style: str = ""
 
     @property
     def client_secret_path(self) -> Path:

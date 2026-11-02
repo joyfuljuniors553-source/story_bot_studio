@@ -34,6 +34,104 @@
       "topic": "True life stories of famous celebrities from the United States and Europe",
       "verified_facts": true,
       "brand": "LegendraScope"
+    },
+    {
+      "id": "quasorynth_space",
+      "name": "Quasorynth",
+      "genre": "space documentaries",
+      "builtin": false,
+      "lessons_file": "data/quasorynth_space_lessons.json",
+      "voice": "en-US-ChristopherNeural",
+      "made_for_kids": false,
+      "privacy": "public",
+      "category_id": "28",
+      "seo_suffix": "| Quasorynth",
+      "image_style": "cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery",
+      "client_secret": "client_secret.json",
+      "token": "token_quasorynth_space.json",
+      "topics_per_day": 2,
+      "slot": 8,
+      "language": "en",
+      "tone": "Every script should sound awe-inspiring, mysterious, and deeply scientific yet accessible to curious minds.",
+      "keywords": [
+        "space documentary",
+        "black holes explained",
+        "james webb discoveries",
+        "universe mysteries",
+        "nasa missions",
+        "galaxy formation",
+        "exoplanets found",
+        "cosmic web",
+        "astronomy facts",
+        "deep space secrets"
+      ],
+      "visuals": "stock",
+      "ideas": [
+        "What Lies Beyond the Edge of the Observable Universe",
+        "Inside the Event Horizon: What We Learned from the Latest Black Hole Image",
+        "James Webb Telescope Just Found Something Impossible in the Early Universe",
+        "The Rogue Planet Journeying Through Deep Space Without a Star",
+        "How the Largest Known Galaxy in the Universe Would Look from Earth"
+      ],
+      "topic": "Quasorynth - space and universe documentaries: black holes, planets, galaxies, NASA missions, James Webb discoveries, cosmic mysteries, all real science facts",
+      "created_by": "factory",
+      "created_at": "2026-11-02T12:01:07",
+      "brand": "Quasorynth",
+      "long_days": [
+        "Tue",
+        "Thu",
+        "Sat"
+      ],
+      "thumbnail_style": "space"
+    },
+    {
+      "id": "veylora_earth",
+      "name": "Veylora Earth",
+      "genre": "paleontology & history",
+      "builtin": false,
+      "lessons_file": "data/veylora_earth_lessons.json",
+      "voice": "en-GB-RyanNeural",
+      "made_for_kids": false,
+      "privacy": "public",
+      "category_id": "27",
+      "seo_suffix": "| Veylora Earth",
+      "image_style": "cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere",
+      "client_secret": "client_secret_veylora_earth.json",
+      "token": "token_veylora_earth.json",
+      "topics_per_day": 2,
+      "slot": 7,
+      "language": "en",
+      "tone": "Every script should sound deep, cinematic, and awe-inspiring, blending rigorous scientific research with atmospheric storytelling.",
+      "keywords": [
+        "extinct human species",
+        "neanderthal history",
+        "prehistoric animals",
+        "ice age giants",
+        "lost civilizations",
+        "mass extinctions",
+        "earth forgotten past",
+        "ancient history documentary",
+        "evolution mysteries",
+        "prehistoric earth"
+      ],
+      "visuals": "stock",
+      "ideas": [
+        "The True Reason Neanderthals Vanished From Earth",
+        "Giants of the Ice Age: The Megafauna We Lost",
+        "Inside the Lost Human Species That Lived Alongside Us",
+        "The Day the Earth Died: Uncovering the Worst Mass Extinction",
+        "Before History Began: The Mysterious Civilizations of the Deep Past"
+      ],
+      "topic": "Veylora Earth - cinematic documentaries about Earth's forgotten past: extinct human species, Neanderthals, prehistoric animals, Ice Age giants, lost civilizations, mass extinctions, real science",
+      "created_by": "factory",
+      "created_at": "2026-11-02T12:03:59",
+      "brand": "Veylora Earth",
+      "long_days": [
+        "Mon",
+        "Wed",
+        "Fri"
+      ],
+      "thumbnail_style": "earth"
     }
   ]
 }

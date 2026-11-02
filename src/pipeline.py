@@ -143,6 +143,58 @@ def _needs_interactive_rewrite(lesson: Lesson, channel) -> bool:
     return not words or max(words) <= 8
 
 
+def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None) -> Path | None:
+    """The thumbnail of a topic channel with a look of its own (thumbnail_style).
+
+    One AI call turns the title into a short headline with its key words
+    marked and names the Wikipedia article whose free photo shows the subject;
+    the scene picture stands in when there is none. None (the ordinary
+    thumbnail is made) for other channels or when anything fails.
+    """
+    style = str(getattr(channel, "thumbnail_style", "") or "")
+    if style not in ("space", "earth"):
+        return None
+    try:
+        from .genre_topics import _script_json
+        from .page_posts import real_photo
+        from .thumbnails import manual_thumbnail_for
+
+        if manual_thumbnail_for(lesson):
+            return None
+        plan = _script_json(
+            "Write the text for a YouTube documentary thumbnail.\n"
+            f"Video title: {lesson.title}\n"
+            'Return ONLY JSON: {"headline": str, "wikipedia": str, "scene": str}.\n'
+            "- headline: 3 to 7 words, a gripping hook, with the 1 to 3 most striking words "
+            "wrapped in *stars* (e.g. \"Black Holes: *Gates of Time?*\", "
+            "\"When giants *ruled the Ice Age*\"). No claim the title does not make.\n"
+            "- wikipedia: the exact title of the English Wikipedia article about the thing the "
+            "video is about (a planet, an animal, a site), whose photo would show it.\n"
+            "- scene: 2 or 3 words to search a stock photo site for the landscape or sky behind "
+            "it (e.g. \"snowy tundra\", \"purple nebula\", \"jungle river\"), no animals or people."
+        )
+        headline = str(plan.get("headline") or "").strip() or lesson.title
+        photo = fallback
+        wiki = str(plan.get("wikipedia") or "").strip()
+        try:
+            if wiki and real_photo(wiki, run_dir):
+                photo = run_dir / "article_photo.jpg"
+                print(f"[thumbnail] real photo of {wiki}")
+        except Exception as exc:
+            print(f"[thumbnail] no photo of {wiki}, using the scene picture: {exc}")
+        if not photo or not Path(photo).is_file():
+            return None
+        if style == "space":
+            from .space_thumbnail import compose_space_thumbnail as compose
+        else:
+            from .earth_thumbnail import compose_earth_thumbnail as compose
+        return compose(headline, Path(photo), run_dir / "thumbnail.jpg", channel,
+                       scene=str(plan.get("scene") or "").strip()[:40])
+    except Exception as exc:
+        print(f"[thumbnail] {style} layout skipped: {exc}")
+        return None
+
+
 def _real_subject_thumbnail(lesson, channel, run_dir: Path, content_type: str) -> Path | None:
     """The thumbnail of a true story about a real person: that person's own photo.
 
@@ -318,8 +370,10 @@ def run_pipeline(
         except Exception as exc:
             print(f"[thumbnail] no scene image available as fallback: {exc}")
             thumbnail_source = None
-    thumbnail_path = _real_subject_thumbnail(lesson, channel, run_dir, content_type) or create_thumbnail(
-        lesson, thumbnail_source, run_dir / "thumbnail.jpg", channel, content_type,
+    thumbnail_path = (
+        _real_subject_thumbnail(lesson, channel, run_dir, content_type)
+        or _topic_thumbnail(lesson, channel, run_dir, thumbnail_source)
+        or create_thumbnail(lesson, thumbnail_source, run_dir / "thumbnail.jpg", channel, content_type)
     )
     metadata = build_metadata(lesson, channel, content_type=content_type)
     _append_image_credits(metadata, run_dir)

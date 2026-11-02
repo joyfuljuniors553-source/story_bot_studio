@@ -49,11 +49,28 @@ PURE_URDU = (
 )
 
 
+# Viewers stay to the end when a question is left open: the hook makes them
+# ask it, and the answer is held back until the last scenes.
+STORY_ARC = (
+    "\nSTORY SHAPE (a documentary told as a mystery, not a list of facts):\n"
+    "- HOOK: the first line is the single most astonishing fact or moment, told so the viewer "
+    "has to know more (e.g. \"This 40,000-year-old bone changed everything we knew.\").\n"
+    "- QUESTION: right after it, ask the one question this video will answer "
+    "(why, how, what really happened).\n"
+    "- CLUES: then tell it step by step; each line adds a clue and leaves something open for the next.\n"
+    "- ANSWER: give the full answer near the end, then close with one line that leaves the viewer in awe.\n"
+    "- Every clue and the answer must still be facts allowed by the rules above.\n"
+)
+
+
 def script_rules(channel) -> str:
-    """Extra instructions for the script writer; empty for English channels."""
+    """Extra instructions for the script writer: the story shape (every channel
+    but the preschool one), and the language rules on an Urdu one."""
+    wanted = getattr(channel, "story_arc", True) and not getattr(channel, "builtin", False)
+    story = STORY_ARC if wanted else ""
     if not is_urdu(channel):
-        return ""
-    return (
+        return story
+    return story + (
         "\nLANGUAGE: this channel publishes in URDU for a Pakistani audience.\n"
         "- 'line' = the narrated sentence(s) in ROMAN URDU: Urdu written in English letters, "
         "the way people type on WhatsApp (e.g. \"Yeh kahani ek purani haveli se shuru hoti hai.\"). "

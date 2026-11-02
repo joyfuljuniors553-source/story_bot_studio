@@ -177,7 +177,7 @@ def create_channel(spec: dict) -> str:
         # Shared until the channel gets its own Cloud project on the dashboard.
         "client_secret": "client_secret.json",
         "token": f"token_{channel_id}.json",
-        "topics_per_day": 1,
+        "topics_per_day": 2,
         # The daily build slot with the fewest channels (slots.py).
         "slot": slot,
         "language": spec["language"],
@@ -188,6 +188,8 @@ def create_channel(spec: dict) -> str:
         # has a topic bank of its own (see _automatic_long_idea).
         "ideas": spec["first_topics"],
         "topic": spec["topic"],
+        # Two Shorts every day, but the long documentary only three days a week.
+        "long_days": ["Mon", "Wed", "Fri"],
         "created_by": "factory",
         "created_at": datetime.now().isoformat(timespec="seconds"),
     })

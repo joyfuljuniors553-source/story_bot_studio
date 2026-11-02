@@ -142,7 +142,7 @@ def _largest_figure(png: bytes) -> bytes:
     return cv2.imencode(".png", image)[1].tobytes()
 
 
-def _backdrop(subject: str, out: Path) -> Path | None:
+def _backdrop(subject: str, out: Path, queries: list[str] = _BACKDROPS) -> Path | None:
     """A dramatic landscape stock photo from Pexels, or None without a key/result."""
     from .thumbnails import pexels_api_key
 
@@ -150,7 +150,7 @@ def _backdrop(subject: str, out: Path) -> Path | None:
     if not key:
         return None
     seed = int(hashlib.sha1(subject.encode("utf-8")).hexdigest(), 16)
-    query = _BACKDROPS[seed % len(_BACKDROPS)]
+    query = queries[seed % len(queries)]
     try:
         request = urllib.request.Request(
             "https://api.pexels.com/v1/search?" + urllib.parse.urlencode(

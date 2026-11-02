@@ -82,7 +82,13 @@
         "Thu",
         "Sat"
       ],
-      "thumbnail_style": "space"
+      "thumbnail_style": "space",
+      "clip_sources": [
+        "nasa",
+        "pexels",
+        "pixabay",
+        "coverr"
+      ]
     },
     {
       "id": "veylora_earth",
@@ -131,7 +137,15 @@
         "Wed",
         "Fri"
       ],
-      "thumbnail_style": "earth"
+      "thumbnail_style": "earth",
+      "clip_sources": [
+        "commons",
+        "smithsonian",
+        "pixabay",
+        "pexels",
+        "coverr",
+        "nps"
+      ]
     }
   ]
 }

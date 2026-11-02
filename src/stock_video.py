@@ -397,24 +397,54 @@ def fetch_scene_clip(
     do not show the same footage twice. A clip shorter than the narration is
     still accepted when nothing longer exists: the renderer loops it.
     """
+    from .clip_sources import (coverr_clip, default_sources, nasa_clip, nps_clip, pixabay_clip,
+                               smithsonian_clip)
     from .thumbnails import pexels_api_key
-
-    key = pexels_api_key()
-    if not key:
-        raise RuntimeError("No Pexels API key. Get a free one at pexels.com/api.")
-    used = _used_ids(run_dir)
-    errors: list[str] = []
     from .verified_facts import is_verified_channel
 
+    errors: list[str] = []
     fact_channel = is_verified_channel(channel)
-    if fact_channel:
-        try:
-            return _commons_clip(scene, output_path, run_dir, landscape, min_seconds)
-        except Exception as exc:
-            errors.append(f"archive: {exc}")
+    sources = default_sources(channel)
+    if fact_channel and "commons" not in sources:
+        # Real archive film is the honest picture of the past on a fact channel.
+        sources = ["commons", *sources]
     # A stranger on screen while the narration names a killer or a suspect
     # reads as that person, so crime lines get footage without people.
     no_people = fact_channel or crime_text(f"{scene.label} {scene.line}")
+    planned = [(shot["q"], shot["must"]) for shot in _planned_shots(scene, run_dir)]
+    others = planned or [(query, "") for query in _scene_queries(scene, channel)]
+    for source in sources:
+        try:
+            if source == "commons":
+                return _commons_clip(scene, output_path, run_dir, landscape, min_seconds)
+            if source == "nasa":
+                return nasa_clip(scene, output_path, run_dir, others, min_seconds)
+            if source == "coverr":
+                return coverr_clip(scene, output_path, run_dir, others, landscape, no_people)
+            if source == "nps":
+                return nps_clip(scene, output_path, run_dir, others, min_seconds)
+            if source == "smithsonian":
+                return smithsonian_clip(scene, output_path, run_dir, others, landscape, min_seconds)
+            if source == "pixabay":
+                return pixabay_clip(scene, output_path, run_dir, others, landscape, min_seconds, no_people)
+            if source == "pexels" and pexels_api_key():
+                return _pexels_clip(scene, output_path, run_dir, channel, landscape, min_seconds,
+                                    no_people, errors)
+        except Exception as exc:
+            errors.append(f"{source}: {exc}")
+    detail = " | ".join(errors[-3:]) if errors else "no clip source for this scene"
+    raise RuntimeError(f"No stock clip for scene '{scene.label}': {detail}")
+
+
+def _pexels_clip(scene: Scene, output_path: Path, run_dir: Path, channel, landscape: bool,
+                 min_seconds: float, no_people: bool, errors: list[str]) -> Path:
+    """A Pexels clip for this scene, or RuntimeError."""
+    from .clip_sources import _mark_used, _used, frame_matches
+    from .thumbnails import pexels_api_key
+
+    key = pexels_api_key()
+    used = _used_ids(run_dir)
+    rejected = _used(run_dir)  # clips whose frame did not fit (clip_sources)
     # Planned shots first: each names the noun a clip's title must contain.
     # Without a plan, the clip's title must share a word with the scene's own
     # title and picture prompt (not its whole narration, where "city" or
@@ -433,7 +463,8 @@ def fetch_scene_clip(
             break
         candidates = [
             video for video in videos
-            if int(video.get("id") or 0) not in used and not _banned(video)
+            if int(video.get("id") or 0) not in used and f"pexels:{video.get('id')}" not in rejected
+            and not _banned(video)
             and _best_file(video, landscape)
             and (_names_must(video, must) and _relevant(video, {must}, no_people) if must
                  else _relevant(video, subject, no_people))
@@ -460,6 +491,10 @@ def fetch_scene_clip(
                 continue
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_bytes(data)
+            if not frame_matches(output_path, scene):
+                _mark_used(run_dir, f"pexels:{video.get('id')}")
+                output_path.unlink(missing_ok=True)
+                continue
             creator = video.get("user") or {}
             output_path.with_suffix(".pexels.json").write_text(
                 json.dumps({
@@ -476,5 +511,4 @@ def fetch_scene_clip(
                 encoding="utf-8",
             )
             return output_path
-    detail = " | ".join(errors[-3:]) if errors else "no search phrase for this scene"
-    raise RuntimeError(f"No stock clip for scene '{scene.label}': {detail}")
+    raise RuntimeError(" | ".join(errors[-3:]) if errors else "no search phrase for this scene")

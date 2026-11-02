@@ -75,6 +75,9 @@ class Channel:
     # The look of a topic channel's thumbnail: "space" (space_thumbnail.py) or
     # "earth" (earth_thumbnail.py); empty keeps the ordinary one.
     thumbnail_style: str = ""
+    # Where scene clips come from, in order: "nasa", "commons", "pexels",
+    # "pixabay" (clip_sources.py); empty = Pexels then Pixabay.
+    clip_sources: tuple = ()
 
     @property
     def client_secret_path(self) -> Path:

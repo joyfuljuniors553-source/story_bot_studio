@@ -26,15 +26,17 @@ from .thumbnails import THUMB_HEIGHT, THUMB_WIDTH, _ffmpeg
 CAPS = settings.root / "fonts" / "Cinzel-Black.ttf"
 SERIF = settings.root / "fonts" / "DMSerifDisplay-Regular.ttf"
 TAG_FONT = settings.root / "fonts" / "ArchivoBlack-Regular.ttf"
+FACE_MODEL = settings.root / "third_party" / "face_detection_yunet_2023mar.onnx"
 W, H = THUMB_WIDTH, THUMB_HEIGHT
 _GOLD = "0xE8B64A"
 _COLUMN_X, _COLUMN_W = 590, 670  # the text column on the right
 _MID = _COLUMN_X + _COLUMN_W // 2
 _BANNER = "RISE  •  FAME  •  LEGACY"
 # Backdrops searched on Pexels, one picked per person so videos differ.
-_BACKDROPS = ["red carpet event lights", "stage spotlight dark", "hollywood night lights",
-              "cinema theater dark", "city skyline night dramatic", "dramatic sunset clouds",
-              "film set lights", "concert stage lights smoke"]
+# No streets or shops: their signs and logos would show up behind the person.
+_BACKDROPS = ["stage spotlight dark", "concert stage lights smoke", "dramatic sunset clouds",
+              "red theater curtain stage", "stormy sky dramatic", "golden bokeh lights",
+              "film set lights", "dark cinema theater"]
 _CUTOUT_MODEL = "isnet-general-use"
 _MARGIN = 30  # the same space above the tag and below the ribbon
 _CAP = 0.72   # Cinzel's capitals run from drawtext's y to y + 0.72 * size
@@ -90,6 +92,34 @@ def _cutout(photo: Path, out: Path) -> Path | None:
     except Exception as exc:
         print(f"[thumbnail] no cut-out, using the whole photo: {exc}")
         return None
+
+
+def _portrait(photo: Path, out: Path) -> Path:
+    """Head and shoulders around the largest face, so the face is big and the
+    table, microphone or crowd of a press photo is left out. The photo itself
+    when no face is found."""
+    try:
+        import cv2
+
+        image = cv2.imread(str(photo))
+        if image is None:
+            return photo
+        height, width = image.shape[:2]
+        # OpenCV's YuNet face model (third_party/, MIT licence).
+        finder = cv2.FaceDetectorYN.create(str(FACE_MODEL), "", (width, height), 0.8)
+        faces = finder.detect(image)[1]
+    except Exception as exc:
+        print(f"[thumbnail] face search skipped: {exc}")
+        return photo
+    if faces is None or len(faces) == 0:
+        return photo
+    x, y, fw, fh = (int(v) for v in max(faces, key=lambda face: face[2] * face[3])[:4])
+    top, bottom = max(0, int(y - 0.7 * fh)), min(height, int(y + 2.4 * fh))
+    left, right = max(0, int(x + fw / 2 - 1.5 * fw)), min(width, int(x + fw / 2 + 1.5 * fw))
+    if (bottom - top) * (right - left) > 0.85 * height * width:
+        return photo  # already a portrait
+    cv2.imwrite(str(out), image[top:bottom, left:right])
+    return out
 
 
 def _largest_figure(png: bytes) -> bytes:
@@ -172,6 +202,7 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     work = output_path.parent
+    photo = _portrait(photo, work / "story_portrait.jpg")
     cutout = _cutout(photo, work / "story_cutout.png")
     backdrop = _backdrop(subject, work / "story_backdrop.jpg")
 
@@ -285,7 +316,8 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     size = f"{w}:{h}"
     inputs = ["-i", str(backdrop or photo), "-i", str(cutout or photo)]
     sky = (f"[0:v]scale={size}:force_original_aspect_ratio=increase,crop={size},"
-           + ("gblur=sigma=2,eq=brightness=-0.10:contrast=1.18:saturation=0.95,"
+           # Blurred enough that shop signs and logos in the stock photo cannot be read.
+           + ("gblur=sigma=11,eq=brightness=-0.03:contrast=1.18:saturation=1.05,"
               if backdrop else "boxblur=40:4,eq=brightness=-0.28:saturation=0.7:contrast=1.1,")
            + "colorbalance=rs=-0.12:gs=0.02:bs=0.28:rh=0.22:gh=0.08:bh=-0.12,vignette=PI/4.5[bg]")
     if vertical:
@@ -299,6 +331,9 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     person = (f"[1:v]scale=-2:{person_h}:flags=lanczos,unsharp=5:5:0.9,"
               f"crop='min(iw,{max_w})':ih,eq=contrast=1.08:saturation=1.08,format=rgba")
     if cutout:
+        if vertical:
+            # A head-and-shoulders crop ends in a straight line; fade it into the words.
+            person += ",geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='alpha(X,Y)*min(1,(H-Y)/300)'"
         layers = [
             sky,
             person + ",split=2[p][p2]",

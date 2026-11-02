@@ -230,13 +230,19 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     outer = f"lt(abs(Y-{cy}),{half})*gte(X,{bx1}+abs(Y-{cy})*0.7)*lte(X,{bx2}-abs(Y-{cy})*0.7)"
     inner = (f"lt(abs(Y-{cy}),{half - 4})*gte(X,{bx1 + 6}+abs(Y-{cy})*0.7)"
              f"*lte(X,{bx2 - 6}-abs(Y-{cy})*0.7)")
-    tx2 = W - 24
+    # A slanted tag whose top-right corner is _MARGIN from both the top and the
+    # right edge; its text centred on the slant's middle.
+    slant = 0.3
+    tx2 = W - _MARGIN - int((ty2 - ty1) * slant)
     tx1 = tx2 - tag_w - 80
-    tag_shape = f"between(Y,{ty1},{ty2})*gte(X,{tx1}+({ty2}-Y)*0.3)*lte(X,{tx2}+({ty2}-Y)*0.3-22)"
+    tag_shape = f"between(Y,{ty1},{ty2})*gte(X,{tx1}+({ty2}-Y)*{slant})*lte(X,{tx2}+({ty2}-Y)*{slant})"
+    tag_mid = (tx1 + tx2) // 2 + int((ty2 - ty1) / 2 * slant)
 
     finish = [
         _drawtext(banner, CAPS, 40, cy - int(40 * _CAP / 2), "white", extra="shadowcolor=black@0.6:shadowx=2:shadowy=2"),
-        _drawtext(tag, TAG_FONT, 42, ty1 + 14, "white", x=f"{tx1 + 40}",
+        # Archivo Black's capitals are 0.70 of the size tall, starting at y.
+        _drawtext(tag, TAG_FONT, 42, ty1 + int((ty2 - ty1 - 42 * 0.70) / 2), "white",
+                  x=f"{tag_mid}-tw/2",
                   extra="shadowcolor=black@0.4:shadowx=2:shadowy=2"),
     ]
     brand = str(getattr(channel, "brand", "") or getattr(channel, "name", "") or "")

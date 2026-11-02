@@ -57,6 +57,9 @@ class Channel:
     presenter: bool = False
     # The framed news thumbnail, with the anchor on long videos (news_thumbnail.py).
     news_thumbnail: bool = False
+    # The name shown as the logo on true-story thumbnails ("LegendraScope");
+    # empty uses the channel name (story_thumbnail.py).
+    brand: str = ""
     # A news channel's audience: ("US", "EU") reads American, then European
     # sources (trending._REGION_FEEDS). Empty keeps the world mix.
     news_regions: tuple = ()

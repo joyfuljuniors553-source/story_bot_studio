@@ -36,6 +36,9 @@ _BACKDROPS = ["red carpet event lights", "stage spotlight dark", "hollywood nigh
               "cinema theater dark", "city skyline night dramatic", "dramatic sunset clouds",
               "film set lights", "concert stage lights smoke"]
 _CUTOUT_MODEL = "isnet-general-use"
+_MARGIN = 30  # the same space above the tag and below the ribbon
+_CAP = 0.72   # Cinzel's capitals run from drawtext's y to y + 0.72 * size
+_GAP = 0.2    # between stacked lines, as a share of the smaller line's size
 
 
 def story_name(subject: str) -> str:
@@ -174,23 +177,40 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     tag = _write(work / "story_tag.txt", "TRUE STORY")
     tag_w = _text_width(tag, str(TAG_FONT), 42)
 
-    sizes = (58, 112, 88)
-    y_the = 108
-    y_untold = y_the + int(sizes[0] * 1.02)
-    y_life = y_untold + int(sizes[1] * 0.98)
-    name_top = y_life + int(sizes[2] * 1.02)
-    name_step = int(name_size * 0.98)
-    name_bottom = name_top + name_step * len(names)
+    # The tag's top and the ribbon's bottom sit the same distance from the
+    # frame; the words are centred in the space between them, smaller if needed.
+    ty1, ty2 = _MARGIN, _MARGIN + 72
     banner_h = 74
-    banner_y = min(H - banner_h - 24, name_bottom + 30)
-    widest = max(width for _, width in names)
+    banner_y = H - _MARGIN - banner_h
+    room_top, room_bottom = ty2 + 26, banner_y - 34  # the brush stroke hangs below the name
+    sizes = [58, 112, 88] + [name_size] * len(names)
+
+    def stacked(scale: float) -> list[int]:
+        return [max(24, int(size * scale)) for size in sizes]
+
+    def height(scaled: list[int]) -> float:
+        caps = sum(size * _CAP for size in scaled)
+        return caps + sum(_GAP * min(a, b) for a, b in zip(scaled, scaled[1:]))
+
+    scale = min(1.0, (room_bottom - room_top) / height(sizes))
+    sizes = stacked(scale)
+    y = room_top + (room_bottom - room_top - height(sizes)) / 2
+    tops = []
+    for index, size in enumerate(sizes):
+        tops.append(int(round(y)))
+        y += size * _CAP + (_GAP * min(size, sizes[index + 1]) if index + 1 < len(sizes) else 0)
+    y_the, y_untold, y_life, name_top = tops[:4]
+    sizes, name_size = sizes[:3], sizes[3]
+    name_tops = tops[3:]
+    name_bottom = int(name_tops[-1] + name_size * _CAP)
+    widest = int(max(width for _, width in names) * scale)
 
     dark_edge = "borderw=4:bordercolor=0x1A0F04"
     silver_texts = [_drawtext(path, CAPS, size, y, "white")
                     for path, size, y in ((the, sizes[0], y_the), (untold, sizes[1], y_untold),
                                           (life, sizes[2], y_life))]
-    gold_texts = [_drawtext(path, CAPS, name_size, name_top + i * name_step, "white")
-                  for i, (path, _) in enumerate(names)]
+    gold_texts = [_drawtext(path, CAPS, name_size, top, "white")
+                  for (path, _), top in zip(names, name_tops)]
     # Depth: a dark copy of every word, offset down-right, under the bright one.
     depth = [text.replace("fontcolor=white", "fontcolor=0x120A03") + f":{dark_edge}"
              for text in silver_texts + gold_texts]
@@ -200,7 +220,7 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
 
     # ---- shapes drawn with geq: brush stroke, ribbon, tag
     x1, x2 = _MID - widest // 2 - 70, _MID + widest // 2 + 40
-    y0 = name_bottom - int(name_size * 0.18)
+    y0 = name_bottom + int(name_size * 0.06)
     thick = int(name_size * 0.36)
     stroke = (f"between(X,{x1},{x2})*lt(abs(Y-({y0}-(X-{x1})*0.06)),"
               f"{thick}*min(1,(X-{x1})/160)*min(1,({x2}-X)/60)*(0.8+0.2*sin(X/11+Y/3)))"
@@ -210,12 +230,12 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     outer = f"lt(abs(Y-{cy}),{half})*gte(X,{bx1}+abs(Y-{cy})*0.7)*lte(X,{bx2}-abs(Y-{cy})*0.7)"
     inner = (f"lt(abs(Y-{cy}),{half - 4})*gte(X,{bx1 + 6}+abs(Y-{cy})*0.7)"
              f"*lte(X,{bx2 - 6}-abs(Y-{cy})*0.7)")
-    tx2, ty1, ty2 = W - 24, 26, 98
+    tx2 = W - 24
     tx1 = tx2 - tag_w - 80
     tag_shape = f"between(Y,{ty1},{ty2})*gte(X,{tx1}+({ty2}-Y)*0.3)*lte(X,{tx2}+({ty2}-Y)*0.3-22)"
 
     finish = [
-        _drawtext(banner, CAPS, 40, cy - 22, "white", extra="shadowcolor=black@0.6:shadowx=2:shadowy=2"),
+        _drawtext(banner, CAPS, 40, cy - int(40 * _CAP / 2), "white", extra="shadowcolor=black@0.6:shadowx=2:shadowy=2"),
         _drawtext(tag, TAG_FONT, 42, ty1 + 14, "white", x=f"{tx1 + 40}",
                   extra="shadowcolor=black@0.4:shadowx=2:shadowy=2"),
     ]

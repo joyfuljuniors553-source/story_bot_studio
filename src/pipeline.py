@@ -173,7 +173,8 @@ def _real_subject_thumbnail(lesson, channel, run_dir: Path, content_type: str) -
 
             # The uncropped photo real_photo saved: the story card places it itself.
             return compose_story_thumbnail(subject, lesson.title, run_dir / "article_photo.jpg",
-                                           run_dir / "thumbnail.jpg", channel)
+                                           run_dir / "thumbnail.jpg", channel,
+                                           vertical=content_type == "short")
         except Exception as exc:
             print(f"[thumbnail] story layout failed, using the plain one: {exc}")
         return compose_thumbnail(lesson, found[0], run_dir / "thumbnail.jpg", channel, content_type)

@@ -61,18 +61,21 @@ def _fit(text_file: Path, font: Path, start: int, smallest: int, width: int) -> 
         size = max(smallest, int(size * min(0.95, width / drawn)))
 
 
-def _name_lines(name: str, work: Path) -> tuple[list[tuple[Path, int]], int]:
-    """([(text file, drawn width)], size): one line when it stays big, else two."""
+def _name_lines(name: str, work: Path, width: int = _COLUMN_W,
+                k: float = 1.0) -> tuple[list[tuple[Path, int]], int]:
+    """([(text file, drawn width)], size): one line when it stays big, else two.
+
+    k scales the font sizes for a bigger card (the vertical Shorts one)."""
     one = _write(work / "story_name0.txt", name)
-    size, drawn = _fit(one, CAPS, 150, 56, _COLUMN_W)
+    size, drawn = _fit(one, CAPS, int(150 * k), int(56 * k), width)
     words = name.split()
-    if size >= 108 or len(words) < 2:
+    if size >= 108 * k or len(words) < 2:
         return [(one, drawn)], size
     cut = min(range(1, len(words)),
               key=lambda i: abs(len(" ".join(words[:i])) - len(" ".join(words[i:]))))
     files = [_write(work / f"story_name{i}.txt", line)
              for i, line in enumerate([" ".join(words[:cut]), " ".join(words[cut:])])]
-    size = min(_fit(path, CAPS, 136, 56, _COLUMN_W)[0] for path in files)
+    size = min(_fit(path, CAPS, int(136 * k), int(56 * k), width)[0] for path in files)
     return [(path, _text_width(path, str(CAPS), size)) for path in files], size
 
 
@@ -140,50 +143,67 @@ def _backdrop(subject: str, out: Path) -> Path | None:
 
 
 def _drawtext(text_file: Path, font: Path, size: int, y: int, color: str, x: str | None = None,
-              extra: str = "") -> str:
-    x = x or f"{_MID}-tw/2"
+              extra: str = "", mid: int = _MID) -> str:
+    x = x or f"{mid}-tw/2"
     return (f"drawtext=fontfile='{_escape(font)}':textfile='{_escape(text_file)}':fontsize={size}:"
             f"fontcolor={color}:x={x}:y={y}" + (f":{extra}" if extra else ""))
 
 
 def _gradient_layer(name: str, texts: list[str], top: int, bottom: int,
-                    light: tuple[int, int, int], dark: tuple[int, int, int]) -> list[str]:
+                    light: tuple[int, int, int], dark: tuple[int, int, int],
+                    w: int = W, h: int = H) -> list[str]:
     """Graph lines making [name]: the white `texts` filled with a top-to-bottom gradient."""
     span = max(1, bottom - top)
     channel = lambda a, b: f"'{a}-{a - b}*clip((Y-{top})/{span},0,1)'"  # noqa: E731
     return [
-        f"color=c=black:s={W}x{H},{','.join(texts)},format=gray[{name}_m]",
-        f"color=c=black:s={W}x{H},format=rgb24,geq=r={channel(light[0], dark[0])}:"
+        f"color=c=black:s={w}x{h},{','.join(texts)},format=gray[{name}_m]",
+        f"color=c=black:s={w}x{h},format=rgb24,geq=r={channel(light[0], dark[0])}:"
         f"g={channel(light[1], dark[1])}:b={channel(light[2], dark[2])}[{name}_g]",
         f"[{name}_g][{name}_m]alphamerge[{name}]",
     ]
 
 
 def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: Path,
-                            channel=None) -> Path:
-    """Draw the card at 1280x720 from the subject's own (uncropped) photo."""
+                            channel=None, vertical: bool = False) -> Path:
+    """Draw the card from the subject's own (uncropped) photo.
+
+    1280x720 with the person on the left and the words on the right, or for a
+    Short (vertical=True) 1080x1920 with the person above the words.
+    """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     work = output_path.parent
     cutout = _cutout(photo, work / "story_cutout.png")
     backdrop = _backdrop(subject, work / "story_backdrop.jpg")
 
-    # ---- the words, laid out top to bottom in the right-hand column
+    # k scales the words; corner_k the brand and tag, which must share the top row.
+    if vertical:
+        w, h, margin, k, corner_k = 1080, 1920, 48, 1.4, 1.1
+        col_x, col_w = 60, 960
+    else:
+        w, h, margin, k, corner_k = W, H, _MARGIN, 1.0, 1.0
+        col_x, col_w = _COLUMN_X, _COLUMN_W
+    mid = col_x + col_w // 2
+
+    # ---- the words, laid out top to bottom in the text column
     the = _write(work / "story_the.txt", "THE")
     untold = _write(work / "story_untold.txt", "UNTOLD")
     life = _write(work / "story_life.txt", "LIFE OF")
-    names, name_size = _name_lines(story_name(subject), work)
+    names, name_size = _name_lines(story_name(subject), work, col_w, k)
+    banner_size, tag_size, brand_size = int(40 * k), int(42 * corner_k), int(48 * corner_k)
     banner = _write(work / "story_banner.txt", _BANNER)
-    banner_w = _text_width(banner, str(CAPS), 40)
+    banner_w = _text_width(banner, str(CAPS), banner_size)
     tag = _write(work / "story_tag.txt", "TRUE STORY")
-    tag_w = _text_width(tag, str(TAG_FONT), 42)
+    tag_w = _text_width(tag, str(TAG_FONT), tag_size)
 
     # The tag's top and the ribbon's bottom sit the same distance from the
-    # frame; the words are centred in the space between them, smaller if needed.
-    ty1, ty2 = _MARGIN, _MARGIN + 72
-    banner_h = 74
-    banner_y = H - _MARGIN - banner_h
-    room_top, room_bottom = ty2 + 26, banner_y - 34  # the brush stroke hangs below the name
-    sizes = [58, 112, 88] + [name_size] * len(names)
+    # frame; the words are centred in the space left for them, smaller if needed.
+    ty1, ty2 = margin, margin + int(72 * corner_k)
+    banner_h = int(74 * k)
+    banner_y = h - margin - banner_h
+    # On a Short the person fills the top; the words take the lower part.
+    room_top = int(h * 0.56) if vertical else ty2 + 26
+    room_bottom = banner_y - int(34 * k)  # the brush stroke hangs below the name
+    sizes = [int(58 * k), int(112 * k), int(88 * k)] + [name_size] * len(names)
 
     def stacked(scale: float) -> list[int]:
         return [max(24, int(size * scale)) for size in sizes]
@@ -205,45 +225,46 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     name_bottom = int(name_tops[-1] + name_size * _CAP)
     widest = int(max(width for _, width in names) * scale)
 
-    dark_edge = "borderw=4:bordercolor=0x1A0F04"
-    silver_texts = [_drawtext(path, CAPS, size, y, "white")
+    dark_edge = f"borderw={max(4, int(4 * k))}:bordercolor=0x1A0F04"
+    silver_texts = [_drawtext(path, CAPS, size, y, "white", mid=mid)
                     for path, size, y in ((the, sizes[0], y_the), (untold, sizes[1], y_untold),
                                           (life, sizes[2], y_life))]
-    gold_texts = [_drawtext(path, CAPS, name_size, top, "white")
+    gold_texts = [_drawtext(path, CAPS, name_size, top, "white", mid=mid)
                   for (path, _), top in zip(names, name_tops)]
     # Depth: a dark copy of every word, offset down-right, under the bright one.
     depth = [text.replace("fontcolor=white", "fontcolor=0x120A03") + f":{dark_edge}"
              for text in silver_texts + gold_texts]
-    depth = [re.sub(r":y=(\d+)", lambda m: f":y={int(m.group(1)) + 6}",
-                    re.sub(r"x=(\d+)-tw/2", lambda m: f"x={int(m.group(1)) + 4}-tw/2", text))
+    depth = [re.sub(r":y=(\d+)", lambda m: f":y={int(m.group(1)) + int(6 * k)}",
+                    re.sub(r"x=(\d+)-tw/2", lambda m: f"x={int(m.group(1)) + int(4 * k)}-tw/2", text))
              for text in depth]
 
     # ---- shapes drawn with geq: brush stroke, ribbon, tag
-    x1, x2 = _MID - widest // 2 - 70, _MID + widest // 2 + 40
+    x1, x2 = mid - widest // 2 - int(70 * k), mid + widest // 2 + int(40 * k)
     y0 = name_bottom + int(name_size * 0.06)
     thick = int(name_size * 0.36)
     stroke = (f"between(X,{x1},{x2})*lt(abs(Y-({y0}-(X-{x1})*0.06)),"
               f"{thick}*min(1,(X-{x1})/160)*min(1,({x2}-X)/60)*(0.8+0.2*sin(X/11+Y/3)))"
               f"*(0.7+0.3*sin(Y*1.9+X/37))")
-    bx1, bx2 = _MID - banner_w // 2 - 70, _MID + banner_w // 2 + 70
+    bx1, bx2 = mid - banner_w // 2 - int(70 * k), mid + banner_w // 2 + int(70 * k)
     cy, half = banner_y + banner_h // 2, banner_h // 2
+    edge = max(4, int(4 * k))
     outer = f"lt(abs(Y-{cy}),{half})*gte(X,{bx1}+abs(Y-{cy})*0.7)*lte(X,{bx2}-abs(Y-{cy})*0.7)"
-    inner = (f"lt(abs(Y-{cy}),{half - 4})*gte(X,{bx1 + 6}+abs(Y-{cy})*0.7)"
-             f"*lte(X,{bx2 - 6}-abs(Y-{cy})*0.7)")
-    # A slanted tag whose top-right corner is _MARGIN from both the top and the
+    inner = (f"lt(abs(Y-{cy}),{half - edge})*gte(X,{bx1 + edge + 2}+abs(Y-{cy})*0.7)"
+             f"*lte(X,{bx2 - edge - 2}-abs(Y-{cy})*0.7)")
+    # A slanted tag whose top-right corner is `margin` from both the top and the
     # right edge; its text centred on the slant's middle.
     slant = 0.3
-    tx2 = W - _MARGIN - int((ty2 - ty1) * slant)
-    tx1 = tx2 - tag_w - 80
+    tx2 = w - margin - int((ty2 - ty1) * slant)
+    tx1 = tx2 - tag_w - int(80 * corner_k)
     tag_shape = f"between(Y,{ty1},{ty2})*gte(X,{tx1}+({ty2}-Y)*{slant})*lte(X,{tx2}+({ty2}-Y)*{slant})"
     tag_mid = (tx1 + tx2) // 2 + int((ty2 - ty1) / 2 * slant)
 
     finish = [
-        _drawtext(banner, CAPS, 40, cy - int(40 * _CAP / 2), "white", extra="shadowcolor=black@0.6:shadowx=2:shadowy=2"),
+        _drawtext(banner, CAPS, banner_size, cy - int(banner_size * _CAP / 2), "white", mid=mid,
+                  extra="shadowcolor=black@0.6:shadowx=2:shadowy=2"),
         # Archivo Black's capitals are 0.70 of the size tall, starting at y.
-        _drawtext(tag, TAG_FONT, 42, ty1 + int((ty2 - ty1 - 42 * 0.70) / 2), "white",
-                  x=f"{tag_mid}-tw/2",
-                  extra="shadowcolor=black@0.4:shadowx=2:shadowy=2"),
+        _drawtext(tag, TAG_FONT, tag_size, ty1 + int((ty2 - ty1 - tag_size * 0.70) / 2), "white",
+                  x=f"{tag_mid}-tw/2", extra="shadowcolor=black@0.4:shadowx=2:shadowy=2"),
     ]
     brand = str(getattr(channel, "brand", "") or getattr(channel, "name", "") or "")
     if brand:
@@ -251,50 +272,63 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
         parts = re.match(r"^(.+?)([A-Z][a-z]+)$", brand.replace(" ", ""))
         first, second = (parts.group(1), parts.group(2)) if parts else (brand, "")
         first_file = _write(work / "story_brand1.txt", first)
-        first_w = _text_width(first_file, str(SERIF), 48)
+        first_w = _text_width(first_file, str(SERIF), brand_size)
         logo = "borderw=2:bordercolor=black@0.6:shadowcolor=black@0.8:shadowx=3:shadowy=3"
-        finish.append(_drawtext(first_file, SERIF, 48, 30, "white", x="36", extra=logo))
+        finish.append(_drawtext(first_file, SERIF, brand_size, margin, "white",
+                                x=f"{margin + 6}", extra=logo))
         if second:
             second_file = _write(work / "story_brand2.txt", second)
-            finish.append(_drawtext(second_file, SERIF, 48, 30, _GOLD, x=f"{36 + first_w + 2}", extra=logo))
+            finish.append(_drawtext(second_file, SERIF, brand_size, margin, _GOLD,
+                                    x=f"{margin + 6 + first_w + 2}", extra=logo))
 
     # ---- the picture: backdrop, person, shading
-    size = f"{W}:{H}"
+    size = f"{w}:{h}"
     inputs = ["-i", str(backdrop or photo), "-i", str(cutout or photo)]
     sky = (f"[0:v]scale={size}:force_original_aspect_ratio=increase,crop={size},"
            + ("gblur=sigma=2,eq=brightness=-0.10:contrast=1.18:saturation=0.95,"
               if backdrop else "boxblur=40:4,eq=brightness=-0.28:saturation=0.7:contrast=1.1,")
            + "colorbalance=rs=-0.12:gs=0.02:bs=0.28:rh=0.22:gh=0.08:bh=-0.12,vignette=PI/4.5[bg]")
-    person_h = int(H * 1.1) if cutout else H
+    if vertical:
+        # The person centred in the top two thirds, under the brand and the tag.
+        person_h, max_w, px, py = int(h * 0.62), w, "(W-w)/2", f"{ty2 + 20}"
+        feather = "a='255*min(1,(H-Y)/260)'"  # without a cut-out, fade the photo's foot
+    else:
+        person_h, max_w = (int(h * 1.1) if cutout else h), 700
+        px, py = ("20", "26") if cutout else ("0", "0")
+        feather = "a='255*min(1,(W-X)/200)'"
     person = (f"[1:v]scale=-2:{person_h}:flags=lanczos,unsharp=5:5:0.9,"
-              f"crop='min(iw,700)':ih,eq=contrast=1.08:saturation=1.08,format=rgba")
+              f"crop='min(iw,{max_w})':ih,eq=contrast=1.08:saturation=1.08,format=rgba")
     if cutout:
         layers = [
             sky,
             person + ",split=2[p][p2]",
             # A soft dark halo around the person lifts them off the backdrop.
-            "[p2]geq=r='0':g='0':b='0':a='alpha(X,Y)*0.85',gblur=sigma=22[halo]",
-            "[bg][halo]overlay=x=26:y=34[bg2]",
-            "[bg2][p]overlay=x=20:y=26[pic]",
+            # Padded first, so the blur fades out instead of stopping at the photo's edge.
+            "[p2]pad=iw+120:ih+120:60:60:color=black@0,"
+            "geq=r='0':g='0':b='0':a='alpha(X,Y)*0.85',gblur=sigma=22[halo]",
+            # A centred x stays centred with the wider halo; a fixed x moves by the padding.
+            f"[bg][halo]overlay=x={px + '+6' if vertical else px + '-54'}:y={py}-52[bg2]",
+            f"[bg2][p]overlay=x={px}:y={py}[pic]",
         ]
     else:
         layers = [
             sky,
-            person + ",geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1,(W-X)/200)'[p]",
-            "[bg][p]overlay=x=0:y=0[pic]",
+            person + f",geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':{feather}[p]",
+            f"[bg][p]overlay=x={px}:y={py}[pic]",
         ]
+    # Darker behind the words, so they read on any backdrop.
+    shade_alpha = (f"190*clip((Y-{int(h * 0.48)})/{int(h * 0.12)},0,1)" if vertical
+                   else "165*clip((X-540)/260,0,1)")
     graph = ";".join([
         *layers,
-        # Darker behind the words, so they read on any backdrop.
-        f"color=c=black:s={W}x{H},format=rgba,"
-        "geq=r='6':g='10':b='28':a='165*clip((X-540)/260,0,1)'[shade]",
-        f"color=c=black:s={W}x{H},format=rgba,geq=r='196':g='16':b='24':a='245*{stroke}'[stroke]",
-        f"color=c=black:s={W}x{H},format=rgba,"
+        f"color=c=black:s={w}x{h},format=rgba,geq=r='6':g='10':b='28':a='{shade_alpha}'[shade]",
+        f"color=c=black:s={w}x{h},format=rgba,geq=r='196':g='16':b='24':a='245*{stroke}'[stroke]",
+        f"color=c=black:s={w}x{h},format=rgba,"
         f"geq=r='if({inner},12,232)':g='if({inner},22,182)':b='if({inner},48,74)':a='238*{outer}'[ribbon]",
-        f"color=c=black:s={W}x{H},format=rgba,geq=r='200':g='14':b='22':a='255*{tag_shape}'[tag]",
-        *_gradient_layer("silver", silver_texts, y_the, y_life + sizes[2],
-                         (255, 255, 255), (196, 202, 214)),
-        *_gradient_layer("gold", gold_texts, name_top, name_bottom, (255, 236, 160), (196, 128, 26)),
+        f"color=c=black:s={w}x{h},format=rgba,geq=r='200':g='14':b='22':a='255*{tag_shape}'[tag]",
+        *_gradient_layer("silver", silver_texts, y_the, int(y_life + sizes[2] * _CAP),
+                         (255, 255, 255), (196, 202, 214), w, h),
+        *_gradient_layer("gold", gold_texts, name_top, name_bottom, (255, 236, 160), (196, 128, 26), w, h),
         "[pic][shade]overlay=0:0," + ",".join(depth) + "[d]",
         "[d][stroke]overlay=0:0[s]",
         "[s][silver]overlay=0:0[s2]",

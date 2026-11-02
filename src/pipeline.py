@@ -168,6 +168,14 @@ def _real_subject_thumbnail(lesson, channel, run_dir: Path, content_type: str) -
             print(f"[thumbnail] no free photo of {subject}; plain title card")
             return compose_thumbnail(lesson, None, run_dir / "thumbnail.jpg", channel, content_type)
         print(f"[thumbnail] real photo of {subject}. {found[1]}")
+        try:
+            from .story_thumbnail import compose_story_thumbnail
+
+            # The uncropped photo real_photo saved: the story card places it itself.
+            return compose_story_thumbnail(subject, lesson.title, run_dir / "article_photo.jpg",
+                                           run_dir / "thumbnail.jpg", channel)
+        except Exception as exc:
+            print(f"[thumbnail] story layout failed, using the plain one: {exc}")
         return compose_thumbnail(lesson, found[0], run_dir / "thumbnail.jpg", channel, content_type)
     except Exception as exc:
         print(f"[thumbnail] real photo skipped: {exc}")

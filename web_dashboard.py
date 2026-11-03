@@ -764,6 +764,16 @@ def social_settings_route():
     label = "Facebook Page" if platform == "facebook" else "TikTok"
     saved = social_accounts.account(ch.id, platform)
     # Save & Connect: check the connection at once, so one button is enough.
+    pasted = request.form.get("page_access_token", "").strip()
+    if platform == "facebook" and pasted:
+        # A Graph API Explorer token pasted here is a user token, not the Page's
+        # own: find the Page and its token from it, as the one-box form does.
+        try:
+            if social_publish._user_pages(pasted):
+                flash(social_publish.facebook_from_user_token(ch.id, pasted, request.form.get("page_id", "")), "ok")
+                return redirect(url_for("home", channel=ch.id))
+        except Exception:
+            pass  # a real Page token, or a bad one: the checks below say which
     if platform == "facebook" and not (saved.get("page_id") and saved.get("page_access_token")):
         flash(f"Saved for {ch.name}. Abhi Page ID aur Page Access Token dono chahiye, ya neeche 'Fast way' mein user token paste karein.", "error")
         return redirect(url_for("home", channel=ch.id))
@@ -876,9 +886,13 @@ def tiktok_recent_route():
 def facebook_user_token_route():
     ch = current_channel()
     try:
-        flash(social_publish.facebook_from_user_token(
-            ch.id, request.form.get("user_token", ""), request.form.get("page_id", ""),
-        ), "ok")
+        if request.form.get("all_channels"):
+            lines = social_publish.facebook_connect_all(request.form.get("user_token", ""))
+            flash("Facebook: " + " | ".join(lines) + " — ab Send to GitHub dabayein.", "ok")
+        else:
+            flash(social_publish.facebook_from_user_token(
+                ch.id, request.form.get("user_token", ""), request.form.get("page_id", ""),
+            ) + " — ab Send to GitHub dabayein.", "ok")
     except Exception as exc:
         flash(f"Facebook: {exc}", "error")
     return redirect(url_for("home", channel=ch.id))
@@ -2143,11 +2157,13 @@ PAGE = r"""
       </form>
       <form method="post" action="/facebook-user-token" class="row" style="margin-top:12px;align-items:flex-end;gap:10px;padding:12px;border:1px dashed var(--line);border-radius:10px">
         <input type="hidden" name="channel" value="{{ch.id}}">
-        <input type="hidden" name="page_id" value="{{social.facebook.page_id}}">
-        <label class="field" style="flex:1 1 320px">⚡ Fast way: paste the token from Graph API Explorer (step 5 of the guide)
-          <input type="password" name="user_token" autocomplete="new-password" placeholder="EAA… (user token)"></label>
-        <button class="green sm" type="submit">Get Page token &amp; verify</button>
-        <span class="hint" style="flex-basis:100%">The bot finds the Page, saves its ID and its non-expiring Page token, and verifies it. If you manage several Pages, put the Page ID above first.</span>
+        <label class="field" style="flex:1 1 320px">⚡ Facebook token paste karein (Graph API Explorer, step 5)
+          <input type="password" name="user_token" autocomplete="new-password" placeholder="EAA… token"></label>
+        <label class="field" style="flex:0 1 220px">Page ID (only if asked)
+          <input type="text" name="page_id" value="" placeholder="khaali chhor dein" inputmode="numeric"></label>
+        <button class="green sm" type="submit">Connect this channel</button>
+        <button class="ghost sm" type="submit" name="all_channels" value="1">Connect ALL channels</button>
+        <span class="hint" style="flex-basis:100%">Bot khud Page dhoondhta hai: channel ke naam wala Page (jaise "Legendra Scope"), us ki ID aur kabhi expire na hone wala Page token save karta hai aur verify karta hai. <b>Connect ALL channels</b>: ek hi token se har channel apne naam wale Page se jud jata hai.</span>
       </form>
       <details class="guide-box" {{'open' if not social.facebook.verified_name else ''}}><summary>📘 Facebook setup guide with direct links (one time per Page, ~10 minutes)</summary>
         <div class="hint" style="margin:8px 0">Sign in to Facebook as an <b>admin of the Page</b>. Click a grey value to copy it. Meta renames menus now and then; pick the closest one.</div>

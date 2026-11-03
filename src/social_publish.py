@@ -185,21 +185,67 @@ def verify_facebook(channel_id: str) -> str:
     return name
 
 
+def _plain(text: object) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(text or "").lower())
+
+
+def _page_named_for(channel_id: str, pages: list[dict]) -> dict | None:
+    """The one Page whose name is the channel's name or brand ("Legendra Scope" for
+    LegendraScope), so nobody has to copy a Page ID; None when none or several match."""
+    from .channels import get_channel
+
+    try:
+        channel = get_channel(channel_id)
+    except Exception:
+        return None
+    names = {_plain(getattr(channel, "brand", "")), _plain(channel.name), _plain(channel.id)} - {""}
+    hits = [page for page in pages
+            if any(name == _plain(page.get("name")) or (len(name) >= 6 and name in _plain(page.get("name")))
+                   or (len(_plain(page.get("name"))) >= 6 and _plain(page.get("name")) in name)
+                   for name in names)]
+    return hits[0] if len(hits) == 1 else None
+
+
+def _user_pages(user_token: str) -> list[dict]:
+    query = urlencode({"fields": "id,name,access_token", "access_token": user_token.strip(), "limit": "100"})
+    return _request_json(f"https://graph.facebook.com/{FB_API_VERSION}/me/accounts?{query}").get("data") or []
+
+
+def facebook_connect_all(user_token: str) -> list[str]:
+    """Connect every channel to the Page named like it, from one Graph API Explorer token."""
+    from .channels import load_channels
+
+    pages = _user_pages(user_token)
+    if not pages:
+        raise RuntimeError("This token sees no Pages. When Facebook asks, tick all your Pages.")
+    messages = []
+    for channel in load_channels():
+        page = _page_named_for(channel.id, pages)
+        if page is None:
+            messages.append(f"{channel.name}: no Page with its name")
+            continue
+        try:
+            messages.append(f"{channel.name}: {facebook_from_user_token(channel.id, user_token, page['id'])}")
+        except Exception as exc:
+            messages.append(f"{channel.name}: {str(exc)[:160]}")
+    return messages
+
+
 def facebook_from_user_token(channel_id: str, user_token: str, page_id: str = "") -> str:
     """Save a Page's ID and token found through the user's own token.
 
     Spares the me/accounts step in the Graph API Explorer: the person pastes
-    the user token the Explorer gave them and picks nothing else, unless they
-    manage several Pages (then the Page ID field picks one). Returns a message
-    for the dashboard; warns when the token will expire.
+    the user token the Explorer gave them and picks nothing else: with
+    several Pages, the one named like the channel is taken (a Page ID typed in
+    still wins). Returns a message for the dashboard; warns when the token will
+    expire.
     """
     from .social_accounts import save_account
 
     user_token = user_token.strip()
     if not user_token:
         raise RuntimeError("Paste the token from the Graph API Explorer first.")
-    query = urlencode({"fields": "id,name,access_token", "access_token": user_token, "limit": "100"})
-    pages = _request_json(f"https://graph.facebook.com/{FB_API_VERSION}/me/accounts?{query}").get("data") or []
+    pages = _user_pages(user_token)
     if not pages:
         raise RuntimeError(
             "This token sees no Pages. In the Explorer, tick the Page when Facebook asks, "
@@ -212,8 +258,11 @@ def facebook_from_user_token(channel_id: str, user_token: str, page_id: str = ""
     if page is None and len(pages) == 1:
         page = pages[0]
     if page is None:
+        page = _page_named_for(channel_id, pages)
+    if page is None:
         listing = "; ".join(f"{p.get('name')} = {p.get('id')}" for p in pages)
-        raise RuntimeError(f"This account manages several Pages. Put the right one's ID in Facebook Page ID and press again: {listing}")
+        raise RuntimeError("No Page is named like this channel. Type the right Page's ID in "
+                           f"'Page ID (only if asked)' and press again: {listing}")
     save_account(channel_id, "facebook", {"page_id": page["id"], "page_access_token": page["access_token"]})
     name = verify_facebook(channel_id)
     debug = _request_json(

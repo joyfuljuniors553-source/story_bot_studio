@@ -1,9 +1,12 @@
-"""The real photo of the person or case a fact-only video is about.
+"""The real photos of the person or case a fact-only video is about.
 
 On a fact channel (verified_facts.py) the opening scene, and every scene that
-names the subject, shows the subject's own free photo from Wikipedia/Commons.
-The other scenes use video (stock_video.py). Only files free to reuse are
-taken, each with its credit line for the video description.
+names the subject, shows the subject's own free photo; on a channel about
+people every third scene does too, so a life story shows its person and not
+only stock footage. The photos come, in order, from the Wikipedia article,
+then the person's own Wikimedia Commons category (found through Wikidata,
+so a namesake cannot slip in). Only files
+free to reuse are taken, each with its credit line for the video description.
 """
 from __future__ import annotations
 
@@ -20,7 +23,8 @@ _SKIP_NAMES = re.compile(r"flag|logo|icon|signature|coat[ _]of[ _]arms|seal[ _.]
                          r"symbol|emblem|question_book|edit-clear|disambig|ticket|statue|fullsig|"
                          r"grave|memorial|mural| & ", re.I)
 _MIN_SIDE = 320
-_MAX_PHOTOS = 4
+_MAX_ARTICLE_PHOTOS = 4
+_MAX_PHOTOS = 15
 
 
 def _plain_name(text: str) -> str:
@@ -69,12 +73,74 @@ def _photos(title: str) -> list[tuple[str, dict]]:
             "license": str((meta.get("LicenseShortName") or {}).get("value") or "CC"),
             "source_page": str(info.get("descriptionurl") or ""),
         }))
-        if len(found) >= _MAX_PHOTOS:
+        if len(found) >= _MAX_ARTICLE_PHOTOS:
             break
     return found
 
 
-def _state(run_dir: Path) -> dict:
+def _category_photos(title: str) -> list[tuple[str, dict]]:
+    """The free photos in the person's own Commons category (Wikidata P373)."""
+    from .page_posts import _NOT_THE_PERSON, _PHOTO_INFO, _usable
+    from .verified_facts import _api
+
+    commons = "https://commons.wikimedia.org/w/api.php"
+    pages = _api({"action": "query", "prop": "pageprops", "ppprop": "wikibase_item",
+                  "redirects": "1", "titles": title}).get("query", {}).get("pages") or []
+    entity = ((pages[0] if pages else {}).get("pageprops") or {}).get("wikibase_item")
+    if not entity:
+        return []
+    claims = _api({"action": "wbgetclaims", "entity": entity, "property": "P373"},
+                  base="https://www.wikidata.org/w/api.php").get("claims") or {}
+    try:
+        category = str(claims["P373"][0]["mainsnak"]["datavalue"]["value"])
+    except (KeyError, IndexError, TypeError):
+        return []
+    files = _api({"action": "query", "generator": "categorymembers", "gcmtitle": f"Category:{category}",
+                  "gcmtype": "file", "gcmlimit": "80", **_PHOTO_INFO},
+                 base=commons).get("query", {}).get("pages") or []
+    found = []
+    for page in files:
+        name = str(page.get("title") or "")
+        if _SKIP_NAMES.search(name) or any(word in name.lower() for word in _NOT_THE_PERSON):
+            continue
+        usable = _usable(page)
+        if not usable or usable[2] < 500:
+            continue
+        info = (page.get("imageinfo") or [{}])[0]
+        meta = info.get("extmetadata") or {}
+        found.append((usable[0], {
+            "title": name.replace("File:", "").rsplit(".", 1)[0][:90],
+            "creator": re.sub(r"^Photo: | \(.*$", "", usable[1]) or "Wikimedia Commons",
+            "license": str((meta.get("LicenseShortName") or {}).get("value") or "CC"),
+            "source_page": str(info.get("descriptionurl") or ""),
+        }))
+    return found
+
+
+def _all_photos(title: str, people: bool) -> list[tuple[str, dict]]:
+    """The article's photos, then (on a channel about people) the Commons
+    category's, without repeats, up to _MAX_PHOTOS."""
+    sources = [_photos] + ([_category_photos] if people else [])
+    found: list[tuple[str, dict]] = []
+    seen: set[str] = set()
+    for source in sources:
+        try:
+            rows = source(title)
+        except Exception as exc:
+            print(f"[archive] {title}: {source.__name__} skipped ({exc})")
+            continue
+        for url, credit in rows:
+            key = _plain_name(url.rsplit("/", 1)[-1]).split("px-", 1)[-1]
+            if key in seen:
+                continue
+            seen.add(key)
+            found.append((url, credit))
+            if len(found) >= _MAX_PHOTOS:
+                return found
+    return found
+
+
+def _state(run_dir: Path, people: bool = False) -> dict:
     """The run's photos, downloaded once."""
     path = run_dir / _STATE_FILE
     if path.exists():
@@ -87,7 +153,7 @@ def _state(run_dir: Path) -> dict:
         folder = run_dir / "archive"
         folder.mkdir(exist_ok=True)
         try:
-            photos = _photos(title)
+            photos = _all_photos(title, people)
         except Exception as exc:
             print(f"[archive] {title}: no photo ({exc})")
             photos = []
@@ -110,16 +176,20 @@ def _names_subject(scene: Scene, title: str) -> bool:
     return bool(words & line)
 
 
-def photo_for_scene(scene_number: int, scene: Scene, run_dir: Path) -> Path | None:
-    """The subject's real photo for scene 1 and scenes naming the subject; else None.
+def photo_for_scene(scene_number: int, scene: Scene, run_dir: Path, channel=None) -> Path | None:
+    """The subject's real photo for scene 1, scenes naming the subject and (on a
+    channel about people) every third scene; else None.
 
     Each such scene gets the next photo, so one picture is not shown twice in a
     row; when the photos run out the remaining scenes use video.
     """
     title = _subject(run_dir)
-    if not title or not (scene_number == 1 or _names_subject(scene, title)):
+    # A topic channel (space, prehistory, money) has its own pictures.
+    people = not getattr(channel, "thumbnail_style", "")
+    wanted = scene_number == 1 or _names_subject(scene, title) or (people and scene_number % 3 == 0)
+    if not title or not wanted:
         return None
-    state = _state(run_dir)
+    state = _state(run_dir, people)
     if state["next"] >= len(state["files"]):
         return None
     picture = state["files"][state["next"]]

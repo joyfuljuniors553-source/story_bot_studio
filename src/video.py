@@ -502,7 +502,7 @@ def _render_scene(scene: Scene, duration: float, output_path: Path, run_dir: Pat
             except ValueError:
                 number = 0
             try:
-                real_photo = photo_for_scene(number, scene, run_dir)
+                real_photo = photo_for_scene(number, scene, run_dir, channel)
             except Exception as exc:
                 print(f"[video] {output_path.stem}: real photo unavailable ({exc})")
     cinematic = is_cinematic(channel)

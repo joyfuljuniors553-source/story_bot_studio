@@ -75,6 +75,7 @@ def main() -> None:
     acc.add_argument("--client-secret", default="",
                      help="Own client_secret file for a separate upload quota (optional)")
 
+    sub.add_parser("reapply-thumbnails", help="Set today's thumbnails again on YouTube (end of a daily run).")
     retry = sub.add_parser("retry-uploads", help="Upload rendered/failed videos when internet is back.")
     retry.add_argument("--limit", default="20", help="Maximum pending videos to retry.")
 
@@ -342,6 +343,11 @@ def main() -> None:
         print(f"Building a {count}-video buffer for [{channel.id}] and scheduling into the future...")
         for topic, status in run_buffer_batch(count=count, upload=_bool(args.upload), channel=channel):
             print(f"[{channel.id}] {topic}: {status}")
+        return
+    elif args.command == "reapply-thumbnails":
+        from .pending_uploads import reapply_thumbnails
+        for message in reapply_thumbnails():
+            print(message)
         return
     elif args.command == "retry-uploads":
         for message in retry_pending_uploads(limit=max(1, int(args.limit))):

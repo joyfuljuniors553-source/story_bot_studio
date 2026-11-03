@@ -26,6 +26,12 @@ RELEASE_TIMES = {
     "trending":        (("07:00", "17:00"), ("12:00",)),
     "heroic history":  (("11:00", "18:00"), ("14:00",)),
     "bedtime stories": (("18:30", "20:30"), ("19:00",)),
+    # The current channels (build slots in channels.json): every release at
+    # least two hours from the channel's other ones the same day.
+    "celebrity":              (("17:00", "20:00"), ("15:00",)),
+    "paleontology & history": (("18:00", "21:00"), ("16:00",)),
+    "space documentaries":    (("19:00", "22:00"), ("17:30",)),
+    "personal finance":       (("15:00", "19:00"), ("13:00",)),
 }
 _DEFAULT_RELEASE = (("12:00", "18:00"), ("15:00",))
 

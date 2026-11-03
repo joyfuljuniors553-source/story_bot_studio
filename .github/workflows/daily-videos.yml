@@ -145,6 +145,13 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python -m src.cli retry-uploads --limit 20
 
+      # A thumbnail set in the minute of the upload did not always stay (two
+      # Shorts went out showing a frame); set every one of today's again.
+      - name: Set today's thumbnails again
+        if: ${{ always() && env.UPLOAD != 'false' }}
+        continue-on-error: true
+        run: python -m src.cli reapply-thumbnails
+
       - name: Report
         if: always()
         run: python -m src.cli quota-status

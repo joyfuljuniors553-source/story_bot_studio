@@ -368,6 +368,59 @@ def _thumbnail_reenabled_at(channel_id: str) -> str | None:
         return None
 
 
+def reapply_thumbnails(hours: float = 30) -> list[str]:
+    """Set the thumbnail again on every video uploaded in the last `hours`.
+
+    A thumbnail set in the same minute as the upload did not always stay: two
+    Shorts went out showing a frame of the video although the card had been
+    made. The second pass runs at the end of the daily run, when YouTube has
+    finished with the upload; a video whose thumbnail still fails is marked
+    thumbnail_pending so the next run tries again.
+    """
+    from datetime import datetime, timedelta, timezone
+
+    from .channels import get_channel
+    from .youtube_upload import set_thumbnail
+
+    since = (datetime.now(timezone.utc) - timedelta(hours=hours)).isoformat()
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        rows = conn.execute(
+            """SELECT id, channel, video_url, thumbnail_path, status FROM videos
+               WHERE status IN ('uploaded', 'thumbnail_pending') AND video_url LIKE 'https://%'
+                 AND COALESCE(upload_date, created_at, '') >= ?""",
+            (since,),
+        ).fetchall()
+    finally:
+        conn.close()
+    messages = []
+    for row_id, channel_id, url, thumb, status in rows:
+        video_id = str(url).rsplit("v=", 1)[-1].split("&")[0]
+        path = Path(str(thumb or ""))
+        if not path.is_file():
+            messages.append(f"[{channel_id}] {video_id}: no thumbnail file on this machine")
+            continue
+        if not thumbnail_upload_allowed(channel_id):
+            messages.append(f"[{channel_id}] {video_id}: channel cannot set thumbnails (verify it)")
+            continue
+        try:
+            channel = get_channel(channel_id)
+            set_thumbnail(video_id, path, attempts=2, client_secret_file=channel.client_secret_path,
+                          token_file=channel.token_path)
+            new_status, note = "uploaded", "thumbnail set"
+        except Exception as exc:
+            new_status, note = "thumbnail_pending", f"thumbnail FAILED: {str(exc)[:160]}"
+        if new_status != status:
+            conn = sqlite3.connect(settings.db_path)
+            try:
+                conn.execute("UPDATE videos SET status = ? WHERE id = ?", (new_status, row_id))
+                conn.commit()
+            finally:
+                conn.close()
+        messages.append(f"[{channel_id}] {video_id}: {note}")
+    return messages
+
+
 def enable_thumbnail_upload(channel_id: str) -> None:
     """Turn custom thumbnails back on after verifying the channel on YouTube.
 

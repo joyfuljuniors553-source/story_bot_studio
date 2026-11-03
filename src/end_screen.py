@@ -5,10 +5,8 @@ YouTube Studio (Editor -> End screen -> "Import from video" copies one
 video's layout in a click). The bot does the two parts it can:
 
   * every long video gets a 20-second outro: a blurred, darkened still of its
-    last frame with "SUBSCRIBE" at the left edge and "WATCH NEXT" over the
-    right, where the channel's end-screen layout (imported from one video to
-    the next) puts the subscribe button and the video, so they land on a
-    clean background;
+    last frame with the channel's name at the top, so the end-screen
+    buttons (imported from one video to the next) land on a clean background;
   * every upload's description lists the channel's latest long videos under
     "Watch next", so a viewer has somewhere on the channel to go.
 """
@@ -22,7 +20,6 @@ from pathlib import Path
 from .config import settings
 
 OUTRO_SECONDS = 20  # YouTube allows end-screen elements in the last 5-20 seconds
-TITLE_FONT = settings.root / "fonts" / "Anton-Regular.ttf"
 BRAND_FONT = settings.root / "fonts" / "Cinzel-Black.ttf"
 
 
@@ -54,24 +51,14 @@ def add_end_screen(video_path: Path, run_dir: Path, channel=None) -> Path:
         brand = str(getattr(channel, "brand", "") or getattr(channel, "name", "") or "").upper()
         texts = run_dir / "end_texts"
         texts.mkdir(exist_ok=True)
-        (texts / "next.txt").write_text("WATCH NEXT", encoding="utf-8")
-        (texts / "sub.txt").write_text("SUBSCRIBE", encoding="utf-8")
         (texts / "brand.txt").write_text(brand or " ", encoding="utf-8")
-        size = int(h * 0.075)
-
-        def text(name: str, font: Path, fontsize: int, x: str, y: int, color: str = "white") -> str:
-            return (f"drawtext=fontfile='{_escape(font)}':textfile='{_escape(texts / name)}':"
-                    f"fontsize={fontsize}:fontcolor={color}:x={x}:y={y}:"
-                    "shadowcolor=black@0.7:shadowx=3:shadowy=4")
-
-        # The owner's end-screen layout: the subscribe button at the left edge,
-        # the "Best for viewer" video on the right.
+        # Only the channel's name: the end-screen buttons label themselves.
         look = (f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},gblur=sigma=30,"
                 "eq=brightness=-0.30:saturation=0.8,"
-                + text("brand.txt", BRAND_FONT, int(h * 0.05), "(w-tw)/2", int(h * 0.08), "0xE8B64A") + ","
-                + text("next.txt", TITLE_FONT, size, f"{int(w * 0.79)}-tw/2", int(h * 0.20)) + ","
-                + text("sub.txt", TITLE_FONT, size, f"max({int(w * 0.03)}\\,{int(w * 0.10)}-tw/2)", int(h * 0.20))
-                + f",fade=t=in:st=0:d=0.6,format=yuv420p")
+                f"drawtext=fontfile='{_escape(BRAND_FONT)}':textfile='{_escape(texts / 'brand.txt')}':"
+                f"fontsize={int(h * 0.05)}:fontcolor=0xE8B64A:x=(w-tw)/2:y={int(h * 0.08)}:"
+                "shadowcolor=black@0.7:shadowx=3:shadowy=4"
+                ",fade=t=in:st=0:d=0.6,format=yuv420p")
         outro = run_dir / "end_screen.mp4"
         sample_rate = str((audio or {}).get("sample_rate") or "48000")
         layout = "stereo" if int((audio or {}).get("channels") or 2) >= 2 else "mono"

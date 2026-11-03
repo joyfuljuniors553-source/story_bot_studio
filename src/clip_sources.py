@@ -94,31 +94,42 @@ def _credit(run_dir: Path, output_path: Path, title: str, creator: str, licence:
 
 # ------------------------------------------------------------------ the check
 
-def frame_matches(clip: Path, scene: Scene) -> bool:
-    """True when a frame from the middle of the clip shows what the line is about.
+def frame_matches(clip: Path, scene: Scene, no_people: bool = False) -> bool:
+    """True when frames from the start and the end of the clip show what the line is about.
 
-    Fails open: any trouble asking (no key, quota, a bad frame) keeps the clip."""
+    `no_people` (a story about real people): any face fails, since a stranger
+    on screen reads as the person named; their own photos come from
+    archive_images.py, where who they show is known. Fails open: any trouble
+    asking (no key, quota, a bad frame) keeps the clip."""
     global _checks_off
     if _checks_off or not settings.gemini_api_key:
         return True
     from .visuals import ffmpeg_bin
 
-    frame = clip.with_suffix(".check.jpg")
+    frames = [clip.with_suffix(".check1.jpg"), clip.with_suffix(".check2.jpg")]
     try:
-        seek = [] if clip.suffix.lower() in (".jpg", ".jpeg", ".png") else ["-ss", "1.5"]
-        subprocess.run([ffmpeg_bin(), "-y", "-v", "error", *seek, "-i", str(clip),
-                        "-frames:v", "1", "-vf", "scale=512:-2", str(frame)],
-                       check=True, capture_output=True, timeout=60)
-        picture = base64.b64encode(frame.read_bytes()).decode("ascii")
+        still = clip.suffix.lower() in (".jpg", ".jpeg", ".png")
+        seeks = [[]] if still else [["-ss", "1.5"], ["-sseof", "-1.0"]]
+        parts = []
+        for seek, frame in zip(seeks, frames):
+            subprocess.run([ffmpeg_bin(), "-y", "-v", "error", *seek, "-i", str(clip),
+                            "-frames:v", "1", "-vf", "scale=512:-2", str(frame)],
+                           check=True, capture_output=True, timeout=60)
+            parts.append({"inline_data": {"mime_type": "image/jpeg",
+                                          "data": base64.b64encode(frame.read_bytes()).decode("ascii")}})
         line = " ".join(str(scene.line or scene.label or "").split())[:300]
+        people = (" Any recognisable person or face in a frame does NOT fit: viewers would take a "
+                  "stranger for the person in the story.") if no_people else ""
         body = json.dumps({
             "contents": [{"parts": [
-                {"inline_data": {"mime_type": "image/jpeg", "data": picture}},
-                {"text": "This frame is from a stock clip shown while a narrator says:\n"
+                *parts,
+                {"text": f"{'These frames are' if len(parts) > 1 else 'This frame is'} from a clip "
+                         "shown while a narrator says:\n"
                          f"\"{line}\"\n"
-                         "Does the frame plainly show the thing or place the line is about (a fitting "
+                         "Does every frame plainly show the thing or place the line is about (a fitting "
                          "illustration is fine; something unrelated, a person talking to camera, text "
-                         "on screen or a logo is not)? Return JSON only: {\"fits\": true or false}"},
+                         "on screen, subtitles or a logo is not)?" + people
+                         + " Return JSON only: {\"fits\": true or false}"},
             ]}],
             "generationConfig": {"responseMimeType": "application/json", "temperature": 0},
         }).encode("utf-8")
@@ -141,7 +152,8 @@ def frame_matches(clip: Path, scene: Scene) -> bool:
         print(f"[clips] frame check skipped: {exc}")
         return True
     finally:
-        frame.unlink(missing_ok=True)
+        for frame in frames:
+            frame.unlink(missing_ok=True)
 
 
 def _cut(source: str, output_path: Path, min_seconds: float, seconds: float) -> bool:
@@ -303,7 +315,7 @@ def pixabay_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_bytes(data)
             _mark_used(run_dir, f"pixabay:{hit.get('id')}")
-            if not frame_matches(output_path, scene):
+            if not frame_matches(output_path, scene, no_people):
                 output_path.unlink(missing_ok=True)
                 misses += 1
                 if misses >= _MAX_MISSES:
@@ -458,7 +470,7 @@ def coverr_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[t
             _mark_used(run_dir, f"coverr:{hit.get('id')}")
             if not _download(link, output_path):
                 continue
-            if not frame_matches(output_path, scene):
+            if not frame_matches(output_path, scene, no_people):
                 output_path.unlink(missing_ok=True)
                 misses += 1
                 if misses >= _MAX_MISSES:

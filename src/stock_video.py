@@ -232,8 +232,10 @@ def _commons_clip(scene: Scene, output_path: Path, run_dir: Path, landscape: boo
             title = str(page.get("title") or "")
             if not _FREE_LICENCE.match(licence) or (meta.get("NonFree") or {}).get("value"):
                 continue
-            # The file's own name must be about the query, not just mention it in a category.
-            if not query_words & {w.lower() for w in re.findall(r"[A-Za-z]{3,}", title)}:
+            # The file's own name must be about the query, not just mention it in a
+            # category, and carry every word of it: one shared word let "Denzel
+            # Washington" bring up a film of somebody else from Washington.
+            if not query_words <= {w.lower() for w in re.findall(r"[A-Za-z]{3,}", title)}:
                 continue
             seconds = float(meta.get("Duration", {}).get("value") or info.get("duration") or 0) or 60.0
             renditions = [d for d in info.get("derivatives") or []
@@ -255,7 +257,16 @@ def _commons_clip(scene: Scene, output_path: Path, run_dir: Path, landscape: boo
             if done.returncode != 0 or not output_path.exists() or output_path.stat().st_size < 50_000:
                 output_path.unlink(missing_ok=True)
                 continue
+            from .clip_sources import frame_matches
+
             used.setdefault(title, []).append(start)
+            used_file.write_text(json.dumps(used), encoding="utf-8")
+            # Archive film gets the same look as stock footage: a frame that does
+            # not show what the line is about, or shows a face that may not be
+            # the person named, is not used.
+            if not frame_matches(output_path, scene, no_people=True):
+                output_path.unlink(missing_ok=True)
+                continue
             used_file.write_text(json.dumps(used), encoding="utf-8")
             artist = re.sub(r"<[^>]+>", "", str((meta.get("Artist") or {}).get("value") or "")).strip()
             gen = run_dir / "gen"
@@ -492,7 +503,7 @@ def _pexels_clip(scene: Scene, output_path: Path, run_dir: Path, channel, landsc
                 continue
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_bytes(data)
-            if not frame_matches(output_path, scene):
+            if not frame_matches(output_path, scene, no_people):
                 _mark_used(run_dir, f"pexels:{video.get('id')}")
                 output_path.unlink(missing_ok=True)
                 continue

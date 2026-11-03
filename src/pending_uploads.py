@@ -368,6 +368,39 @@ def _thumbnail_reenabled_at(channel_id: str) -> str | None:
         return None
 
 
+def youtube_shows_card(video_id: str, card: Path) -> bool | None:
+    """Whether YouTube's picture for the video is our card; None if it cannot be fetched.
+
+    YouTube's 1280x720 maxresdefault is the custom thumbnail itself: a long
+    video's card fills it, a Short's tall card sits in the middle on a blur.
+    Both are shrunk to a small grey grid and compared."""
+    import io
+    import urllib.request
+
+    try:
+        from PIL import Image, ImageOps
+
+        request = urllib.request.Request(f"https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg",
+                                         headers={"User-Agent": "Mozilla/5.0 story-bot-studio"})
+        with urllib.request.urlopen(request, timeout=30) as response:
+            shown = Image.open(io.BytesIO(response.read())).convert("L")
+        ours = Image.open(card).convert("L")
+    except Exception:
+        return None
+    if ours.height > ours.width:
+        # The tall card, scaled to the frame's height, centred.
+        width = round(shown.height * ours.width / ours.height)
+        left = (shown.width - width) // 2
+        shown = shown.crop((left, 0, left + width, shown.height))
+    size = (18, 32) if ours.height > ours.width else (32, 18)
+    a = ImageOps.autocontrast(shown.resize(size)).tobytes()
+    b = ImageOps.autocontrast(ours.resize(size)).tobytes()
+    # The same card scores about 1; another one of the same design (another
+    # person's Short) 26 or more.
+    difference = sum(abs(x - y) for x, y in zip(a, b)) / len(a)
+    return difference < 10
+
+
 def reapply_thumbnails(hours: float = 30) -> list[str]:
     """Set the thumbnail again on every video uploaded in the last `hours`.
 
@@ -403,11 +436,17 @@ def reapply_thumbnails(hours: float = 30) -> list[str]:
         if not thumbnail_upload_allowed(channel_id):
             messages.append(f"[{channel_id}] {video_id}: channel cannot set thumbnails (verify it)")
             continue
+        shown = youtube_shows_card(video_id, path)
+        if shown:
+            new_status, note = "uploaded", "thumbnail verified on YouTube"
+        else:
+            new_status, note = "uploaded", "thumbnail set again (YouTube showed "
+            note += "another picture)" if shown is False else "it could not be checked)"
         try:
-            channel = get_channel(channel_id)
-            set_thumbnail(video_id, path, attempts=2, client_secret_file=channel.client_secret_path,
-                          token_file=channel.token_path)
-            new_status, note = "uploaded", "thumbnail set"
+            if not shown:
+                channel = get_channel(channel_id)
+                set_thumbnail(video_id, path, attempts=2, client_secret_file=channel.client_secret_path,
+                              token_file=channel.token_path)
         except Exception as exc:
             new_status, note = "thumbnail_pending", f"thumbnail FAILED: {str(exc)[:160]}"
         if new_status != status:

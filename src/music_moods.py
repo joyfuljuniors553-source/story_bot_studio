@@ -103,16 +103,32 @@ def mood_for(channel=None, lesson=None) -> str:
     return best if scores[best] > 0 else "calm"
 
 
+# Moods that sound close enough to stand in when a mood has few tracks of its own.
+_NEAR = {
+    "calm": ("warm",), "warm": ("calm",), "epic": ("uplift",), "uplift": ("epic",),
+    "news": ("uplift",), "tense": ("news", "epic"), "dark": ("tense", "epic"), "rise": ("epic", "uplift"),
+}
+
+
+def _tracks(folder: Path) -> list[Path]:
+    if not folder.is_dir():
+        return []
+    return sorted(p for p in folder.iterdir() if p.suffix.lower() in {".mp3", ".wav", ".m4a", ".ogg"})
+
+
 def own_track(channel, mood: str, seed_text: str) -> Path | None:
-    """A track the owner dropped into data/music/, if there is one for this video."""
-    folders = [MUSIC_DIR / str(getattr(channel, "id", "") or "_"), MUSIC_DIR / mood]
-    for folder in folders:
-        if not folder.is_dir():
-            continue
-        tracks = sorted(p for p in folder.iterdir() if p.suffix.lower() in {".mp3", ".wav", ".m4a", ".ogg"})
-        if tracks:
-            return random.Random(seed_text).choice(tracks)
-    return None
+    """A track the owner dropped into data/music/, if there is one for this video.
+
+    The channel's own folder wins; else the mood's, joined by the moods near it
+    while it holds fewer than three, so one track is not heard in every video."""
+    tracks = _tracks(MUSIC_DIR / str(getattr(channel, "id", "") or "_"))
+    if not tracks:
+        tracks = _tracks(MUSIC_DIR / mood)
+        for near in _NEAR.get(mood, ()):
+            if len(tracks) >= 3:
+                break
+            tracks += _tracks(MUSIC_DIR / near)
+    return random.Random(seed_text).choice(tracks) if tracks else None
 
 
 def _envelope(np, length: int, attack: float, release: float):

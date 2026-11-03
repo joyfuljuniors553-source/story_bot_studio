@@ -5,9 +5,10 @@ YouTube Studio (Editor -> End screen -> "Import from video" copies one
 video's layout in a click). The bot does the two parts it can:
 
   * every long video gets a 20-second outro: a blurred, darkened still of its
-    last frame with "WATCH NEXT" over the left half and "SUBSCRIBE" over the
-    right, the places YouTube's standard end-screen template puts a video and
-    the subscribe button, so the elements land on a clean background;
+    last frame with "SUBSCRIBE" at the left edge and "WATCH NEXT" over the
+    right, where the channel's end-screen layout (imported from one video to
+    the next) puts the subscribe button and the video, so they land on a
+    clean background;
   * every upload's description lists the channel's latest long videos under
     "Watch next", so a viewer has somewhere on the channel to go.
 """
@@ -63,12 +64,13 @@ def add_end_screen(video_path: Path, run_dir: Path, channel=None) -> Path:
                     f"fontsize={fontsize}:fontcolor={color}:x={x}:y={y}:"
                     "shadowcolor=black@0.7:shadowx=3:shadowy=4")
 
-        # Left half: YouTube's video element; right: its subscribe button.
+        # The owner's end-screen layout: the subscribe button at the left edge,
+        # the "Best for viewer" video on the right.
         look = (f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},gblur=sigma=30,"
                 "eq=brightness=-0.30:saturation=0.8,"
                 + text("brand.txt", BRAND_FONT, int(h * 0.05), "(w-tw)/2", int(h * 0.08), "0xE8B64A") + ","
-                + text("next.txt", TITLE_FONT, size, f"{int(w * 0.27)}-tw/2", int(h * 0.20)) + ","
-                + text("sub.txt", TITLE_FONT, size, f"{int(w * 0.75)}-tw/2", int(h * 0.20))
+                + text("next.txt", TITLE_FONT, size, f"{int(w * 0.79)}-tw/2", int(h * 0.20)) + ","
+                + text("sub.txt", TITLE_FONT, size, f"max({int(w * 0.03)}\\,{int(w * 0.10)}-tw/2)", int(h * 0.20))
                 + f",fade=t=in:st=0:d=0.6,format=yuv420p")
         outro = run_dir / "end_screen.mp4"
         sample_rate = str((audio or {}).get("sample_rate") or "48000")

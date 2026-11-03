@@ -355,6 +355,11 @@ def run_pipeline(
             video_path = add_presenter(video_path, run_dir, channel, content_type)
         except Exception as exc:
             print(f"[presenter] left out of this video: {exc}")
+    if content_type == "long":
+        from .end_screen import add_end_screen
+
+        # Before the music, so the music plays under the outro too.
+        video_path = add_end_screen(video_path, run_dir, channel)
     video_path = add_background_music(
         video_path, run_dir, seed_text=lesson.topic_key, channel=channel, lesson=lesson,
     )
@@ -386,6 +391,9 @@ def run_pipeline(
     )
     metadata = build_metadata(lesson, channel, content_type=content_type)
     _append_image_credits(metadata, run_dir)
+    from .end_screen import watch_next_block
+
+    metadata["description"] = (str(metadata.get("description") or "") + watch_next_block(channel))[:5000]
     if channel is not None:
         from .verified_facts import source_url
 

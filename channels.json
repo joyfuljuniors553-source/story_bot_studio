@@ -151,6 +151,63 @@
       "clips_without_people": true,
       "verified_facts": true,
       "long_scenes": 70
+    },
+    {
+      "id": "dime_horizon",
+      "name": "DimeHorizon",
+      "genre": "personal finance",
+      "builtin": false,
+      "lessons_file": "data/dime_horizon_lessons.json",
+      "voice": "en-US-AndrewNeural",
+      "made_for_kids": false,
+      "privacy": "public",
+      "category_id": "27",
+      "seo_suffix": "| Dime Horizon",
+      "image_style": "minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic",
+      "client_secret": "client_secret_dime_horizon.json",
+      "token": "token_dime_horizon.json",
+      "topics_per_day": 2,
+      "slot": 5,
+      "language": "en",
+      "tone": "Clear, objective, and empowering, breaking down complex monetary concepts into actionable wisdom without unnecessary jargon.",
+      "keywords": [
+        "personal finance basics",
+        "how compound interest works",
+        "budgeting methods for beginners",
+        "understanding credit scores",
+        "debt repayment strategies",
+        "how index funds work",
+        "retirement accounts explained",
+        "history of market crashes",
+        "how inflation impacts savings",
+        "financial literacy for beginners"
+      ],
+      "visuals": "stock",
+      "ideas": [
+        "How $100 a Month Becomes $1 Million Using Compound Interest",
+        "The 50/30/20 Budgeting Rule Explained in 5 Minutes",
+        "What Actually Happens to Your Credit Score When You Miss a Payment",
+        "Snowball vs. Avalanche: Which Debt Repayment Method Saves More Money?",
+        "Why Index Funds Beat Most Professional Stock Pickers Long-Term"
+      ],
+      "topic": "DimeHorizon - personal finance education: compound interest, inflation, credit scores, budgeting methods, debt repayment, index funds, retirement accounts, famous market crashes, real facts only",
+      "long_days": [
+        "Mon",
+        "Wed",
+        "Fri"
+      ],
+      "created_by": "factory",
+      "created_at": "2026-11-03T08:54:19",
+      "brand": "DimeHorizon",
+      "verified_facts": true,
+      "thumbnail_style": "money",
+      "long_scenes": 70,
+      "clip_sources": [
+        "pexels",
+        "pixabay",
+        "coverr"
+      ],
+      "description_footer": "⚠️ Disclaimer: Educational content only. Not personalized financial, investment, tax, or legal advice."
     }
   ]
 }

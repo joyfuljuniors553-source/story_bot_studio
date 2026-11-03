@@ -153,7 +153,7 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
     thumbnail is made) for other channels or when anything fails.
     """
     style = str(getattr(channel, "thumbnail_style", "") or "")
-    if style not in ("space", "earth"):
+    if style not in ("space", "earth", "money"):
         return None
     try:
         from .genre_topics import _script_json
@@ -162,6 +162,14 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
 
         if manual_thumbnail_for(lesson):
             return None
+        # A money card shows a stock photo of the topic (Wikipedia's finance
+        # pictures are charts); the others the subject's own photo on a backdrop.
+        scene_brief = (
+            "- scene: 2 to 4 words to search a stock photo site for ONE realistic money object or "
+            "scene that shows the topic (e.g. \"glass jar dollar bills\", \"credit card close up\", "
+            "\"calculator and bills\"), no faces.") if style == "money" else (
+            "- scene: 2 or 3 words to search a stock photo site for the landscape or sky behind "
+            "it (e.g. \"snowy tundra\", \"purple nebula\", \"jungle river\"), no animals or people.")
         plan = _script_json(
             "Write the text for a YouTube documentary thumbnail.\n"
             f"Video title: {lesson.title}\n"
@@ -171,10 +179,15 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
             "\"When giants *ruled the Ice Age*\"). No claim the title does not make.\n"
             "- wikipedia: the exact title of the English Wikipedia article about the thing the "
             "video is about (a planet, an animal, a site), whose photo would show it.\n"
-            "- scene: 2 or 3 words to search a stock photo site for the landscape or sky behind "
-            "it (e.g. \"snowy tundra\", \"purple nebula\", \"jungle river\"), no animals or people."
+            + scene_brief
         )
         headline = str(plan.get("headline") or "").strip() or lesson.title
+        scene = str(plan.get("scene") or "").strip()[:40]
+        if style == "money":
+            from .money_thumbnail import compose_money_thumbnail
+
+            return compose_money_thumbnail(headline, fallback, run_dir / "thumbnail.jpg", channel,
+                                           scene=scene, vertical=content_type == "short")
         photo = fallback
         wiki = str(plan.get("wikipedia") or "").strip()
         from .verified_facts import _bank_rows, is_verified_channel
@@ -195,7 +208,7 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
         else:
             from .earth_thumbnail import compose_earth_thumbnail as compose
         return compose(headline, Path(photo), run_dir / "thumbnail.jpg", channel,
-                       scene=str(plan.get("scene") or "").strip()[:40],
+                       scene=scene,
                        vertical=content_type == "short")
     except Exception as exc:
         print(f"[thumbnail] {style} layout skipped: {exc}")
@@ -393,7 +406,9 @@ def run_pipeline(
     _append_image_credits(metadata, run_dir)
     from .end_screen import watch_next_block
 
-    metadata["description"] = (str(metadata.get("description") or "") + watch_next_block(channel))[:5000]
+    footer = str(getattr(channel, "description_footer", "") or "").strip()
+    metadata["description"] = (str(metadata.get("description") or "") + watch_next_block(channel)
+                               + (f"\n\n{footer}" if footer else ""))[:5000]
     if channel is not None:
         from .verified_facts import source_url
 

@@ -45,7 +45,7 @@ _LONG_SOURCE_CHARS = (14000, 20000)
 _LONG_MIN_WORDS = 720                 # about 4.5 minutes of narration
 # A documentary channel (long_scenes 40 or more) makes 12-20 minute videos,
 # three a week: it needs a long article to draw on without repeating itself.
-_DOC_SOURCE_CHARS = (24000, 60000)
+_DOC_SOURCE_CHARS = (20000, 60000)
 _DOC_SCENES = 40
 _SHORT_MIN_SCENES = 9                  # with 12 asked for: still about a minute
 
@@ -261,6 +261,14 @@ _SUGGEST_BRIEF = {
         "be the exact title of its own English Wikipedia article (e.g. 'Smilodon', 'Homo floresiensis', "
         "'Gobekli Tepe', 'Burgess Shale'). No general subjects like 'Evolution', no myths or "
         "pseudo-archaeology."
+    ),
+    "personal finance": (
+        "Name 15 real subjects for a personal finance education channel: money concepts and tools "
+        "(compound interest, inflation, credit scores, index funds, budgeting methods, debt repayment "
+        "methods, retirement accounts, interest rates), and famous money events that teach a lesson "
+        "(market crashes, bank runs, bubbles). Each must be the exact title of its own English "
+        "Wikipedia article (e.g. 'Compound interest', 'Credit score in the United States', "
+        "'Debt snowball method', 'Dot-com bubble'). No individual stocks, coins or companies to buy."
     ),
     "celebrity": (
         "Name 15 real, famous, well-documented celebrities from the United States or Europe only: "
@@ -571,10 +579,14 @@ def write_lesson(channel: Channel, article: Article, scenes: int = 8, long_form:
     if long_form:
         rows = _joined(rows, scenes)
 
-    surname = article.title.split("(")[0].split()[-1].lower()
+    name = article.title.split("(")[0].split()
     title = " ".join(str(raw.get("title") or "").split())
-    if surname not in title.lower() or unsupported_reason(title, article, check_names=False):
-        title = f"{article.title}: The True Story"
+    # A person's title names their surname; a topic ("Credit score in the
+    # United States") its first word, since its last ("States") says little.
+    topic = bool(getattr(channel, "thumbnail_style", ""))
+    must = (name[0] if topic else name[-1]).lower()
+    if must not in title.lower() or unsupported_reason(title, article, check_names=False):
+        title = f"{article.title} Explained" if topic else f"{article.title}: The True Story"
     key = _slug(title)
     lesson_scenes = []
     for index, row in enumerate(rows, start=1):

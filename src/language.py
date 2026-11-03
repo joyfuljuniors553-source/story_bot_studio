@@ -69,11 +69,27 @@ STORY_ARC = (
 )
 
 
+# Money videos teach; a script telling a viewer what to buy is advice YouTube
+# treats as harmful when it is wrong, and no script can know the viewer.
+FINANCE_RULES = (
+    "\nMONEY RULES (personal finance channel):\n"
+    "- Explain how things work; never tell the viewer to buy, sell or avoid a specific stock, fund, "
+    "coin, bank, card or product, and never name one as a recommendation.\n"
+    "- No promises or predictions of returns, no 'get rich', no 'guaranteed'.\n"
+    "- Say 'for example' when a number is an illustration, and keep every real figure as the source "
+    "gives it.\n"
+    "- The title speaks to the viewer's own money (e.g. 'How Compound Interest Quietly Builds "
+    "Wealth', 'Credit Scores Explained'), not to a historical figure in the article.\n"
+)
+
+
 def script_rules(channel) -> str:
     """Extra instructions for the script writer: the story shape (every channel
     but the preschool one), and the language rules on an Urdu one."""
     wanted = getattr(channel, "story_arc", True) and not getattr(channel, "builtin", False)
     story = STORY_ARC if wanted else ""
+    if "finance" in str(getattr(channel, "genre", "") or "").lower():
+        story += FINANCE_RULES
     if not is_urdu(channel):
         return story
     return story + (

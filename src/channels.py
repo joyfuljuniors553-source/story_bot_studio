@@ -81,6 +81,8 @@ class Channel:
     # No clip with people in it: on a prehistory channel any passer-by on
     # screen reads as the Neanderthal the narrator is talking about.
     clips_without_people: bool = False
+    # Added at the end of every video description ("Educational content only...").
+    description_footer: str = ""
 
     @property
     def client_secret_path(self) -> Path:

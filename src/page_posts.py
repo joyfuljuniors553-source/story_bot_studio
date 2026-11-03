@@ -691,11 +691,136 @@ def publish_daily_post(channel: Channel, dry_run: bool = False, when: datetime |
     return f"{'posted' if right_now else 'scheduled'} '{subject}' for {local} -> {url}"
 
 
+# ------------------------------------------------------------------ welcome post
+# A Page gets one welcome post as soon as it is connected. "Done" is kept in
+# the database (saved with the bot's state), not in the account settings,
+# which every GitHub run restores from the secrets: kept there, every run
+# would welcome the Page again.
+
+def _welcome_key(page_id: str) -> str:
+    return f"welcome:{page_id}"
+
+
+def welcome_due(channel: Channel) -> bool:
+    cfg = account(channel.id, "facebook")
+    page_id = str(cfg.get("page_id") or "")
+    if not page_id or not cfg.get("page_access_token"):
+        return False
+    conn = connect()
+    try:
+        _table(conn)
+        row = conn.execute("SELECT 1 FROM page_posts WHERE channel = ? AND subject = ?",
+                           (channel.id, _welcome_key(page_id))).fetchone()
+    finally:
+        conn.close()
+    return row is None
+
+
+def _latest_video(channel_id: str) -> tuple[str, str] | None:
+    """(title, url) of the channel's newest video on YouTube, preferring a long one."""
+    conn = connect()
+    try:
+        row = conn.execute(
+            """SELECT title, video_url FROM videos WHERE channel = ? AND video_url LIKE 'https://%'
+                 AND status IN ('uploaded', 'thumbnail_pending')
+               ORDER BY (content_type = 'long') DESC, created_at DESC LIMIT 1""",
+            (channel_id,),
+        ).fetchone()
+    finally:
+        conn.close()
+    return (str(row[0] or "").split(" | ")[0], str(row[1])) if row else None
+
+
+def publish_welcome_post(channel: Channel) -> str:
+    """Post the Page's welcome: who the Page is, what it posts, the latest video."""
+    from .genre_topics import _script_json
+    from .social_publish import FB_API_VERSION, _multipart, _request_json, _send_binary
+
+    cfg = account(channel.id, "facebook")
+    page_id, token = str(cfg.get("page_id") or ""), str(cfg.get("page_access_token") or "")
+    brand = str(getattr(channel, "brand", "") or channel.name)
+    about = str(getattr(channel, "topic", "") or channel.genre)
+    latest = _latest_video(channel.id)
+    try:
+        raw = _script_json(
+            f"Write the first post of the Facebook Page '{brand}', welcoming new followers.\n"
+            f"What the Page is about: {about}\n"
+            "3 to 5 short, warm sentences: welcome, what followers will get here (videos and posts on "
+            "these subjects), and an invitation to follow and comment. 2 or 3 fitting emojis are fine. "
+            "No invented facts, numbers or promises.\n"
+            'Return ONLY JSON: {"text": str}'
+        )
+        text = " ".join(str(raw.get("text") or "").split())
+    except Exception:
+        text = ""
+    if not text:
+        text = (f"Welcome to {brand}! Here we share videos and posts about {about}. "
+                "Follow the Page so you never miss a new one, and tell us in the comments what you "
+                "would like to see next.")
+    if latest:
+        text += f"\n\n▶ Watch our latest video: {latest[0]}\n{latest[1]}"
+    caption = "\n\n".join(filter(None, [text, _hashtags(channel)]))
+    picture = None
+    if latest:
+        # The latest video's own thumbnail, as YouTube shows it.
+        video_id = latest[1].rsplit("v=", 1)[-1].split("&")[0]
+        try:
+            import urllib.request
+
+            work = settings.root / "runs" / f"welcome_{channel.id}"
+            work.mkdir(parents=True, exist_ok=True)
+            request = urllib.request.Request(f"https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg",
+                                             headers={"User-Agent": "Mozilla/5.0 story-bot-studio"})
+            with urllib.request.urlopen(request, timeout=30) as response:
+                picture = work / "welcome.jpg"
+                picture.write_bytes(response.read())
+        except Exception:
+            picture = None
+    if picture:
+        body, content_type = _multipart({"caption": caption, "access_token": token}, "source", picture)
+        result = _send_binary(f"https://graph.facebook.com/{FB_API_VERSION}/{page_id}/photos", body,
+                              {"Content-Type": content_type}, "POST")
+    else:
+        result = _request_json(f"https://graph.facebook.com/{FB_API_VERSION}/{page_id}/feed", "POST",
+                               {"message": caption, "access_token": token})
+    post_id = str(result.get("post_id") or result.get("id") or "")
+    if not post_id:
+        raise RuntimeError(f"Facebook did not accept the welcome post: {result}")
+    url = f"https://www.facebook.com/{post_id}"
+    _record(channel.id, "welcome", _welcome_key(page_id), post_id, url)
+    return url
+
+
+def welcome_after_connect(channel_id: str) -> str:
+    """Right after a Page is connected: post its welcome here, or leave it to the
+    daily run when the posts are made on GitHub (one place only)."""
+    from .channels import get_channel
+    from .social_accounts import facebook_posts_here
+
+    channel = get_channel(channel_id)
+    if not welcome_due(channel):
+        return ""
+    if not facebook_posts_here():
+        return " Welcome post: the next GitHub run posts it (Facebook posting runs from GitHub)."
+    try:
+        return f" Welcome post published: {publish_welcome_post(channel)}"
+    except Exception as exc:
+        return f" Welcome post failed ({str(exc)[:120]}); the next run tries again."
+
+
 def run_daily_posts(slot: set[int] | None = None, dry_run: bool = False) -> list[tuple[str, str]]:
-    """Today's picture post for every channel that has it switched on."""
+    """Today's picture post for every channel that has it switched on, and the
+    welcome post of any Page connected since the last run."""
     from .slots import channel_slot
 
     results: list[tuple[str, str]] = []
+    if not dry_run:
+        for channel in load_channels():
+            if welcome_due(channel):
+                try:
+                    results.append((channel.id, "OK welcome post " + publish_welcome_post(channel)))
+                except Exception as exc:
+                    results.append((channel.id, f"FAILED welcome post: {exc}"))
     for channel in load_channels():
         if slot is not None and channel_slot(channel) not in slot:
             continue

@@ -788,7 +788,12 @@ def social_settings_route():
         else:
             name = social_publish.verify_tiktok(ch.id)
         social_accounts.mark_verified(ch.id, platform, name)
-        flash(f"✅ {label} connected: {name} ({ch.name}). Ab Overview mein Send to GitHub dabayein.", "ok")
+        welcome = ""
+        if platform == "facebook":
+            from src.page_posts import welcome_after_connect
+
+            welcome = welcome_after_connect(ch.id)
+        flash(f"✅ {label} connected: {name} ({ch.name}).{welcome} Ab Overview mein Send to GitHub dabayein.", "ok")
     except Exception as exc:
         social_accounts.mark_verified(ch.id, platform, "")
         hint = ""

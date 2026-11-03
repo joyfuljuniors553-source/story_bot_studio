@@ -272,7 +272,9 @@ def facebook_from_user_token(channel_id: str, user_token: str, page_id: str = ""
     if int(debug.get("expires_at") or 0):
         return (f"Saved {name}, but this Page token expires soon because the pasted token was short-lived. "
                 "Extend the user token in the Access Token Debugger and paste the long one here again.")
-    return f"Saved and verified: {name}. The Page token does not expire."
+    from .page_posts import welcome_after_connect
+
+    return f"Saved and verified: {name}. The Page token does not expire." + welcome_after_connect(channel_id)
 
 
 def _tag(text: object) -> str:

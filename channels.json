@@ -89,7 +89,8 @@
         "pixabay",
         "coverr"
       ],
-      "verified_facts": true
+      "verified_facts": true,
+      "long_scenes": 70
     },
     {
       "id": "veylora_earth",
@@ -148,7 +149,8 @@
         "nps"
       ],
       "clips_without_people": true,
-      "verified_facts": true
+      "verified_facts": true,
+      "long_scenes": 70
     }
   ]
 }

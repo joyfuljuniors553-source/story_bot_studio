@@ -43,6 +43,10 @@ _CUT_SECTIONS = (
 _SHORT_SOURCE_CHARS = (1500, 9000)    # (least needed, most sent to the writer)
 _LONG_SOURCE_CHARS = (14000, 20000)
 _LONG_MIN_WORDS = 720                 # about 4.5 minutes of narration
+# A documentary channel (long_scenes 40 or more) makes 12-20 minute videos,
+# three a week: it needs a long article to draw on without repeating itself.
+_DOC_SOURCE_CHARS = (24000, 60000)
+_DOC_SCENES = 40
 _SHORT_MIN_SCENES = 9                  # with 12 asked for: still about a minute
 
 
@@ -106,9 +110,15 @@ def _story_text(extract: str, limit: int) -> str:
     return text.strip()[: limit + 2000]
 
 
-def fetch_article(title: str, long_form: bool = False) -> Article:
+def _documentary(channel, long_form: bool) -> bool:
+    """True for a 12-20 minute video (the channel's long_scenes is 40 or more)."""
+    return long_form and int(getattr(channel, "long_scenes", 0) or 0) >= _DOC_SCENES
+
+
+def fetch_article(title: str, long_form: bool = False, documentary: bool = False) -> Article:
     """The Wikipedia article called `title`, or an error if it cannot carry a script."""
-    least, most = _LONG_SOURCE_CHARS if long_form else _SHORT_SOURCE_CHARS
+    least, most = (_DOC_SOURCE_CHARS if documentary else
+                   _LONG_SOURCE_CHARS if long_form else _SHORT_SOURCE_CHARS)
     data = _api({
         "action": "query", "prop": "extracts|pageprops|info", "explaintext": "1",
         "redirects": "1", "inprop": "url", "titles": title,
@@ -127,12 +137,12 @@ def fetch_article(title: str, long_form: bool = False) -> Article:
     return Article(title=str(page["title"]), url=url, text=text)
 
 
-def search_article(query: str, long_form: bool = False) -> Article:
+def search_article(query: str, long_form: bool = False, documentary: bool = False) -> Article:
     """The best-matching article for words a person typed on the dashboard."""
     hits = _api({"action": "query", "list": "search", "srsearch": query, "srlimit": "3"})
     for hit in hits.get("query", {}).get("search") or []:
         try:
-            return fetch_article(str(hit["title"]), long_form)
+            return fetch_article(str(hit["title"]), long_form, documentary)
         except Exception:
             continue
     raise RuntimeError(
@@ -303,7 +313,7 @@ def next_article(channel: Channel, long_form: bool = False) -> Article:
                 raise RuntimeError(f"No unused real subject left and none could be suggested ({exc})") from exc
         for name in pool[:12]:
             try:
-                article = fetch_article(name, long_form)
+                article = fetch_article(name, long_form, _documentary(channel, long_form))
             except Exception as exc:
                 print(f"[verified_facts] {channel.id}: skipping {name} ({exc})")
                 continue
@@ -384,7 +394,9 @@ def _prompt(channel: Channel, article: Article, scenes: int, long_form: bool, fe
         # joined into scenes afterwards. Asked for 40-word scenes the writer
         # pads every one with commentary ("a turning point in her journey"),
         # and one padded clause then costs the whole scene.
-        shape = (f"Write a long-form script of about 5 minutes as {scenes * 2 + 10} entries in 'scenes'. "
+        entries = scenes * 2 + 10
+        shape = (f"Write a long-form script of about {max(5, round(entries * 20 / 150))} minutes as "
+                 f"{entries} entries in 'scenes'. "
                  "Each 'line' is ONE plain sentence of 16-24 words reporting one thing the SOURCE says "
                  "happened. No commentary on what it meant, proved or showed, and nothing about feelings "
                  "or character unless the SOURCE states it. Follow the story in order and do "
@@ -408,7 +420,8 @@ def _prompt(channel: Channel, article: Article, scenes: int, long_form: bool, fe
         "- Write every number as digits exactly as in the SOURCE (1957, 20,000).\n"
         "- Say the subject's full name (the person, the case, the animal, the place or the object) "
         "in the first or second scene.\n"
-        "- 'title' must contain that name and no claim that is not in the SOURCE.\n"
+        "- 'title' is a gripping documentary title (a striking fact or the video's question) that "
+        "contains that name and no claim that is not in the SOURCE; never the bare name alone.\n"
         "- No graphic violence or gore; describe crimes plainly, as a documentary would.\n"
         "- 'label' = a 2-4 word caption without numbers.\n"
         "- 'image_prompt' = a plain real-world scene that fits the line (a place, an object, people "
@@ -478,6 +491,51 @@ def _enough(rows: list[dict], long_form: bool, min_words: int | None = None) -> 
     return len(rows) >= _SHORT_MIN_SCENES
 
 
+_PARTS = 3
+
+
+def _documentary_rows(channel: Channel, article: Article, scenes: int,
+                      feedback: str) -> tuple[dict, list[dict], list[str]]:
+    """A 12-20 minute script, written in three parts, each from its own third of the article.
+
+    Asked for 150 sentences at once the writer stops near 80 (about eight
+    minutes). Each part is checked against the whole article."""
+    from .genre_topics import _script_json
+
+    paragraphs = [block for block in article.text.split("\n") if block.strip()]
+    share = max(1, sum(len(block) for block in paragraphs) // _PARTS)
+    chunks: list[list[str]] = [[]]
+    for block in paragraphs:
+        if len(chunks) < _PARTS and chunks[-1] and sum(len(b) for b in chunks[-1]) >= share:
+            chunks.append([])
+        chunks[-1].append(block)
+    part_scenes = max(10, (scenes - 5) // len(chunks))
+    raw: dict = {}
+    rows: list[dict] = []
+    dropped: list[str] = []
+    for index, chunk in enumerate(chunks):
+        if index == 0:
+            role = ("This is PART 1 of a longer documentary: open with the hook and the question, "
+                    "then begin the story. Do not answer the question yet.")
+        elif index < len(chunks) - 1:
+            role = (f"This is PART {index + 1}: carry the story on from where the last part stopped. "
+                    "No hook, no new question, no ending, no 'in this video'.")
+        else:
+            role = ("This is the LAST PART: finish the story and give the full answer to the question. "
+                    "End with two or three lines that sum up what the video showed about the subject, "
+                    "using facts already told; not a side note. No hook, no new question.")
+        part = Article(title=article.title, url=article.url, text="\n".join(chunk))
+        prompt = (_prompt(channel, part, part_scenes, True, feedback)
+                  + f"\n\n{role} Earlier lines so far: "
+                  + (" ".join(row["line"] for row in rows[-4:]) or "none (this is the start)."))
+        drafted = _script_json(prompt)
+        kept, lost = _checked_rows(channel, article, drafted)
+        rows += kept
+        dropped += lost
+        raw = raw or drafted  # the first part's title names the subject
+    return raw, rows, dropped
+
+
 def write_lesson(channel: Channel, article: Article, scenes: int = 8, long_form: bool = False,
                  min_words: int | None = None) -> tuple[str, dict]:
     """A checked script about `article`'s subject, as (key, lesson) for the topic bank.
@@ -487,10 +545,16 @@ def write_lesson(channel: Channel, article: Article, scenes: int = 8, long_form:
     """
     from .genre_topics import _script_json, _slug, _speech_of
 
+    documentary = long_form and scenes >= _DOC_SCENES
+    if documentary and not min_words:
+        min_words = scenes * 26  # 70 scenes: 1,820 words, about 12 minutes at the least
     feedback = ""
     for _attempt in range(2):
-        raw = _script_json(_prompt(channel, article, scenes, long_form, feedback))
-        rows, dropped = _checked_rows(channel, article, raw)
+        if documentary:
+            raw, rows, dropped = _documentary_rows(channel, article, scenes, feedback)
+        else:
+            raw = _script_json(_prompt(channel, article, scenes, long_form, feedback))
+            rows, dropped = _checked_rows(channel, article, raw)
         for note in dropped:
             print(f"[verified_facts] {channel.id}: dropped {note}")
         if _enough(rows, long_form, min_words):
@@ -551,7 +615,7 @@ def article_for_prompt(channel: Channel, user_prompt: str, long_form: bool) -> A
     text = " ".join(str(user_prompt or "").split())
     if not text or _looks_like_instruction_title(text):
         return next_article(channel, long_form)
-    return search_article(text, long_form)
+    return search_article(text, long_form, _documentary(channel, long_form))
 
 
 def write_next_lesson(channel: Channel, scenes: int, long_form: bool,

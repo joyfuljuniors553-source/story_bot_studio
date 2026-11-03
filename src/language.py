@@ -54,7 +54,8 @@ PURE_URDU = (
 STORY_ARC = (
     "\nSTORY SHAPE (a documentary told as a mystery, not a list of facts):\n"
     "- HOOK: the first line is the single most astonishing fact or moment, told so the viewer "
-    "has to know more (e.g. \"This 40,000-year-old bone changed everything we knew.\").\n"
+    "has to know more: a real date, size, number or discovery about THIS subject, in your own "
+    "words. Never a stock line that could open any video.\n"
     "- QUESTION: right after it, ask the one question this video will answer "
     "(why, how, what really happened).\n"
     "- CLUES: then tell it step by step; each line adds a clue and leaves something open for the next.\n"

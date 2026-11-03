@@ -448,6 +448,11 @@ def reapply_thumbnails(hours: float = 30) -> list[str]:
                 set_thumbnail(video_id, path, attempts=2, client_secret_file=channel.client_secret_path,
                               token_file=channel.token_path)
         except Exception as exc:
+            # The error is kept: a day's thumbnail limit is retried tomorrow
+            # (_thumbnail_rate_limited_today), from the run's kept files.
+            from .db import mark_thumbnail_pending
+
+            mark_thumbnail_pending(row_id, url, str(exc))
             new_status, note = "thumbnail_pending", f"thumbnail FAILED: {str(exc)[:160]}"
         if new_status != status:
             conn = sqlite3.connect(settings.db_path)
@@ -586,7 +591,10 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
             return f"{video_id}: thumbnail rate-limited today, will retry later"
         if not row["video_url"] and _never_written(video_id):
             return f"{video_id}: skipped for good; its script was never written (the title is the instruction)"
-        if not row["video_url"] and not (thumbnail_path.exists() and video_path.exists()):
+        # A video already on YouTube only needs its thumbnail back.
+        missing = (not thumbnail_path.exists()) if row["video_url"] else not (
+            thumbnail_path.exists() and video_path.exists())
+        if missing:
             # On GitHub every run starts with an empty disk, so a video left
             # over from an earlier run has to come back from that run's kept
             # artifact. If the artifact has expired too, the video can never be
@@ -598,7 +606,7 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
                     restored = github_artifacts.restore_run_files(video_path.parent)
                 except Exception as exc:
                     return f"{video_id}: could not fetch the kept video from GitHub ({exc}); will retry"
-                if not (thumbnail_path.exists() and video_path.exists()):
+                if not thumbnail_path.exists() or not (row["video_url"] or video_path.exists()):
                     _mark_files_lost(video_id)
                     return f"{video_id}: video files are no longer kept; marked as not uploadable"
                 print(f"[retry] {video_id}: restored {', '.join(restored)} from the kept artifacts")

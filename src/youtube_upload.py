@@ -98,6 +98,10 @@ def set_thumbnail(video_id: str, thumbnail_path: Path, attempts: int = 4,
                     "quotaexceeded" in reason
                     or ("exceeded your" in reason and "quota" in reason)
                     or "doesn't have permissions to upload and set custom video thumbnails" in reason
+                    # Too many thumbnails on this channel today: retrying seconds
+                    # later only spends more of the day's allowance.
+                    or "uploadratelimitexceeded" in reason
+                    or "too many thumbnails" in reason
                 ):
                     break
             if attempt < attempts:

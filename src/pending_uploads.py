@@ -430,8 +430,19 @@ def reapply_thumbnails(hours: float = 30) -> list[str]:
     for row_id, channel_id, url, thumb, status in rows:
         video_id = str(url).rsplit("v=", 1)[-1].split("&")[0]
         path = Path(str(thumb or ""))
+        if not path.is_file() and status == "thumbnail_pending":
+            # A thumbnail that failed on an earlier run: its card comes back from
+            # that run's kept artifact. One that went through was checked then.
+            from . import github_artifacts
+
+            try:
+                github_artifacts.restore_run_files(path.parent)
+            except Exception as exc:
+                messages.append(f"[{channel_id}] {video_id}: kept thumbnail not fetched ({exc})")
+                continue
         if not path.is_file():
-            messages.append(f"[{channel_id}] {video_id}: no thumbnail file on this machine")
+            if status == "thumbnail_pending":
+                messages.append(f"[{channel_id}] {video_id}: thumbnail still pending, no kept file found")
             continue
         if not thumbnail_upload_allowed(channel_id):
             messages.append(f"[{channel_id}] {video_id}: channel cannot set thumbnails (verify it)")

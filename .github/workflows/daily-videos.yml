@@ -150,6 +150,8 @@ jobs:
       - name: Set today's thumbnails again
         if: ${{ always() && env.UPLOAD != 'false' }}
         continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: python -m src.cli reapply-thumbnails
 
       - name: Report

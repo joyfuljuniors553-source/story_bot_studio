@@ -1,7 +1,8 @@
 """Scripts for fact-only channels: every sentence comes from a Wikipedia article.
 
 A channel with "verified_facts": true in channels.json tells true stories about
-real people. The free-writing script prompt cannot be trusted for that: asked
+real people, or (space, prehistory) about real things: a planet, an extinct
+animal, a fossil site, each with its own Wikipedia article. The free-writing script prompt cannot be trusted for that: asked
 for "a heroic history story" it happily invents heroes, numbers and outcomes.
 So for these channels the subject is a real person with a Wikipedia article,
 the script writer is given that article and nothing else to draw on, and the
@@ -236,6 +237,21 @@ _SUGGEST_BRIEF = {
         "article, settled long ago (before 2015). No cases whose victims were children, no "
         "serial or mass killings, nobody who was never charged, no living politicians."
     ),
+    "space documentaries": (
+        "Name 15 real, specific subjects for a space documentary channel: individual planets, "
+        "moons, stars, black holes, galaxies, nebulae, comets, space missions, telescopes and "
+        "famous astronomical events. Each must be the exact title of its own English Wikipedia "
+        "article (e.g. 'Sagittarius A*', 'Voyager 1', 'Betelgeuse'). No general subjects like "
+        "'Astronomy', no fiction, no conspiracy theories."
+    ),
+    "paleontology & history": (
+        "Name 15 real, specific subjects for a documentary channel about Earth's forgotten past: "
+        "extinct animals and Ice Age giants, extinct human species and famous hominin fossils, "
+        "fossil sites, mass extinction events, and ancient sites and lost civilizations. Each must "
+        "be the exact title of its own English Wikipedia article (e.g. 'Smilodon', 'Homo floresiensis', "
+        "'Gobekli Tepe', 'Burgess Shale'). No general subjects like 'Evolution', no myths or "
+        "pseudo-archaeology."
+    ),
     "celebrity": (
         "Name 15 real, famous, well-documented celebrities from the United States or Europe only: "
         "film and TV stars, musicians, sports stars, models. Born there or best known as its "
@@ -379,7 +395,9 @@ def _prompt(channel: Channel, article: Article, scenes: int, long_form: bool, fe
                  "(the Short must run 60 to 85 seconds). "
                  "Scene 1 is the HOOK, heard in the first two seconds: the single most astonishing "
                  "fact in the SOURCE, under 16 words, stated plainly (the deed, the odds, the number). "
-                 "Then tell the story in order from scene 2.")
+                 "Scene 2 asks the one question this video answers (a question states no fact, so it "
+                 "may only use names and numbers from the SOURCE). Then tell the story in order and "
+                 "give the answer in the last scenes.")
     speech = '"speech": str, ' if is_urdu(channel) else ""
     return (
         f"You write true stories for the video channel '{channel.name}'. Tone: {tone}.\n"
@@ -388,7 +406,8 @@ def _prompt(channel: Channel, article: Article, scenes: int, long_form: bool, fe
         "number, place, event, quote, thought, feeling or outcome that the SOURCE does not state. "
         "Do not invent scenes or dialogue. If the SOURCE does not say it, leave it out.\n"
         "- Write every number as digits exactly as in the SOURCE (1957, 20,000).\n"
-        "- Say the subject's full name (the person, or the case) in the first or second scene.\n"
+        "- Say the subject's full name (the person, the case, the animal, the place or the object) "
+        "in the first or second scene.\n"
         "- 'title' must contain that name and no claim that is not in the SOURCE.\n"
         "- No graphic violence or gore; describe crimes plainly, as a documentary would.\n"
         "- 'label' = a 2-4 word caption without numbers.\n"
@@ -417,6 +436,10 @@ def _checked_rows(channel: Channel, article: Article, raw: dict) -> tuple[list[d
             dropped.append(f"\"{row['line'][:90]}\" — {reason}")
         else:
             kept.append(row)
+    # A question claims nothing ("Why did Smilodon vanish?"); its names and
+    # numbers were checked above, so the second reader does not judge it.
+    questions = [row for row in kept if row["line"].endswith("?")]
+    kept = [row for row in kept if not row["line"].endswith("?")]
     if kept:
         marked = _audit([row["line"] for row in kept], article)
         # The checker sometimes quotes words that do stand in the article.
@@ -426,7 +449,8 @@ def _checked_rows(channel: Channel, article: Article, raw: dict) -> tuple[list[d
         dropped.extend(f"\"{row['line'][:90]}\" — not in the article: {marked[index][:120]}"
                        for index, row in enumerate(kept) if index in marked)
         kept = [row for index, row in enumerate(kept) if index not in marked]
-    return kept, dropped
+    keep = {id(row) for row in kept + questions[:2]}  # at most two questions in a script
+    return [row for row in rows if id(row) in keep], dropped
 
 
 def _plain(text: str) -> str:

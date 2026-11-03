@@ -405,12 +405,13 @@ def fetch_scene_clip(
     errors: list[str] = []
     fact_channel = is_verified_channel(channel)
     sources = default_sources(channel)
-    if fact_channel and "commons" not in sources:
+    if fact_channel and not getattr(channel, "clip_sources", ()) and "commons" not in sources:
         # Real archive film is the honest picture of the past on a fact channel.
         sources = ["commons", *sources]
     # A stranger on screen while the narration names a killer or a suspect
     # reads as that person, so crime lines get footage without people.
-    no_people = fact_channel or crime_text(f"{scene.label} {scene.line}")
+    no_people = (fact_channel or bool(getattr(channel, "clips_without_people", False))
+                 or crime_text(f"{scene.label} {scene.line}"))
     planned = [(shot["q"], shot["must"]) for shot in _planned_shots(scene, run_dir)]
     others = planned or [(query, "") for query in _scene_queries(scene, channel)]
     for source in sources:

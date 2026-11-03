@@ -78,6 +78,9 @@ class Channel:
     # Where scene clips come from, in order: "nasa", "commons", "pexels",
     # "pixabay" (clip_sources.py); empty = Pexels then Pixabay.
     clip_sources: tuple = ()
+    # No clip with people in it: on a prehistory channel any passer-by on
+    # screen reads as the Neanderthal the narrator is talking about.
+    clips_without_people: bool = False
 
     @property
     def client_secret_path(self) -> Path:

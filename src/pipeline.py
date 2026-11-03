@@ -143,7 +143,8 @@ def _needs_interactive_rewrite(lesson: Lesson, channel) -> bool:
     return not words or max(words) <= 8
 
 
-def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None) -> Path | None:
+def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
+                     content_type: str = "long") -> Path | None:
     """The thumbnail of a topic channel with a look of its own (thumbnail_style).
 
     One AI call turns the title into a short headline with its key words
@@ -176,6 +177,11 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None) -> P
         headline = str(plan.get("headline") or "").strip() or lesson.title
         photo = fallback
         wiki = str(plan.get("wikipedia") or "").strip()
+        from .verified_facts import _bank_rows, is_verified_channel
+
+        if is_verified_channel(channel):
+            # The script came from one article; its photo is the right one.
+            wiki = _bank_rows(channel).get(lesson.topic_key, {}).get("source_title") or wiki
         try:
             if wiki and real_photo(wiki, run_dir):
                 photo = run_dir / "article_photo.jpg"
@@ -189,7 +195,8 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None) -> P
         else:
             from .earth_thumbnail import compose_earth_thumbnail as compose
         return compose(headline, Path(photo), run_dir / "thumbnail.jpg", channel,
-                       scene=str(plan.get("scene") or "").strip()[:40])
+                       scene=str(plan.get("scene") or "").strip()[:40],
+                       vertical=content_type == "short")
     except Exception as exc:
         print(f"[thumbnail] {style} layout skipped: {exc}")
         return None
@@ -210,6 +217,8 @@ def _real_subject_thumbnail(lesson, channel, run_dir: Path, content_type: str) -
 
         if channel is None or not is_verified_channel(channel) or manual_thumbnail_for(lesson):
             return None
+        if getattr(channel, "thumbnail_style", ""):
+            return None  # a space or prehistory card instead (_topic_thumbnail)
         subject = _bank_rows(channel).get(lesson.topic_key, {}).get("source_title")
         if not subject:
             return None
@@ -372,7 +381,7 @@ def run_pipeline(
             thumbnail_source = None
     thumbnail_path = (
         _real_subject_thumbnail(lesson, channel, run_dir, content_type)
-        or _topic_thumbnail(lesson, channel, run_dir, thumbnail_source)
+        or _topic_thumbnail(lesson, channel, run_dir, thumbnail_source, content_type)
         or create_thumbnail(lesson, thumbnail_source, run_dir / "thumbnail.jpg", channel, content_type)
     )
     metadata = build_metadata(lesson, channel, content_type=content_type)

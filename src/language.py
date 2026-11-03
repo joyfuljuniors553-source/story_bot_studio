@@ -60,6 +60,11 @@ STORY_ARC = (
     "- CLUES: then tell it step by step; each line adds a clue and leaves something open for the next.\n"
     "- ANSWER: give the full answer near the end, then close with one line that leaves the viewer in awe.\n"
     "- Every clue and the answer must still be facts allowed by the rules above.\n"
+    "- Name the exact subject (the person, animal, place, planet or event) in the first two lines, "
+    "and give real details: names, places, dates, sizes, numbers. Never stay vague "
+    "(\"an ancient predator\", \"researchers found\") where a name exists.\n"
+    "- The video must feel finished: the last lines state the answer and what it means. Never end "
+    "on an open question or a teaser, and never claim more than is known.\n"
 )
 
 

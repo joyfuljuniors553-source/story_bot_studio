@@ -67,9 +67,11 @@ def compose_earth_thumbnail(headline: str, photo: Path, output_path: Path, chann
     # A scene is its own backdrop; a cut-out subject stands in front of a landscape.
     backdrop = _backdrop(headline, work / "earth_backdrop.jpg", [scene] if scene else _BACKDROPS) if cutout else None
     if vertical:
-        w, h, k, margin, left = 1080, 1920, 1.45, 80, 80
+        # The Shorts shelf crops about 8% off the top and the bottom, so the label
+        # and the headline keep 190px clear of both edges.
+        w, h, k, margin, left = 1080, 1920, 1.45, 190, 80
         # Words fill the width: the shelf shows the card small.
-        column, chars, kt = w - 2 * left, 10, 2.1
+        column, chars, kt = w - 2 * left, 11, 1.7
     else:
         w, h, k, margin, left = W, H, 1.0, _MARGIN, _LEFT
         column, chars, kt = _COLUMN_W, 16, 1.0
@@ -121,8 +123,8 @@ def compose_earth_thumbnail(headline: str, photo: Path, output_path: Path, chann
         inputs = ["-i", str(backdrop or photo), "-i", str(cutout)]
         if vertical:
             # Large and centred between the label and the headline.
-            box, sx, sy = "960:1000", "(W-w)/2", f"{tag_y + tag_h + 50}+(1000-h)/2"
-            shadow_xy = f"x=(W-w)/2+14:y={tag_y + tag_h + 66}+(1000-h)/2"
+            box, sx, sy = "900:880", "(W-w)/2", f"{tag_y + tag_h + 40}+(880-h)/2"
+            shadow_xy = f"x=(W-w)/2+14:y={tag_y + tag_h + 56}+(880-h)/2"
         else:
             box, sx, sy = "640:640", "W-w-50", "H-h-30"
             shadow_xy = "x=W-w-36:y=H-h-14"

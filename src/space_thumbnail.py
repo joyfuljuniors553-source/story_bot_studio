@@ -102,9 +102,11 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
     if not screened and not cutout:
         screened = True
     if vertical:
-        w, h, k, margin, left = 1080, 1920, 1.45, 80, 80
+        # The Shorts shelf crops about 8% off the top and the bottom, so the label
+        # and the headline keep 190px clear of both edges.
+        w, h, k, margin, left = 1080, 1920, 1.45, 190, 80
         # Words fill the width: the shelf shows the card small.
-        column, chars, kt = w - 2 * left, 11, 2.0
+        column, chars, kt = w - 2 * left, 12, 1.65
     else:
         w, h, k, margin, left = W, H, 1.0, _MARGIN, _LEFT
         column, chars, kt = _COLUMN_W, _LINE_CHARS, 1.0
@@ -164,9 +166,9 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
            + "colorbalance=rs=0.04:gs=-0.08:bs=0.16:rm=0.06:bm=0.10,format=rgba[sky0]")
     if vertical:
         glow_x, glow_y, obj_top = w / 2, h * 0.33, tag_y + tag_h + 40
-        fit = "scale=1000:1000:force_original_aspect_ratio=decrease:flags=lanczos"
-        ox, oy = "(W-w)/2", f"{obj_top}+(1000-h)/2"
-        hx, hy = "(W-w)/2", f"{obj_top - 60}+(1000-h+120)/2"
+        fit = "scale=920:880:force_original_aspect_ratio=decrease:flags=lanczos"
+        ox, oy = "(W-w)/2", f"{obj_top}+(880-h)/2"
+        hx, hy = "(W-w)/2", f"{obj_top - 60}+(880-h+120)/2"
         shade_alpha = f"215*clip((Y-{int(h * 0.50)})/{int(h * 0.20)},0,1)"
     else:
         glow_x, glow_y = 900, 330

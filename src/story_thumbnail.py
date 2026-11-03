@@ -208,10 +208,13 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
 
     # k scales the words; corner_k the brand and tag, which must share the top row.
     if vertical:
-        w, h, margin, k, corner_k = 1080, 1920, 48, 1.4, 1.1
+        # The Shorts shelf crops about 8% off the top and the bottom: 190px clear.
+        w, h, margin, k, corner_k = 1080, 1920, 190, 1.4, 1.1
+        side = 48  # the shelf keeps the full width
         col_x, col_w = 60, 960
     else:
         w, h, margin, k, corner_k = W, H, _MARGIN, 1.0, 1.0
+        side = margin
         col_x, col_w = _COLUMN_X, _COLUMN_W
     mid = col_x + col_w // 2
 
@@ -285,7 +288,7 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     # A slanted tag whose top-right corner is `margin` from both the top and the
     # right edge; its text centred on the slant's middle.
     slant = 0.3
-    tx2 = w - margin - int((ty2 - ty1) * slant)
+    tx2 = w - side - int((ty2 - ty1) * slant)
     tx1 = tx2 - tag_w - int(80 * corner_k)
     tag_shape = f"between(Y,{ty1},{ty2})*gte(X,{tx1}+({ty2}-Y)*{slant})*lte(X,{tx2}+({ty2}-Y)*{slant})"
     tag_mid = (tx1 + tx2) // 2 + int((ty2 - ty1) / 2 * slant)
@@ -306,11 +309,11 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
         first_w = _text_width(first_file, str(SERIF), brand_size)
         logo = "borderw=2:bordercolor=black@0.6:shadowcolor=black@0.8:shadowx=3:shadowy=3"
         finish.append(_drawtext(first_file, SERIF, brand_size, margin, "white",
-                                x=f"{margin + 6}", extra=logo))
+                                x=f"{side + 6}", extra=logo))
         if second:
             second_file = _write(work / "story_brand2.txt", second)
             finish.append(_drawtext(second_file, SERIF, brand_size, margin, _GOLD,
-                                    x=f"{margin + 6 + first_w + 2}", extra=logo))
+                                    x=f"{side + 6 + first_w + 2}", extra=logo))
 
     # ---- the picture: backdrop, person, shading
     size = f"{w}:{h}"

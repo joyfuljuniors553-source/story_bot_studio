@@ -33,7 +33,8 @@
       "visuals": "stock",
       "topic": "True life stories of famous celebrities from the United States and Europe",
       "verified_facts": true,
-      "brand": "LegendraScope"
+      "brand": "LegendraScope",
+      "music_volume": 0.2
     },
     {
       "id": "quasorynth_space",

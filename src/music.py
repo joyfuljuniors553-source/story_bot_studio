@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import math
 import random
 import struct
@@ -109,6 +110,25 @@ def _write_music_bed(output_path: Path, duration: float, seed_text: str) -> Path
     return output_path
 
 
+def _credit_track(track: Path, run_dir: Path) -> None:
+    """Credit an owner's track in the description: "Title - Artist.mp3", with the
+    licence from credits.json beside it when there is one (Audionautix asks for CC BY)."""
+    title, _, artist = track.stem.partition(" - ")
+    try:
+        notes = json.loads((track.parent / "credits.json").read_text(encoding="utf-8"))
+    except Exception:
+        notes = {}
+    note = notes.get(track.name) or {}
+    gen = run_dir / "gen"
+    gen.mkdir(parents=True, exist_ok=True)
+    (gen / "music_track.wikimedia.json").write_text(json.dumps({
+        "title": f"Music: {title.strip()}",
+        "creator": (artist or "").strip() or "unknown artist",
+        "license": note.get("license") or "used with permission",
+        "source_page": note.get("url") or "",
+    }), encoding="utf-8")
+
+
 def _music_for(run_dir: Path, duration: float, seed_text: str, channel, lesson) -> tuple[Path, bool]:
     """The music file for this video and whether it must be looped to fit.
 
@@ -122,6 +142,7 @@ def _music_for(run_dir: Path, duration: float, seed_text: str, channel, lesson) 
     track = own_track(channel, mood, seed_text)
     if track is not None:
         print(f"[music] {mood}: own track {track.name}")
+        _credit_track(track, run_dir)
         return track, True
     output = run_dir / "background_music.wav"
     if mood != "kids":
@@ -147,7 +168,11 @@ def add_background_music(video_path: Path, run_dir: Path, seed_text: str = "",
     music_path, looped = _music_for(run_dir, duration, seed_text or run_dir.name, channel, lesson)
     mixed_path = run_dir / "video_with_music.mp4"
 
-    volume = settings.background_music_volume
+    own_level = float(getattr(channel, "music_volume", 0) or 0)
+    volume = own_level or settings.background_music_volume
+    # Ratio 6 keeps the usual quiet bed audible under the voice; a channel's own
+    # louder level is pushed down harder (12) while the narrator speaks.
+    ratio = 12 if own_level > settings.background_music_volume else 6
     from .video import is_cinematic
 
     if is_cinematic(channel):
@@ -164,8 +189,7 @@ def add_background_music(video_path: Path, run_dir: Path, seed_text: str = "",
         filter_complex = (
             f"[1:a]{level}volume={volume}[music];"
             "[0:a]asplit=2[voice][key];"
-            # Ratio 6 (was 12): the music stays audible under the voice.
-            "[music][key]sidechaincompress=threshold=0.015:ratio=6:attack=5:release=350,"
+            f"[music][key]sidechaincompress=threshold=0.015:ratio={ratio}:attack=5:release=350,"
             f"{_INTRO_LIFT}[ducked];"
             # normalize=0: amix would otherwise halve the voice. loudnorm brings
             # the whole video to YouTube's -14 LUFS; videos came out at about

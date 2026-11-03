@@ -83,6 +83,10 @@ class Channel:
     clips_without_people: bool = False
     # Added at the end of every video description ("Educational content only...").
     description_footer: str = ""
+    # Music level for this channel (0 = BACKGROUND_MUSIC_VOLUME). A louder one
+    # is ducked harder under the voice, so it fills the gaps without covering
+    # the narrator.
+    music_volume: float = 0.0
 
     @property
     def client_secret_path(self) -> Path:

@@ -85,7 +85,7 @@ def _append_image_credits(metadata: dict, run_dir: Path) -> None:
             continue
     if credits:
         base = str(metadata.get("description") or "")
-        block = "\n\nImage credits:\n" + "\n".join(credits)
+        block = "\n\nCredits:\n" + "\n".join(credits)
         metadata["description"] = (base + block)[:5000]
 
 

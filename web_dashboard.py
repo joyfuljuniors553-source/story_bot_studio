@@ -1733,12 +1733,29 @@ GUIDE_PAGE = r"""
   render();
   }
 
-  document.querySelectorAll('code.cp').forEach(function (c) {
-    c.addEventListener('click', function () {
-      var v = c.textContent, back = function () { c.textContent = v; };
-      if (navigator.clipboard) navigator.clipboard.writeText(v).then(function () { c.textContent = '✅ copied'; setTimeout(back, 1200); });
+  if (!window.__cpBound) {
+    window.__cpBound = true;
+    document.addEventListener('click', function (e) {
+      var c = e.target.closest ? e.target.closest('code.cp') : null;
+      if (!c) return;
+      if (!c.dataset.copy) c.dataset.copy = c.textContent.trim();
+      var v = c.dataset.copy;
+      var shown = function () {
+        c.textContent = '✅ copied';
+        clearTimeout(c.__cpTimer);
+        c.__cpTimer = setTimeout(function () { c.textContent = v; }, 1200);
+      };
+      var fallback = function () {
+        var box = document.createElement('textarea');
+        box.value = v; box.setAttribute('readonly', ''); box.style.position = 'fixed'; box.style.opacity = '0';
+        document.body.appendChild(box); box.select();
+        try { document.execCommand('copy'); shown(); } catch (err) { window.prompt('Copy this:', v); }
+        document.body.removeChild(box);
+      };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(v).then(shown, fallback);
+      else fallback();
     });
-  });
+  }
 
   // Screenshots: paste into the focused box, or click a focused box to pick a file.
   var picker = document.getElementById('shot-file'), target = null;
@@ -2089,12 +2106,29 @@ PAGE = r"""
         if (navigator.clipboard) navigator.clipboard.writeText(text).then(done); else done();
       });
     })();
-    document.querySelectorAll('code.cp').forEach(function (c) {
-      c.addEventListener('click', function () {
-        var v = c.textContent, back = function () { c.textContent = v; };
-        if (navigator.clipboard) navigator.clipboard.writeText(v).then(function () { c.textContent = '✅ copied'; setTimeout(back, 1200); });
-      });
+  if (!window.__cpBound) {
+    window.__cpBound = true;
+    document.addEventListener('click', function (e) {
+      var c = e.target.closest ? e.target.closest('code.cp') : null;
+      if (!c) return;
+      if (!c.dataset.copy) c.dataset.copy = c.textContent.trim();
+      var v = c.dataset.copy;
+      var shown = function () {
+        c.textContent = '✅ copied';
+        clearTimeout(c.__cpTimer);
+        c.__cpTimer = setTimeout(function () { c.textContent = v; }, 1200);
+      };
+      var fallback = function () {
+        var box = document.createElement('textarea');
+        box.value = v; box.setAttribute('readonly', ''); box.style.position = 'fixed'; box.style.opacity = '0';
+        document.body.appendChild(box); box.select();
+        try { document.execCommand('copy'); shown(); } catch (err) { window.prompt('Copy this:', v); }
+        document.body.removeChild(box);
+      };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(v).then(shown, fallback);
+      else fallback();
     });
+  }
     </script>
     {% if factory %}
     <details style="margin-top:10px"><summary class="hint" style="cursor:pointer">Channel plan{% if ch.topic %}: "{{ch.topic}}"{% endif %}</summary>

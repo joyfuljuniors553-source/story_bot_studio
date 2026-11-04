@@ -87,6 +87,10 @@ class Channel:
     # is ducked harder under the voice, so it fills the gaps without covering
     # the narrator.
     music_volume: float = 0.0
+    # Competitor YouTube channels (URLs or @handles). Their best-performing
+    # recent topics become this channel's next video ideas, written as our
+    # own original videos (competitors.py).
+    competitors: tuple = ()
 
     @property
     def client_secret_path(self) -> Path:

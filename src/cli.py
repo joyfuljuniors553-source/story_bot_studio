@@ -76,6 +76,9 @@ def main() -> None:
                      help="Own client_secret file for a separate upload quota (optional)")
 
     sub.add_parser("reapply-thumbnails", help="Set today's thumbnails again on YouTube (end of a daily run).")
+    comp = sub.add_parser("competitors", help="Read competitor channels and show their best recent topics.")
+    comp.add_argument("--channel", required=True, help="Our channel id.")
+    comp.add_argument("--add", default="", help="Comma-separated competitor URLs/@handles to save first.")
     audit = sub.add_parser("audit-thumbnails",
                            help="Check every connected channel's recent videos on YouTube; set a thumbnail where one is missing.")
     audit.add_argument("--days", default="7", help="How many days of uploads to check.")
@@ -348,6 +351,19 @@ def main() -> None:
         print(f"Building a {count}-video buffer for [{channel.id}] and scheduling into the future...")
         for topic, status in run_buffer_batch(count=count, upload=_bool(args.upload), channel=channel):
             print(f"[{channel.id}] {topic}: {status}")
+        return
+    elif args.command == "competitors":
+        from . import competitors
+        from .channels import get_channel
+        if args.add:
+            competitors.set_competitors(args.channel, args.add.split(","))
+        channel = get_channel(args.channel)
+        for note in competitors.refresh(channel, force=True):
+            print(note)
+        for v in competitors.overview(channel.id)["videos"]:
+            used = f" -> ours: {v['our_title']}" if v["our_title"] else (" (reserved)" if v["used_at"] else "")
+            print(f"  {v['ratio']:>5.1f}x  {v['views']:>9,} views  {'Short' if v['short'] else 'long '}  "
+                  f"[{v['competitor_name']}] {v['title'][:70]}{used}")
         return
     elif args.command == "audit-thumbnails":
         from .thumbnail_audit import audit

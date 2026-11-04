@@ -327,7 +327,7 @@ def home():
     return render_template_string(
         PAGE, channels=channels, ch=ch,
         thumb_checks=thumb_checks, thumb_required=thumbnail_required(),
-        timelines=timelines, thumb_audit=_thumb_audit_summary(ch.id),
+        timelines=timelines, thumb_audit=_thumb_audit_summary(ch.id), comp=_competitor_view(ch.id),
         topics=[(k, v.get("title", k)) for k, v in topics.items()],
         videos=vids, jobs=JOBS, assets=assets, storage=storage_info(),
         connected=ch.token_path.exists(), upload_pause=active_upload_backoff(ch.id),
@@ -673,6 +673,51 @@ def _thumb_audit_summary(channel_id: str) -> dict:
         return summary(channel_id)
     except Exception:
         return {"counts": {}, "last": None, "problems": []}
+
+
+def _competitor_view(channel_id: str) -> dict:
+    try:
+        from src.competitors import overview
+
+        return overview(channel_id)
+    except Exception:
+        return {"channels": [], "videos": []}
+
+
+@app.post("/competitors/save")
+def competitors_save_route():
+    """Save this channel's competitor list, then read them once."""
+    ch = current_channel()
+    from src import competitors
+
+    urls = [line for line in request.form.get("urls", "").replace(",", "\n").splitlines() if line.strip()]
+    saved = competitors.set_competitors(ch.id, urls)
+
+    def job():
+        from src.channels import get_channel
+
+        return "\n".join(competitors.refresh(get_channel(ch.id), force=True)) or "No competitors saved"
+
+    if saved:
+        start_job(f"[{ch.id}] Read competitor channels", job)
+    flash(f"Saved {len(saved)} competitor channel(s). Reading their recent videos now (see Jobs). "
+          "Press Send to GitHub so the daily run follows them too.", "ok")
+    return redirect(url_for("home", channel=ch.id))
+
+
+@app.post("/competitors/refresh")
+def competitors_refresh_route():
+    ch = current_channel()
+
+    def job():
+        from src import competitors
+        from src.channels import get_channel
+
+        return "\n".join(competitors.refresh(get_channel(ch.id), force=True)) or "No competitors saved"
+
+    start_job(f"[{ch.id}] Read competitor channels", job)
+    flash("Reading the competitor channels' recent videos (see Jobs).", "ok")
+    return redirect(url_for("home", channel=ch.id))
 
 
 @app.post("/audit-thumbnails")
@@ -2046,6 +2091,30 @@ PAGE = r"""
       </div>
       <form method="post" action="/audit-thumbnails" onsubmit="this.querySelector('button').disabled=true"><input type="hidden" name="channel" value="{{ch.id}}"><button class="ghost sm" type="submit">Check YouTube now</button></form>
     </div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <strong>Competitors</strong>
+    <div class="hint">Add the channels you compete with. Every day the bot reads their videos of the last 30 days and finds the ones doing better than their usual (views per day). Our next Shorts and long videos take those <b>subjects</b> and are written as our own videos: own script, own pictures, own thumbnail, a clearly different title, and their channel is never named. Nothing of theirs is copied.</div>
+    <form method="post" action="/competitors/save" id="comp-save" style="margin-top:10px">
+      <input type="hidden" name="channel" value="{{ch.id}}">
+      <textarea name="urls" rows="3" style="width:100%;background:#12162a;border:1px solid var(--line);color:var(--text);padding:8px 10px;border-radius:10px;font:inherit" placeholder="One per line: https://www.youtube.com/@channelname  or  @channelname">{{ (ch.competitors or [])|join('\n') }}</textarea>
+    </form>
+    <div class="row" style="gap:8px;margin-top:8px"><button class="green sm" type="submit" form="comp-save">Save competitors</button>
+    {% if ch.competitors %}<form method="post" action="/competitors/refresh"><input type="hidden" name="channel" value="{{ch.id}}"><button class="ghost sm" type="submit">Read them now</button></form>{% endif %}
+    </div>
+    {% for c in comp.channels %}<div class="hint" style="margin-top:4px">{% if c.error %}<span style="color:var(--err)">✗ {{c.url}}: {{c.error[:120]}}</span>{% else %}✓ <b>{{c.name}}</b> · read {{c.fetched_at|localdt}}{% endif %}</div>{% endfor %}
+    {% if comp.videos %}
+    <div style="overflow-x:auto;margin-top:10px"><table style="width:100%;font-size:12.5px;border-collapse:collapse">
+      <tr style="text-align:left;color:var(--muted,#9aa3b8)"><th style="padding:4px">Their video</th><th>Views</th><th title="views per day compared with that channel's usual video">vs usual</th><th>Our video on this subject</th></tr>
+      {% for v in comp.videos %}<tr style="border-top:1px solid var(--line)">
+        <td style="padding:5px 4px"><a href="https://www.youtube.com/watch?v={{v.video_id}}" target="_blank">{{v.title[:70]}}</a><div class="hint">{{v.competitor_name}} · {{'Short' if v.short else 'long'}}</div></td>
+        <td>{{'{:,}'.format(v.views or 0)}}</td>
+        <td><b style="color:{{'#3ecf7a' if v.ratio >= 2 else ('#e8b339' if v.ratio >= 1 else 'inherit')}}">{{'%.1f'|format(v.ratio)}}×</b></td>
+        <td>{% if v.our_title %}{{v.our_title}}{% elif v.used_at %}being made{% elif v.ratio >= 1 %}<span class="hint">next in line</span>{% else %}<span class="hint">below their usual, skipped</span>{% endif %}</td>
+      </tr>{% endfor %}
+    </table></div>
+    {% endif %}
   </div>
 
   {% if upload_pause %}

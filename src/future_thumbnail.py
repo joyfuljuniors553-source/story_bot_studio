@@ -261,14 +261,14 @@ def _rich(canvas: Image.Image, x: int, y: int, text: str, font, center_w: int | 
         cx += _text_w(font, word)
 
 
-def _monogram(size: int) -> Image.Image:
-    """A white C inside a tilted orange orbit (stand-in for the logo file)."""
+def _monogram(size: int, letter: str = "C") -> Image.Image:
+    """The name's first letter, white, inside a tilted orange orbit (stand-in for the logo file)."""
     s = size * 3
     img = Image.new("RGBA", (s, s), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     c = _font("grotesk", int(s * 0.95), "Bold")
-    b = c.getbbox("C")
-    d.text(((s - (b[2] - b[0])) / 2 - b[0], (s - (b[3] - b[1])) / 2 - b[1]), "C", font=c, fill=IVORY + (255,))
+    b = c.getbbox(letter)
+    d.text(((s - (b[2] - b[0])) / 2 - b[0], (s - (b[3] - b[1])) / 2 - b[1]), letter, font=c, fill=IVORY + (255,))
     ring = Image.new("RGBA", (s, s), (0, 0, 0, 0))
     ImageDraw.Draw(ring).ellipse((s * 0.02, s * 0.36, s * 0.98, s * 0.66), outline=ORANGE + (255,), width=int(s * 0.06))
     ring = ring.rotate(18, resample=Image.BICUBIC)
@@ -291,11 +291,13 @@ def _brand(canvas: Image.Image, channel, x: int, y: int, scale: float, center_w:
         lx = x + (center_w - logo.width) // 2 if center_w else x
         canvas.alpha_composite(logo, (lx, y))
         return
-    mark = _monogram(int(62 * scale))
+    mark = _monogram(int(62 * scale), (name[:1] or "C"))
     title = _font("grotesk", int(34 * scale), "Bold")
     tag = _font("mono", int(12.5 * scale))
-    tagline = "EXPLORING TOMORROW, THROUGH SCIENCE."
-    text_w = max(_text_w(title, name + "™"), _text_w(tag, tagline))
+    # The line under the name is the channel's own ("tagline" in channels.json);
+    # without one the name stands alone.
+    tagline = str(getattr(channel, "tagline", "") or "").upper()
+    text_w = max(_text_w(title, name + "™"), _text_w(tag, tagline) if tagline else 0)
     total = mark.width + int(18 * scale) + text_w
     bx = x + (center_w - total) // 2 if center_w else x
     canvas.alpha_composite(mark, (bx, y))
@@ -306,9 +308,10 @@ def _brand(canvas: Image.Image, channel, x: int, y: int, scale: float, center_w:
     d.text((tx, y + int(4 * scale)), name, font=title, fill=IVORY + (255,))
     d.text((tx + _text_w(title, name) + 3, y + int(2 * scale)), "™", font=_font("grotesk", int(13 * scale), "Bold"),
            fill=IVORY + (255,))
-    d.text((tx + 2, y + int(44 * scale)), tagline, font=tag, fill=ICE + (230,))
-    d.line([(tx + 2, y + int(64 * scale)), (tx + _text_w(tag, tagline), y + int(64 * scale))],
-           fill=ORANGE + (255,), width=max(2, int(2 * scale)))
+    if tagline:
+        d.text((tx + 2, y + int(44 * scale)), tagline, font=tag, fill=ICE + (230,))
+        d.line([(tx + 2, y + int(64 * scale)), (tx + _text_w(tag, tagline), y + int(64 * scale))],
+               fill=ORANGE + (255,), width=max(2, int(2 * scale)))
 
 
 def _labels_panel(canvas: Image.Image, labels: list[str], right: int, top: int, scale: float) -> None:

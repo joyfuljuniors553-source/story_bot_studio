@@ -85,3 +85,5 @@ data/dashboard_automation.txt
 !data/music/**/*.mp3
 # Which Facebook Pages already had their welcome run started from this PC
 data/welcome_runs.json
+# The channel picture and numbers read from YouTube (cache)
+data/brand/*/youtube.json

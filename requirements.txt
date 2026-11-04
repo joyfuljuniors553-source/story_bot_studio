@@ -6,6 +6,8 @@ python-dotenv
 tzdata
 # Layered animation of cartoon scenes (cut the character out of the picture)
 opencv-python-headless
+# Drawing the designed thumbnails (future_thumbnail.py)
+pillow
 numpy
 # Cut the person out of their photo for the true-story thumbnail (story_thumbnail.py)
 rembg[cpu]

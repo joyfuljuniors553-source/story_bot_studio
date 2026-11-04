@@ -328,6 +328,7 @@ def home():
         PAGE, channels=channels, ch=ch,
         thumb_checks=thumb_checks, thumb_required=thumbnail_required(),
         timelines=timelines, thumb_audit=_thumb_audit_summary(ch.id), comp=_competitor_view(ch.id),
+        idents=_identities(channels), kit=_brand_kit(ch),
         topics=[(k, v.get("title", k)) for k, v in topics.items()],
         videos=vids, jobs=JOBS, assets=assets, storage=storage_info(),
         connected=ch.token_path.exists(), upload_pause=active_upload_backoff(ch.id),
@@ -673,6 +674,122 @@ def _thumb_audit_summary(channel_id: str) -> dict:
         return summary(channel_id)
     except Exception:
         return {"counts": {}, "last": None, "problems": []}
+
+
+def _short_num(n) -> str:
+    n = int(n or 0)
+    for size, mark in ((1_000_000_000, "B"), (1_000_000, "M"), (1_000, "K")):
+        if n >= size:
+            return f"{n / size:.1f}".rstrip("0").rstrip(".") + mark
+    return str(n)
+
+
+def _identities(channels) -> dict:
+    """Each channel's own YouTube picture and numbers (brand.youtube_identity, cached 12 h)."""
+    from src import brand
+
+    out = {}
+    for c in channels:
+        try:
+            data = dict(brand.youtube_identity(c))
+        except Exception:
+            data = {}
+        data.update(subs_text=_short_num(data.get("subs")), videos_text=_short_num(data.get("videos")),
+                    views_text=_short_num(data.get("views")))
+        out[c.id] = data
+    return out
+
+
+def _brand_kit(ch) -> dict:
+    from src import brand
+
+    rel = lambda path: str(path) if path else ""  # noqa: E731
+    return {
+        "style": str(getattr(ch, "thumbnail_style", "") or ""),
+        "styles": brand.STYLE_NAMES,
+        "guide": brand.style_text(ch.id),
+        "palette": brand.palette(ch.id),
+        "logo": rel(brand.logo(ch.id)),
+        "logo_ref": rel(brand.logo_reference(ch.id)),
+        "examples": [{"path": str(p), "name": p.name} for p in brand.examples(ch.id)],
+        "samples": [{"path": str(p), "name": p.stem,
+                     "mtime": datetime.fromtimestamp(p.stat().st_mtime).isoformat()} for p in brand.samples(ch.id)],
+        "fonts": (["Space Grotesk Bold — headline", "Anton — big year / number", "Sora ExtraBold — supporting line",
+                   "IBM Plex Mono — scientific labels"] if getattr(ch, "thumbnail_style", "") == "future" else []),
+    }
+
+
+@app.post("/brand/style-select")
+def brand_style_select_route():
+    import json as _json
+
+    ch = current_channel()
+    from src import brand
+    from src.channel_factory import CONFIG_FILE
+
+    style = request.form.get("style", "")
+    if style not in brand.STYLE_NAMES:
+        abort(400)
+    config = _json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
+    for row in config.get("channels", []):
+        if row.get("id") == ch.id:
+            row["thumbnail_style"] = style
+    CONFIG_FILE.write_text(_json.dumps(config, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    flash(f"Thumbnail style for {ch.name}: {brand.STYLE_NAMES[style]}. Press Send to GitHub so the daily run uses it.", "ok")
+    return redirect(url_for("home", channel=ch.id))
+
+
+@app.post("/brand/guide")
+def brand_guide_route():
+    ch = current_channel()
+    from src import brand
+
+    brand.save_style(ch.id, request.form.get("guide", ""))
+    flash("Style guide saved. Every new thumbnail headline is written from it.", "ok")
+    return redirect(url_for("home", channel=ch.id))
+
+
+@app.post("/brand/upload")
+def brand_upload_route():
+    ch = current_channel()
+    from src import brand
+
+    kind = request.form.get("kind", "example")
+    saved = 0
+    try:
+        for storage in request.files.getlist("files"):
+            if storage and storage.filename:
+                brand.save_upload(ch.id, storage, kind)
+                saved += 1
+        flash(f"Saved {saved} file(s) to {ch.name}'s brand kit." if saved else "Choose a file first.",
+              "ok" if saved else "error")
+    except ValueError as exc:
+        flash(str(exc), "error")
+    return redirect(url_for("home", channel=ch.id))
+
+
+@app.post("/brand/example-delete")
+def brand_example_delete_route():
+    ch = current_channel()
+    from src import brand
+
+    brand.delete_example(ch.id, request.form.get("name", ""))
+    flash("Example removed.", "ok")
+    return redirect(url_for("home", channel=ch.id))
+
+
+@app.post("/brand/samples")
+def brand_samples_route():
+    ch = current_channel()
+
+    def job():
+        from src import brand
+
+        return "\n".join(brand.make_samples(ch))
+
+    start_job(f"[{ch.id}] Make sample thumbnails", job)
+    flash("Drawing a long and a Short sample with the current style (about a minute). See Jobs, then refresh.", "ok")
+    return redirect(url_for("home", channel=ch.id))
 
 
 def _competitor_view(channel_id: str) -> dict:
@@ -1912,6 +2029,27 @@ PAGE = r"""
   .st{font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px}
   .st.uploaded{background:#123122;color:var(--ok)}.st.rendered{background:#2a2f4d;color:#b9c1e6}
   .st.scheduled,.st.facebook_only{background:#1a2b4d;color:#8fb4ff}
+  .chtab{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px}
+  .chtab img,.chtab-dot{width:28px;height:28px;border-radius:50%;object-fit:cover;display:inline-grid;place-items:center;background:#2a3152;color:#fff;font-size:13px}
+  .chtab small{font-size:11px;opacity:.8;font-weight:600;padding:1px 7px;border-radius:99px;background:rgba(0,0,0,.25)}
+  .ch-hero{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:18px;
+    background:linear-gradient(90deg,rgba(15,18,32,.97) 30%,rgba(15,18,32,.75)),var(--banner,linear-gradient(135deg,#1e2544,#141831));background-size:cover;background-position:center}
+  .ch-hero-in{display:flex;gap:16px;align-items:center;padding:16px 18px;flex-wrap:wrap}
+  .ch-av{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.12);display:grid;place-items:center;background:#2a3152;font-size:28px;font-weight:800;flex:none}
+  .ch-info{flex:1;min-width:220px}.ch-name{font-size:22px;font-weight:800}.ch-name a{font-size:13px;font-weight:600;margin-left:6px}
+  .ch-stats{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:2px}.ch-stats b{color:var(--text)}
+  .ch-pal{display:flex;gap:5px}.ch-pal i{width:22px;height:22px;border-radius:6px;border:1px solid rgba(255,255,255,.15)}
+  .bk-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px}
+  .bk-box{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--panel2)}
+  .bk-label{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .bk-logo{max-width:100%;max-height:90px;border-radius:8px;background:#0b0d14;padding:6px}
+  .bk-pal{display:grid;gap:5px}.bk-pal div{display:flex;align-items:center;gap:8px;font-size:12.5px}.bk-pal i{width:26px;height:20px;border-radius:5px;border:1px solid rgba(255,255,255,.15)}.bk-pal span{color:var(--muted)}
+  .bk-gallery{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+  .bk-img{position:relative;display:block;height:150px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#0b0d14}
+  .bk-img img{height:150px;width:auto;display:block}
+  .bk-img span{position:absolute;left:0;right:0;bottom:0;font-size:11px;padding:3px 7px;background:rgba(0,0,0,.65);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bk-img form{position:absolute;top:4px;right:4px}.bk-img form button{width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.7);color:#fff;cursor:pointer}
+  .bk-add{display:flex;flex-direction:column;gap:6px;justify-content:center;height:150px;padding:10px;border:1px dashed var(--line);border-radius:10px}
   .comp-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
   .comp-ta{width:100%;background:#12162a;border:1px solid var(--line);color:var(--text);padding:8px 10px;border-radius:10px;font:inherit;resize:vertical}
   .comp-chans{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:10px;padding:12px 0 6px}
@@ -2023,7 +2161,7 @@ PAGE = r"""
 <div class="wrap">
 
   <div class="tabs">
-    {% for c in channels %}<a class="tab {{'active' if c.id==ch.id else ''}}" href="/?channel={{c.id}}">{{c.name}}</a>{% endfor %}
+    {% for c in channels %}{% set idt = idents.get(c.id, {}) %}<a class="tab chtab {{'active' if c.id==ch.id else ''}}" href="/?channel={{c.id}}">{% if idt.avatar %}<img src="{{idt.avatar}}" alt="" referrerpolicy="no-referrer">{% else %}<span class="chtab-dot">{{c.name[:1]}}</span>{% endif %}{{c.name}}{% if idt.subs is defined %}<small>{{idt.subs_text}}</small>{% endif %}</a>{% endfor %}
     <a class="tab" href="/channel-new" style="border-style:dashed">➕ New channel</a>
   </div>
 
@@ -2031,10 +2169,21 @@ PAGE = r"""
     {% for cat,msg in msgs %}<div class="flash {{cat}}">{{msg}}</div>{% endfor %}
   {% endwith %}
 
-  <div class="channel-banner">
-    <span class="muted">Active channel</span><span class="name">{{ch.name}}</span>
-    <span class="chip">{{ch.genre}}</span><span class="chip">{{'made-for-kids' if ch.made_for_kids else 'general'}}</span>
-    <span class="chip">{{ch.privacy}}</span><span class="only">All buttons: {{ch.name}} only</span>
+  {% set me = idents.get(ch.id, {}) %}
+  <div class="ch-hero"{% if me.banner %} style="--banner:url('{{me.banner}}=w1600')"{% endif %}>
+    <div class="ch-hero-in">
+      {% if me.avatar %}<img class="ch-av" src="{{me.avatar}}" alt="" referrerpolicy="no-referrer">{% elif kit.logo_ref %}<img class="ch-av" src="/media?path={{kit.logo_ref|urlencode}}" alt="">{% else %}<span class="ch-av">{{ch.name[:1]}}</span>{% endif %}
+      <div class="ch-info">
+        <div class="muted" style="font-size:12px">Active channel</div>
+        <div class="ch-name">{{me.title or ch.name}}{% if me.handle %} <a href="https://www.youtube.com/{{me.handle}}" target="_blank">{{me.handle}} ↗</a>{% endif %}</div>
+        <div class="ch-stats">
+          {% if me.subs is defined %}<span><b>{{me.subs_text}}</b> subscribers</span><span><b>{{me.videos_text}}</b> videos</span><span><b>{{me.views_text}}</b> views</span>{% else %}<span class="muted">Connect YouTube to show its picture and numbers</span>{% endif %}
+        </div>
+        <div style="margin-top:6px"><span class="chip" style="margin-left:0">{{ch.genre}}</span><span class="chip">{{'made-for-kids' if ch.made_for_kids else 'general'}}</span><span class="chip">{{ch.privacy}}</span><span class="chip">🎨 {{kit.styles.get(kit.style, kit.style)}}</span></div>
+      </div>
+      {% if kit.palette %}<div class="ch-pal">{% for hex, name in kit.palette %}<i style="background:{{hex}}" title="{{hex}} {{name}}"></i>{% endfor %}</div>{% endif %}
+      <span class="only">All buttons: {{ch.name}} only</span>
+    </div>
   </div>
 
   <div class="hint" style="margin:-8px 0 16px">Uploaded/scheduled videos automatically disappear from this dashboard after 7 days. Your YouTube videos are not deleted.</div>
@@ -2090,6 +2239,63 @@ PAGE = r"""
 
   <section class="dash-section active" id="section-overview">
   <div class="section-head"><h2>{{ch.name}} Overview</h2><div class="muted">Connection, automation mode and today&rsquo;s progress</div></div>
+  <div class="card brandkit" style="margin-bottom:18px">
+    <div class="comp-head">
+      <div><strong>Brand &amp; thumbnail style</strong>
+        <div class="hint">Saved for {{ch.name}} in <code>data/brand/{{ch.id}}/</code>. The bot draws every thumbnail in this style and writes its headline from the style guide below; your examples are the look it aims for.</div></div>
+      <form method="post" action="/brand/style-select" class="row" style="gap:8px">
+        <input type="hidden" name="channel" value="{{ch.id}}">
+        <select name="style" onchange="this.form.submit()">{% for key, label in kit.styles.items() %}<option value="{{key}}" {{'selected' if key==kit.style else ''}}>{{label}}</option>{% endfor %}</select>
+      </form>
+    </div>
+
+    <div class="bk-row">
+      <div class="bk-box">
+        <div class="bk-label">Logo</div>
+        {% if kit.logo %}<img class="bk-logo" src="/media?path={{kit.logo|urlencode}}" alt="logo"><div class="hint">✓ Drawn on every thumbnail</div>
+        {% elif kit.logo_ref %}<img class="bk-logo" src="/media?path={{kit.logo_ref|urlencode}}" alt="logo"><div class="hint">Reference only. For the real logo on thumbnails upload a <b>transparent PNG</b>; until then a drawn monogram is used.</div>
+        {% else %}<div class="hint">No logo yet; a drawn monogram is used.</div>{% endif %}
+        <form method="post" action="/brand/upload" enctype="multipart/form-data" class="row" style="gap:6px;margin-top:6px">
+          <input type="hidden" name="channel" value="{{ch.id}}"><input type="hidden" name="kind" value="logo">
+          <input type="file" name="files" accept="image/png" style="max-width:190px;font-size:12px">
+          <button class="ghost sm" type="submit">Upload PNG logo</button>
+        </form>
+      </div>
+      <div class="bk-box">
+        <div class="bk-label">Colours</div>
+        <div class="bk-pal">{% for hex, name in kit.palette %}<div><i style="background:{{hex}}"></i><b>{{hex}}</b><span>{{name}}</span></div>{% else %}<span class="hint">Write hex colours (#FF6A00) in the style guide.</span>{% endfor %}</div>
+        {% if kit.fonts %}<div class="bk-label" style="margin-top:10px">Fonts</div>{% for f in kit.fonts %}<div class="hint">{{f}}</div>{% endfor %}{% endif %}
+      </div>
+    </div>
+
+    <div class="bk-label" style="margin-top:14px">Bot's latest samples {% if kit.samples %}<span class="hint">· {{kit.samples[0].mtime|localdt}}</span>{% endif %}</div>
+    <div class="bk-gallery">
+      {% for s in kit.samples %}<a href="/media?path={{s.path|urlencode}}" target="_blank" class="bk-img {{'tall' if s.name=='short' else ''}}"><img src="/media?path={{s.path|urlencode}}&v={{s.mtime}}" alt=""><span>{{'Short 9:16' if s.name=='short' else 'Long 16:9'}}</span></a>{% else %}<div class="hint">No sample yet.</div>{% endfor %}
+      <form method="post" action="/brand/samples" class="bk-add"><input type="hidden" name="channel" value="{{ch.id}}"><button class="ghost sm" type="submit">↻ Make new samples</button></form>
+    </div>
+
+    <div class="bk-label" style="margin-top:14px">Your examples ({{kit.examples|length}})</div>
+    <div class="bk-gallery">
+      {% for e in kit.examples %}<div class="bk-img"><a href="/media?path={{e.path|urlencode}}" target="_blank"><img src="/media?path={{e.path|urlencode}}" alt=""></a>
+        <form method="post" action="/brand/example-delete" onsubmit="return confirm('Remove this example?')"><input type="hidden" name="channel" value="{{ch.id}}"><input type="hidden" name="name" value="{{e.name}}"><button type="submit" title="Remove">×</button></form>
+        <span>{{e.name}}</span></div>{% endfor %}
+      <form method="post" action="/brand/upload" enctype="multipart/form-data" class="bk-add">
+        <input type="hidden" name="channel" value="{{ch.id}}"><input type="hidden" name="kind" value="example">
+        <input type="file" name="files" accept="image/*" multiple style="max-width:190px;font-size:12px">
+        <button class="ghost sm" type="submit">＋ Add examples</button>
+      </form>
+    </div>
+
+    <details style="margin-top:14px"{{' open' if not kit.guide else ''}}>
+      <summary class="bk-label" style="cursor:pointer">Style guide (the bot reads this for every thumbnail)</summary>
+      <form method="post" action="/brand/guide" style="margin-top:8px">
+        <input type="hidden" name="channel" value="{{ch.id}}">
+        <textarea name="guide" rows="14" class="comp-ta" style="font-family:Consolas,monospace;font-size:12.5px">{{kit.guide}}</textarea>
+        <button class="green sm" type="submit" style="margin-top:8px">Save style guide</button>
+      </form>
+    </details>
+  </div>
+
   <h3 style="margin:0 0 8px">Kahan kahan post hota hai</h3>
   {{ connection_cards() }}
 
@@ -2104,7 +2310,7 @@ PAGE = r"""
   <div class="card" style="margin-bottom:18px">
     <div class="row" style="justify-content:space-between;align-items:flex-start">
       <div><strong>Thumbnail check</strong>
-        <div class="hint">{% if thumb_required %}ON: no Short or long video uploads without a verified thumbnail (1280×720, 16:9, under 2 MB, not blank). Each video goes up private, gets its thumbnail, then goes public.{% else %}OFF: set REQUIRE_THUMBNAIL=true in .env to turn it on.{% endif %}</div>
+        <div class="hint">{% if thumb_required %}ON: no Short or long video uploads without a verified thumbnail (long 1280×720 16:9, Short 1080×1920 9:16 or 16:9, under 2 MB, not blank). Each video goes up private, gets its thumbnail, then goes public.{% else %}OFF: set REQUIRE_THUMBNAIL=true in .env to turn it on.{% endif %}</div>
         <div class="hint" style="margin-top:6px">
           {% set held = namespace(n=0, ok=0) %}{% for v in videos %}{% set tc=thumb_checks.get(v['id']) %}{% if tc and tc.ok %}{% set held.ok = held.ok + 1 %}{% elif not v['video_url'] %}{% set held.n = held.n + 1 %}{% endif %}{% endfor %}
           {% if videos %}<b>{{held.ok}}</b> verified · <b style="color:{{'var(--err)' if held.n else 'inherit'}}">{{held.n}}</b> on hold for a thumbnail. See each video's thumbnail in <a href="#" onclick="document.querySelector('[data-section=library]').click();return false">Video Library</a>.{% else %}No videos yet. Each new video will show its thumbnail, its check result and a "Remake thumbnail" button in the <b>Video Library</b> tab.{% endif %}

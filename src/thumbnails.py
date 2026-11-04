@@ -963,6 +963,15 @@ def create_thumbnail(lesson: Lesson, image_path: Path | None, output_path: Path,
         print(f"[thumbnail] using your background image: {manual_path.name}")
         return compose_thumbnail(lesson, manual_path, output_path, channel, content_type)
 
+    # A channel with a designed look of its own (future_thumbnail.py).
+    if str(getattr(channel, "thumbnail_style", "") or "") == "future":
+        try:
+            from .future_thumbnail import compose_for_lesson
+
+            return compose_for_lesson(lesson, output_path, channel, content_type)
+        except Exception as exc:
+            print(f"[thumbnail] future style failed, using the plain card: {exc}")
+
     art_path: Path | None = None
     try:
         art_path = generate_thumbnail_art(

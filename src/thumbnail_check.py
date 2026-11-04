@@ -76,10 +76,13 @@ def _inspect(path: Path, size: int) -> ThumbCheck:
     issues: list[str] = []
     if size > MAX_BYTES:
         issues.append(f"file is {kb} KB; YouTube allows at most 2048 KB")
-    if width < MIN_WIDTH or height < MIN_HEIGHT:
-        issues.append(f"too small ({width}x{height}); needs at least {MIN_WIDTH}x{MIN_HEIGHT}")
-    if abs(width / height - ASPECT) > ASPECT * 0.02:
-        issues.append(f"not 16:9 ({width}x{height})")
+    # 16:9 for every video; a Short may also carry a tall 9:16 card.
+    tall = height > width
+    need_w, need_h, ratio = (MIN_HEIGHT, MIN_WIDTH, 1 / ASPECT) if tall else (MIN_WIDTH, MIN_HEIGHT, ASPECT)
+    if width < need_w or height < need_h:
+        issues.append(f"too small ({width}x{height}); needs at least {need_w}x{need_h}")
+    if abs(width / height - ratio) > ratio * 0.02:
+        issues.append(f"not {'9:16' if tall else '16:9'} ({width}x{height})")
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     if float(gray.std()) < 10:
         issues.append("looks blank (almost one flat colour)")

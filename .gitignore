@@ -83,3 +83,5 @@ data/dashboard_automation.txt
 
 # Owner music for the videos (src/music_moods.py: data/music/<channel id>/)
 !data/music/**/*.mp3
+# Which Facebook Pages already had their welcome run started from this PC
+data/welcome_runs.json

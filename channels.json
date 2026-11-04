@@ -209,6 +209,65 @@
         "coverr"
       ],
       "description_footer": "⚠️ Disclaimer: Educational content only. Not personalized financial, investment, tax, or legal advice."
+    },
+    {
+      "id": "abyssoryn_earth_mysterie",
+      "name": "Abyssoryn",
+      "genre": "deep ocean & unknown earth",
+      "builtin": false,
+      "lessons_file": "data/abyssoryn_earth_mysterie_lessons.json",
+      "voice": "en-US-AvaNeural",
+      "made_for_kids": false,
+      "privacy": "public",
+      "category_id": "28",
+      "seo_suffix": "| Abyssoryn",
+      "image_style": "cinematic deep sea photography, dramatic underwater lighting, bioluminescent glow, hyper-realistic, 8k resolution, National Geographic style",
+      "client_secret": "client_secret_abyssoryn_earth_mysterie.json",
+      "token": "token_abyssoryn_earth_mysterie.json",
+      "topics_per_day": 2,
+      "slot": 4,
+      "language": "en",
+      "tone": "Every script should sound deeply immersive, cinematic, and awe-inspiring, blending scientific accuracy with the mysterious allure of the unknown.",
+      "keywords": [
+        "deep sea mysteries",
+        "ocean trenches documentary",
+        "hidden caves on earth",
+        "deep sea creatures",
+        "unknown places on earth",
+        "real science facts",
+        "subglacial lakes antarctica",
+        "shipwrecks abyss",
+        "extreme ocean depths",
+        "earth's inner secrets"
+      ],
+      "visuals": "stock",
+      "ideas": [
+        "What Lies at the Very Bottom of the Mariana Trench",
+        "The Bizarre Creatures Living in Complete Darkness",
+        "Hidden Subglacial Lakes Beneath the Antarctic Ice",
+        "Unexplored Underwater Caves That Defy Physics",
+        "Ghost Ships of the Deep: Shipwrecks Time Forgot"
+      ],
+      "topic": "Abyssoryn - deep ocean & unknown earth documentaries: deep-sea creatures, ocean trenches, shipwrecks, hidden lakes, strange caves and unknown places of Earth, real science facts",
+      "long_days": [
+        "Tue",
+        "Thu",
+        "Sun"
+      ],
+      "created_by": "factory",
+      "created_at": "2026-11-04T06:11:59",
+      "brand": "Abyssoryn",
+      "verified_facts": true,
+      "thumbnail_style": "ocean",
+      "long_scenes": 70,
+      "clip_sources": [
+        "commons",
+        "pexels",
+        "pixabay",
+        "coverr",
+        "smithsonian",
+        "nps"
+      ]
     }
   ]
 }

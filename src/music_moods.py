@@ -41,6 +41,10 @@ MOOD_WORDS = {
 GENRE_MOOD = {
     "kids": "kids", "crime": "tense", "mystery": "tense", "horror": "dark", "love": "warm",
     "motivation": "uplift", "trending": "news", "cooking": "calm",
+    # The documentary channels: their tones say "awe-inspiring", which alone
+    # pulled ocean and space videos to upbeat rock.
+    "deep ocean & unknown earth": "calm", "space documentaries": "calm",
+    "paleontology & history": "epic", "personal finance": "news", "celebrity": "warm",
 }
 
 # Semitones above the root for each chord of the loop, and how the mood plays.

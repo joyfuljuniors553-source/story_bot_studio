@@ -700,6 +700,20 @@ def _identities(channels) -> dict:
     return out
 
 
+def _sample_row(path) -> dict:
+    """A sample card plus its saved style check (<card>.style.json)."""
+    import json as _json
+
+    row = {"path": str(path), "name": path.stem, "score": None, "ok": True, "issues": [],
+           "mtime": datetime.fromtimestamp(path.stat().st_mtime).isoformat()}
+    try:
+        check = _json.loads(path.with_suffix(".style.json").read_text(encoding="utf-8"))
+        row.update(score=check.get("score"), ok=bool(check.get("ok", True)), issues=check.get("issues") or [])
+    except Exception:
+        pass
+    return row
+
+
 def _brand_kit(ch) -> dict:
     from src import brand
 
@@ -712,8 +726,7 @@ def _brand_kit(ch) -> dict:
         "logo": rel(brand.logo(ch.id)),
         "logo_ref": rel(brand.logo_reference(ch.id)),
         "examples": [{"path": str(p), "name": p.name} for p in brand.examples(ch.id)],
-        "samples": [{"path": str(p), "name": p.stem,
-                     "mtime": datetime.fromtimestamp(p.stat().st_mtime).isoformat()} for p in brand.samples(ch.id)],
+        "samples": [_sample_row(p) for p in brand.samples(ch.id)],
         "fonts": (["Space Grotesk Bold — headline", "Anton — big year / number", "Sora ExtraBold — supporting line",
                    "IBM Plex Mono — scientific labels"] if getattr(ch, "thumbnail_style", "") == "future" else []),
     }
@@ -2049,6 +2062,13 @@ PAGE = r"""
   .bk-img img{height:150px;width:auto;display:block}
   .bk-img span{position:absolute;left:0;right:0;bottom:0;font-size:11px;padding:3px 7px;background:rgba(0,0,0,.65);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .bk-img form{position:absolute;top:4px;right:4px}.bk-img form button{width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.7);color:#fff;cursor:pointer}
+  .bk-compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:14px;margin-top:14px}
+  .bk-col{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--panel2);min-width:0}
+  .bk-col-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+  .bk-pick{display:inline-flex;align-items:center;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:5px 11px;font-size:13px}
+  .bk-pick:hover{border-color:var(--accent)}
+  .bk-score{position:absolute;top:6px;right:6px;font-size:11px;padding:2px 8px;border-radius:99px;background:rgba(0,0,0,.72)}
+  .bk-score.ok{color:#4dffa8}.bk-score.bad{color:#ffd56b}
   .bk-add{display:flex;flex-direction:column;gap:6px;justify-content:center;height:150px;padding:10px;border:1px dashed var(--line);border-radius:10px}
   .comp-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
   .comp-ta{width:100%;background:#12162a;border:1px solid var(--line);color:var(--text);padding:8px 10px;border-radius:10px;font:inherit;resize:vertical}
@@ -2273,22 +2293,33 @@ PAGE = r"""
       </div>
     </div>
 
-    <div class="bk-label" style="margin-top:14px">Bot's latest samples {% if kit.samples %}<span class="hint">· {{kit.samples[0].mtime|localdt}}</span>{% endif %}</div>
-    <div class="bk-gallery">
-      {% for s in kit.samples %}<a href="/media?path={{s.path|urlencode}}" target="_blank" class="bk-img {{'tall' if s.name=='short' else ''}}"><img src="/media?path={{s.path|urlencode}}&v={{s.mtime}}" alt=""><span>{{'Short 9:16' if s.name=='short' else 'Long 16:9'}}</span></a>{% else %}<div class="hint">No sample yet.</div>{% endfor %}
-      <form method="post" action="/brand/samples" class="bk-add"><input type="hidden" name="channel" value="{{ch.id}}"><button class="ghost sm" type="submit">↻ Make new samples</button></form>
-    </div>
-
-    <div class="bk-label" style="margin-top:14px">Your examples ({{kit.examples|length}})</div>
-    <div class="bk-gallery">
-      {% for e in kit.examples %}<div class="bk-img"><a href="/media?path={{e.path|urlencode}}" target="_blank"><img src="/media?path={{e.path|urlencode}}" alt=""></a>
-        <form method="post" action="/brand/example-delete" onsubmit="return confirm('Remove this example?')"><input type="hidden" name="channel" value="{{ch.id}}"><input type="hidden" name="name" value="{{e.name}}"><button type="submit" title="Remove">×</button></form>
-        <span>{{e.name}}</span></div>{% endfor %}
-      <form method="post" action="/brand/upload" enctype="multipart/form-data" class="bk-add">
-        <input type="hidden" name="channel" value="{{ch.id}}"><input type="hidden" name="kind" value="example">
-        <input type="file" name="files" accept="image/*" multiple style="max-width:190px;font-size:12px">
-        <button class="ghost sm" type="submit">＋ Add examples</button>
-      </form>
+    <div class="bk-compare">
+      <div class="bk-col">
+        <div class="bk-col-head">
+          <div class="bk-label" style="margin:0">Bot's latest samples {% if kit.samples %}<span class="hint" style="text-transform:none;letter-spacing:0">· {{kit.samples[0].mtime|localdt}}</span>{% endif %}</div>
+          <form method="post" action="/brand/samples"><input type="hidden" name="channel" value="{{ch.id}}"><button class="ghost sm" type="submit">↻ Make new samples</button></form>
+        </div>
+        <div class="bk-gallery">
+          {% for s in kit.samples %}<a href="/media?path={{s.path|urlencode}}" target="_blank" class="bk-img"><img src="/media?path={{s.path|urlencode}}&v={{s.mtime}}" alt="">
+            {% if s.score is not none %}<b class="bk-score {{'ok' if s.ok else 'bad'}}" title="{{ s.issues|join('; ') if s.issues else 'Matches your examples' }}">Style {{s.score}} {{'✓' if s.ok else '!'}}</b>{% endif %}
+            <span>{{'Short 9:16' if s.name=='short' else 'Long 16:9'}}</span></a>{% else %}<div class="hint">No sample yet.</div>{% endfor %}
+        </div>
+        {% for s in kit.samples %}{% if s.issues %}<div class="hint" style="margin-top:4px;color:var(--warn)">{{'Short' if s.name=='short' else 'Long'}}: {{s.issues|join('; ')}}</div>{% endif %}{% endfor %}
+      </div>
+      <div class="bk-col">
+        <div class="bk-col-head">
+          <div class="bk-label" style="margin:0">Your examples ({{kit.examples|length}})</div>
+          <form method="post" action="/brand/upload" enctype="multipart/form-data" class="row" style="gap:6px">
+            <input type="hidden" name="channel" value="{{ch.id}}"><input type="hidden" name="kind" value="example">
+            <label class="ghost sm bk-pick">＋ Add examples<input type="file" name="files" accept="image/*" multiple hidden onchange="this.form.submit()"></label>
+          </form>
+        </div>
+        <div class="bk-gallery">
+          {% for e in kit.examples %}<div class="bk-img"><a href="/media?path={{e.path|urlencode}}" target="_blank"><img src="/media?path={{e.path|urlencode}}" alt=""></a>
+            <form method="post" action="/brand/example-delete" onsubmit="return confirm('Remove this example?')"><input type="hidden" name="channel" value="{{ch.id}}"><input type="hidden" name="name" value="{{e.name}}"><button type="submit" title="Remove">×</button></form>
+            <span>{{e.name}}</span></div>{% else %}<div class="hint">Add a few thumbnails you made by hand: the bot measures its own against them.</div>{% endfor %}
+        </div>
+      </div>
     </div>
 
     <details style="margin-top:14px"{{' open' if not kit.guide else ''}}>

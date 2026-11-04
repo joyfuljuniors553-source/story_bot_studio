@@ -15,7 +15,7 @@ import os
 import re
 import sqlite3
 import threading
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -86,7 +86,7 @@ def channel_rows(channel_id: str, content_type: str | None = None, view: str = "
         return conn.execute(
             f"""
             SELECT id, job_id, topic, title, video_path, thumbnail_path,
-                   video_url, status, error, created_at, drive_url, publish_at,
+                   video_url, status, error, created_at, drive_url, publish_at, upload_date,
                    COALESCE(content_type, 'short') AS content_type, quality_report,
                    COALESCE(upload_progress, 0) AS upload_progress,
                    COALESCE(account, 'main') AS account
@@ -281,6 +281,83 @@ def _safe_media(raw_path: str) -> Path:
     return p
 
 
+def _when(value):
+    if not value:
+        return None
+    try:
+        moment = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return moment if moment.tzinfo else moment.replace(tzinfo=timezone.utc)
+
+
+def platform_timeline(v, socials: dict, social_cfg: dict, upload_pause) -> list[dict]:
+    """Per platform: when the video went up / goes live, or when the next try is.
+
+    Each step is {"state": done|wait|fail, "text": str, "when": iso or None}.
+    """
+    from src import slots
+
+    now = datetime.now(timezone.utc)
+    status, url = v["status"], v["video_url"]
+    publish = _when(v["publish_at"])
+    next_try = upload_pause[1] if upload_pause else slots.next_run().isoformat()
+    yt: list[dict] = []
+    if url and status in ("uploaded", "scheduled", "thumbnail_pending", "remote_missing"):
+        yt.append({"state": "done", "text": "Uploaded", "when": v["upload_date"]})
+        if status == "thumbnail_pending":
+            yt.append({"state": "wait", "text": "Private until its thumbnail is set · next try",
+                       "when": next_try})
+            if publish and publish > now:
+                yt.append({"state": "wait", "text": "Booked to go public", "when": v["publish_at"]})
+        elif publish and publish > now:
+            yt.append({"state": "wait", "text": "Goes public", "when": v["publish_at"]})
+        elif publish:
+            yt.append({"state": "done", "text": "Public since", "when": v["publish_at"]})
+        else:
+            yt.append({"state": "done", "text": "Live", "when": v["upload_date"]})
+    elif status == "uploading":
+        yt.append({"state": "wait", "text": f"Uploading now ({v['upload_progress']}%)", "when": None})
+    elif status in ("rendered", "daily_upload_pending", "upload_failed"):
+        yt.append({"state": "wait", "text": "Not uploaded yet · next automatic try", "when": next_try})
+        if publish and publish > now:
+            yt.append({"state": "wait", "text": "Booked to go public", "when": v["publish_at"]})
+    elif status == "awaiting_approval":
+        yt.append({"state": "wait", "text": "Waiting for your approval", "when": None})
+    elif status == "facebook_only":
+        yt.append({"state": "fail", "text": "No YouTube channel connected", "when": None})
+    else:
+        yt.append({"state": "fail", "text": f"Will not upload ({status.replace('_', ' ')})", "when": None})
+    rows = [{"name": "YouTube", "icon": "▶", "link": url, "steps": yt}]
+
+    for platform, label, icon in (("facebook", "Facebook", "f"), ("tiktok", "TikTok", "♪")):
+        item = socials.get(platform)
+        cfg = social_cfg.get(platform, {})
+        steps: list[dict] = []
+        if item:
+            live = _when(item.get("scheduled_for"))
+            if item["status"] == "submitted":
+                steps.append({"state": "done", "text": "Uploaded", "when": item["updated_at"]})
+                if live and live > now:
+                    steps.append({"state": "wait", "text": "Goes live", "when": item["scheduled_for"]})
+                elif live:
+                    steps.append({"state": "done", "text": "Live since", "when": item["scheduled_for"]})
+            elif item["status"] == "uploading":
+                steps.append({"state": "wait", "text": "Uploading now", "when": item["updated_at"]})
+            else:
+                steps.append({"state": "fail", "text": "Failed: " + str(item.get("error") or "")[:90],
+                              "when": item["updated_at"]})
+        elif cfg.get("configured") and cfg.get("auto_upload"):
+            if status in ("quality_failed", "duplicate_blocked", "files_lost", "awaiting_approval"):
+                continue
+            steps.append({"state": "wait", "text": "Not posted yet · posts with YouTube at",
+                          "when": v["publish_at"] or next_try})
+        else:
+            continue  # this platform is not set up to post automatically
+        rows.append({"name": label, "icon": icon, "link": (item or {}).get("post_url"), "steps": steps})
+    return rows
+
+
 # ---------- routes ----------
 
 @app.route("/")
@@ -319,9 +396,14 @@ def home():
 
     from src.thumbnail_check import check_thumbnail, thumbnail_required
     thumb_checks = {v['id']: check_thumbnail(v['thumbnail_path']) for v in vids}
+    _socials = social_uploads_for_channel(ch.id)
+    _social_cfg = social_accounts.public_status(ch.id)
+    _pause = active_upload_backoff(ch.id)
+    timelines = {v['id']: platform_timeline(v, _socials.get(v['id'], {}), _social_cfg, _pause) for v in vids}
     return render_template_string(
         PAGE, channels=channels, ch=ch,
         thumb_checks=thumb_checks, thumb_required=thumbnail_required(),
+        timelines=timelines,
         topics=[(k, v.get("title", k)) for k, v in topics.items()],
         videos=vids, jobs=JOBS, assets=assets, storage=storage_info(),
         connected=ch.token_path.exists(), upload_pause=active_upload_backoff(ch.id),
@@ -1820,6 +1902,11 @@ PAGE = r"""
   .st{font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px}
   .st.uploaded{background:#123122;color:var(--ok)}.st.rendered{background:#2a2f4d;color:#b9c1e6}
   .st.scheduled,.st.facebook_only{background:#1a2b4d;color:#8fb4ff}
+  .ptimes{display:grid;gap:6px;margin:8px 0}.pt{border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+  .pt-name{font-weight:600;font-size:13px;margin-bottom:3px}.pt-ic{display:inline-block;width:18px;opacity:.8}
+  .pt-step{font-size:12px;color:var(--muted,#9aa3b8);display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+  .pt-step b{color:var(--text)}.pt-step .dot{width:7px;height:7px;border-radius:50%;flex:none;transform:translateY(-1px)}
+  .pt-step.done .dot{background:#3ecf7a}.pt-step.wait .dot{background:#e8b339}.pt-step.fail .dot{background:var(--err)}
   .thumb-check{border:1px solid var(--line);border-radius:10px;padding:8px;margin:8px 0;display:grid;gap:6px}
   .thumb-check img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:7px;display:block}
   .thumb-check.ok .thumb-verdict{color:#7ee2a8;font-size:12px}.thumb-check.bad{border-color:#7a2a2c}
@@ -2709,7 +2796,14 @@ Content Posting API (video.upload): the tool sends my finished videos to my TikT
     <div class="card vid" data-video-card="{{v['id']}}">
       {% if v['drive_url'] %}
         <div class="card" style="text-align:center;padding:28px"><a href="{{v['drive_url']}}" target="_blank">☁ On Google Drive ↗</a></div>
-      {% elif v['video_path'] %}<video controls preload="metadata" src="/media?path={{v['video_path']|urlencode}}"></video>{% endif %}
+      {% elif v['video_path'] %}<video controls preload="none"{% if thumb_checks.get(v['id']) and thumb_checks.get(v['id']).kb %} poster="/media?path={{v['thumbnail_path']|urlencode}}"{% endif %} src="/media?path={{v['video_path']|urlencode}}"></video>{% endif %}
+      <div class="ptimes">
+        {% for p in timelines.get(v['id'], []) %}
+        <div class="pt"><div class="pt-name"><span class="pt-ic">{{p.icon}}</span>{% if p.link %}<a href="{{p.link}}" target="_blank">{{p.name}} ↗</a>{% else %}{{p.name}}{% endif %}</div>
+          {% for s in p.steps %}<div class="pt-step {{s.state}}"><span class="dot"></span>{{s.text}}{% if s.when %} <b>{{s.when|localdt}}</b>{% endif %}</div>{% endfor %}
+        </div>
+        {% endfor %}
+      </div>
       {% set tc=thumb_checks.get(v['id']) %}
       <div class="thumb-check {{'ok' if tc and tc.ok else 'bad'}}">
         {% if v['thumbnail_path'] and tc and tc.kb %}<a href="/media?path={{v['thumbnail_path']|urlencode}}" target="_blank"><img src="/media?path={{v['thumbnail_path']|urlencode}}" alt="Thumbnail" loading="lazy"></a>{% endif %}

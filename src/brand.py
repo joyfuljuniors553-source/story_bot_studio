@@ -154,22 +154,40 @@ def youtube_identity(channel, max_age_hours: float = 12) -> dict:
 # ------------------------------------------------------------------ samples
 
 SAMPLE_TITLES = {"long": "What Will Life Look Like in 2050?", "short": "Could Robots Run Entire Cities?"}
+# A sample card should look like a real video of the channel, so each genre
+# gets titles from its own subject (first match on the genre text wins).
+GENRE_SAMPLE_TITLES = {
+    "celebrity": {"long": "The Untold Life of Audrey Hepburn", "short": "The Untold Life of Elvis Presley"},
+    "space": {"long": "Black Holes: Gates of Time?", "short": "What If a Magnetar Hit Earth?"},
+    "paleontology": {"long": "The Last Days of the Woolly Mammoth", "short": "How Big Was Megalodon?"},
+    "finance": {"long": "Save Your First $10,000", "short": "Stop Wasting Money"},
+    "ocean": {"long": "The Giant Squid of the Deep", "short": "What Lives in the Mariana Trench?"},
+    "future": SAMPLE_TITLES,
+}
+
+
+def sample_titles(channel) -> dict:
+    genre = str(getattr(channel, "genre", "") or "").lower()
+    return next((t for key, t in GENRE_SAMPLE_TITLES.items() if key in genre), SAMPLE_TITLES)
 
 
 def make_samples(channel) -> list[str]:
     """Draw one long and one Short card with today's style, for the dashboard."""
     from .models import Lesson, Scene
     from .thumbnail_check import check_thumbnail
-    from .thumbnails import create_thumbnail
+    from .pipeline import channel_thumbnail
 
     folder = brand_dir(channel.id) / "samples"
     folder.mkdir(exist_ok=True)
     notes = []
-    for kind, title in SAMPLE_TITLES.items():
+    for kind, title in sample_titles(channel).items():
         lesson = Lesson(topic_key=f"sample_{kind}", title=title, category=str(channel.genre).title(),
-                        intro="", outro="", scenes=[Scene(label=title[:30], line=title, image="")])
-        path = create_thumbnail(lesson, None, folder / f"{kind}.jpg", channel, kind)
+                        intro="", outro="", scenes=[Scene(label=title[:30], line=title, image="",
+                                                          image_prompt=title)])
+        # A true-story channel's card needs a real person: the name after "Life of".
+        subject = title.split("Life of", 1)[1].strip() if "Life of" in title else None
+        path = channel_thumbnail(lesson, channel, folder / f"{kind}.jpg", None, kind, subject=subject)
         notes.append(f"{kind}: {title} -> {check_thumbnail(path).summary}")
-    for leftover in folder.glob("thumbnail_*"):
+    for leftover in list(folder.glob("thumbnail_*")) + list(folder.glob("*.txt")):
         leftover.unlink(missing_ok=True)
     return notes

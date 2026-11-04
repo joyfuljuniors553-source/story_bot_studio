@@ -34,7 +34,12 @@
       "topic": "True life stories of famous celebrities from the United States and Europe",
       "verified_facts": true,
       "brand": "LegendraScope",
-      "music_volume": 0.2
+      "music_volume": 0.2,
+      "competitors": [
+        "https://www.youtube.com/@FactsVerse",
+        "https://www.youtube.com/@HollywoodGraveyard",
+        "https://www.youtube.com/@biography"
+      ]
     },
     {
       "id": "quasorynth_space",
@@ -91,7 +96,13 @@
         "coverr"
       ],
       "verified_facts": true,
-      "long_scenes": 70
+      "long_scenes": 70,
+      "competitors": [
+        "https://www.youtube.com/@astrumspace",
+        "https://www.youtube.com/@InsaneCuriosity",
+        "https://www.youtube.com/@HistoryoftheUniverse",
+        "https://www.youtube.com/@AstrumExtra"
+      ]
     },
     {
       "id": "veylora_earth",
@@ -151,7 +162,12 @@
       ],
       "clips_without_people": true,
       "verified_facts": true,
-      "long_scenes": 70
+      "long_scenes": 70,
+      "competitors": [
+        "https://www.youtube.com/@eons",
+        "https://www.youtube.com/@ExtinctZoo",
+        "https://www.youtube.com/@BenGThomas"
+      ]
     },
     {
       "id": "dime_horizon",
@@ -208,7 +224,13 @@
         "pixabay",
         "coverr"
       ],
-      "description_footer": "\u26a0\ufe0f Disclaimer: Educational content only. Not personalized financial, investment, tax, or legal advice."
+      "description_footer": "⚠️ Disclaimer: Educational content only. Not personalized financial, investment, tax, or legal advice.",
+      "competitors": [
+        "https://www.youtube.com/@TwoCentsPBS",
+        "https://www.youtube.com/@ThePlainBagel",
+        "https://www.youtube.com/@thefinancialdiet",
+        "https://www.youtube.com/@humphrey"
+      ]
     },
     {
       "id": "abyssoryn_earth_mysterie",
@@ -267,6 +289,12 @@
         "coverr",
         "smithsonian",
         "nps"
+      ],
+      "competitors": [
+        "https://www.youtube.com/@officialbeyondtheblue",
+        "https://www.youtube.com/@EVNautilus",
+        "https://www.youtube.com/@SchmidtOcean",
+        "https://www.youtube.com/@MBARIvideo"
       ]
     }
   ]

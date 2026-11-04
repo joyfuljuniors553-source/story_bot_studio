@@ -231,7 +231,33 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
         return None
 
 
-def _real_subject_thumbnail(lesson, channel, run_dir: Path, content_type: str) -> Path | None:
+def channel_thumbnail(lesson, channel, output_path: Path, fallback: Path | None = None,
+                      content_type: str = "short", subject: str | None = None) -> Path:
+    """This channel's own card (true-story or topic style), else the ordinary one.
+
+    The same choice a new video makes, for every later remake (Remake
+    thumbnail, the YouTube audit, samples), so a remade card never falls back
+    to the plain look just because it was made outside a render.
+    """
+    import shutil
+    import tempfile
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    work = Path(tempfile.mkdtemp(prefix="thumb_", dir=output_path.parent))
+    try:
+        made = (_real_subject_thumbnail(lesson, channel, work, content_type, subject=subject)
+                or _topic_thumbnail(lesson, channel, work, fallback, content_type))
+        if made and Path(made).is_file():
+            shutil.copyfile(made, output_path)
+            return output_path
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+    return Path(create_thumbnail(lesson, fallback, output_path, channel, content_type))
+
+
+def _real_subject_thumbnail(lesson, channel, run_dir: Path, content_type: str,
+                            subject: str | None = None) -> Path | None:
     """The thumbnail of a true story about a real person: that person's own photo.
 
     AI or stock artwork under a real name would show a stranger as that
@@ -248,7 +274,7 @@ def _real_subject_thumbnail(lesson, channel, run_dir: Path, content_type: str) -
             return None
         if getattr(channel, "thumbnail_style", ""):
             return None  # a space or prehistory card instead (_topic_thumbnail)
-        subject = _bank_rows(channel).get(lesson.topic_key, {}).get("source_title")
+        subject = subject or _bank_rows(channel).get(lesson.topic_key, {}).get("source_title")
         if not subject:
             return None
         found = real_photo(subject, run_dir)
@@ -426,8 +452,8 @@ def run_pipeline(
     try:
         thumbnail_path = ensure_ready(
             thumbnail_path,
-            regenerate=lambda: create_thumbnail(
-                lesson, thumbnail_source, run_dir / "thumbnail_remade.jpg", channel, content_type,
+            regenerate=lambda: channel_thumbnail(
+                lesson, channel, run_dir / "thumbnail_remade.jpg", thumbnail_source, content_type,
             ),
         )
     except ThumbnailNotReady as exc:

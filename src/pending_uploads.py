@@ -585,13 +585,13 @@ def _set_error(video_id: int, error: str, publish_at: str | None = None) -> None
 
 def remake_thumbnail_file(row, channel=None) -> Path:
     """Build a fresh thumbnail for a saved video, in place of its old file."""
-    from .thumbnails import create_thumbnail
+    from .pipeline import channel_thumbnail
 
     channel = channel or _row_channel(row)
     path = Path(row["thumbnail_path"]) if row["thumbnail_path"] else Path(row["video_path"]).with_name("thumbnail.jpg")
     path.parent.mkdir(parents=True, exist_ok=True)
     lesson = load_lesson_for(channel, row["topic"])
-    return Path(create_thumbnail(lesson, None, path, channel, str(row["content_type"] or "short")))
+    return channel_thumbnail(lesson, channel, path, None, str(row["content_type"] or "short"))
 
 
 def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:

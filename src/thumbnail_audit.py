@@ -200,7 +200,7 @@ def thumbnail_for(channel, video: dict) -> Path:
     """A checked 1280x720 thumbnail for this video, made if necessary."""
     from .lessons import load_lesson_for
     from .thumbnail_check import ThumbnailNotReady, check_thumbnail
-    from .thumbnails import create_thumbnail
+    from .pipeline import channel_thumbnail
 
     content_type = "short" if video.get("short") else "long"
     row = _bot_row(video["id"])
@@ -225,7 +225,7 @@ def thumbnail_for(channel, video: dict) -> Path:
         except Exception:
             lesson = None
     lesson = lesson or _title_lesson(video["title"], channel)
-    made = Path(create_thumbnail(lesson, None, out, channel, content_type))
+    made = channel_thumbnail(lesson, channel, out, None, content_type)
     check = check_thumbnail(made)
     if not check.ok:
         raise ThumbnailNotReady(check.summary)

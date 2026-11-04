@@ -60,8 +60,17 @@ def _lines(headline: str, chars: int = _LINE_CHARS) -> list[tuple[str, bool]]:
     alone on the last line ("RULED THE ICE / AGE")."""
     lines = []
     for index, part in enumerate(headline.upper().split("*")):
-        words = part.split()
-        if words:
+        words = []
+        for word in part.split():
+            if words and not any(ch.isalnum() for ch in word):
+                words[-1] += word  # "EARTH ?" -> "EARTH?"
+            else:
+                words.append(word)
+        if words and lines and not any(ch.isalnum() for ch in part):
+            # A lone "?" or "!" (marked or not) stays on the line before it.
+            text, gold = lines[-1]
+            lines[-1] = (text + "".join(words), gold)
+        elif words:
             lines += [(line, index % 2 == 1) for line in _even_split(words, chars)]
     return lines
 

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Callable
 
@@ -137,6 +137,23 @@ def upload_video(video_path: Path, thumbnail_path: Path, metadata: dict[str, obj
         status_body["privacyStatus"] = "private"
         status_body["publishAt"] = publish_at.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
 
+    # No video goes up without a checked thumbnail. It is uploaded private and
+    # only scheduled / made public once its thumbnail is on (see release_video).
+    from .thumbnail_check import ThumbnailNotReady, check_thumbnail, thumbnail_required
+
+    required = thumbnail_required()
+    final_status = status_body
+    if required:
+        if not upload_thumbnail:
+            raise ThumbnailNotReady(
+                "YouTube does not allow custom thumbnails on this channel yet. Verify it at "
+                "youtube.com/verify, then press 'Thumbnails Are Verified' on the dashboard"
+            )
+        check = check_thumbnail(thumbnail_path)
+        if not check.ok:
+            raise ThumbnailNotReady(f"thumbnail failed its check: {check.summary}")
+        status_body = {"privacyStatus": "private", "selfDeclaredMadeForKids": made_for_kids}
+
     youtube = _youtube(client_secret_file, token_file)
     request = youtube.videos().insert(
         part="snippet,status",
@@ -170,8 +187,45 @@ def upload_video(video_path: Path, thumbnail_path: Path, metadata: dict[str, obj
         try:
             set_thumbnail(video_id, thumbnail_path, client_secret_file=client_secret_file, token_file=token_file)
         except Exception as exc:
-            raise ThumbnailUploadError(video_url, str(exc)) from exc
+            held = " (video kept private until its thumbnail is set)" if required else ""
+            raise ThumbnailUploadError(video_url, f"{exc}{held}") from exc
+    if required and final_status != status_body:
+        try:
+            _set_status(youtube, video_id, final_status)
+        except Exception as exc:
+            raise ThumbnailUploadError(
+                video_url, f"thumbnail is set, but releasing the private video failed: {exc}"
+            ) from exc
     return video_url
+
+
+def _set_status(youtube, video_id: str, status: dict[str, object]) -> None:
+    youtube.videos().update(part="status", body={"id": video_id, "status": status}).execute()
+
+
+def release_video(video_url: str, channel, publish_at: str | datetime | None) -> datetime | None:
+    """Schedule or publish a video that was held private until its thumbnail was set.
+
+    Returns the publish time when it is scheduled, or None when it went live now.
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    video_id = (parse_qs(urlparse(video_url).query).get("v") or [video_url.rsplit("/", 1)[-1]])[0]
+    when = publish_at
+    if isinstance(when, str) and when:
+        when = datetime.fromisoformat(when.replace("Z", "+00:00"))
+    if isinstance(when, datetime) and when.tzinfo is None:
+        when = when.replace(tzinfo=timezone.utc)
+    status: dict[str, object] = {"selfDeclaredMadeForKids": bool(channel.made_for_kids)}
+    # publishAt must lie ahead; a slot that passed while the video waited goes live now.
+    if isinstance(when, datetime) and when > datetime.now(timezone.utc) + timedelta(minutes=10):
+        status["privacyStatus"] = "private"
+        status["publishAt"] = when.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+    else:
+        when = None
+        status["privacyStatus"] = channel.privacy
+    _set_status(_youtube(channel.client_secret_path, channel.token_path), video_id, status)
+    return when
 
 
 def connect_and_verify(client_secret_file, token_file) -> str:

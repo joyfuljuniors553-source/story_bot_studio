@@ -20,6 +20,7 @@ from .lessons import load_lesson_for
 from .schedule import cancel_publish_at, next_publish_at
 from .seo import build_metadata
 from .youtube_upload import ThumbnailUploadError, set_thumbnail, upload_video
+from .thumbnail_check import ThumbnailNotReady, ensure_ready, thumbnail_required
 
 
 # Serialize cap checks and upload starts across dashboard background jobs.
@@ -569,6 +570,30 @@ def _never_written(video_id: int) -> bool:
         conn.close()
 
 
+def _set_error(video_id: int, error: str, publish_at: str | None = None) -> None:
+    """Record why a video is waiting, without changing its status."""
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        if publish_at:
+            conn.execute("UPDATE videos SET error = ?, publish_at = ? WHERE id = ?", (error, publish_at, video_id))
+        else:
+            conn.execute("UPDATE videos SET error = ? WHERE id = ?", (error, video_id))
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def remake_thumbnail_file(row, channel=None) -> Path:
+    """Build a fresh thumbnail for a saved video, in place of its old file."""
+    from .thumbnails import create_thumbnail
+
+    channel = channel or _row_channel(row)
+    path = Path(row["thumbnail_path"]) if row["thumbnail_path"] else Path(row["video_path"]).with_name("thumbnail.jpg")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lesson = load_lesson_for(channel, row["topic"])
+    return Path(create_thumbnail(lesson, None, path, channel, str(row["content_type"] or "short")))
+
+
 def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
     video_id = int(row["id"])
     video_path = Path(row["video_path"])
@@ -584,7 +609,12 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
         return (f"{video_id}: skipped — '{channel.id}' not authorized. Create its own "
                 f"YouTube channel, then run: authorize --channel {channel.id}")
 
-    if row["video_url"] and thumbnail_permission_denied(row["error"]):
+    if row["video_url"] and thumbnail_permission_denied(row["error"]) and thumbnail_required():
+        # Held private on YouTube until the channel may set its thumbnail.
+        if not thumbnail_upload_allowed(channel.id):
+            return (f"{video_id}: kept private until '{channel.id}' is verified for custom "
+                    f"thumbnails (youtube.com/verify, then 'Thumbnails Are Verified')")
+    elif row["video_url"] and thumbnail_permission_denied(row["error"]):
         disable_thumbnail_upload(channel.id)
         if row["publish_at"]:
             mark_scheduled(video_id, row["video_url"], row["publish_at"])
@@ -596,6 +626,7 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
         reason, retry_after = backoff
         return f"{video_id}: upload paused until {retry_after}: {reason}"
 
+    publish_at = None
     try:
         if row["status"] == "thumbnail_pending" and _thumbnail_rate_limited_today(row):
             return f"{video_id}: thumbnail rate-limited today, will retry later"
@@ -620,7 +651,15 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
                     _mark_files_lost(video_id)
                     return f"{video_id}: video files are no longer kept; marked as not uploadable"
                 print(f"[retry] {video_id}: restored {', '.join(restored)} from the kept artifacts")
-        if not thumbnail_path.exists():
+        if thumbnail_required():
+            try:
+                thumbnail_path = ensure_ready(
+                    thumbnail_path, regenerate=lambda: remake_thumbnail_file(row, channel),
+                )
+            except ThumbnailNotReady as exc:
+                _set_error(video_id, f"Held: thumbnail not ready ({exc}). Press 'Remake thumbnail'.")
+                return f"{video_id}: held, thumbnail not ready: {exc}"
+        elif not thumbnail_path.exists():
             raise FileNotFoundError(f"Thumbnail missing: {thumbnail_path}")
 
         if row["video_url"]:
@@ -628,6 +667,18 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
             set_thumbnail(youtube_id, thumbnail_path,
                           client_secret_file=channel.client_secret_path,
                           token_file=channel.token_path)
+            if thumbnail_required():
+                from .youtube_upload import release_video
+
+                try:
+                    when = release_video(row["video_url"], channel, row["publish_at"])
+                except Exception as exc:
+                    raise ThumbnailUploadError(
+                        row["video_url"], f"thumbnail is set, but releasing the private video failed: {exc}"
+                    ) from exc
+                if when is not None:
+                    mark_scheduled(video_id, row["video_url"], when.isoformat())
+                    return f"{video_id}: thumbnail set; scheduled for {when.isoformat()}"
             mark_uploaded(video_id, row["video_url"])
             return f"{video_id}: thumbnail fixed, uploaded status restored"
 
@@ -682,9 +733,19 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
             return f"{video_id}: scheduled for {publish_at.isoformat()} {video_url}"
         mark_uploaded(video_id, video_url)
         return f"{video_id}: uploaded {video_url}"
+    except ThumbnailNotReady as exc:
+        # Raised before anything reached YouTube; other uploads carry on.
+        cancel_publish_at(reservation_key)
+        _set_error(video_id, f"Held: {exc}")
+        return f"{video_id}: held, {exc}"
     except ThumbnailUploadError as exc:
-        apply_upload_error_backoff(channel.id, str(exc))
+        if thumbnail_permission_denied(str(exc)):
+            disable_thumbnail_upload(channel.id)
+        else:
+            apply_upload_error_backoff(channel.id, str(exc))
         mark_thumbnail_pending(video_id, exc.video_url, str(exc))
+        if publish_at is not None and not row["publish_at"]:
+            _set_error(video_id, str(exc), publish_at.isoformat())
         return f"{video_id}: video uploaded but thumbnail failed: {exc.video_url}"
     except Exception as exc:
         cancel_publish_at(reservation_key)

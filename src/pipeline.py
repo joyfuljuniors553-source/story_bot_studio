@@ -418,6 +418,21 @@ def run_pipeline(
         or _topic_thumbnail(lesson, channel, run_dir, thumbnail_source, content_type)
         or create_thumbnail(lesson, thumbnail_source, run_dir / "thumbnail.jpg", channel, content_type)
     )
+    # Check the thumbnail now (remaking it once if it fails); a video whose
+    # thumbnail is still not good enough is kept back from upload below.
+    from .thumbnail_check import ThumbnailNotReady, ensure_ready, thumbnail_required
+
+    thumbnail_problem = None
+    try:
+        thumbnail_path = ensure_ready(
+            thumbnail_path,
+            regenerate=lambda: create_thumbnail(
+                lesson, thumbnail_source, run_dir / "thumbnail_remade.jpg", channel, content_type,
+            ),
+        )
+    except ThumbnailNotReady as exc:
+        thumbnail_problem = str(exc)
+        print(f"[thumbnail] not ready: {thumbnail_problem}")
     metadata = build_metadata(lesson, channel, content_type=content_type)
     _append_image_credits(metadata, run_dir)
     from .end_screen import watch_next_block
@@ -463,6 +478,11 @@ def run_pipeline(
             status = "daily_upload_pending" if is_daily else "rendered"
             error = (f"{getattr(channel, 'name', channel_id)} is not connected to YouTube. "
                      f"Connect it in the dashboard, then this video uploads by itself.")
+    elif upload and quality_report["passed"] and not approval_required \
+            and thumbnail_problem and thumbnail_required():
+        status = "daily_upload_pending" if is_daily else "rendered"
+        error = (f"Held: thumbnail not ready ({thumbnail_problem}). Press 'Remake thumbnail' "
+                 f"on the dashboard; the video uploads once its thumbnail passes the check.")
     elif upload and quality_report["passed"] and not approval_required:
         backoff = active_upload_backoff(channel_id)
         if backoff:
@@ -510,7 +530,10 @@ def run_pipeline(
                             # call costs little, and once the owner verifies the
                             # channel the first success turns thumbnails back on
                             # without anyone editing the saved state.
-                            upload_thumbnail=True,
+                            # With REQUIRE_THUMBNAIL the video waits instead: an
+                            # upload that cannot get its thumbnail is not made.
+                            upload_thumbnail=(thumbnail_upload_allowed(channel_id)
+                                              if thumbnail_required() else True),
                         )
                         status = "scheduled" if publish_at else "uploaded"
                         if not thumbnail_upload_allowed(channel_id):
@@ -521,13 +544,27 @@ def run_pipeline(
             except ThumbnailUploadError as exc:
                 video_url = exc.video_url
                 error = str(exc)
-                if thumbnail_permission_denied(error):
+                if thumbnail_permission_denied(error) and thumbnail_required():
+                    disable_thumbnail_upload(channel_id)
+                    status = "thumbnail_pending"
+                    error = ("Video is on YouTube but kept PRIVATE: this channel cannot set custom "
+                             "thumbnails yet. Verify it at youtube.com/verify, then press 'Thumbnails "
+                             "Are Verified'. " + error)
+                elif thumbnail_permission_denied(error):
                     disable_thumbnail_upload(channel_id)
                     status = "scheduled" if publish_at else "uploaded"
                     error = "Video uploaded; custom thumbnail skipped because this channel does not have thumbnail permission."
                 else:
                     status = "thumbnail_pending"
                     apply_upload_error_backoff(channel_id, error)
+            except ThumbnailNotReady as exc:
+                # Nothing reached YouTube: wait, without pausing the channel's other uploads.
+                from .schedule import cancel_publish_at
+
+                cancel_publish_at(reservation_key)
+                status = "daily_upload_pending" if is_daily else "rendered"
+                error = f"Held: {exc}"
+                publish_at = None
             except Exception as exc:
                 from .schedule import cancel_publish_at
 

@@ -317,8 +317,11 @@ def home():
         except Exception:
             assets = None
 
+    from src.thumbnail_check import check_thumbnail, thumbnail_required
+    thumb_checks = {v['id']: check_thumbnail(v['thumbnail_path']) for v in vids}
     return render_template_string(
         PAGE, channels=channels, ch=ch,
+        thumb_checks=thumb_checks, thumb_required=thumbnail_required(),
         topics=[(k, v.get("title", k)) for k, v in topics.items()],
         videos=vids, jobs=JOBS, assets=assets, storage=storage_info(),
         connected=ch.token_path.exists(), upload_pause=active_upload_backoff(ch.id),
@@ -655,6 +658,34 @@ def upload_one_route():
     start_job(f"[{ch.id}] Upload video #{vid}", job)
     flash("Retrying the YouTube thumbnail...", "ok")
     return redirect(url_for("home", channel=ch.id))
+
+
+@app.post("/remake-thumbnail")
+def remake_thumbnail_route():
+    """Build a new thumbnail for one video, check it, and finish a held upload."""
+    ch = current_channel()
+    vid = int(request.form.get("id"))
+
+    def job():
+        from src.pending_uploads import _row_by_id, remake_thumbnail_file
+        from src.thumbnail_check import check_thumbnail
+
+        row = _row_by_id(vid)
+        if row is None:
+            raise RuntimeError(f"Video #{vid} not found")
+        path = remake_thumbnail_file(row)
+        result = check_thumbnail(path)
+        if not result.ok:
+            raise RuntimeError(f"New thumbnail still fails the check: {result.summary}")
+        note = f"Thumbnail remade and verified ({result.summary})"
+        if row["video_url"]:
+            # Already on YouTube: put the new picture on it (and release it if it was held private).
+            note += "; " + upload_one(vid, bypass_safety_cap=True)
+        return note
+
+    start_job(f"[{ch.id}] Remake thumbnail #{vid}", job)
+    flash("Making a new thumbnail and checking it. The result shows in Jobs.", "ok")
+    return redirect(url_for("home", channel=ch.id, type=request.form.get("type", "all")))
 
 
 @app.post("/fix-thumbnails")
@@ -1789,6 +1820,10 @@ PAGE = r"""
   .st{font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px}
   .st.uploaded{background:#123122;color:var(--ok)}.st.rendered{background:#2a2f4d;color:#b9c1e6}
   .st.scheduled,.st.facebook_only{background:#1a2b4d;color:#8fb4ff}
+  .thumb-check{border:1px solid var(--line);border-radius:10px;padding:8px;margin:8px 0;display:grid;gap:6px}
+  .thumb-check img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:7px;display:block}
+  .thumb-check.ok .thumb-verdict{color:#7ee2a8;font-size:12px}.thumb-check.bad{border-color:#7a2a2c}
+  .thumb-check.bad .thumb-verdict{color:var(--err);font-size:12px}
   .st.thumbnail_pending{background:#3a2f12;color:var(--warn)}.st.upload_failed,.st.quality_failed,.st.duplicate_blocked{background:#331617;color:var(--err)}
   .st.daily_upload_pending{background:#2d2754;color:#c9b7ff}.st.awaiting_approval{background:#3a2f12;color:var(--warn)}
   .muted{color:var(--muted);font-size:13px}.err{color:var(--err);font-size:11px;margin-top:6px;max-height:48px;overflow:auto}
@@ -2617,6 +2652,7 @@ Content Posting API (video.upload): the tool sends my finished videos to my TikT
       <div class="row" style="justify-content:space-between">
         <div><strong>Thumbnails</strong>
           <span class="chip">{{'custom thumbnails ON' if api.thumbnails_allowed else 'blocked by YouTube'}}</span>
+          <span class="chip" title="REQUIRE_THUMBNAIL in .env">{{'no upload without a verified thumbnail' if thumb_required else 'thumbnail check OFF'}}</span>
           <span class="chip">{{'Pexels connected (free)' if api.pexels_key else 'Pexels key not set'}}</span>
           <div class="hint">Every new video gets its own 16:9 thumbnail about its topic, with the title on it. Free Pexels stock photos are used first, then AI.
           {% if not api.thumbnails_allowed %}YouTube refused custom thumbnails for {{ch.name}} — verify that channel at <a href="https://youtube.com/verify" target="_blank">youtube.com/verify</a>, then press "Thumbnails Are Verified".{% endif %}</div>
@@ -2674,6 +2710,12 @@ Content Posting API (video.upload): the tool sends my finished videos to my TikT
       {% if v['drive_url'] %}
         <div class="card" style="text-align:center;padding:28px"><a href="{{v['drive_url']}}" target="_blank">☁ On Google Drive ↗</a></div>
       {% elif v['video_path'] %}<video controls preload="metadata" src="/media?path={{v['video_path']|urlencode}}"></video>{% endif %}
+      {% set tc=thumb_checks.get(v['id']) %}
+      <div class="thumb-check {{'ok' if tc and tc.ok else 'bad'}}">
+        {% if v['thumbnail_path'] and tc and tc.kb %}<a href="/media?path={{v['thumbnail_path']|urlencode}}" target="_blank"><img src="/media?path={{v['thumbnail_path']|urlencode}}" alt="Thumbnail" loading="lazy"></a>{% endif %}
+        <div class="thumb-verdict">{% if tc and tc.ok %}✓ Thumbnail verified · {{tc.width}}×{{tc.height}} · {{tc.kb}} KB{% else %}✗ Thumbnail not ready: {{tc.summary if tc else 'no thumbnail'}}{% if thumb_required and not v['video_url'] %} · upload is on hold{% endif %}{% endif %}</div>
+        {% if v['status'] not in ('uploading','duplicate_blocked','files_lost') and (v['video_path'] or v['video_url']) %}<form method="post" action="/remake-thumbnail" onsubmit="this.querySelector('button').disabled=true"><input type="hidden" name="channel" value="{{ch.id}}"><input type="hidden" name="id" value="{{v['id']}}"><button class="ghost sm" type="submit">Remake thumbnail</button></form>{% endif %}
+      </div>
       <div class="t">{{v['title']}} <span class="chip">{{v['content_type']}}</span>{% if accounts|length > 1 %} <span class="chip">{{v['account']}}</span>{% endif %}</div>
       <div class="hint">Created: {{v['created_at']|localdt}}</div>
       <div class="row" style="justify-content:space-between;margin:2px 0 8px">

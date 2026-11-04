@@ -183,6 +183,12 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
             "- wikipedia: the exact title of the English Wikipedia article about the thing the "
             "video is about (a planet, an animal, a site), whose photo would show it.\n"
             + scene_brief
+            + ("\n- kind: \"giants\" when the video is about an animal, else \"dossier\" (a place, "
+               "an expedition, a wreck, an event). For giants the starred words are the one or two "
+               "huge words after a short banner; for dossier the plain words name the subject and "
+               "the starred ones are a 2-3 word stamp under it. Write words for THIS video's subject "
+               "(the animal's name or what makes it strange); never reuse an example's words.\n"
+               'Add "kind" to the JSON.' if style == "ocean" else "")
         )
         headline = str(plan.get("headline") or "").strip() or lesson.title
         scene = str(plan.get("scene") or "").strip()[:40]
@@ -207,10 +213,14 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
         if not photo or not Path(photo).is_file():
             return None
         extra = {}
-        if style in ("space", "ocean"):
-            from .space_thumbnail import compose_space_thumbnail as compose
+        if style == "ocean":
+            # Abyssoryn's two styles: Ocean Giants for animals, Expedition Dossier
+            # for places, expeditions and wrecks (ocean_thumbnail.py).
+            from .ocean_thumbnail import compose_ocean_thumbnail as compose
 
-            extra["palette"] = style
+            extra["kind"] = "dossier" if str(plan.get("kind") or "").lower() == "dossier" else "giants"
+        elif style == "space":
+            from .space_thumbnail import compose_space_thumbnail as compose
         else:
             from .earth_thumbnail import compose_earth_thumbnail as compose
         return compose(headline, Path(photo), run_dir / "thumbnail.jpg", channel, **extra,

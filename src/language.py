@@ -89,7 +89,7 @@ FUTURE_RULES = (
     "\nFUTURE SCIENCE RULES (future technology channel):\n"
     "- The topic is technology, AI, robotics, biotechnology, energy, space or future cities. "
     "Not deep-sea, ancient-Earth or wildlife mysteries.\n"
-    "- Today is " + __import__("datetime").date.today().strftime("%B %Y") + ". Anything after "
+    "- Today is {today}. Anything after "
     "today is a possibility: write 'could', 'might', 'researchers expect'. Never use past tense "
     "for a future year, and never say a future event was discovered or happened.\n"
     "- Build each video in three clear layers: what exists today, what researchers are testing now "
@@ -110,7 +110,11 @@ def script_rules(channel) -> str:
     if "finance" in genre:
         story += FINANCE_RULES
     if "future" in genre:
-        story += FUTURE_RULES
+        # Today's month is filled in on every call: a dashboard left running for
+        # weeks must not keep telling the writer an old month.
+        from datetime import date
+
+        story += FUTURE_RULES.replace("{today}", date.today().strftime("%B %Y"))
     if not is_urdu(channel):
         return story
     return story + (

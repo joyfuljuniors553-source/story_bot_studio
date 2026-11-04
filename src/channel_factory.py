@@ -315,4 +315,45 @@ def sync_to_github() -> str:
         "fingerprint": _fingerprint(),
         "synced_at": datetime.now().isoformat(timespec="seconds"),
     }), encoding="utf-8")
-    return "GitHub updated: the daily run now has every channel and login on this PC."
+    return "GitHub updated: the daily run now has every channel and login on this PC." + _welcome_run()
+
+
+_WELCOME_FILE = settings.root / "data" / "welcome_runs.json"
+
+
+def _welcome_run() -> str:
+    """Start a small GitHub run (no new videos) for Pages connected since the last one,
+    so their welcome post goes out within minutes instead of at the next daily run.
+
+    The welcome itself is made on GitHub, the one place Facebook posts come from;
+    this only asks for a run once per Page."""
+    import subprocess
+
+    from .social_accounts import account, facebook_place
+
+    if facebook_place() != "github":
+        return ""
+    pages = {str(account(ch.id, "facebook").get("page_id") or "") for ch in _channels_for_welcome()}
+    pages.discard("")
+    try:
+        asked = set(json.loads(_WELCOME_FILE.read_text(encoding="utf-8")))
+    except Exception:
+        asked = set()
+    new = pages - asked
+    if not new:
+        return ""
+    done = subprocess.run(
+        ["gh", "workflow", "run", "daily-videos.yml", "-f", "slot=auto", "-f", "shorts_per_channel=0",
+         "-f", "long_videos=false", "-f", "upload=true"],
+        cwd=settings.root, capture_output=True, text=True, timeout=60,
+    )
+    if done.returncode != 0:
+        return " (Welcome post: the next daily run makes it.)"
+    _WELCOME_FILE.write_text(json.dumps(sorted(asked | new)), encoding="utf-8")
+    return f" Welcome post for {len(new)} new Facebook Page(s): a short GitHub run was started for it."
+
+
+def _channels_for_welcome():
+    from .channels import load_channels
+
+    return [ch for ch in load_channels() if ch.id]

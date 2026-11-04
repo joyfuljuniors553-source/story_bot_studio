@@ -281,83 +281,6 @@ def _safe_media(raw_path: str) -> Path:
     return p
 
 
-def _when(value):
-    if not value:
-        return None
-    try:
-        moment = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
-    except ValueError:
-        return None
-    return moment if moment.tzinfo else moment.replace(tzinfo=timezone.utc)
-
-
-def platform_timeline(v, socials: dict, social_cfg: dict, upload_pause) -> list[dict]:
-    """Per platform: when the video went up / goes live, or when the next try is.
-
-    Each step is {"state": done|wait|fail, "text": str, "when": iso or None}.
-    """
-    from src import slots
-
-    now = datetime.now(timezone.utc)
-    status, url = v["status"], v["video_url"]
-    publish = _when(v["publish_at"])
-    next_try = upload_pause[1] if upload_pause else slots.next_run().isoformat()
-    yt: list[dict] = []
-    if url and status in ("uploaded", "scheduled", "thumbnail_pending", "remote_missing"):
-        yt.append({"state": "done", "text": "Uploaded", "when": v["upload_date"]})
-        if status == "thumbnail_pending":
-            yt.append({"state": "wait", "text": "Private until its thumbnail is set · next try",
-                       "when": next_try})
-            if publish and publish > now:
-                yt.append({"state": "wait", "text": "Booked to go public", "when": v["publish_at"]})
-        elif publish and publish > now:
-            yt.append({"state": "wait", "text": "Goes public", "when": v["publish_at"]})
-        elif publish:
-            yt.append({"state": "done", "text": "Public since", "when": v["publish_at"]})
-        else:
-            yt.append({"state": "done", "text": "Live", "when": v["upload_date"]})
-    elif status == "uploading":
-        yt.append({"state": "wait", "text": f"Uploading now ({v['upload_progress']}%)", "when": None})
-    elif status in ("rendered", "daily_upload_pending", "upload_failed"):
-        yt.append({"state": "wait", "text": "Not uploaded yet · next automatic try", "when": next_try})
-        if publish and publish > now:
-            yt.append({"state": "wait", "text": "Booked to go public", "when": v["publish_at"]})
-    elif status == "awaiting_approval":
-        yt.append({"state": "wait", "text": "Waiting for your approval", "when": None})
-    elif status == "facebook_only":
-        yt.append({"state": "fail", "text": "No YouTube channel connected", "when": None})
-    else:
-        yt.append({"state": "fail", "text": f"Will not upload ({status.replace('_', ' ')})", "when": None})
-    rows = [{"name": "YouTube", "icon": "▶", "link": url, "steps": yt}]
-
-    for platform, label, icon in (("facebook", "Facebook", "f"), ("tiktok", "TikTok", "♪")):
-        item = socials.get(platform)
-        cfg = social_cfg.get(platform, {})
-        steps: list[dict] = []
-        if item:
-            live = _when(item.get("scheduled_for"))
-            if item["status"] == "submitted":
-                steps.append({"state": "done", "text": "Uploaded", "when": item["updated_at"]})
-                if live and live > now:
-                    steps.append({"state": "wait", "text": "Goes live", "when": item["scheduled_for"]})
-                elif live:
-                    steps.append({"state": "done", "text": "Live since", "when": item["scheduled_for"]})
-            elif item["status"] == "uploading":
-                steps.append({"state": "wait", "text": "Uploading now", "when": item["updated_at"]})
-            else:
-                steps.append({"state": "fail", "text": "Failed: " + str(item.get("error") or "")[:90],
-                              "when": item["updated_at"]})
-        elif cfg.get("configured") and cfg.get("auto_upload"):
-            if status in ("quality_failed", "duplicate_blocked", "files_lost", "awaiting_approval"):
-                continue
-            steps.append({"state": "wait", "text": "Not posted yet · posts with YouTube at",
-                          "when": v["publish_at"] or next_try})
-        else:
-            continue  # this platform is not set up to post automatically
-        rows.append({"name": label, "icon": icon, "link": (item or {}).get("post_url"), "steps": steps})
-    return rows
-
-
 # ---------- routes ----------
 
 @app.route("/")
@@ -399,6 +322,7 @@ def home():
     _socials = social_uploads_for_channel(ch.id)
     _social_cfg = social_accounts.public_status(ch.id)
     _pause = active_upload_backoff(ch.id)
+    from src.platform_times import platform_timeline
     timelines = {v['id']: platform_timeline(v, _socials.get(v['id'], {}), _social_cfg, _pause) for v in vids}
     return render_template_string(
         PAGE, channels=channels, ch=ch,
@@ -2059,6 +1983,19 @@ PAGE = r"""
       <div><strong>Preview &amp; Approval Mode</strong><div class="hint">When ON, requested uploads wait for your approval after the quality check.</div></div>
       <label class="chk"><input type="checkbox" name="enabled" {{'checked' if approval_mode else ''}} onchange="this.form.submit()"> {{'ON: review before upload' if approval_mode else 'OFF: automatic upload'}}</label>
     </form>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <div class="row" style="justify-content:space-between;align-items:flex-start">
+      <div><strong>Thumbnail check</strong>
+        <div class="hint">{% if thumb_required %}ON: no Short or long video uploads without a verified thumbnail (1280×720, 16:9, under 2 MB, not blank). Each video goes up private, gets its thumbnail, then goes public.{% else %}OFF: set REQUIRE_THUMBNAIL=true in .env to turn it on.{% endif %}</div>
+        <div class="hint" style="margin-top:6px">
+          {% set held = namespace(n=0, ok=0) %}{% for v in videos %}{% set tc=thumb_checks.get(v['id']) %}{% if tc and tc.ok %}{% set held.ok = held.ok + 1 %}{% elif not v['video_url'] %}{% set held.n = held.n + 1 %}{% endif %}{% endfor %}
+          {% if videos %}<b>{{held.ok}}</b> verified · <b style="color:{{'var(--err)' if held.n else 'inherit'}}">{{held.n}}</b> on hold for a thumbnail. See each video's thumbnail in <a href="#" onclick="document.querySelector('[data-section=library]').click();return false">Video Library</a>.{% else %}No videos yet. Each new video will show its thumbnail, its check result and a "Remake thumbnail" button in the <b>Video Library</b> tab.{% endif %}
+        </div>
+      </div>
+      <span class="chip">{{'ON' if thumb_required else 'OFF'}}</span>
+    </div>
   </div>
 
   {% if upload_pause %}

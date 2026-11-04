@@ -69,7 +69,18 @@ def prosody_for(channel) -> dict:
     return {}
 
 
+# Urdu voices sound rushed at the default rate; a little slower is closer to
+# how a narrator in Karachi actually speaks.
+URDU_RATE = "-8%"
+
+
 def _communicate(text: str, voice: str, rate: str | None, pitch: str | None):
+    if str(voice or "").startswith("ur-"):
+        # Numbers as words, the pronunciation list, Urdu pauses (urdu_speech.py).
+        from .urdu_speech import prepare
+
+        text = prepare(text)
+        rate = rate or URDU_RATE
     return edge_tts.Communicate(
         text=text,
         voice=voice,

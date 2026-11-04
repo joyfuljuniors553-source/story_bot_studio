@@ -11,7 +11,7 @@ import dataclasses
 import shutil
 from pathlib import Path
 
-from .language import LANGUAGES, PURE_URDU, channel_language, display_marks, voice_for
+from .language import LANGUAGES, URDU_SPEECH, URDU_STYLE, channel_language, display_marks, voice_for
 from .models import Lesson, Scene
 
 

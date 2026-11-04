@@ -36,16 +36,28 @@ def voice_for(channel, default: str | None = None) -> str | None:
     return _URDU_FEMALE if voice and any(h in voice for h in _FEMALE_HINTS) else _URDU_MALE
 
 
-# Asked of every Urdu script and translation. Left alone, the writer mixes
-# English into every sentence ("volunteer network ko fund kiya jata hai").
-PURE_URDU = (
-    "Write PURE Urdu: use the Urdu word wherever an everyday one exists (madad, not help; "
-    "atiyaat, not donations; idara, not organisation; razakar, not volunteer; sarbarah, not head; "
-    "aizaz, not award). It is Pakistani Urdu, so no Hindi words either (waba, not mahamari; "
-    "atiya, not daan; sarparast for a guardian; janaza for a funeral). "
-    "Do not mix English words into the sentences. Keep only names of people, "
-    "places and organisations, and things Urdu itself calls by the English word (ambulance, "
-    "hospital, doctor, film).\n"
+# Asked of every Urdu script and translation. Bookish Urdu ("atiyaat", "sarbarah")
+# made the voice sound like a news bulletin; a narrator in Karachi speaks the
+# everyday language, English words and all, but never in half-English sentences.
+URDU_STYLE = (
+    "Write the everyday spoken Urdu of Karachi, the way a good storyteller talks to friends: "
+    "simple, warm and natural, not bookish or official. Use the English words Pakistanis "
+    "really say in Urdu (doctor, hospital, school, phone, film, team, record, planet, "
+    "technology, scientist, size), but never a sentence that is half English "
+    "(not 'volunteer network ko fund kiya jata hai'). Avoid stiff words people do not say "
+    "(madad not imdaad-e-baahmi; log not afraad when talking; badi not azeem-ush-shaan). "
+    "It is Pakistani Urdu, so no Hindi words (waba, not mahamari; shukriya, not dhanyavaad).\n"
+)
+PURE_URDU = URDU_STYLE  # the old name, still imported by dual_language.py
+
+# How the Urdu-script `speech` must be written so the ur-PK voice says it right.
+URDU_SPEECH = (
+    "- 'speech' rules (only the voice hears it): short sentences of at most about 15 words; "
+    "a comma (،) where a speaker takes a breath and ۔ at the end of each sentence; English "
+    "words written in Urdu script the way they are said in Karachi (ٹیکنالوجی، سائنسدان، "
+    "ڈاکٹر); put zer, zabar or pesh on any word that could be read two ways in this sentence "
+    "(مُلک for country, مَلِک for king; عِلم for knowledge, عَلَم for flag) and on rare names; "
+    "numbers may stay as digits.\n"
 )
 
 
@@ -123,6 +135,7 @@ def script_rules(channel) -> str:
         "the way people type on WhatsApp (e.g. \"Yeh kahani ek purani haveli se shuru hoti hai.\"). "
         "Natural everyday Urdu, not word-by-word translated English.\n"
         "- 'speech' = exactly the same text as 'line', written in Urdu script (اردو), for the narrator's voice.\n"
+        + URDU_SPEECH +
         "- 'title', 'intro' and 'outro' in Roman Urdu; the title may add one or two English search words.\n"
         "- Keep 'label' and 'image_prompt' in ENGLISH.\n"
         "- Word counts asked for above apply to 'line'.\n"

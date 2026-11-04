@@ -195,6 +195,9 @@ def current_channel():
         for c in channels:
             if c.id == cid:
                 return c
+    if not channels:
+        # Fresh install: nothing to show yet, so start on the New channel page.
+        abort(redirect(url_for("channel_new")))
     return channels[0]
 
 

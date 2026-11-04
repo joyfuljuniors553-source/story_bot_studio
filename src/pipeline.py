@@ -490,9 +490,18 @@ def run_pipeline(
                         video_url = upload_video(
                             video_path, thumbnail_path, metadata, channel=channel,
                             publish_at=publish_at,
-                            upload_thumbnail=thumbnail_upload_allowed(channel_id),
+                            # Tried even on a channel marked as unable: one refused
+                            # call costs little, and once the owner verifies the
+                            # channel the first success turns thumbnails back on
+                            # without anyone editing the saved state.
+                            upload_thumbnail=True,
                         )
                         status = "scheduled" if publish_at else "uploaded"
+                        if not thumbnail_upload_allowed(channel_id):
+                            from .pending_uploads import enable_thumbnail_upload
+
+                            enable_thumbnail_upload(channel_id)
+                            print(f"[thumbnail] {channel_id}: thumbnails work again; switched back on")
             except ThumbnailUploadError as exc:
                 video_url = exc.video_url
                 error = str(exc)

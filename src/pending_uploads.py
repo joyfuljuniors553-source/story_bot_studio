@@ -444,9 +444,6 @@ def reapply_thumbnails(hours: float = 30) -> list[str]:
             if status == "thumbnail_pending":
                 messages.append(f"[{channel_id}] {video_id}: thumbnail still pending, no kept file found")
             continue
-        if not thumbnail_upload_allowed(channel_id):
-            messages.append(f"[{channel_id}] {video_id}: channel cannot set thumbnails (verify it)")
-            continue
         shown = youtube_shows_card(video_id, path)
         if shown:
             new_status, note = "uploaded", "thumbnail verified on YouTube"
@@ -458,6 +455,8 @@ def reapply_thumbnails(hours: float = 30) -> list[str]:
                 channel = get_channel(channel_id)
                 set_thumbnail(video_id, path, attempts=2, client_secret_file=channel.client_secret_path,
                               token_file=channel.token_path)
+                if not thumbnail_upload_allowed(channel_id):
+                    enable_thumbnail_upload(channel_id)  # the channel was verified since
         except Exception as exc:
             # The error is kept: a day's thumbnail limit is retried tomorrow
             # (_thumbnail_rate_limited_today), from the run's kept files.

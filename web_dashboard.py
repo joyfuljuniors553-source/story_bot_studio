@@ -2067,6 +2067,11 @@ PAGE = r"""
   .seg{display:inline-flex;background:#141830;border:1px solid var(--line);border-radius:10px;padding:3px}
   .seg button{background:none;border:0;color:var(--muted);font:inherit;font-size:12.5px;padding:5px 11px;border-radius:7px;cursor:pointer}
   .seg button.active{background:var(--panel2);color:var(--text);box-shadow:0 0 0 1px var(--line) inset}
+  .comp-pager{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .comp-pager button{min-width:36px;height:34px;padding:0 10px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font:inherit;font-size:13px;cursor:pointer}
+  .comp-pager button.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+  .comp-pager button:disabled{opacity:.4;cursor:default}
+  .comp-pager .hint{margin-left:8px}
   .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
   .comp-vid{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel2);display:flex;flex-direction:column}
   .comp-thumb{position:relative;display:block;aspect-ratio:16/9;background:#11152a}
@@ -2403,6 +2408,7 @@ PAGE = r"""
       {% endfor %}
       <div class="comp-empty hint" style="display:none">No videos match this filter.</div>
     </div>
+    <div class="comp-pager" aria-label="Pages"></div>
     {% elif ch.competitors %}
     <div class="hint" style="margin-top:10px">Not read yet. Press <b>Read them now</b>.</div>
     {% endif %}
@@ -2410,26 +2416,41 @@ PAGE = r"""
   <script>
   (function () {
     var root = document.querySelector('.card.comp'); if (!root) return;
-    var f = {comp: 'all', kind: 'all', state: 'all'};
+    var f = {comp: 'all', kind: 'all', state: 'all'}, page = 1, PER = 8;
     function apply() {
-      var shown = 0;
+      var match = [];
       root.querySelectorAll('.comp-vid').forEach(function (el) {
         var ok = (f.comp === 'all' || el.dataset.comp === f.comp) &&
                  (f.kind === 'all' || el.dataset.kind === f.kind) &&
                  (f.state === 'all' || el.dataset.state === f.state || (f.state === 'next' && el.dataset.state === 'making'));
-        el.style.display = ok ? '' : 'none'; if (ok) shown++;
+        el.style.display = 'none'; if (ok) match.push(el);
       });
-      var empty = root.querySelector('.comp-empty'); if (empty) empty.style.display = shown ? 'none' : '';
+      var pages = Math.max(1, Math.ceil(match.length / PER));
+      if (page > pages) page = pages;
+      match.slice((page - 1) * PER, page * PER).forEach(function (el) { el.style.display = ''; });
+      var empty = root.querySelector('.comp-empty'); if (empty) empty.style.display = match.length ? 'none' : '';
+      var pager = root.querySelector('.comp-pager'), html = '';
+      if (pages > 1) {
+        html += '<button type="button" data-page="' + (page - 1) + '"' + (page === 1 ? ' disabled' : '') + '>‹ Prev</button>';
+        for (var i = 1; i <= pages; i++) html += '<button type="button" data-page="' + i + '" class="' + (i === page ? 'active' : '') + '">' + i + '</button>';
+        html += '<button type="button" data-page="' + (page + 1) + '"' + (page === pages ? ' disabled' : '') + '>Next ›</button>';
+        html += '<span class="hint">' + ((page - 1) * PER + 1) + '–' + Math.min(page * PER, match.length) + ' of ' + match.length + '</span>';
+      }
+      pager.innerHTML = html;
+      pager.querySelectorAll('[data-page]').forEach(function (b) {
+        b.addEventListener('click', function () { page = +b.dataset.page; apply(); root.querySelector('.comp-bar').scrollIntoView({behavior: 'smooth', block: 'start'}); });
+      });
     }
     function bind(attr, key) {
       root.querySelectorAll('[' + attr + ']').forEach(function (b) {
         b.addEventListener('click', function () {
           root.querySelectorAll('[' + attr + ']').forEach(function (x) { x.classList.remove('active'); });
-          b.classList.add('active'); f[key] = b.getAttribute(attr); apply();
+          b.classList.add('active'); f[key] = b.getAttribute(attr); page = 1; apply();
         });
       });
     }
     bind('data-comp-tab', 'comp'); bind('data-comp-kind', 'kind'); bind('data-comp-state', 'state');
+    apply();
   })();
   </script>
 

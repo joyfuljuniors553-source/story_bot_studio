@@ -32,11 +32,33 @@ ICE = (217, 228, 232)
 
 FONTS = settings.root / "fonts"
 
+# Sizes measured from the hand-made examples in data/brand/chronovanta/examples
+# (scaled to these canvases): a heavy, wide italic headline that fills about
+# 40% of a long card's width, and a big italic number on an orange bar about
+# 200 px tall. Exact values from the designer can simply replace these.
+SPEC = {
+    "long": {   # 1280 x 720
+        "brand_x": 34, "brand_y": 26, "brand_scale": 1.2,
+        "left": 46, "top_y": 150, "shear": 0.2,
+        "top_font": "archivo", "top_weight": "", "top_size": 150, "top_max_w": 500, "top_gap": 1.0,
+        "big_font": "archivo", "big_size": 190, "big_max_w": 470,
+        "bar_min_w": 560, "bar_slant": 34, "bar_pad": 26,
+        "sub_gap": 34, "sub_size": 31, "sub_weight": "Bold", "sub_upper": True, "sub_max_w": 470,
+    },
+    "short": {  # 1080 x 1920
+        "brand_y": 40, "brand_scale": 1.9,
+        "top_y": 230, "shear": 0.2,
+        "top_font": "archivo", "top_weight": "", "top_size": 240, "top_max_w": 920, "top_gap": 1.0,
+        "big_font": "archivo", "big_size": 360, "big_max_w": 760,
+        "bar_min_w": 940, "bar_slant": 50, "bar_pad": 70,
+    },
+}
+
 
 def _font(name: str, size: int, weight: str = "") -> ImageFont.FreeTypeFont:
     files = {
         "grotesk": "SpaceGrotesk-Variable.ttf", "sora": "Sora-Variable.ttf",
-        "mono": "IBMPlexMono-Medium.ttf", "anton": "Anton-Regular.ttf",
+        "mono": "IBMPlexMono-Medium.ttf", "anton": "Anton-Regular.ttf", "archivo": "ArchivoBlack-Regular.ttf",
     }
     font = ImageFont.truetype(str(FONTS / files[name]), size)
     if weight:
@@ -49,7 +71,7 @@ def _font(name: str, size: int, weight: str = "") -> ImageFont.FreeTypeFont:
 
 # ------------------------------------------------------------------ the plan
 
-def plan_for(title: str, guide: str = "") -> dict:
+def plan_for(title: str, guide: str = "", vertical: bool = False) -> dict:
     """Headline words, labels and the visual, written by the AI writer from the title.
 
     `guide` is the channel's saved style guide (brand.style_text): its concepts
@@ -62,7 +84,9 @@ def plan_for(title: str, guide: str = "") -> dict:
         + "Write the text for a premium future-science YouTube thumbnail.\n"
         f"Video title: {title}\n"
         'Return ONLY JSON: {"top": str, "big": str, "sub": str, "labels": [str], "visual": str}.\n'
-        "- top + big together are 2 to 5 words, the headline. big is the ONE thing to shout: the year "
+        + ("- This is a tall Short card: big must be AT MOST 6 characters (a year, a number or one short "
+           "word, e.g. \"2050?\", \"150\", \"AI?\"); put the longer words in top.\n" if vertical else "")
+        + "- top + big together are 2 to 5 words, the headline. big is the ONE thing to shout: the year "
         "or number when the title has one (\"2050\", \"150\"), else the single key word (max 10 letters). "
         "top is the words before it (e.g. top \"LIFE IN\", big \"2050\"; top \"HUMAN\", big \"2.0\"; "
         "top \"ROBOTS\", big \"EVERYWHERE?\"). Keep a question mark when the title is a question.\n"
@@ -80,7 +104,9 @@ def plan_for(title: str, guide: str = "") -> dict:
     if not big:
         words = title.upper().split()
         top, big = " ".join(words[:-1])[:28], (words[-1] if words else "FUTURE")[:12]
-    labels = [re.sub(r"\s+", " ", str(x)).strip().upper()[:16] for x in (plan.get("labels") or [])][:4]
+    # A label too long for the panel is left out, never cut mid-word.
+    labels = [re.sub(r"\s+", " ", str(x)).strip().upper() for x in (plan.get("labels") or [])]
+    labels = [x for x in labels if len(x) <= 16][:4]
     return {
         "top": top, "big": big,
         "sub": re.sub(r"\s+", " ", str(plan.get("sub") or "")).strip()[:60],
@@ -184,19 +210,38 @@ def _shadowed(canvas: Image.Image, xy, text: str, font, fill, shear: float = 0.0
     canvas.alpha_composite(layer, (int(xy[0]) - 20, int(xy[1]) - 10))
 
 
-def _bar(canvas: Image.Image, x: int, y: int, text: str, font, slant: int = 26, pad: int = 26) -> int:
+def _bar(canvas: Image.Image, x: int, y: int, text: str, font, slant: int = 26, pad: int = 26,
+         shear: float = 0.0, min_w: int = 0) -> int:
     """The orange slanted bar with the big word in graphite; returns its height."""
     tb = font.getbbox(text)
     tw, th = tb[2] - tb[0], tb[3] - tb[1]
-    w, h = tw + pad * 2 + slant, th + pad * 1.2
+    w, h = max(tw + pad * 2 + slant + int(th * shear), min_w), th + pad * 1.3
     layer = Image.new("RGBA", (int(w + 40), int(h + 40)), (0, 0, 0, 0))
     glow = Image.new("RGBA", layer.size, (0, 0, 0, 0))
     poly = [(20 + slant, 20), (20 + w, 20), (20 + w - slant, 20 + h), (20, 20 + h)]
     ImageDraw.Draw(glow).polygon(poly, fill=ORANGE + (150,))
     layer.alpha_composite(glow.filter(ImageFilter.GaussianBlur(14)))
-    d = ImageDraw.Draw(layer)
-    d.polygon(poly, fill=ORANGE + (255,))
-    d.text((20 + pad + slant / 2 - tb[0], 20 + (h - th) / 2 - tb[1]), text, font=font, fill=GRAPHITE + (255,))
+    # Light golden orange at the top to deep orange at the bottom, like the examples.
+    shade = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+    sd = ImageDraw.Draw(shade)
+    top, bottom = (255, 150, 30), (240, 84, 0)
+    for row in range(layer.size[1]):
+        k = min(1.0, max(0.0, (row - 20) / max(h, 1)))
+        sd.line([(0, row), (layer.size[0], row)],
+                fill=tuple(int(top[i] + (bottom[i] - top[i]) * k) for i in range(3)) + (255,))
+    mask = Image.new("L", layer.size, 0)
+    ImageDraw.Draw(mask).polygon(poly, fill=255)
+    layer.paste(shade, (0, 0), mask)
+    # A thin bright edge along the top.
+    ImageDraw.Draw(layer).line([poly[0], poly[1]], fill=(255, 200, 120, 200), width=max(2, int(h / 60)))
+    # The word on its own layer, slanted like the examples' italic numbers.
+    word = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+    tx = 20 + (w - tw - int(th * shear)) / 2 + int(th * shear) / 2 - tb[0]
+    ImageDraw.Draw(word).text((tx, 20 + (h - th) / 2 - tb[1]), text, font=font, fill=GRAPHITE + (255,))
+    if shear:
+        cy = 20 + h / 2
+        word = word.transform(word.size, Image.AFFINE, (1, shear, -shear * cy, 0, 1, 0), Image.BICUBIC)
+    layer.alpha_composite(word)
     canvas.alpha_composite(layer, (int(x) - 20, int(y) - 20))
     return int(h)
 
@@ -292,7 +337,7 @@ def _annotation(canvas: Image.Image, x: int, y: int, text: str, scale: float) ->
 
 # ------------------------------------------------------------------ the cards
 
-def compose_long(plan: dict, visual: Path | None, out: Path, channel) -> Path:
+def compose_long(plan: dict, visual: Path | None, out: Path, channel, spec: dict | None = None) -> Path:
     W, H = 1280, 720
     canvas = Image.new("RGBA", (W, H), GRAPHITE + (255,))
     if visual and Path(visual).is_file():
@@ -310,38 +355,41 @@ def compose_long(plan: dict, visual: Path | None, out: Path, channel) -> Path:
         od.line([(0, y), (W, y)], fill=GRAPHITE + (int(150 * (y - (H - 140)) / 140),))
     canvas.alpha_composite(over)
 
-    _brand(canvas, channel, 40, 34, 1.0)
-    left, max_w = 44, 600
-    y = 176
+    s = spec or SPEC["long"]
+    _brand(canvas, channel, s["brand_x"], s["brand_y"], s["brand_scale"])
+    left = s["left"]
+    y = s["top_y"]
     if plan["top"]:
-        top = _fit("grotesk", "Bold", plan["top"], max_w, 104, 60)
-        _shadowed(canvas, (left, y), plan["top"], top, IVORY + (255,), shear=0.12)
-        y += int(top.size * 1.02)
-    big = _fit("anton", "", plan["big"], max_w - 80, 150, 80)
-    y += _bar(canvas, left - 6, y + 6, plan["big"], big) + 28
+        top = _fit(s["top_font"], s["top_weight"], plan["top"], s["top_max_w"], s["top_size"], 70)
+        _shadowed(canvas, (left, y), plan["top"], top, IVORY + (255,), shear=s["shear"])
+        y += int(top.size * s["top_gap"])
+    big = _fit(s["big_font"], "", plan["big"], s["big_max_w"], s["big_size"], 90)
+    y += _bar(canvas, left - 10, y, plan["big"], big, slant=s["bar_slant"], pad=s["bar_pad"],
+              shear=s["shear"], min_w=s["bar_min_w"]) + s["sub_gap"]
     if plan["sub"]:
-        sub = _fit("sora", "ExtraBold", plan["sub"].replace("*", ""), max_w - 30, 34, 22)
-        d = ImageDraw.Draw(canvas)
-        d.line([(left + 8, y + 2), (left, y + sub.size * 2 + 6)], fill=ORANGE + (255,), width=4)
-        words, lines, line = plan["sub"].split(), [], ""
+        sub = _font("sora", s["sub_size"], s["sub_weight"])
+        text = plan["sub"].upper() if s["sub_upper"] else plan["sub"]
+        words, lines, line = text.split(), [], ""
         for word in words:
             trial = (line + " " + word).strip()
-            if _text_w(sub, trial.replace("*", "")) > max_w - 40 and line:
+            if _text_w(sub, trial.replace("*", "")) > s["sub_max_w"] and line:
                 lines.append(line)
                 line = word
             else:
                 line = trial
         lines.append(line)
-        lines = _carry_stars(lines)
-        for i, text in enumerate(lines[:2]):
-            _rich(canvas, left + 22, y + i * int(sub.size * 1.15), text, sub)
-    _labels_panel(canvas, plan["labels"], W - 30, 210, 1.0)
+        lines = _carry_stars(lines)[:2]
+        d = ImageDraw.Draw(canvas)
+        d.line([(left + 14, y), (left, y + int(sub.size * 1.2 * len(lines)))], fill=ORANGE + (255,), width=5)
+        for i, line_text in enumerate(lines):
+            _rich(canvas, left + 30, y + i * int(sub.size * 1.2), line_text, sub)
+    _labels_panel(canvas, plan["labels"], W - 30, 200, 1.0)
     _annotation(canvas, left, H - 36, "FIG. 01 — CONCEPTUAL RECONSTRUCTION", 1.0)
     ImageDraw.Draw(canvas).line([(0, H - 4), (W, H - 4)], fill=ORANGE + (255,), width=4)
     return _save(canvas, out)
 
 
-def compose_short(plan: dict, visual: Path | None, out: Path, channel) -> Path:
+def compose_short(plan: dict, visual: Path | None, out: Path, channel, spec: dict | None = None) -> Path:
     W, H = 1080, 1920
     canvas = Image.new("RGBA", (W, H), GRAPHITE + (255,))
     art_top = 760
@@ -357,17 +405,19 @@ def compose_short(plan: dict, visual: Path | None, out: Path, channel) -> Path:
     _grid(ImageDraw.Draw(over), (0, 0, W, art_top), 54, 20)
     canvas.alpha_composite(over)
 
-    _brand(canvas, channel, 0, 84, 1.45, center_w=W)
-    y = 300
+    s = spec or SPEC["short"]
+    _brand(canvas, channel, 0, s["brand_y"], s["brand_scale"], center_w=W)
+    y = s["top_y"]
     if plan["top"]:
-        top = _fit("grotesk", "Bold", plan["top"], W - 120, 150, 80)
+        top = _fit(s["top_font"], s["top_weight"], plan["top"], s["top_max_w"], s["top_size"], 90)
         tx = (W - _text_w(top, plan["top"])) // 2
-        _shadowed(canvas, (tx, y), plan["top"], top, IVORY + (255,), shear=0.12, blur=8)
-        y += int(top.size * 1.05)
-    big = _fit("anton", "", plan["big"], W - 260, 230, 110)
+        _shadowed(canvas, (tx, y), plan["top"], top, IVORY + (255,), shear=s["shear"], blur=8)
+        y += int(top.size * s["top_gap"])
+    big = _fit(s["big_font"], "", plan["big"], s["big_max_w"], s["big_size"], 120)
     tb = big.getbbox(plan["big"])
-    bar_w = (tb[2] - tb[0]) + 52 + 26
-    _bar(canvas, (W - bar_w) // 2, y + 10, plan["big"], big)
+    bar_w = max((tb[2] - tb[0]) + s["bar_pad"] * 2 + s["bar_slant"] + int((tb[3] - tb[1]) * s["shear"]), s["bar_min_w"])
+    _bar(canvas, (W - bar_w) // 2, y, plan["big"], big, slant=s["bar_slant"], pad=s["bar_pad"],
+         shear=s["shear"], min_w=s["bar_min_w"])
     floor = Image.new("RGBA", (W, 220), (0, 0, 0, 0))
     fd = ImageDraw.Draw(floor)
     for y in range(220):
@@ -405,10 +455,61 @@ def compose_for_lesson(lesson, out: Path, channel, content_type: str = "long",
     if plan is None:
         from .brand import style_text
 
-        plan = plan_for(lesson.title, style_text(str(getattr(channel, "id", "") or "_")))
+        plan = plan_for(lesson.title, style_text(str(getattr(channel, "id", "") or "_")), vertical)
     if visual is None:
         visual = render_visual(plan["visual"], out.with_name("thumbnail_visual.jpg"), vertical)
     if visual is None:
         print("[future-thumb] no visual could be made; the card is drawn on the blueprint alone")
     compose = compose_short if vertical else compose_long
-    return compose(plan, visual, out, channel)
+    return _compose_checked(compose, plan, visual, out, channel, "short" if vertical else "long")
+
+
+def _compose_checked(compose, plan, visual, out: Path, channel, kind: str) -> Path:
+    """Draw, measure against the channel's examples (style_match), correct the sizes, redraw.
+
+    Up to two corrections; the best-scoring card is kept and its check is saved
+    next to it (<card>.style.json) for the dashboard."""
+    import copy
+    import json
+    import shutil
+
+    from .style_match import compare
+
+    spec = copy.deepcopy(SPEC[kind])
+    channel_id = str(getattr(channel, "id", "") or "_")
+    best_score, best_check = -1, None
+    trial = out.with_name(out.stem + "_try" + out.suffix)
+    for attempt in range(3):
+        compose(plan, visual, trial, channel, spec)
+        check = compare(trial, channel_id)
+        score = 100 if check["score"] is None else check["score"]
+        print(f"[future-thumb] style check {kind} try {attempt + 1}: score {check['score']} "
+              f"{'; '.join(check['issues']) or 'matches the examples'}")
+        if score > best_score:
+            best_score, best_check = score, check
+            shutil.copyfile(trial, out)
+        if check["ok"]:
+            break
+        r = check["ratios"]
+        # Text area grows with the square of the font size; bars grow linearly.
+        if check["issues"] and any("edge" in issue for issue in check["issues"]):
+            # Pull everything back inside the margins first.
+            spec["bar_min_w"] = int(spec["bar_min_w"] * 0.9)
+            spec["top_max_w"] = int(spec["top_max_w"] * 0.92)
+            spec["big_max_w"] = int(spec["big_max_w"] * 0.92)
+            continue
+        if r.get("headline"):
+            grow = max(0.75, min(1.35, (1 / r["headline"]) ** 0.5))
+            spec["top_size"] = int(spec["top_size"] * grow)
+            spec["top_max_w"] = int(min(spec["top_max_w"] * grow, 940 if kind == "short" else 560))
+        if r.get("bar_h"):
+            grow = max(0.7, min(1.5, 1 / r["bar_h"]))
+            spec["big_size"] = int(spec["big_size"] * grow ** 0.6)
+            spec["bar_pad"] = int(spec["bar_pad"] * grow)
+            spec["big_max_w"] = min(spec["big_max_w"], 860 if kind == "short" else 480)
+        if r.get("bar_w"):
+            grow = max(0.7, min(1.4, 1 / r["bar_w"]))
+            spec["bar_min_w"] = int(min(spec["bar_min_w"] * grow, 960 if kind == "short" else 600))
+    trial.unlink(missing_ok=True)
+    out.with_suffix(".style.json").write_text(json.dumps(best_check or {}, indent=2), encoding="utf-8")
+    return out

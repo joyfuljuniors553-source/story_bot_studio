@@ -83,13 +83,34 @@ FINANCE_RULES = (
 )
 
 
+# Future-science videos talk about years that have not happened yet; a script
+# that says "by 2035 scientists discovered" presents a guess as history.
+FUTURE_RULES = (
+    "\nFUTURE SCIENCE RULES (future technology channel):\n"
+    "- The topic is technology, AI, robotics, biotechnology, energy, space or future cities. "
+    "Not deep-sea, ancient-Earth or wildlife mysteries.\n"
+    "- Today is " + __import__("datetime").date.today().strftime("%B %Y") + ". Anything after "
+    "today is a possibility: write 'could', 'might', 'researchers expect'. Never use past tense "
+    "for a future year, and never say a future event was discovered or happened.\n"
+    "- Build each video in three clear layers: what exists today, what researchers are testing now "
+    "(with its limits), and what might come later (labelled as a scenario).\n"
+    "- Use only real, well-known technologies, organisations and results. Never invent a study, a "
+    "quote, a percentage or a named scientist; when unsure, stay general.\n"
+    "- The title is a question or a scenario (e.g. 'Could Robots Run Entire Cities?'), never a "
+    "claim that a future thing is certain.\n"
+)
+
+
 def script_rules(channel) -> str:
     """Extra instructions for the script writer: the story shape (every channel
     but the preschool one), and the language rules on an Urdu one."""
     wanted = getattr(channel, "story_arc", True) and not getattr(channel, "builtin", False)
     story = STORY_ARC if wanted else ""
-    if "finance" in str(getattr(channel, "genre", "") or "").lower():
+    genre = str(getattr(channel, "genre", "") or "").lower()
+    if "finance" in genre:
         story += FINANCE_RULES
+    if "future" in genre:
+        story += FUTURE_RULES
     if not is_urdu(channel):
         return story
     return story + (

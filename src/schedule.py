@@ -15,7 +15,7 @@ from .db import release_publish_slot, reserve_publish_slot
 
 
 # Fixed daily release times, US Eastern (the channels' audience): two Shorts
-# and one long video a day, each at an hour that kind of viewer is watching.
+# and one long video a day, at least 4 hours apart within a channel.
 # YouTube, Facebook and TikTok all go live at the same time (the Facebook post
 # and the TikTok post are scheduled for the video's YouTube publishAt).
 RELEASE_TZ = ZoneInfo("America/New_York")
@@ -26,13 +26,16 @@ RELEASE_TIMES = {
     "trending":        (("07:00", "17:00"), ("12:00",)),
     "heroic history":  (("11:00", "18:00"), ("14:00",)),
     "bedtime stories": (("18:30", "20:30"), ("19:00",)),
-    # The current channels (build slots in channels.json): every release at
-    # least two hours from the channel's other ones the same day.
-    "celebrity":              (("17:00", "20:00"), ("15:00",)),
-    "paleontology & history": (("18:00", "21:00"), ("16:00",)),
-    "space documentaries":    (("19:00", "22:00"), ("17:30",)),
-    "personal finance":       (("15:00", "19:00"), ("13:00",)),
-    "deep ocean":             (("18:30", "21:30"), ("16:30",)),
+    # The current channels: Short, long, Short, each release 4 h from the
+    # channel's next one, and the channels 30 min apart so no two go live
+    # together.
+    "personal finance":       (("12:00", "20:00"), ("16:00",)),
+    "deep ocean":             (("12:30", "20:30"), ("16:30",)),
+    "celebrity":              (("13:00", "21:00"), ("17:00",)),
+    "space documentaries":    (("13:30", "21:30"), ("17:30",)),
+    "paleontology & history": (("14:00", "22:00"), ("18:00",)),
+    # Future-science channels (none yet): 09 / 13 / 17 / 21.
+    "future science":         (("09:00", "13:00", "21:00"), ("17:00",)),
 }
 _DEFAULT_RELEASE = (("12:00", "18:00"), ("15:00",))
 

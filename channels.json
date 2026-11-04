@@ -48,7 +48,7 @@
       "category_id": "28",
       "seo_suffix": "| Quasorynth",
       "image_style": "cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery",
-      "client_secret": "client_secret.json",
+      "client_secret": "client_secret_quasorynth_space.json",
       "token": "token_quasorynth_space.json",
       "topics_per_day": 2,
       "slot": 8,
@@ -208,7 +208,7 @@
         "pixabay",
         "coverr"
       ],
-      "description_footer": "⚠️ Disclaimer: Educational content only. Not personalized financial, investment, tax, or legal advice."
+      "description_footer": "\u26a0\ufe0f Disclaimer: Educational content only. Not personalized financial, investment, tax, or legal advice."
     },
     {
       "id": "abyssoryn_earth_mysterie",

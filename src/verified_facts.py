@@ -262,6 +262,13 @@ _SUGGEST_BRIEF = {
         "'Gobekli Tepe', 'Burgess Shale'). No general subjects like 'Evolution', no myths or "
         "pseudo-archaeology."
     ),
+    "deep ocean": (
+        "Name 15 real, specific subjects for a documentary channel about the deep ocean and the "
+        "unknown places of Earth: deep-sea animals (anglerfish, giant squid, vampire squid), ocean "
+        "trenches and vents, shipwrecks, and strange real places on land and under ice (Lake Vostok, "
+        "Son Doong cave, Kola Superdeep Borehole, Darvaza gas crater). Each must be the exact title of "
+        "its own English Wikipedia article. No myths, cryptids or conspiracy theories."
+    ),
     "personal finance": (
         "Name 15 real subjects for a personal finance education channel: money concepts and tools "
         "(compound interest, inflation, credit scores, index funds, budgeting methods, debt repayment "
@@ -287,7 +294,10 @@ def _suggested_subjects(channel: Channel, used: set[str]) -> list[str]:
     """
     from .genre_topics import _script_json
 
-    brief = _SUGGEST_BRIEF.get(str(channel.genre).lower()) or (
+    genre = str(channel.genre).lower()
+    # The dashboard names a genre in its own words ("deep ocean & unknown earth").
+    brief = _SUGGEST_BRIEF.get(genre) or next(
+        (text for key, text in _SUGGEST_BRIEF.items() if key in genre), None) or (
         f"Name 15 real, well-documented people whose life story fits a "
         f"'{channel.genre}' video channel: heroes of courage, sacrifice or service, and also "
         "famous lives - cricketers, other sports stars, scientists and inventors, past national "

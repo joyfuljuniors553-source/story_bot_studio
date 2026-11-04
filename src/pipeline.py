@@ -153,7 +153,7 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
     thumbnail is made) for other channels or when anything fails.
     """
     style = str(getattr(channel, "thumbnail_style", "") or "")
-    if style not in ("space", "earth", "money"):
+    if style not in ("space", "earth", "money", "ocean"):
         return None
     try:
         from .genre_topics import _script_json
@@ -168,6 +168,9 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
             "- scene: 2 to 4 words to search a stock photo site for ONE realistic money object or "
             "scene that shows the topic (e.g. \"glass jar dollar bills\", \"credit card close up\", "
             "\"calculator and bills\"), no faces.") if style == "money" else (
+            "- scene: 2 or 3 words to search a stock photo site for the water or place behind it "
+            "(e.g. \"deep ocean underwater\", \"underwater light rays\", \"dark cave\"), no animals "
+            "or people.") if style == "ocean" else (
             "- scene: 2 or 3 words to search a stock photo site for the landscape or sky behind "
             "it (e.g. \"snowy tundra\", \"purple nebula\", \"jungle river\"), no animals or people.")
         plan = _script_json(
@@ -203,11 +206,14 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
             print(f"[thumbnail] no photo of {wiki}, using the scene picture: {exc}")
         if not photo or not Path(photo).is_file():
             return None
-        if style == "space":
+        extra = {}
+        if style in ("space", "ocean"):
             from .space_thumbnail import compose_space_thumbnail as compose
+
+            extra["palette"] = style
         else:
             from .earth_thumbnail import compose_earth_thumbnail as compose
-        return compose(headline, Path(photo), run_dir / "thumbnail.jpg", channel,
+        return compose(headline, Path(photo), run_dir / "thumbnail.jpg", channel, **extra,
                        scene=scene,
                        vertical=content_type == "short")
     except Exception as exc:

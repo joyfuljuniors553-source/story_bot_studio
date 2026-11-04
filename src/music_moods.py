@@ -36,7 +36,7 @@ MOOD_WORDS = {
                "discipline", "sport", "record", "athlete"),
     "news": ("news", "trending", "headline", "economy", "election", "market", "technology", "report"),
     "calm": ("cook", "recipe", "kitchen", "food", "travel", "nature", "health", "garden", "science",
-             "space", "learn", "tutorial"),
+             "space", "learn", "tutorial", "ocean", "deep sea", "underwater"),
 }
 GENRE_MOOD = {
     "kids": "kids", "crime": "tense", "mystery": "tense", "horror": "dark", "love": "warm",

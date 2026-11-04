@@ -32,6 +32,24 @@ _LABEL_CAP = 0.68  # Rajdhani's
 _LINE_CHARS = 14   # wrap the headline at about this many letters
 _TAGS = ["SPACE EXPLAINED", "COSMIC FILES"]
 _BACKDROPS = ["nebula", "galaxy", "purple galaxy", "milky way galaxy", "colorful nebula", "outer space"]
+# The same card in other colours: "space" (Quasorynth) gold on a violet sky,
+# "ocean" (Abyssoryn) glowing cyan in the deep blue, a water drop on the tag.
+PALETTES = {
+    "space": {
+        "tags": _TAGS, "backdrops": _BACKDROPS, "light": (255, 245, 205), "dark": (255, 185, 0),
+        "glow": "0xFFAD27", "haze": (120, 40, 220), "halo": (150, 70, 255), "frame": (255, 210, 120),
+        "frame_glow": (255, 173, 39), "icon": (255, 188, 69), "shape": "planet",
+        "grade": "colorbalance=rs=0.04:gs=-0.08:bs=0.16:rm=0.06:bm=0.10",
+    },
+    "ocean": {
+        "tags": ["DEEP OCEAN FILES", "UNKNOWN EARTH"],
+        "backdrops": ["deep ocean underwater", "underwater blue light rays", "deep sea dark water",
+                      "ocean depths", "underwater cave", "dark ocean water"],
+        "light": (215, 255, 250), "dark": (0, 205, 235), "glow": "0x00E5FF", "haze": (0, 110, 200),
+        "halo": (0, 190, 255), "frame": (130, 230, 255), "frame_glow": (0, 170, 255), "icon": (90, 230, 255),
+        "shape": "drop", "grade": "colorbalance=rs=-0.10:gs=0.02:bs=0.18:rm=-0.06:bm=0.12",
+    },
+}
 
 
 def _lines(headline: str, chars: int = _LINE_CHARS) -> list[tuple[str, bool]]:
@@ -86,7 +104,8 @@ def _rounded(cx: float, cy: float, half_w: float, half_h: float, r: float) -> st
 
 
 def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, channel=None,
-                            tag: str | None = None, scene: str = "", vertical: bool = False) -> Path:
+                            tag: str | None = None, scene: str = "", vertical: bool = False,
+                            palette: str = "space") -> Path:
     """Draw the card. `headline` marks its gold words with *stars*; `scene` names
     the backdrop to search for (a few words), else one of the stock ones.
 
@@ -96,11 +115,24 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
     output_path.parent.mkdir(parents=True, exist_ok=True)
     work = output_path.parent
     seed = int(hashlib.sha1(headline.encode("utf-8")).hexdigest(), 16)
-    backdrop = _backdrop(headline, work / "space_backdrop.jpg", [scene] if scene else _BACKDROPS)
+    look = PALETTES.get(palette, PALETTES["space"])
+    backdrop = _backdrop(headline, work / "space_backdrop.jpg", [scene] if scene else list(look["backdrops"]))
     screened = _on_black(photo)
     cutout = None if screened else _cutout(photo, work / "space_cutout.png")
     if not screened and not cutout:
         screened = True
+    if cutout:
+        # The cut-out keeps the whole photo's canvas; trimmed to the subject it
+        # fills its box instead of floating small in the corner of it.
+        try:
+            from PIL import Image
+
+            image = Image.open(cutout)
+            box = image.getchannel("A").getbbox()
+            if box:
+                image.crop(box).save(cutout)
+        except Exception:
+            pass
     if vertical:
         # The Shorts shelf crops about 8% off the top and the bottom, so the label
         # and the headline keep 190px clear of both edges.
@@ -134,16 +166,16 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
     # The gold words' dark outline and drop shadow, drawn under the gradient.
     gold_under = [text.replace("fontcolor=white", "fontcolor=0x020817") + f":{outline}"
                   for text in gold_texts]
-    glow_texts = [text.replace("fontcolor=white", "fontcolor=0xFFAD27") for text in gold_texts]
+    glow_texts = [text.replace("fontcolor=white", "fontcolor=" + look["glow"]) for text in gold_texts]
     gold_layers = [line for index, (_, size, top) in enumerate(gold_rows)
                    for line in _gradient_layer(f"gold{index}", [gold_texts[index]], top,
-                                               int(top + size * _CAP), (255, 245, 205), (255, 185, 0),
+                                               int(top + size * _CAP), look["light"], look["dark"],
                                                w, h)]
 
     # ---- shapes drawn with geq: frame, tag, the tag's planet icon
     inset = int(14 * k)
     frame = _rounded(w / 2, h / 2, w / 2 - inset, h / 2 - inset, 22)
-    tag_file = _write(work / "space_tag.txt", tag or _TAGS[seed % len(_TAGS)])
+    tag_file = _write(work / "space_tag.txt", tag or look["tags"][seed % len(look["tags"])])
     tag_size, tag_h = int(28 * k), int(56 * k)
     icon = tag_h - int(26 * k)
     pad = int(20 * k)
@@ -151,9 +183,17 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
     tag_x, tag_y = left - 8, margin
     pill = _rounded(tag_x + tag_w / 2, tag_y + tag_h / 2, tag_w / 2, tag_h / 2, tag_h / 2)
     icx, icy = tag_x + pad + icon / 2, tag_y + tag_h / 2
+    haze_rgb, frame_rgb, frame_glow_rgb, icon_rgb = look["haze"], look["frame"], look["frame_glow"], look["icon"]
     planet = f"lt(hypot(X-{icx},Y-{icy}),{icon * 0.3})"
     ring = (f"lt(abs(hypot((X-{icx})*cos(0.4)+(Y-{icy})*sin(0.4),"
             f"((Y-{icy})*cos(0.4)-(X-{icx})*sin(0.4))*2.6)-{icon * 0.5}),2)")
+    if look["shape"] == "drop":
+        r = icon * 0.5
+        icon_shape = (f"max(lt(hypot(X-{icx},Y-({icy}+{r * 0.25})),{r * 0.55}),"
+                      f"between(Y,{icy - r * 0.85},{icy + r * 0.25})"
+                      f"*lt(abs(X-{icx}),(Y-({icy - r * 0.85}))*0.52))")
+    else:
+        icon_shape = f"max({planet},{ring})"
     tag_text = _drawtext(tag_file, LABEL, tag_size, tag_y + int((tag_h - tag_size * _LABEL_CAP) / 2),
                          "white", x=str(tag_x + pad + icon + int(12 * k)))
 
@@ -163,7 +203,7 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
     sky = (f"[0:v]scale={size}:force_original_aspect_ratio=increase,crop={size},"
            + ("gblur=sigma=1.5,eq=brightness=-0.04:contrast=1.15:saturation=1.35,"
               if backdrop else "gblur=sigma=30,eq=brightness=-0.22:saturation=1.1,")
-           + "colorbalance=rs=0.04:gs=-0.08:bs=0.16:rm=0.06:bm=0.10,format=rgba[sky0]")
+           + f"{look['grade']},format=rgba[sky0]")
     if vertical:
         glow_x, glow_y, obj_top = w / 2, h * 0.33, tag_y + tag_h + 40
         fit = "scale=920:880:force_original_aspect_ratio=decrease:flags=lanczos"
@@ -176,7 +216,7 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
         ox, oy = "W-w-20", "(H-h)/2"
         hx, hy = "W-w+40", "(H-h)/2"
         shade_alpha = "200*clip((760-X)/520,0,1)*clip((Y-200)/260,0.25,1)"
-    nebula = (f"color=c=black:s={w}x{h},format=rgba,geq=r='120':g='40':b='220':"
+    nebula = (f"color=c=black:s={w}x{h},format=rgba,geq=r='{haze_rgb[0]}':g='{haze_rgb[1]}':b='{haze_rgb[2]}':"
               f"a='110*exp(-(pow((X-{glow_x})/{380 * k},2)+pow((Y-{glow_y})/{300 * k},2)))'[neb]")
     # Darker behind the headline so it reads on any sky.
     shade = f"color=c=black:s={w}x{h},format=rgba,geq=r='2':g='6':b='20':a='{shade_alpha}'[shade]"
@@ -195,7 +235,7 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
             f"[1:v]{fit},eq=contrast=1.08:saturation=1.15,unsharp=5:5:0.6,format=rgba,split=2[o][o2]",
             # A violet glow round the cut-out lifts it off the sky.
             "[o2]pad=iw+120:ih+120:60:60:color=black@0,"
-            "geq=r='150':g='70':b='255':a='alpha(X,Y)*0.9',gblur=sigma=26[halo]",
+            f"geq=r='{look['halo'][0]}':g='{look['halo'][1]}':b='{look['halo'][2]}':a='alpha(X,Y)*0.9',gblur=sigma=26[halo]",
             "[sky0][neb]overlay=0:0[sky1]",
             f"[sky1][halo]overlay=x={hx}:y={hy}[sky2]",
             f"[sky2][o]overlay=x={ox}:y={oy}[pic]",
@@ -210,15 +250,16 @@ def compose_space_thumbnail(headline: str, photo: Path, output_path: Path, chann
         words = ["[p3]" + ",".join(white) + "[p4]"]
     graph = ";".join([
         sky, nebula, shade, *picture,
-        f"color=c=black:s={w}x{h},format=rgba,geq=r='255':g='210':b='120':"
+        f"color=c=black:s={w}x{h},format=rgba,geq=r='{frame_rgb[0]}':g='{frame_rgb[1]}':b='{frame_rgb[2]}':"
         f"a='255*lt(abs({frame}),1.6)'[frame]",
-        f"color=c=black:s={w}x{h},format=rgba,geq=r='255':g='173':b='39':"
+        f"color=c=black:s={w}x{h},format=rgba,geq=r='{frame_glow_rgb[0]}':g='{frame_glow_rgb[1]}':b='{frame_glow_rgb[2]}':"
         f"a='220*lt(abs({frame}),5)',gblur=sigma=8[frameglow]",
         f"color=c=black:s={w}x{h},format=rgba,"
-        f"geq=r='if(lt({pill},-2),4,255)':g='if(lt({pill},-2),8,188)':b='if(lt({pill},-2),24,69)':"
+        f"geq=r='if(lt({pill},-2),4,{icon_rgb[0]})':g='if(lt({pill},-2),8,{icon_rgb[1]})':"
+        f"b='if(lt({pill},-2),24,{icon_rgb[2]})':"
         f"a='225*lt({pill},0)'[tag]",
-        f"color=c=black:s={w}x{h},format=rgba,geq=r='255':g='188':b='69':"
-        f"a='255*max({planet},{ring})'[icon]",
+        f"color=c=black:s={w}x{h},format=rgba,geq=r='{icon_rgb[0]}':g='{icon_rgb[1]}':b='{icon_rgb[2]}':"
+        f"a='255*{icon_shape}'[icon]",
         "[pic][shade]overlay=0:0[p1]",
         "[p1][frameglow]overlay=0:0[p2]",
         "[p2][frame]overlay=0:0[p3]",

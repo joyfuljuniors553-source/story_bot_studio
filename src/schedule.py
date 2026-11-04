@@ -32,6 +32,7 @@ RELEASE_TIMES = {
     "paleontology & history": (("18:00", "21:00"), ("16:00",)),
     "space documentaries":    (("19:00", "22:00"), ("17:30",)),
     "personal finance":       (("15:00", "19:00"), ("13:00",)),
+    "deep ocean":             (("18:30", "21:30"), ("16:30",)),
 }
 _DEFAULT_RELEASE = (("12:00", "18:00"), ("15:00",))
 
@@ -45,7 +46,8 @@ def release_times(channel_id: str, content_type: str = "short") -> tuple[str, ..
         key = "kids" if channel.builtin else str(channel.genre).lower()
     except Exception:
         key = ""
-    shorts, longs = RELEASE_TIMES.get(key, _DEFAULT_RELEASE)
+    shorts, longs = RELEASE_TIMES.get(key) or next(
+        (times for name, times in RELEASE_TIMES.items() if name in key), _DEFAULT_RELEASE)
     return longs if content_type == "long" else shorts
 
 

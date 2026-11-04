@@ -206,7 +206,8 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     # gets the cinematic poster; any failure falls back to this card.
     from .cinematic_thumbnail import load_spec
 
-    if channel is not None and load_spec(str(getattr(channel, "id", "") or "")):
+    spec = load_spec(str(getattr(channel, "id", "") or "")) if channel is not None else None
+    if spec and spec.get("design") == "cinematic_biography":
         try:
             from .cinematic_thumbnail import compose
 

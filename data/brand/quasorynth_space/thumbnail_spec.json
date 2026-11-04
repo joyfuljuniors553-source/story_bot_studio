@@ -1,0 +1,245 @@
+{
+  "design": "cosmic_headline",
+  "source": "ChatGPT style bible for Quasorynth (estimated from the Black Holes example), 2026-11-04",
+  "badge_text": "SPACE EXPLAINED",
+  "palette": {
+    "background_black": "#020215",
+    "background_violet": "#09062E",
+    "nebula_mid": "#43197A",
+    "nebula_bright": "#863DBF",
+    "electric_blue": "#4169E1",
+    "badge_fill": "#07070F",
+    "badge_border": "#D2AE67",
+    "planet_gold": "#F3D77B",
+    "outer_border": "#D4AC61",
+    "outer_glow": "#F4C979",
+    "badge_text": "#F8F7F2"
+  },
+  "gradients": {
+    "gold": [
+      [
+        0,
+        "#FFF2B5"
+      ],
+      [
+        25,
+        "#F5DF91"
+      ],
+      [
+        55,
+        "#EEBE4C"
+      ],
+      [
+        100,
+        "#B87824"
+      ]
+    ]
+  },
+  "effects": {
+    "white": {
+      "fill": "#FFFFFF",
+      "outline": "#0B0818",
+      "bevel": null,
+      "shadow_opacity": 0.8
+    },
+    "gold": {
+      "gradient": "gold",
+      "outline": "#231508",
+      "bevel": "#FFF8D8",
+      "shadow_opacity": 0.8
+    },
+    "badge": {
+      "fill": "#F8F7F2",
+      "outline": "#07070F",
+      "bevel": null,
+      "shadow_opacity": 0.65
+    }
+  },
+  "grade": {
+    "contrast": 1.2,
+    "saturation": 1.12,
+    "vignette": 0.3,
+    "grain": 0.04,
+    "text_region_darkening": 0.15
+  },
+  "long": {
+    "size": [
+      1280,
+      720
+    ],
+    "subject_area": "the main object large in the upper right and right centre (x 700-1280, y 30-505), its glow sweeping toward the right edge; the lower left stays dark for the headline",
+    "border": {
+      "box": [
+        7,
+        8,
+        1266,
+        704
+      ],
+      "radius": 36,
+      "stroke": 4,
+      "glow": 5,
+      "glow_opacity": 0.35
+    },
+    "badge": {
+      "box": [
+        60,
+        35,
+        660,
+        96
+      ],
+      "radius": 48,
+      "border": 3,
+      "icon_box": [
+        79,
+        49,
+        105,
+        68
+      ],
+      "icon_stroke": 5,
+      "text_box": [
+        202,
+        53,
+        480,
+        65
+      ],
+      "cap": 44,
+      "tracking": 1
+    },
+    "white": {
+      "box": [
+        57,
+        355,
+        920,
+        118
+      ],
+      "cap": 108,
+      "tracking": -2
+    },
+    "gold": {
+      "box": [
+        58,
+        485,
+        1040,
+        128
+      ],
+      "cap": 116,
+      "tracking": -2
+    },
+    "outline": {
+      "white": 3,
+      "gold": 3,
+      "badge": 0
+    },
+    "bevel": {
+      "white": 0,
+      "gold": 2
+    },
+    "shadow": {
+      "white": [
+        5,
+        7,
+        8
+      ],
+      "gold": [
+        5,
+        7,
+        9
+      ],
+      "badge": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "short": {
+    "size": [
+      1080,
+      1920
+    ],
+    "subject_area": "the main object large in the centre of the upper two thirds (around x 615, y 710), the bottom third dark for the headline",
+    "border": {
+      "box": [
+        14,
+        18,
+        1052,
+        1884
+      ],
+      "radius": 48,
+      "stroke": 6,
+      "glow": 7,
+      "glow_opacity": 0.35
+    },
+    "badge": {
+      "box": [
+        65,
+        90,
+        740,
+        110
+      ],
+      "radius": 55,
+      "border": 4,
+      "icon_box": [
+        95,
+        111,
+        110,
+        72
+      ],
+      "icon_stroke": 5,
+      "text_box": [
+        225,
+        116,
+        540,
+        68
+      ],
+      "cap": 48,
+      "tracking": 1
+    },
+    "white": {
+      "box": [
+        70,
+        1250,
+        940,
+        200
+      ],
+      "cap": 190,
+      "tracking": -2
+    },
+    "gold": {
+      "box": [
+        70,
+        1470,
+        940,
+        215
+      ],
+      "cap": 190,
+      "tracking": -2
+    },
+    "outline": {
+      "white": 4,
+      "gold": 4,
+      "badge": 0
+    },
+    "bevel": {
+      "white": 0,
+      "gold": 3
+    },
+    "shadow": {
+      "white": [
+        6,
+        9,
+        12
+      ],
+      "gold": [
+        6,
+        9,
+        13
+      ],
+      "badge": [
+        2,
+        3,
+        4
+      ]
+    }
+  }
+}

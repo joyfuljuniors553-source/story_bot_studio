@@ -155,6 +155,22 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
     style = str(getattr(channel, "thumbnail_style", "") or "")
     if style not in ("space", "earth", "money", "ocean"):
         return None
+    # A channel with a design spec of its own (data/brand/<id>/thumbnail_spec.json);
+    # any failure falls back to the style's usual card below.
+    try:
+        from .cinematic_thumbnail import load_spec
+
+        spec = load_spec(str(getattr(channel, "id", "") or ""))
+        if spec and spec.get("design") == "cosmic_headline":
+            from .thumbnails import manual_thumbnail_for
+
+            if not manual_thumbnail_for(lesson):
+                from .cosmic_thumbnail import compose
+
+                return compose(lesson.title, run_dir / "thumbnail.jpg", channel,
+                               vertical=content_type == "short")
+    except Exception as exc:
+        print(f"[thumbnail] cosmic design failed, using the usual {style} card: {exc}")
     try:
         from .genre_topics import _script_json
         from .page_posts import real_photo

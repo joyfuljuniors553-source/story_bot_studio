@@ -347,7 +347,10 @@ def _thumb(item: dict) -> str:
                 if ok:
                     target.write_bytes(data.tobytes())
                     return name
-        site = os.getenv("STATUS_PAGE_URL", "").rstrip("/")
+        # The live page's address (STATUS_PAGE_URL, else this bot's GitHub Pages site).
+        from src.setup_guide import SITE
+
+        site = SITE.rstrip("/")
         if site:
             import urllib.request
 

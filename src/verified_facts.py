@@ -640,12 +640,74 @@ def article_for_prompt(channel: Channel, user_prompt: str, long_form: bool) -> A
     return search_article(text, long_form, _documentary(channel, long_form))
 
 
+_THEIR_TITLE = re.compile(r'has a video titled "(.+?)" that is getting')
+
+
+def competitor_article(channel: Channel, their_title: str, long_form: bool) -> Article | None:
+    """The Wikipedia article about the subject of another channel's video, or None.
+
+    Only the subject is taken: the script is then written from this article
+    like any other, so nothing of their video is used. None when the subject
+    does not fit this channel or this channel already covered it.
+    """
+    from .genre_topics import _script_json
+
+    person = not getattr(channel, "thumbnail_style", "")
+    kind = ("a real, well-documented person (their own article, not a film or a list)" if person
+            else "the animal, place, object, event or idea it is about")
+    raw = _script_json(
+        f"Our YouTube channel's topic: {getattr(channel, 'topic', '') or channel.genre}.\n"
+        f"Another channel's video on a similar subject is doing well: \"{their_title}\".\n"
+        f"Name the ONE English Wikipedia article about its main subject: {kind}. Our video "
+        "will be written only from that article. Return an empty string when that subject "
+        "does not fit our channel's topic, or when there is no such article.\n"
+        'Return ONLY JSON: {"wikipedia": str}'
+    )
+    name = " ".join(str(raw.get("wikipedia") or "").split())
+    used = _used_subjects(channel, long_form)
+    if not name or name.lower() in used:
+        print(f"[competitors] {channel.id}: no new subject in '{their_title[:60]}' "
+              f"({'already covered' if name else 'does not fit this channel'})")
+        return None
+    article = fetch_article(name, long_form, _documentary(channel, long_form))
+    if article.title.lower() in used:
+        print(f"[competitors] {channel.id}: {article.title} is already covered")
+        return None
+    return article
+
+
 def write_next_lesson(channel: Channel, scenes: int, long_form: bool,
-                      user_prompt: str = "") -> tuple[str, dict]:
-    """Pick a subject and write its script; try another person if one fails."""
+                      user_prompt: str = "", inspiration_title: str | None = None,
+                      outcome: dict | None = None) -> tuple[str, dict]:
+    """Pick a subject and write its script; try another person if one fails.
+
+    A competitor's title (inspiration_title, or named in the daily run's brief)
+    is tried first as the subject; `outcome["competitor"]` is set when it was used.
+    """
     from .genre_topics import _looks_like_instruction_title
 
     text = " ".join(str(user_prompt or "").split())
+    theirs = inspiration_title or (m.group(1) if (m := _THEIR_TITLE.search(text)) else None)
+    if theirs:
+        text = ""  # the brief is not a subject a person typed
+        try:
+            article = competitor_article(channel, theirs, long_form)
+            if article is not None:
+                key, lesson = write_lesson(channel, article, scenes, long_form)
+                from .competitors import too_similar
+
+                if too_similar(lesson["title"], theirs):
+                    # Same subject, but never their wording: our plain title instead.
+                    topic = bool(getattr(channel, "thumbnail_style", ""))
+                    lesson["title"] = f"{article.title} Explained" if topic else f"{article.title}: The True Story"
+                print(f"[competitors] {channel.id}: '{lesson['title'][:60]}' from the subject of "
+                      f"'{theirs[:60]}' ({article.title})")
+                if outcome is not None:
+                    outcome["competitor"] = theirs
+                return key, lesson
+        except Exception as exc:
+            print(f"[competitors] {channel.id}: their subject could not be used ({exc}); "
+                  "taking the next one from the list")
     # Words a person typed name the subject they want; that one is not swapped.
     asked_for = bool(text) and not _looks_like_instruction_title(text)
     error = "No verified script could be written"

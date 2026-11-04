@@ -327,8 +327,22 @@ def _generate_one(channel: Channel, avoid_titles: list[str], scenes: int = SHORT
     from .verified_facts import is_verified_channel, write_next_lesson
 
     if is_verified_channel(channel):
-        # A fact-only channel never gets a free-written story.
-        key, lesson = write_next_lesson(channel, scenes, long_form=False)
+        # A fact-only channel never gets a free-written story. A competitor's
+        # working subject is tried first, still written only from its article.
+        from . import competitors
+
+        idea, outcome = None, {}
+        if not channel.builtin:
+            try:
+                idea = competitors.next_idea(channel, "short")
+            except Exception as exc:
+                print(f"[competitors] {channel.id}: no idea ({exc})")
+        key, lesson = write_next_lesson(channel, scenes, long_form=False,
+                                        inspiration_title=idea["title"] if idea else None,
+                                        outcome=outcome)
+        if idea:
+            competitors.mark_written(channel.id, idea["video_id"], lesson["title"] if outcome
+                                     else "(subject did not fit this channel)")
         return {"_key": key, **lesson}
     tone = getattr(channel, "tone", "") or GENRE_TONE.get(channel.genre, "engaging and well-paced")
     avoid = "; ".join(avoid_titles[-40:]) if avoid_titles else "none yet"
@@ -710,7 +724,15 @@ def generate_from_prompt(
     from .verified_facts import is_verified_channel, write_next_lesson
 
     if is_verified_channel(channel):
-        key, lesson = write_next_lesson(channel, scenes, long_form, user_prompt=user_prompt)
+        outcome: dict = {}
+        key, lesson = write_next_lesson(channel, scenes, long_form, user_prompt=user_prompt,
+                                        outcome=outcome)
+        theirs = re.search(r'has a video titled "(.+?)" that is getting', user_prompt)
+        if theirs:
+            from .competitors import mark_written_for_title
+
+            mark_written_for_title(channel.id, theirs.group(1), lesson["title"] if outcome
+                                   else "(subject did not fit this channel)")
         return _save_custom_lesson(channel, f"long_{key}" if long_form else key, lesson)
     raw: dict = {}
     clash: str | None = None

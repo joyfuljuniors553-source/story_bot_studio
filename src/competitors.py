@@ -284,6 +284,17 @@ def mark_written(channel_id: str, video_id: str, our_title: str) -> None:
         conn.close()
 
 
+def mark_written_for_title(channel_id: str, their_title: str, our_title: str) -> None:
+    """Record our title against their video when only their title is at hand (the long-video brief)."""
+    conn = _conn()
+    try:
+        conn.execute("UPDATE competitor_videos SET our_title = ? WHERE channel = ? AND title = ?",
+                     (our_title, channel_id, their_title))
+        conn.commit()
+    finally:
+        conn.close()
+
+
 def inspiration_brief(idea: dict) -> str:
     """The instruction added to the script prompt. Their title is the only thing passed on."""
     return (

@@ -1,0 +1,367 @@
+{
+  "design": "cinematic_biography",
+  "source": "ChatGPT style bible for LegendraScope (estimated from the Napoleon examples), 2026-11-04",
+  "brand_text": "LegendraScope",
+  "default_words": [
+    "RISE",
+    "FAME",
+    "LEGACY"
+  ],
+  "palette": {
+    "sky_top": "#071A2A",
+    "sky_mid": "#102D42",
+    "sky_glow": "#24718B",
+    "sunset_glow": "#D8A46E",
+    "ivory": "#F0EFEB",
+    "rim_light": "#A7DCE5",
+    "brush_red": "#C8161D",
+    "brush_highlight": "#E52B24",
+    "tag_red": "#B91120",
+    "ribbon_navy": "#13203A",
+    "gold_border": "#C79D50"
+  },
+  "gradients": {
+    "chrome": [
+      [
+        0,
+        "#FFFFFF"
+      ],
+      [
+        40,
+        "#E4E7E8"
+      ],
+      [
+        100,
+        "#A7ADB4"
+      ]
+    ],
+    "gold": [
+      [
+        0,
+        "#FFE9A0"
+      ],
+      [
+        45,
+        "#E8B64A"
+      ],
+      [
+        100,
+        "#B07A1E"
+      ]
+    ]
+  },
+  "effects": {
+    "chrome": {
+      "gradient": "chrome",
+      "outline": "#091520",
+      "bevel": "#FFFFFF",
+      "shadow_opacity": 0.7
+    },
+    "gold": {
+      "gradient": "gold",
+      "outline": "#24170B",
+      "bevel": "#FFF0B1",
+      "shadow_opacity": 0.82
+    },
+    "ribbon": {
+      "fill": "#F0EFEB",
+      "outline": "#08121A",
+      "shadow_opacity": 0.65
+    }
+  },
+  "grade": {
+    "portrait_contrast": 1.18,
+    "portrait_saturation": 0.88,
+    "rim_opacity": 0.12,
+    "background_contrast": 1.2,
+    "background_saturation": 0.88,
+    "teal_overlay_opacity": 0.12,
+    "warm_overlay_opacity": 0.12,
+    "vignette": 0.3,
+    "grain": 0.05
+  },
+  "long": {
+    "size": [
+      1280,
+      720
+    ],
+    "person": {
+      "box": [
+        0,
+        10,
+        780,
+        710
+      ],
+      "face_height": 270,
+      "eye": [
+        435,
+        290
+      ]
+    },
+    "scene_area": "the lower right third (x 700-1280, y 430-720); the left half and the upper right are open dramatic sky",
+    "logo": {
+      "box": [
+        22,
+        10,
+        300,
+        100
+      ]
+    },
+    "tag": {
+      "box": [
+        1010,
+        20,
+        245,
+        60
+      ],
+      "cap": 34,
+      "slant_deg": 15,
+      "rotate_deg": -3
+    },
+    "title": [
+      {
+        "text": "THE",
+        "box": [
+          840,
+          58,
+          135,
+          65
+        ],
+        "cap": 55,
+        "tracking": 1,
+        "weight": 800
+      },
+      {
+        "text": "UNTOLD",
+        "box": [
+          710,
+          126,
+          390,
+          100
+        ],
+        "cap": 85,
+        "tracking": -2,
+        "weight": 800
+      },
+      {
+        "text": "LIFE OF",
+        "box": [
+          745,
+          216,
+          330,
+          85
+        ],
+        "cap": 70,
+        "tracking": 1,
+        "weight": 800
+      }
+    ],
+    "name": {
+      "box": [
+        555,
+        270,
+        720,
+        140
+      ],
+      "cap": 125,
+      "tracking": -3,
+      "weight": 900
+    },
+    "brush": {
+      "box": [
+        560,
+        372,
+        680,
+        62
+      ],
+      "rotate_deg": -4,
+      "jag": 7
+    },
+    "ribbon": {
+      "box": [
+        655,
+        425,
+        560,
+        72
+      ],
+      "border": 3,
+      "point": 18,
+      "rotate_deg": -3,
+      "text_cap": 34,
+      "tracking": 1
+    },
+    "outline": {
+      "chrome": 3,
+      "gold": 4,
+      "ribbon": 2
+    },
+    "bevel": {
+      "chrome": 2,
+      "gold": 3
+    },
+    "shadow": {
+      "chrome": [
+        4,
+        5,
+        7
+      ],
+      "gold": [
+        5,
+        7,
+        9
+      ],
+      "ribbon": [
+        2,
+        3,
+        4
+      ],
+      "tag": [
+        3,
+        4,
+        7
+      ]
+    }
+  },
+  "short": {
+    "size": [
+      1080,
+      1920
+    ],
+    "person": {
+      "box": [
+        0,
+        185,
+        1080,
+        1160
+      ],
+      "face_height": 380,
+      "eye": [
+        530,
+        575
+      ]
+    },
+    "scene_area": "the bottom quarter (y 1480-1920) under a sunset glow; everything above it is open dramatic sky",
+    "logo": {
+      "box": [
+        45,
+        55,
+        390,
+        130
+      ]
+    },
+    "tag": {
+      "box": [
+        752,
+        65,
+        280,
+        85
+      ],
+      "cap": 43,
+      "slant_deg": 15,
+      "rotate_deg": -3
+    },
+    "title": [
+      {
+        "text": "THE",
+        "box": [
+          390,
+          722,
+          300,
+          100
+        ],
+        "cap": 75,
+        "tracking": 1,
+        "weight": 800
+      },
+      {
+        "text": "UNTOLD",
+        "box": [
+          180,
+          826,
+          720,
+          145
+        ],
+        "cap": 115,
+        "tracking": -2,
+        "weight": 800
+      },
+      {
+        "text": "LIFE OF",
+        "box": [
+          245,
+          962,
+          590,
+          120
+        ],
+        "cap": 94,
+        "tracking": 1,
+        "weight": 800
+      }
+    ],
+    "name": {
+      "box": [
+        45,
+        1090,
+        990,
+        190
+      ],
+      "cap": 165,
+      "tracking": -3,
+      "weight": 900
+    },
+    "brush": {
+      "box": [
+        50,
+        1228,
+        980,
+        80
+      ],
+      "rotate_deg": -4,
+      "jag": 10
+    },
+    "ribbon": {
+      "box": [
+        90,
+        1340,
+        900,
+        110
+      ],
+      "border": 4,
+      "point": 30,
+      "rotate_deg": -3,
+      "text_cap": 52,
+      "tracking": 1
+    },
+    "outline": {
+      "chrome": 4,
+      "gold": 5,
+      "ribbon": 3
+    },
+    "bevel": {
+      "chrome": 3,
+      "gold": 4
+    },
+    "shadow": {
+      "chrome": [
+        5,
+        7,
+        10
+      ],
+      "gold": [
+        6,
+        9,
+        12
+      ],
+      "ribbon": [
+        3,
+        4,
+        6
+      ],
+      "tag": [
+        3,
+        4,
+        7
+      ]
+    }
+  }
+}

@@ -202,6 +202,17 @@ def compose_story_thumbnail(subject: str, title: str, photo: Path, output_path: 
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     work = output_path.parent
+    # A channel with a design spec of its own (data/brand/<id>/thumbnail_spec.json)
+    # gets the cinematic poster; any failure falls back to this card.
+    from .cinematic_thumbnail import load_spec
+
+    if channel is not None and load_spec(str(getattr(channel, "id", "") or "")):
+        try:
+            from .cinematic_thumbnail import compose
+
+            return compose(subject, photo, output_path, channel, vertical=vertical)
+        except Exception as exc:
+            print(f"[thumbnail] cinematic design failed, using the plain story card: {exc}")
     photo = _portrait(photo, work / "story_portrait.jpg")
     cutout = _cutout(photo, work / "story_cutout.png")
     backdrop = _backdrop(subject, work / "story_backdrop.jpg")

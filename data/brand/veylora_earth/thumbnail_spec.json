@@ -1,0 +1,284 @@
+{
+  "design": "earth_poster",
+  "source": "ChatGPT style bible for Veylora Earth (estimated from the mammoth and T. rex examples), 2026-11-04",
+  "palette": {
+    "navy": "#061826",
+    "storm_blue": "#163B58",
+    "sunset": "#F4B65A",
+    "ivory": "#F6F3E8",
+    "brush_red": "#A90E19",
+    "brush_highlight": "#D42726",
+    "border": "#E9B735",
+    "border_glow": "#F3C363",
+    "streak_blue": "#55C8FF",
+    "streak_orange": "#FF9B24"
+  },
+  "gradients": {
+    "ice": [
+      [
+        0,
+        "#FFFFFF"
+      ],
+      [
+        35,
+        "#EAF6FC"
+      ],
+      [
+        75,
+        "#B8D9EA"
+      ],
+      [
+        100,
+        "#6598B4"
+      ]
+    ],
+    "gold": [
+      [
+        0,
+        "#FFF3B0"
+      ],
+      [
+        28,
+        "#F6D874"
+      ],
+      [
+        65,
+        "#E9B735"
+      ],
+      [
+        100,
+        "#A96813"
+      ]
+    ]
+  },
+  "effects": {
+    "ice": {
+      "gradient": "ice",
+      "outline": "#102131",
+      "bevel": "#FFFFFF",
+      "shadow_opacity": 0.85
+    },
+    "gold": {
+      "gradient": "gold",
+      "outline": "#271A0C",
+      "bevel": "#FFF5C6",
+      "shadow_opacity": 0.85
+    },
+    "words": {
+      "fill": "#F6F3E8",
+      "outline": "#3A0508",
+      "bevel": null,
+      "shadow_opacity": 0.7
+    }
+  },
+  "grade": {
+    "contrast": 1.2,
+    "saturation": 1.08,
+    "vignette": 0.3,
+    "grain": 0.04
+  },
+  "long": {
+    "size": [
+      1280,
+      720
+    ],
+    "subject_area": "the animal huge and close on the left side, cropped by the left and bottom edges; behind it, to the right, its world continues into the distance (landscape, a small herd far away) under a warm amber sunset low on the right; dark stormy sky above",
+    "border": {
+      "box": [
+        4,
+        4,
+        1272,
+        712
+      ],
+      "radius": 35,
+      "stroke": 4,
+      "glow": 5,
+      "glow_opacity": 0.4
+    },
+    "logo": {
+      "box": [
+        34,
+        18,
+        300,
+        152
+      ]
+    },
+    "top": {
+      "box": [
+        815,
+        22,
+        180,
+        75
+      ],
+      "cap": 65,
+      "tracking": 1,
+      "font": "cinzel",
+      "weight": 800,
+      "effect": "ice"
+    },
+    "white": {
+      "box": [
+        625,
+        92,
+        645,
+        147
+      ],
+      "cap": 112,
+      "tracking": -3,
+      "font": "cinzel",
+      "weight": 800,
+      "effect": "ice"
+    },
+    "gold": {
+      "box": [
+        655,
+        234,
+        615,
+        140
+      ],
+      "cap": 118,
+      "tracking": -3,
+      "font": "cinzel",
+      "weight": 800,
+      "effect": "gold"
+    },
+    "brush": {
+      "box": [
+        645,
+        377,
+        630,
+        82
+      ],
+      "rotate_deg": -2,
+      "jag": 9
+    },
+    "words": {
+      "box": [
+        700,
+        393,
+        535,
+        54
+      ],
+      "cap": 36,
+      "tracking": 0,
+      "rotate_deg": -2
+    },
+    "outline": {
+      "ice": 4,
+      "gold": 4,
+      "words": 1
+    },
+    "bevel": {
+      "ice": 3,
+      "gold": 3
+    },
+    "shadow": {
+      "ice": [
+        5,
+        7,
+        8
+      ],
+      "gold": [
+        5,
+        8,
+        9
+      ],
+      "words": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "short": {
+    "size": [
+      1080,
+      1920
+    ],
+    "subject_area": "the animal huge at the top right, cropped by the right edge, its head near the top; its own natural habitat (sea, jungle, ice or desert, whatever is right for it) fills the rest of the frame under a bright sunset; the same world continues across the bottom",
+    "border": {
+      "box": [
+        8,
+        8,
+        1064,
+        1904
+      ],
+      "radius": 48,
+      "stroke": 6,
+      "glow": 7,
+      "glow_opacity": 0.4
+    },
+    "logo": {
+      "box": [
+        20,
+        24,
+        430,
+        240
+      ]
+    },
+    "lines": [
+      {
+        "box": [
+          50,
+          830,
+          980,
+          290
+        ],
+        "cap": 235,
+        "tracking": -2,
+        "effect": "ice"
+      },
+      {
+        "box": [
+          60,
+          1090,
+          960,
+          240
+        ],
+        "cap": 200,
+        "tracking": -2,
+        "effect": "gold"
+      },
+      {
+        "box": [
+          50,
+          1290,
+          990,
+          230
+        ],
+        "cap": 190,
+        "tracking": -2,
+        "effect": "gold"
+      }
+    ],
+    "rotate_deg": -4,
+    "streak": {
+      "box": [
+        0,
+        1520,
+        900,
+        105
+      ]
+    },
+    "outline": {
+      "ice": 5,
+      "gold": 5
+    },
+    "bevel": {
+      "ice": 3,
+      "gold": 4
+    },
+    "shadow": {
+      "ice": [
+        6,
+        9,
+        12
+      ],
+      "gold": [
+        7,
+        10,
+        13
+      ]
+    }
+  }
+}

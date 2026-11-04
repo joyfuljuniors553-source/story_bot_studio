@@ -161,16 +161,18 @@ def _topic_thumbnail(lesson, channel, run_dir: Path, fallback: Path | None,
         from .cinematic_thumbnail import load_spec
 
         spec = load_spec(str(getattr(channel, "id", "") or ""))
-        if spec and spec.get("design") == "cosmic_headline":
+        designs = {"cosmic_headline": "cosmic_thumbnail", "earth_poster": "earth_poster_thumbnail"}
+        if spec and spec.get("design") in designs:
+            import importlib
+
             from .thumbnails import manual_thumbnail_for
 
             if not manual_thumbnail_for(lesson):
-                from .cosmic_thumbnail import compose
-
-                return compose(lesson.title, run_dir / "thumbnail.jpg", channel,
-                               vertical=content_type == "short")
+                module = importlib.import_module(f".{designs[spec['design']]}", __package__)
+                return module.compose(lesson.title, run_dir / "thumbnail.jpg", channel,
+                                      vertical=content_type == "short")
     except Exception as exc:
-        print(f"[thumbnail] cosmic design failed, using the usual {style} card: {exc}")
+        print(f"[thumbnail] designed card failed, using the usual {style} card: {exc}")
     try:
         from .genre_topics import _script_json
         from .page_posts import real_photo

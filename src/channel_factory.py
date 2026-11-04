@@ -298,6 +298,36 @@ def github_synced() -> bool:
         return False
 
 
+def github_env() -> dict:
+    """Environment for gh / git push that signs in as this repository's owner.
+
+    gh on this PC can hold several accounts and the active one may belong to
+    another bot (GitHub then answers 404). When the owner of `origin` is one of
+    the signed-in accounts, its token is used for that one command only; the
+    active account is left as it is.
+    """
+    import os
+    import re
+    import subprocess
+
+    env = dict(os.environ)
+    if env.get("GH_TOKEN"):
+        return env
+    try:
+        url = subprocess.run(["git", "remote", "get-url", "origin"], cwd=settings.root,
+                             capture_output=True, text=True, timeout=20).stdout.strip()
+        match = re.search(r"github\.com[:/]([^/]+)/([^/]+?)(?:\.git)?$", url)
+        if match:
+            token = subprocess.run(["gh", "auth", "token", "-u", match.group(1)],
+                                   capture_output=True, text=True, timeout=20)
+            if token.returncode == 0 and token.stdout.strip():
+                env["GH_TOKEN"] = token.stdout.strip()
+                env["GH_REPO"] = f"{match.group(1)}/{match.group(2)}"
+    except Exception:
+        pass
+    return env
+
+
 def sync_to_github() -> str:
     """Send channels, logins and keys to the repository secret the daily run reads."""
     import subprocess
@@ -305,7 +335,7 @@ def sync_to_github() -> str:
 
     result = subprocess.run(
         [sys.executable, str(settings.root / "scripts" / "setup_github_actions.py")],
-        cwd=settings.root, capture_output=True, text=True, timeout=180,
+        cwd=settings.root, capture_output=True, text=True, timeout=180, env=github_env(),
     )
     if result.returncode != 0:
         detail = (result.stderr or result.stdout).strip().splitlines()
@@ -345,7 +375,7 @@ def _welcome_run() -> str:
     done = subprocess.run(
         ["gh", "workflow", "run", "daily-videos.yml", "-f", "slot=auto", "-f", "shorts_per_channel=0",
          "-f", "long_videos=false", "-f", "upload=true"],
-        cwd=settings.root, capture_output=True, text=True, timeout=60,
+        cwd=settings.root, capture_output=True, text=True, timeout=60, env=github_env(),
     )
     if done.returncode != 0:
         return " (Welcome post: the next daily run makes it.)"

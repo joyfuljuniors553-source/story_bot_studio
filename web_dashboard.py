@@ -1596,8 +1596,10 @@ def site_file_upload():
     site = setup_guide.SITE
 
     def job():
+        env = channel_factory.github_env()  # this repo's owner, whatever gh account is active
+
         def run(*command):
-            done = subprocess.run(command, cwd=settings.root, capture_output=True, text=True)
+            done = subprocess.run(command, cwd=settings.root, capture_output=True, text=True, env=env)
             if done.returncode != 0:
                 raise RuntimeError(f"{' '.join(command[:3])} failed: {(done.stderr or done.stdout).strip()[:300]}")
             return done.stdout

@@ -327,7 +327,7 @@ def home():
     return render_template_string(
         PAGE, channels=channels, ch=ch,
         thumb_checks=thumb_checks, thumb_required=thumbnail_required(),
-        timelines=timelines,
+        timelines=timelines, thumb_audit=_thumb_audit_summary(ch.id),
         topics=[(k, v.get("title", k)) for k, v in topics.items()],
         videos=vids, jobs=JOBS, assets=assets, storage=storage_info(),
         connected=ch.token_path.exists(), upload_pause=active_upload_backoff(ch.id),
@@ -663,6 +663,30 @@ def upload_one_route():
 
     start_job(f"[{ch.id}] Upload video #{vid}", job)
     flash("Retrying the YouTube thumbnail...", "ok")
+    return redirect(url_for("home", channel=ch.id))
+
+
+def _thumb_audit_summary(channel_id: str) -> dict:
+    try:
+        from src.thumbnail_audit import summary
+
+        return summary(channel_id)
+    except Exception:
+        return {"counts": {}, "last": None, "problems": []}
+
+
+@app.post("/audit-thumbnails")
+def audit_thumbnails_route():
+    """Look at this channel's last week of videos on YouTube; set any missing thumbnail."""
+    ch = current_channel()
+
+    def job():
+        from src.thumbnail_audit import audit
+
+        return "\n".join(audit(days=7, fix=True, channel_id=ch.id)) or "Nothing to check"
+
+    start_job(f"[{ch.id}] Check thumbnails on YouTube", job)
+    flash("Checking every video of the last 7 days on YouTube; any missing thumbnail is set. See Jobs.", "ok")
     return redirect(url_for("home", channel=ch.id))
 
 
@@ -2012,6 +2036,15 @@ PAGE = r"""
         </div>
       </div>
       <span class="chip">{{'ON' if thumb_required else 'OFF'}}</span>
+    </div>
+    <div class="row" style="justify-content:space-between;align-items:flex-start;margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
+      <div><strong>Daily YouTube thumbnail audit</strong>
+        <div class="hint">Every GitHub run looks at each connected channel's videos of the last 7 days on YouTube (Shorts and long, also ones uploaded by hand). A video showing a YouTube frame instead of a custom thumbnail gets one set automatically.</div>
+        {% set ac = thumb_audit.counts %}
+        <div class="hint" style="margin-top:6px">{% if thumb_audit.last %}Last check {{thumb_audit.last|localdt}}: <b>{{ac.get('custom',0)}}</b> with thumbnail · <b>{{ac.get('fixed',0)}}</b> fixed · <b>{{ac.get('fix_waiting',0)}}</b> fixed, waiting for YouTube to show it · <b style="color:{{'var(--err)' if ac.get('missing',0) or ac.get('fix_failed',0) else 'inherit'}}">{{ac.get('missing',0) + ac.get('fix_failed',0)}}</b> still missing · {{ac.get('unknown',0)}} not public yet{% else %}Not checked yet; the next GitHub run checks it, or press the button.{% endif %}</div>
+        {% for pb in thumb_audit.problems %}<div class="hint" style="color:{{'var(--err)' if pb.state in ('missing','fix_failed') else 'inherit'}}">• <a href="https://www.youtube.com/watch?v={{pb.video_id}}" target="_blank">{{pb.title[:60]}}</a>: {{pb.state.replace('_',' ')}}{% if pb.note %} ({{pb.note[:90]}}){% endif %}</div>{% endfor %}
+      </div>
+      <form method="post" action="/audit-thumbnails" onsubmit="this.querySelector('button').disabled=true"><input type="hidden" name="channel" value="{{ch.id}}"><button class="ghost sm" type="submit">Check YouTube now</button></form>
     </div>
   </div>
 

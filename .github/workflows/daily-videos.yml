@@ -154,6 +154,16 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python -m src.cli reapply-thumbnails
 
+      # Every connected channel, every video of the last week (Shorts and long,
+      # also ones uploaded by hand): a video that YouTube still shows without a
+      # custom thumbnail gets one now. Costs almost no quota.
+      - name: Check every new video has its thumbnail
+        if: ${{ always() && env.UPLOAD != 'false' }}
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m src.cli audit-thumbnails --days 7
+
       - name: Report
         if: always()
         run: python -m src.cli quota-status

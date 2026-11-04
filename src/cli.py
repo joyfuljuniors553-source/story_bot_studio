@@ -76,6 +76,11 @@ def main() -> None:
                      help="Own client_secret file for a separate upload quota (optional)")
 
     sub.add_parser("reapply-thumbnails", help="Set today's thumbnails again on YouTube (end of a daily run).")
+    audit = sub.add_parser("audit-thumbnails",
+                           help="Check every connected channel's recent videos on YouTube; set a thumbnail where one is missing.")
+    audit.add_argument("--days", default="7", help="How many days of uploads to check.")
+    audit.add_argument("--fix", default="true", help="false = only report, change nothing.")
+    audit.add_argument("--channel", default="", help="Only this channel id (blank = all).")
     retry = sub.add_parser("retry-uploads", help="Upload rendered/failed videos when internet is back.")
     retry.add_argument("--limit", default="20", help="Maximum pending videos to retry.")
 
@@ -343,6 +348,12 @@ def main() -> None:
         print(f"Building a {count}-video buffer for [{channel.id}] and scheduling into the future...")
         for topic, status in run_buffer_batch(count=count, upload=_bool(args.upload), channel=channel):
             print(f"[{channel.id}] {topic}: {status}")
+        return
+    elif args.command == "audit-thumbnails":
+        from .thumbnail_audit import audit
+        for message in audit(days=int(args.days), fix=str(args.fix).lower() != "false",
+                             channel_id=args.channel or None):
+            print(message)
         return
     elif args.command == "reapply-thumbnails":
         from .pending_uploads import reapply_thumbnails

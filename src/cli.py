@@ -362,7 +362,6 @@ def main() -> None:
         return
     elif args.command == "competitors":
         from . import competitors
-        from .channels import get_channel
         if args.add:
             competitors.set_competitors(args.channel, args.add.split(","))
         channel = get_channel(args.channel)

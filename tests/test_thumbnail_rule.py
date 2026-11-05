@@ -18,6 +18,8 @@ import cv2
 import numpy as np
 
 from src import youtube_upload
+
+youtube_upload._real_can_update = youtube_upload.can_update  # setUp replaces it
 from src.thumbnail_check import ThumbnailNotReady, check_thumbnail, ensure_ready
 
 
@@ -86,6 +88,8 @@ class ThumbnailRuleTest(unittest.TestCase):
             mock.patch.object(youtube_upload, "MediaFileUpload", lambda *a, **k: object()),
             mock.patch.object(youtube_upload.time, "sleep", lambda s: None),
             mock.patch.dict(os.environ, {"REQUIRE_THUMBNAIL": "true"}),
+            # A login with the permission to change a video after upload.
+            mock.patch.object(youtube_upload, "can_update", lambda token=None: True),
         ]
         for patch in patches:
             patch.start()
@@ -171,6 +175,29 @@ class ThumbnailRuleTest(unittest.TestCase):
         status = self.yt.calls[-1][1]["body"]["status"]
         self.assertEqual(status["privacyStatus"], "public")
         self.assertNotIn("publishAt", status)
+
+    def test_login_without_update_permission_uploads_scheduled(self):
+        when = datetime.now(timezone.utc) + timedelta(days=1)
+        with mock.patch.object(youtube_upload, "can_update", lambda token=None: False):
+            self._upload(self.good, publish_at=when)
+            with self.assertRaises(ThumbnailNotReady):  # the check before upload still holds
+                self._upload(_image(self.dir / "black.jpg", blank=True))
+            with self.assertRaises(RuntimeError):  # a held video cannot be released
+                youtube_upload.release_video("https://youtu.be/VID123", CHANNEL, when)
+        self.assertEqual(self.yt.names(), ["videos.insert", "thumbnails.set"])
+        status = self.yt.calls[0][1]["body"]["status"]
+        self.assertEqual(status["privacyStatus"], "private")
+        self.assertIn("publishAt", status)  # scheduled straight away, never stuck private
+
+    def test_can_update_reads_the_login_scopes(self):
+        import json
+        token = self.dir / "token.json"
+        token.write_text(json.dumps({"scopes": ["https://www.googleapis.com/auth/youtube.upload"]}))
+        with mock.patch.object(youtube_upload, "can_update", youtube_upload.__dict__["_real_can_update"]):
+            self.assertFalse(youtube_upload.can_update(token))
+            token.write_text(json.dumps({"scopes": [youtube_upload.UPDATE_SCOPE]}))
+            self.assertTrue(youtube_upload.can_update(token))
+            self.assertFalse(youtube_upload.can_update(self.dir / "missing.json"))
 
     def test_switch_off_restores_old_behaviour(self):
         with mock.patch.dict(os.environ, {"REQUIRE_THUMBNAIL": "false"}):

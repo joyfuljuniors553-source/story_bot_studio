@@ -1226,13 +1226,14 @@ def _signin_email(credentials) -> str:
 def _oauth_flow(target, redirect_uri: str):
     from google_auth_oauthlib.flow import InstalledAppFlow
 
-    from src.youtube_upload import SCOPES
+    from src.youtube_upload import LOGIN_SCOPES as SCOPES
 
-    # The email scopes are asked for here only, so the dashboard can show which
-    # Gmail a channel is signed in with. Uploads keep refreshing with SCOPES,
-    # a subset of what is granted, which Google allows; older logins without
-    # the email scopes keep working. Google may list the granted scopes in
-    # another order or form; that is not an error.
+    # LOGIN_SCOPES adds the permission to change a video after upload (release a
+    # video held private until its thumbnail is on). The email scopes are asked for here only, so the dashboard can show which
+    # Gmail a channel is signed in with. Uploads refresh with the scopes saved
+    # in the login itself, so older logins (without the email or update scopes)
+    # keep working. Google may list the granted scopes in another order or
+    # form; that is not an error.
     os.environ.setdefault("OAUTHLIB_RELAX_TOKEN_SCOPE", "1")
     flow = InstalledAppFlow.from_client_secrets_file(
         str(target.client_secret_path), [*SCOPES, *_EMAIL_SCOPES],

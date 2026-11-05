@@ -20,6 +20,26 @@ SCOPES = [
     "https://www.googleapis.com/auth/youtube.upload",
     "https://www.googleapis.com/auth/youtube.readonly",  # read the connected channel's name to verify it
 ]
+# Changing a video after upload (private -> scheduled/public once its thumbnail
+# is on) needs more than youtube.upload. New sign-ins ask for it; older logins
+# without it still upload, the way they did before (see can_update).
+UPDATE_SCOPE = "https://www.googleapis.com/auth/youtube.force-ssl"
+LOGIN_SCOPES = [*SCOPES, UPDATE_SCOPE]
+_UPDATE_SCOPES = ("/auth/youtube", "/auth/youtube.force-ssl", "/auth/youtubepartner")
+
+
+def can_update(token_file: Path | None = None) -> bool:
+    """True when this channel's login may change a video after upload."""
+    import json
+
+    token_file = token_file or settings.youtube_token_file
+    try:
+        scopes = json.loads(Path(token_file).read_text(encoding="utf-8")).get("scopes") or []
+    except Exception:
+        return False
+    if isinstance(scopes, str):
+        scopes = scopes.split()
+    return any(str(s).endswith(_UPDATE_SCOPES) for s in scopes)
 
 
 # YouTube refuses a description over 5000 bytes or with < or > in it
@@ -53,7 +73,9 @@ def _credentials(client_secret_file: Path | None = None, token_file: Path | None
     token_file = token_file or settings.youtube_token_file
     creds = None
     if token_file.exists():
-        creds = Credentials.from_authorized_user_file(str(token_file), SCOPES)
+        # The login's own granted scopes: refreshing with SCOPES alone would
+        # drop the update scope a newer sign-in carries.
+        creds = Credentials.from_authorized_user_file(str(token_file))
     if creds and creds.expired and creds.refresh_token:
         creds.refresh(Request())
     if not creds or not creds.valid:
@@ -68,7 +90,7 @@ def _credentials(client_secret_file: Path | None = None, token_file: Path | None
                 "cannot open a browser. Connect the channel on your PC first, "
                 "then re-run scripts/setup_github_actions.py."
             )
-        flow = InstalledAppFlow.from_client_secrets_file(str(client_secret_file), SCOPES)
+        flow = InstalledAppFlow.from_client_secrets_file(str(client_secret_file), LOGIN_SCOPES)
         creds = flow.run_local_server(port=0)
         token_file.write_text(creds.to_json(), encoding="utf-8")
     return creds
@@ -152,7 +174,16 @@ def upload_video(video_path: Path, thumbnail_path: Path, metadata: dict[str, obj
         check = check_thumbnail(thumbnail_path)
         if not check.ok:
             raise ThumbnailNotReady(f"thumbnail failed its check: {check.summary}")
-        status_body = {"privacyStatus": "private", "selfDeclaredMadeForKids": made_for_kids}
+        if can_update(token_file):
+            status_body = {"privacyStatus": "private", "selfDeclaredMadeForKids": made_for_kids}
+        else:
+            # This login may upload but not change a video afterwards, so a
+            # private video could never be released: upload it scheduled, as
+            # before, and set the checked thumbnail right after. Reconnecting
+            # the channel on the dashboard grants the update permission.
+            print("[upload] this channel's login cannot change a video after upload; "
+                  "uploading it scheduled (reconnect the channel to hold it private)")
+            required = False
 
     youtube = _youtube(client_secret_file, token_file)
     request = youtube.videos().insert(
@@ -224,6 +255,9 @@ def release_video(video_url: str, channel, publish_at: str | datetime | None) ->
     else:
         when = None
         status["privacyStatus"] = channel.privacy
+    if not can_update(channel.token_path):
+        raise RuntimeError("this channel's YouTube login cannot change a video after upload; "
+                           "reconnect the channel on the dashboard, then the video is released")
     _set_status(_youtube(channel.client_secret_path, channel.token_path), video_id, status)
     return when
 

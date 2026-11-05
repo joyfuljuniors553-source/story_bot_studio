@@ -477,6 +477,15 @@ def run_pipeline(
     except ThumbnailNotReady as exc:
         thumbnail_problem = str(exc)
         print(f"[thumbnail] not ready: {thumbnail_problem}")
+    if content_type == "short" and thumbnail_problem is None and settings.enable_cover_frame:
+        # The Shorts tab shows a frame of the video, not the uploaded thumbnail.
+        from .video import add_cover_frame
+
+        try:
+            add_cover_frame(video_path, Path(thumbnail_path), run_dir, content_type)
+        except Exception as exc:
+            # The video is finished without it; a cover must never cost it.
+            print(f"[video] cover frame skipped ({exc})")
     metadata = build_metadata(lesson, channel, content_type=content_type)
     _append_image_credits(metadata, run_dir)
     from .end_screen import watch_next_block

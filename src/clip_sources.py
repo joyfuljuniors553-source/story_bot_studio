@@ -40,7 +40,28 @@ _TALK_WORDS = {
     "podcast", "lecture", "q&a", "remarks", "speech", "town", "hall", "meeting", "ceremony",
     "show", "episode", "minute", "chat", "explains", "discusses", "testimony", "hearing",
 }
-_checks_off = False  # set once Gemini refuses (quota), for the rest of the run
+_checks_off = False  # set once every Gemini key and model refuses (quota), for the rest of the run
+_dead_pairs: set[tuple[str, str]] = set()  # (key, model) pairs that hit their quota this run
+# What the channel is about, set per clip search by stock_video.fetch_scene_clip:
+#   topic   - the channel's subject, so a frame from an unrelated setting fails
+#   strict  - generic stock (Pexels, Pixabay, Coverr) is only kept after the
+#             frame check said yes; with the check unavailable it is refused
+#   loose   - the frame only has to show the channel's subject, not this line
+#             (the last-resort space/ocean footage of stock_video)
+_context: dict = {"topic": "", "strict": False, "loose": False, "banned": set()}
+
+
+#   banned  - words naming settings the channel never shows (clip_off_topic)
+def set_context(topic: str = "", strict: bool = False, loose: bool = False,
+                banned: set[str] | None = None) -> None:
+    _context.update(topic=" ".join(str(topic or "").split())[:200], strict=strict, loose=loose,
+                    banned=set(banned or ()))
+
+
+def off_topic(words: set[str]) -> bool:
+    """True when a clip's title or tags name a setting this channel never shows."""
+    banned = _context["banned"]
+    return bool(banned) and any(word in banned or word.rstrip("s") in banned for word in words)
 # Clips a source may have rejected by the frame check before it gives up on a
 # scene, so one hopeless search does not burn the Gemini quota.
 _MAX_MISSES = 3
@@ -94,16 +115,63 @@ def _credit(run_dir: Path, output_path: Path, title: str, creator: str, licence:
 
 # ------------------------------------------------------------------ the check
 
-def frame_matches(clip: Path, scene: Scene, no_people: bool = False) -> bool:
+def _gemini_pairs() -> list[tuple[str, str]]:
+    """Every (key, model) to ask, in order: both keys, then the fallback models."""
+    keys = [k for k in (settings.gemini_api_key, getattr(settings, "gemini_api_key_2", "")) if k]
+    models = [settings.gemini_model, *[m.strip() for m in
+                                      str(getattr(settings, "gemini_fallback_model", "") or "").split(",")
+                                      if m.strip()]]
+    pairs = [(key, model) for model in dict.fromkeys(models) for key in keys]
+    return [pair for pair in pairs if pair not in _dead_pairs]
+
+
+def _ask_fits(parts: list[dict]) -> bool | None:
+    """Gemini's yes/no on the frames, or None when no key or model will answer."""
+    global _checks_off
+    body = json.dumps({
+        "contents": [{"parts": parts}],
+        "generationConfig": {"responseMimeType": "application/json", "temperature": 0},
+    }).encode("utf-8")
+    for key, model in _gemini_pairs():
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
+        request = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                payload = json.loads(response.read())
+            text = payload["candidates"][0]["content"]["parts"][0]["text"]
+            return bool(json.loads(text).get("fits", False))
+        except urllib.error.HTTPError as exc:
+            if exc.code in (429, 403, 404):
+                # Quota or a retired model: the next key or model may still answer.
+                _dead_pairs.add((key, model))
+                continue
+            print(f"[clips] frame check error (Gemini {exc.code})")
+            return None
+        except Exception as exc:
+            print(f"[clips] frame check skipped: {exc}")
+            return None
+    if not _checks_off:
+        print("[clips] frame check off for this run (every Gemini key and model refused)")
+    _checks_off = True
+    return None
+
+
+def frame_matches(clip: Path, scene: Scene, no_people: bool = False, generic: bool = False) -> bool:
     """True when frames from the start and the end of the clip show what the line is about.
 
     `no_people` (a story about real people): any face fails, since a stranger
     on screen reads as the person named; their own photos come from
-    archive_images.py, where who they show is known. Fails open: any trouble
-    asking (no key, quota, a bad frame) keeps the clip."""
-    global _checks_off
+    archive_images.py, where who they show is known.
+
+    When the check cannot run (no key, every quota spent, a bad frame) the clip
+    is kept, except `generic` stock (Pexels, Pixabay, Coverr) on a `strict`
+    channel: there an unchecked search hit put an operating room into a quasar
+    Short, so the scene shows its own picture instead."""
+    unchecked = not (_context["strict"] and generic)
     if _checks_off or not settings.gemini_api_key:
-        return True
+        if not unchecked:
+            print("[clips] stock clip refused: the frame check is off and this channel needs it")
+        return unchecked
     from .visuals import ffmpeg_bin
 
     frames = [clip.with_suffix(".check1.jpg"), clip.with_suffix(".check2.jpg")]
@@ -120,37 +188,32 @@ def frame_matches(clip: Path, scene: Scene, no_people: bool = False) -> bool:
         line = " ".join(str(scene.line or scene.label or "").split())[:300]
         people = (" Any recognisable person or face in a frame does NOT fit: viewers would take a "
                   "stranger for the person in the story.") if no_people else ""
-        body = json.dumps({
-            "contents": [{"parts": [
-                *parts,
-                {"text": f"{'These frames are' if len(parts) > 1 else 'This frame is'} from a clip "
-                         "shown while a narrator says:\n"
-                         f"\"{line}\"\n"
-                         "Does every frame plainly show the thing or place the line is about (a fitting "
-                         "illustration is fine; something unrelated, a person talking to camera, text "
-                         "on screen, subtitles or a logo is not)?" + people
-                         + " Return JSON only: {\"fits\": true or false}"},
-            ]}],
-            "generationConfig": {"responseMimeType": "application/json", "temperature": 0},
-        }).encode("utf-8")
-        url = (f"https://generativelanguage.googleapis.com/v1beta/models/{settings.gemini_model}"
-               f":generateContent?key={settings.gemini_api_key}")
-        request = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(request, timeout=60) as response:
-            payload = json.loads(response.read())
-        text = payload["candidates"][0]["content"]["parts"][0]["text"]
-        fits = bool(json.loads(text).get("fits", True))
+        topic = _context["topic"]
+        channel = (f" The video is a documentary about {topic}: footage of an unrelated setting (a "
+                   "hospital or operating room, an office, a kitchen, a shop, a party) does NOT fit, "
+                   "even when it shares a word with the line.") if topic else ""
+        if _context["loose"] and topic:
+            question = (f"Does every frame plainly show {topic} (a fitting illustration is fine; people, "
+                        "text on screen, subtitles or a logo are not)?")
+        else:
+            question = ("Does every frame plainly show the thing or place the line is about (a fitting "
+                        "illustration is fine; something unrelated, a person talking to camera, text "
+                        "on screen, subtitles or a logo is not)?")
+        parts.append({"text": f"{'These frames are' if len(parts) > 1 else 'This frame is'} from a clip "
+                              "shown while a narrator says:\n"
+                              f"\"{line}\"\n" + question + channel + people
+                              + " Return JSON only: {\"fits\": true or false}"})
+        fits = _ask_fits(parts)
+        if fits is None:
+            if not unchecked:
+                print("[clips] stock clip refused: the frame check could not run and this channel needs it")
+            return unchecked
         if not fits:
             print(f"[clips] frame does not fit '{line[:60]}'; trying another clip")
         return fits
-    except urllib.error.HTTPError as exc:
-        if exc.code in (429, 403):
-            print(f"[clips] frame check off for this run (Gemini {exc.code})")
-            _checks_off = True
-        return True
     except Exception as exc:
         print(f"[clips] frame check skipped: {exc}")
-        return True
+        return unchecked
     finally:
         for frame in frames:
             frame.unlink(missing_ok=True)
@@ -223,7 +286,7 @@ def nasa_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[tup
             nasa_id = str(data.get("nasa_id") or "")
             title = str(data.get("title") or "")
             words = _words(f"{title} {' '.join(data.get('keywords') or [])}")
-            if not nasa_id or f"nasa:{nasa_id}" in used or words & _TALK_WORDS:
+            if not nasa_id or f"nasa:{nasa_id}" in used or words & _TALK_WORDS or off_topic(words):
                 continue
             if not (_names(words, must) if must else words & wanted):
                 continue
@@ -277,7 +340,7 @@ def _pixabay_file(hit: dict, landscape: bool) -> dict | None:
 
 def pixabay_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[tuple[str, str]],
                  landscape: bool, min_seconds: float, no_people: bool) -> Path:
-    from .stock_video import _GRAPHIC_WORDS, _MAX_CLIP_BYTES, _MIN_CLIP_BYTES, _PEOPLE_WORDS
+    from .stock_video import _GRAPHIC_WORDS, _MAX_CLIP_BYTES, _MIN_CLIP_BYTES, has_people
 
     key = pixabay_api_key()
     if not key:
@@ -293,9 +356,9 @@ def pixabay_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[
         candidates = []
         for hit in hits:
             words = _words(hit.get("tags"))
-            if f"pixabay:{hit.get('id')}" in used or words & _GRAPHIC_WORDS:
+            if f"pixabay:{hit.get('id')}" in used or words & _GRAPHIC_WORDS or off_topic(words):
                 continue
-            if no_people and words & _PEOPLE_WORDS:
+            if no_people and has_people(words):
                 continue
             if (_names(words, must) if must else words & wanted) and _pixabay_file(hit, landscape):
                 candidates.append(hit)
@@ -315,7 +378,7 @@ def pixabay_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_bytes(data)
             _mark_used(run_dir, f"pixabay:{hit.get('id')}")
-            if not frame_matches(output_path, scene, no_people):
+            if not frame_matches(output_path, scene, no_people, generic=True):
                 output_path.unlink(missing_ok=True)
                 misses += 1
                 if misses >= _MAX_MISSES:
@@ -441,7 +504,7 @@ def _download(link: str, output_path: Path) -> bool:
 
 def coverr_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[tuple[str, str]],
                 landscape: bool, no_people: bool) -> Path:
-    from .stock_video import _GRAPHIC_WORDS, _PEOPLE_WORDS
+    from .stock_video import _GRAPHIC_WORDS, has_people
 
     key = os.getenv("COVERR_API_KEY", "").strip()
     if not key:
@@ -463,14 +526,15 @@ def coverr_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[t
             link = str((hit.get("urls") or {}).get("mp4") or "")
             if not link or hit.get("is_ai_generated") or bool(hit.get("is_vertical")) == landscape:
                 continue
-            if f"coverr:{hit.get('id')}" in used or words & _GRAPHIC_WORDS or (no_people and words & _PEOPLE_WORDS):
+            if (f"coverr:{hit.get('id')}" in used or words & _GRAPHIC_WORDS or off_topic(words)
+                    or (no_people and has_people(words))):
                 continue
             if not (_names(words, must) if must else words & wanted):
                 continue
             _mark_used(run_dir, f"coverr:{hit.get('id')}")
             if not _download(link, output_path):
                 continue
-            if not frame_matches(output_path, scene, no_people):
+            if not frame_matches(output_path, scene, no_people, generic=True):
                 output_path.unlink(missing_ok=True)
                 misses += 1
                 if misses >= _MAX_MISSES:

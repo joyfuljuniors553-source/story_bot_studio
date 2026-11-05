@@ -89,3 +89,4 @@ data/welcome_runs.json
 data/brand/*/youtube.json
 # Competitor topics vs our own: made by each run, kept on bot-state
 data/competitor_report.json
+data/music/.beat_strength.json

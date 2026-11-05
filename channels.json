@@ -105,7 +105,46 @@
         "https://www.youtube.com/@InsaneCuriosity",
         "https://www.youtube.com/@HistoryoftheUniverse",
         "https://www.youtube.com/@AstrumExtra"
-      ]
+      ],
+      "clip_subject": "space and astronomy: stars, planets, galaxies, telescopes, observatories or spacecraft",
+      "clip_off_topic": [
+        "hospital",
+        "surgery",
+        "surgical",
+        "operating",
+        "medical",
+        "medicine",
+        "clinic",
+        "doctor",
+        "nurse",
+        "patient",
+        "dentist",
+        "office",
+        "kitchen",
+        "restaurant",
+        "cafe",
+        "shop",
+        "shopping",
+        "store",
+        "classroom",
+        "gym",
+        "party",
+        "wedding",
+        "bar",
+        "pub",
+        "factory",
+        "warehouse"
+      ],
+      "clip_check_required": true,
+      "clip_fallback_queries": [
+        "spiral galaxy",
+        "nebula",
+        "star field",
+        "black hole",
+        "milky way",
+        "telescope"
+      ],
+      "music_mood": "ambient"
     },
     {
       "id": "veylora_earth",
@@ -295,7 +334,8 @@
         "https://www.youtube.com/@EVNautilus",
         "https://www.youtube.com/@SchmidtOcean",
         "https://www.youtube.com/@MBARIvideo"
-      ]
+      ],
+      "music_mood": "ambient"
     }
   ]
 }

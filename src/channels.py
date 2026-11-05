@@ -81,6 +81,20 @@ class Channel:
     # No clip with people in it: on a prehistory channel any passer-by on
     # screen reads as the Neanderthal the narrator is talking about.
     clips_without_people: bool = False
+    # What every clip must look like it belongs to ("space and astronomy"): the
+    # frame check rejects footage of an unrelated setting even when it shares a
+    # word with the line ("spectra" brought an operating room into a quasar Short).
+    clip_subject: str = ""
+    # Settings never shown, matched against a clip's title and tags before download.
+    clip_off_topic: tuple = ()
+    # Generic stock (Pexels, Pixabay, Coverr) only after the frame check said
+    # yes; when Gemini cannot check, the scene shows its own picture instead.
+    clip_check_required: bool = False
+    # Last-resort NASA searches when nothing fits a line ("spiral galaxy").
+    clip_fallback_queries: tuple = ()
+    # The music's mood (music_moods.MOODS: "ambient", "calm", "epic" ...);
+    # empty = chosen from the genre, tone and script.
+    music_mood: str = ""
     # Added at the end of every video description ("Educational content only...").
     description_footer: str = ""
     # Music level for this channel (0 = BACKGROUND_MUSIC_VOLUME). A louder one

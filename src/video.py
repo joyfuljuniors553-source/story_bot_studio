@@ -880,6 +880,43 @@ def add_preview(video_path: Path, run_dir: Path, title: str, first_seconds: floa
     return video_path
 
 
+def add_cover_frame(video_path: Path, cover_path: Path, run_dir: Path, content_type: str = "short",
+                    hold: float = 0.5, fade: float = 0.3) -> Path:
+    """Open the video on its thumbnail: shown full screen for `hold` seconds, then faded out.
+
+    The Shorts tab and the Shorts feed do not show the thumbnail set through the
+    API; YouTube shows a frame of the video there, often the first one. A Short
+    once showed a surgeon's operating room on the channel page while its proper
+    thumbnail sat unused. The voice is untouched and the video keeps its length:
+    only the picture of the first fraction of a second changes.
+    """
+    total = _audio_duration(video_path)
+    if total < hold + fade + 2 or not cover_path.exists():
+        return video_path
+    W, H = _dimensions(content_type)
+    end = hold + fade
+    graph = (
+        f"[1:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,"
+        f"format=yuva420p,fade=t=out:st={hold:.2f}:d={fade:.2f}:alpha=1[cover];"
+        f"[0:v][cover]overlay=0:0:eof_action=pass:enable='lt(t,{end:.2f})',format=yuv420p[v]"
+    )
+    out = run_dir / "with_cover.mp4"
+    quality = _quality()
+    subprocess.run([
+        ffmpeg_bin(), "-y", "-v", "error", "-i", str(video_path),
+        "-loop", "1", "-framerate", "30", "-t", f"{end + 0.1:.2f}", "-i", str(cover_path),
+        "-filter_complex", graph,
+        "-map", "[v]", "-map", "0:a?", "-c:v", "libx264", "-preset", quality["preset"], "-crf", quality["crf"],
+        "-c:a", "copy", "-movflags", "+faststart", str(out),
+    ], check=True)
+    if abs(_audio_duration(out) - total) > 1.0:
+        out.unlink(missing_ok=True)
+        raise RuntimeError("cover frame changed the video length")
+    out.replace(video_path)
+    print(f"[video] opens on its thumbnail for {hold:.1f}s")
+    return video_path
+
+
 def add_end_card(video_path: Path, run_dir: Path, content_type: str, seconds: float = 4.0) -> Path:
     """A small "LIKE • SUBSCRIBE • COMMENT" tag over the last seconds, gently bobbing.
 

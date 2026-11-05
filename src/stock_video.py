@@ -335,7 +335,22 @@ _PEOPLE_WORDS = {
     "judge", "lawyer", "attorney", "reporter", "journalist", "detective", "suspect", "prisoner",
     "inmate", "inmates", "convict", "criminal", "thief", "robber", "hands", "hand", "silhouette",
     "climber", "hiker", "tourist", "fan", "fans", "audience", "speaker", "politician",
+    # Only "doctor" was listed, so "doctors-in-an-operating-room" got through.
+    "surgeon", "surgeons", "surgery", "medic", "dentist", "scientist", "researcher", "engineer",
+    "technician", "astronaut", "staff", "team", "teamwork", "employee", "colleague", "coworker",
+    "businesswoman", "businesspeople", "chef", "waiter", "worker", "workers", "nurses", "doctors",
 }
+
+
+def has_people(words: set[str]) -> bool:
+    """True when a clip's title or tags name a person, singular or plural."""
+    return any(word in _PEOPLE_WORDS or word.rstrip("s") in _PEOPLE_WORDS
+               or (word.endswith("es") and word[:-2] in _PEOPLE_WORDS) for word in words)
+
+
+def off_topic_words(channel=None) -> set[str]:
+    """Settings this channel never shows (channels.json "clip_off_topic")."""
+    return {str(w).strip().lower() for w in (getattr(channel, "clip_off_topic", ()) or ()) if str(w).strip()}
 
 
 def _page_words(video: dict) -> set[str]:
@@ -352,7 +367,7 @@ def _relevant(video: dict, wanted: set[str], strict_people: bool) -> bool:
     words is not used; on fact channels neither is one with people in it.
     """
     words = _page_words(video)
-    if strict_people and words & _PEOPLE_WORDS:
+    if strict_people and has_people(words):
         return False
     if not words:
         return not strict_people
@@ -425,6 +440,11 @@ def fetch_scene_clip(
                  or crime_text(f"{scene.label} {scene.line}"))
     planned = [(shot["q"], shot["must"]) for shot in _planned_shots(scene, run_dir)]
     others = planned or [(query, "") for query in _scene_queries(scene, channel)]
+    from .clip_sources import set_context
+
+    set_context(topic=str(getattr(channel, "clip_subject", "") or ""),
+                strict=bool(getattr(channel, "clip_check_required", False)),
+                banned=off_topic_words(channel))
     for source in sources:
         try:
             if source == "commons":
@@ -444,6 +464,19 @@ def fetch_scene_clip(
                                     no_people, errors)
         except Exception as exc:
             errors.append(f"{source}: {exc}")
+    # Last resort before the scene's own picture: real footage of the channel's
+    # subject in general (a galaxy, a nebula) from NASA, checked only for
+    # showing that subject. Better than nothing moving, never off-topic.
+    fallback = [str(q).strip().lower() for q in (getattr(channel, "clip_fallback_queries", ()) or ())
+                if str(q).strip()]
+    if fallback:
+        set_context(topic=str(getattr(channel, "clip_subject", "") or ""), strict=True, loose=True,
+                    banned=off_topic_words(channel))
+        try:
+            return nasa_clip(scene, output_path, run_dir,
+                             [(query, query.split()[-1]) for query in fallback], min_seconds)
+        except Exception as exc:
+            errors.append(f"fallback: {exc}")
     detail = " | ".join(errors[-3:]) if errors else "no clip source for this scene"
     raise RuntimeError(f"No stock clip for scene '{scene.label}': {detail}")
 
@@ -451,7 +484,7 @@ def fetch_scene_clip(
 def _pexels_clip(scene: Scene, output_path: Path, run_dir: Path, channel, landscape: bool,
                  min_seconds: float, no_people: bool, errors: list[str]) -> Path:
     """A Pexels clip for this scene, or RuntimeError."""
-    from .clip_sources import _mark_used, _used, frame_matches
+    from .clip_sources import _mark_used, _used, frame_matches, off_topic
     from .thumbnails import pexels_api_key
 
     key = pexels_api_key()
@@ -476,7 +509,7 @@ def _pexels_clip(scene: Scene, output_path: Path, run_dir: Path, channel, landsc
         candidates = [
             video for video in videos
             if int(video.get("id") or 0) not in used and f"pexels:{video.get('id')}" not in rejected
-            and not _banned(video)
+            and not _banned(video) and not off_topic(_page_words(video))
             and _best_file(video, landscape)
             and (_names_must(video, must) and _relevant(video, {must}, no_people) if must
                  else _relevant(video, subject, no_people))
@@ -503,7 +536,7 @@ def _pexels_clip(scene: Scene, output_path: Path, run_dir: Path, channel, landsc
                 continue
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_bytes(data)
-            if not frame_matches(output_path, scene, no_people):
+            if not frame_matches(output_path, scene, no_people, generic=True):
                 _mark_used(run_dir, f"pexels:{video.get('id')}")
                 output_path.unlink(missing_ok=True)
                 continue

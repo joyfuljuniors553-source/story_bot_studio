@@ -36,14 +36,17 @@ MOOD_WORDS = {
                "discipline", "sport", "record", "athlete"),
     "news": ("news", "trending", "headline", "economy", "election", "market", "technology", "report"),
     "calm": ("cook", "recipe", "kitchen", "food", "travel", "nature", "health", "garden", "science",
-             "space", "learn", "tutorial", "ocean", "deep sea", "underwater"),
+             "learn", "tutorial"),
+    # Slow, wide and a little uneasy: the sound of a space or deep-sea documentary.
+    "ambient": ("space", "universe", "galax", "cosmic", "cosmos", "nebula", "black hole", "quasar",
+                "planet", "ocean", "deep sea", "underwater", "abyss", "trench", "void"),
 }
 GENRE_MOOD = {
     "kids": "kids", "crime": "tense", "mystery": "tense", "horror": "dark", "love": "warm",
     "motivation": "uplift", "trending": "news", "cooking": "calm",
     # The documentary channels: their tones say "awe-inspiring", which alone
     # pulled ocean and space videos to upbeat rock.
-    "deep ocean & unknown earth": "calm", "space documentaries": "calm",
+    "deep ocean & unknown earth": "ambient", "space documentaries": "ambient",
     "paleontology & history": "epic", "personal finance": "news", "celebrity": "warm",
 }
 
@@ -69,6 +72,9 @@ MOODS = {
     # tune, then the bass, then the drums coming in ("build" below).
     "rise":   {"root": 110.00, "bpm": 96,  "chords": [(0, _MINOR), (8, _MAJOR), (3, _MAJOR), (10, _MAJOR)],
                "pad": 0.45, "arp": 0.30, "bass": "pulse", "drum": "taiko", "lead": 0.16, "build": True},
+    # Held, airy chords with a slow swell and a few soft notes: no drums, no pulse.
+    "ambient": {"root": 98.00, "bpm": 58, "chords": [(0, (0, 3, 10)), (8, (0, 4, 11)), (5, (0, 3, 10)), (10, (0, 4, 7))],
+                "pad": 0.65, "arp": 0.05, "bass": "held", "drum": "", "lead": 0.07},
     "news":   {"root": 146.83, "bpm": 104, "chords": [(0, _MINOR), (5, _MAJOR), (0, _MINOR), (10, _MAJOR)],
                "pad": 0.40, "arp": 0.12, "bass": "pulse", "drum": "tick", "lead": 0.0},
 }
@@ -87,6 +93,9 @@ def mood_for(channel=None, lesson=None) -> str:
     genre = str(getattr(channel, "genre", "") or "kids").lower()
     if getattr(channel, "builtin", False) or genre == "kids":
         return "kids"
+    own = str(getattr(channel, "music_mood", "") or "").strip().lower()
+    if own in MOODS:
+        return own
     if is_cinematic(channel):
         return "rise"
     channel_text = f"{genre} {getattr(channel, 'tone', '')} {getattr(channel, 'name', '')}".lower()
@@ -111,7 +120,78 @@ def mood_for(channel=None, lesson=None) -> str:
 _NEAR = {
     "calm": ("warm",), "warm": ("calm",), "epic": ("uplift",), "uplift": ("epic",),
     "news": ("uplift",), "tense": ("news", "epic"), "dark": ("tense", "epic"), "rise": ("epic", "uplift"),
+    "ambient": ("calm", "dark"),
 }
+
+# The strongest beat a track may have to play under a mood (beat_strength:
+# 0 = no pulse, about 0.6 = a dance tune). The space channel's quiet "calm"
+# folder had one track, so it borrowed from "warm" and a quasar Short got
+# "Friendly Dance" (0.59). Moods not listed take any beat.
+MAX_BEAT = {"ambient": 0.25, "calm": 0.30, "dark": 0.30, "warm": 0.45}
+_FEEL_FILE = MUSIC_DIR / ".beat_strength.json"
+
+
+def beat_strength(track: Path) -> float | None:
+    """How strongly a track pulses, 0..1: the autocorrelation peak of its loudness
+    onsets at 60-180 BPM, over 40 s from its middle. None when it cannot be read.
+    Measured once per file and remembered in data/music/.beat_strength.json."""
+    import json
+    import subprocess
+
+    try:
+        stat = track.stat()
+        key = f"{track.parent.name}/{track.name}:{stat.st_size}"
+    except OSError:
+        return None
+    try:
+        known = json.loads(_FEEL_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        known = {}
+    if key in known:
+        return known[key]
+    try:
+        import numpy as np
+
+        from .visuals import ffmpeg_bin
+
+        rate = 11025
+        raw = subprocess.run([ffmpeg_bin(), "-v", "error", "-ss", "20", "-t", "40", "-i", str(track),
+                              "-ac", "1", "-ar", str(rate), "-f", "s16le", "-"],
+                             capture_output=True, timeout=120).stdout
+        x = np.frombuffer(raw, np.int16).astype(float) / 32768
+        hop = rate // 100
+        count = len(x) // hop
+        if count < 600:  # under 6 s of sound: too short to judge
+            return None
+        level = np.sqrt((x[: count * hop].reshape(count, hop) ** 2).mean(axis=1))
+        onsets = np.maximum(0.0, np.diff(np.log(level + 1e-4)))
+        onsets -= onsets.mean()
+        corr = np.correlate(onsets, onsets, "full")[len(onsets) - 1:]
+        if not corr[0]:
+            return None
+        corr /= corr[0]
+        value = round(float(corr[33:100].max()), 3)   # lags of 0.33-1.0 s = 180-60 BPM
+    except Exception as exc:
+        print(f"[music] could not measure {track.name}: {exc}")
+        return None
+    known[key] = value
+    try:
+        _FEEL_FILE.write_text(json.dumps(known, indent=1, sort_keys=True), encoding="utf-8")
+    except OSError:
+        pass
+    return value
+
+
+def fits_mood(track: Path, mood: str) -> bool:
+    """False for a track that pulses harder than the mood allows."""
+    ceiling = MAX_BEAT.get(mood)
+    if ceiling is None:
+        return True
+    strength = beat_strength(track)
+    if strength is None or strength <= ceiling:
+        return True
+    print(f"[music] {track.name} left out: beat {strength:.2f} is too strong for {mood} (max {ceiling})")
+    return False
 
 
 def _tracks(folder: Path) -> list[Path]:
@@ -125,13 +205,16 @@ def own_track(channel, mood: str, seed_text: str) -> Path | None:
 
     The channel's own folder wins; else the mood's, joined by the moods near it
     while it holds fewer than three, so one track is not heard in every video."""
+    # The channel's own folder is the owner's choice and is used as it is.
     tracks = _tracks(MUSIC_DIR / str(getattr(channel, "id", "") or "_"))
     if not tracks:
-        tracks = _tracks(MUSIC_DIR / mood)
+        # Every other track, the mood's own included, must be calm enough for
+        # the mood; with none left the mood's music is synthesised instead.
+        tracks = [t for t in _tracks(MUSIC_DIR / mood) if fits_mood(t, mood)]
         for near in _NEAR.get(mood, ()):
             if len(tracks) >= 3:
                 break
-            tracks += _tracks(MUSIC_DIR / near)
+            tracks += [t for t in _tracks(MUSIC_DIR / near) if fits_mood(t, mood)]
     return random.Random(seed_text).choice(tracks) if tracks else None
 
 
@@ -187,7 +270,7 @@ def write_mood_music(output_path: Path, duration: float, mood: str, seed_text: s
 
         # Held chord: the "strings" under everything.
         pad = sum(_voice(np, note, t, (1.0, 0.45, 0.22, 0.10)) for note in notes) / len(notes)
-        if mood == "dark":
+        if mood in ("dark", "ambient"):
             pad *= 0.75 + 0.25 * np.sin(2.0 * np.pi * 0.23 * t)           # slow uneasy swell
         part += gain["pad"] * spec["pad"] * pad * _envelope(np, chord_len, 0.9, 1.1)
 

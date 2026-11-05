@@ -581,7 +581,7 @@ def _automatic_long_idea(channel: Channel) -> str:
         print(f"[competitors] {channel.id}: no idea ({exc})")
         inspiration = None
     if inspiration:
-        competitors.mark_written(channel.id, inspiration["video_id"], "(long video, title set by the writer)")
+        competitors.mark_written(channel.id, inspiration["video_id"], competitors.LONG_PLACEHOLDER)
         print(f"[competitors] {channel.id}: long video subject from '{inspiration['title'][:60]}' "
               f"({inspiration['ratio']:.1f}x)")
         return (f"Create a complete, original {channel.genre} documentary for {today_label}."

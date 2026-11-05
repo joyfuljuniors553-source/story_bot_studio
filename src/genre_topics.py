@@ -348,12 +348,21 @@ def _generate_one(channel: Channel, avoid_titles: list[str], scenes: int = SHORT
                 idea = competitors.next_idea(channel, "short")
             except Exception as exc:
                 print(f"[competitors] {channel.id}: no idea ({exc})")
-        key, lesson = write_next_lesson(channel, scenes, long_form=False,
-                                        inspiration_title=idea["title"] if idea else None,
-                                        outcome=outcome)
+        try:
+            key, lesson = write_next_lesson(channel, scenes, long_form=False,
+                                            inspiration_title=idea["title"] if idea else None,
+                                            outcome=outcome)
+        except Exception:
+            if idea:  # no script at all: the idea waits for the next video
+                competitors.release(channel.id, video_id=idea["video_id"])
+            raise
         if idea:
-            competitors.mark_written(channel.id, idea["video_id"], lesson["title"] if outcome
-                                     else "(subject did not fit this channel)")
+            if outcome.get("competitor"):
+                competitors.mark_written(channel.id, idea["video_id"], lesson["title"])
+            elif outcome.get("failed"):
+                competitors.release(channel.id, video_id=idea["video_id"])
+            else:
+                competitors.mark_written(channel.id, idea["video_id"], competitors.DID_NOT_FIT)
         return {"_key": key, **lesson}
     tone = getattr(channel, "tone", "") or GENRE_TONE.get(channel.genre, "engaging and well-paced")
     avoid = "; ".join(avoid_titles[-40:]) if avoid_titles else "none yet"
@@ -735,15 +744,24 @@ def generate_from_prompt(
     from .verified_facts import is_verified_channel, write_next_lesson
 
     if is_verified_channel(channel):
-        outcome: dict = {}
-        key, lesson = write_next_lesson(channel, scenes, long_form, user_prompt=user_prompt,
-                                        outcome=outcome)
-        theirs = re.search(r'has a video titled "(.+?)" that is getting', user_prompt)
-        if theirs:
-            from .competitors import mark_written_for_title
+        from . import competitors
 
-            mark_written_for_title(channel.id, theirs.group(1), lesson["title"] if outcome
-                                   else "(subject did not fit this channel)")
+        outcome: dict = {}
+        theirs = re.search(r'has a video titled "(.+?)" that is getting', user_prompt)
+        try:
+            key, lesson = write_next_lesson(channel, scenes, long_form, user_prompt=user_prompt,
+                                            outcome=outcome)
+        except Exception:
+            if theirs:  # no script at all: the idea waits for the next video
+                competitors.release(channel.id, their_title=theirs.group(1))
+            raise
+        if theirs:
+            if outcome.get("competitor"):
+                competitors.mark_written_for_title(channel.id, theirs.group(1), lesson["title"])
+            elif outcome.get("failed"):
+                competitors.release(channel.id, their_title=theirs.group(1))
+            else:
+                competitors.mark_written_for_title(channel.id, theirs.group(1), competitors.DID_NOT_FIT)
         return _save_custom_lesson(channel, f"long_{key}" if long_form else key, lesson)
     raw: dict = {}
     clash: str | None = None

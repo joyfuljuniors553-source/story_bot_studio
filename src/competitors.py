@@ -251,6 +251,7 @@ def next_idea(channel, kind: str = "short") -> dict | None:
     since = (datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)).isoformat()
     conn = _conn()
     try:
+        _free_stale(conn, channel.id)
         rows = conn.execute(
             """SELECT * FROM competitor_videos
                WHERE channel = ? AND used_at IS NULL AND ratio >= ? AND published_at >= ?
@@ -270,6 +271,46 @@ def next_idea(channel, kind: str = "short") -> dict | None:
             return dict(row)
         conn.commit()
         return None
+    finally:
+        conn.close()
+
+
+LONG_PLACEHOLDER = "(long video, title set by the writer)"
+DID_NOT_FIT = "(subject did not fit this channel)"
+STALE_AFTER = timedelta(hours=6)
+
+
+def _free_stale(conn, channel_id: str) -> None:
+    """Give back ideas that were reserved but never became a video.
+
+    A run that dies after reserving (an AI outage, a cancelled job) left the
+    idea taken for good, and an outage used to be recorded as "did not fit",
+    which threw away a 50x idea for no reason. Reservations older than six
+    hours without a video, and the "did not fit" marks written before that
+    was fixed (5 Nov 2026, 17:15 UTC), are offered again.
+    """
+    stale = (datetime.now(timezone.utc) - STALE_AFTER).isoformat()
+    conn.execute(
+        """UPDATE competitor_videos SET used_at = NULL, our_title = NULL
+           WHERE channel = ? AND used_at IS NOT NULL
+             AND ((used_at < ? AND (our_title IS NULL OR our_title = ?))
+                  OR (our_title = ? AND used_at < '2026-11-05T17:15'))""",
+        (channel_id, stale, LONG_PLACEHOLDER, DID_NOT_FIT),
+    )
+    conn.commit()
+
+
+def release(channel_id: str, video_id: str | None = None, their_title: str | None = None) -> None:
+    """Put a reserved idea back when our script could not be written (not a verdict on it)."""
+    conn = _conn()
+    try:
+        if video_id:
+            conn.execute("UPDATE competitor_videos SET used_at = NULL, our_title = NULL "
+                         "WHERE channel = ? AND video_id = ?", (channel_id, video_id))
+        elif their_title:
+            conn.execute("UPDATE competitor_videos SET used_at = NULL, our_title = NULL "
+                         "WHERE channel = ? AND title = ?", (channel_id, their_title))
+        conn.commit()
     finally:
         conn.close()
 

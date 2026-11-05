@@ -706,6 +706,10 @@ def write_next_lesson(channel: Channel, scenes: int, long_form: bool,
                     outcome["competitor"] = theirs
                 return key, lesson
         except Exception as exc:
+            # A failure (AI or Wikipedia down), not a verdict that it does not fit:
+            # the caller gives the idea back for a later video.
+            if outcome is not None:
+                outcome["failed"] = str(exc)[:200]
             print(f"[competitors] {channel.id}: their subject could not be used ({exc}); "
                   "taking the next one from the list")
     # Words a person typed name the subject they want; that one is not swapped.

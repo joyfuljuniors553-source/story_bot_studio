@@ -49,8 +49,8 @@ def _extract_json(text: str):
     return json.loads(text)
 
 
-def _gemini(prompt: str, model: str | None = None) -> dict:
-    key = settings.gemini_api_key
+def _gemini(prompt: str, model: str | None = None, key: str | None = None) -> dict:
+    key = key or settings.gemini_api_key
     if not key:
         raise RuntimeError("GEMINI_API_KEY not set in .env")
     model = model or settings.gemini_model
@@ -188,20 +188,25 @@ def _script_json(prompt: str) -> dict:
     flowing instead of failing the whole video.
     """
     errors: list[str] = []
-    if settings.gemini_api_key:
-        try:
-            return _gemini(prompt)
-        except Exception as exc:
-            errors.append(f"Gemini({settings.gemini_model}): {exc}")
+    models = [settings.gemini_model] + [
+        m.strip() for m in settings.gemini_fallback_model.split(",")
+        if m.strip() and m.strip() != settings.gemini_model
+    ]
+    keys = [k for k in (settings.gemini_api_key, settings.gemini_api_key_2) if k]
+    for number, key in enumerate(keys, start=1):
+        # The second key (another Google project) only helps when the first
+        # one's quota is full; a busy or slow Gemini (503, timeout) is the same
+        # for every key, so then go straight on to Groq.
+        if number > 1 and not any("429" in e for e in errors):
+            break
+        label = "Gemini" if number == 1 else f"Gemini key {number}"
         # Each free Gemini model has its own daily quota, so the next one in
         # the list often still answers when the first is used up.
-        for fallback_model in [m.strip() for m in settings.gemini_fallback_model.split(",") if m.strip()]:
-            if fallback_model == settings.gemini_model:
-                continue
+        for model in models:
             try:
-                return _gemini(prompt, model=fallback_model)
+                return _gemini(prompt, model=model, key=key)
             except Exception as exc:
-                errors.append(f"Gemini({fallback_model}): {exc}")
+                errors.append(f"{label}({model}): {exc}")
     if settings.groq_api_key:
         try:
             return _groq_json(prompt)

@@ -143,6 +143,10 @@ class Settings:
     google_image_api_key: str = os.getenv("GOOGLE_IMAGE_API_KEY", "")
     google_image_cx: str = os.getenv("GOOGLE_IMAGE_CX", "")
     gemini_api_key: str = os.getenv("GEMINI_API_KEY", "")
+    # A second key from ANOTHER Google project, used when the first one's daily
+    # quota is full (429). Free limits are per project, so a key from the same
+    # project adds nothing.
+    gemini_api_key_2: str = os.getenv("GEMINI_API_KEY_2", "")
     # How many freshly written kids topics to add each day, on top of the
     # built-in bank. 0 turns it off and the channel goes back to bank-only.
     kids_fresh_topics_per_day: int = int(os.getenv("KIDS_FRESH_TOPICS_PER_DAY", "2"))

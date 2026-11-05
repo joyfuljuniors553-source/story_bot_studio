@@ -790,6 +790,41 @@ _CSS = """
 """
 
 
+
+_VERDICT = {"strong": ("ok", "Strong: keep"), "similar": ("warn", "Like our own"),
+            "weak": ("bad", "Weak: replace"), "too early": ("warn", "Too early")}
+
+
+def _competitor_report(channels: list) -> str:
+    """Our videos from competitor topics vs our own (src/competitor_report.py)."""
+    try:
+        from src.competitor_report import load
+
+        report = load()
+    except Exception:
+        report = {}
+    names = {c["id"]: c["name"] for c in channels}
+    blocks = []
+    for cid, r in (report.get("channels") or {}).items():
+        rows = "".join(
+            f"<li class='row'><div class='row-main'><div class='row-title'>{html.escape(c['name'])}</div>"
+            f"<div class='meta'>{c['videos']} of our videos · {c['views_per_day']} views/day"
+            f"{' · ' + str(c['vs_own']) + '× our own' if c['vs_own'] is not None else ''}</div></div>"
+            f"<span class='pill {_VERDICT[c['verdict']][0]}'>{_VERDICT[c['verdict']][1]}</span></li>"
+            for c in r.get("competitors") or [])
+        if not rows and not r.get("own_videos"):
+            continue
+        blocks.append(
+            f"<h3>{html.escape(names.get(cid, cid))} <small>our own topics: {r['own_videos']} videos · "
+            f"{r['own_views_per_day']} views/day</small></h3>"
+            + (f"<ul class='rows'>{rows}</ul>" if rows else "<div class='empty'>No video from a competitor topic yet.</div>"))
+    if not blocks:
+        return ""
+    made = str(report.get("made_at") or "")[:16].replace("T", " ")
+    return (f"<section class='card'><h2>Competitor topics vs our own <small>last 14 days, "
+            f"updated {made} UTC</small></h2>{''.join(blocks)}</section>")
+
+
 def render(data: dict) -> str:
     from pwa_files import HEAD_TAGS as pwa_head, INSTALL_BAR as install_bar
     now = datetime.now(timezone.utc)
@@ -835,6 +870,7 @@ def render(data: dict) -> str:
   <h2 class="section">Channels</h2>
   <div class="grid">{''.join(_card(c) for c in data['channels'])}</div>
 
+  {_competitor_report(data['channels'])}
   {_failures(data.get('failures') or [])}
   {problems}
 
@@ -933,6 +969,10 @@ def main() -> None:
         for item in extra.iterdir():
             if item.is_file() and item.name != "README.md":
                 shutil.copy2(item, out_dir / item.name)
+    # The competitor report, so the dashboard on the PC can show GitHub's numbers.
+    report = ROOT / "data" / "competitor_report.json"
+    if report.is_file():
+        shutil.copy2(report, out_dir / "competitor_report.json")
     # Stops GitHub Pages running the file through Jekyll, which would mangle it.
     (out_dir / ".nojekyll").write_text("", encoding="utf-8")
     print(f"Wrote {out_dir / 'index.html'} ({len(page) // 1024} KB)")

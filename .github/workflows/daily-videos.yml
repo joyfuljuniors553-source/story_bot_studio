@@ -168,6 +168,13 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python -m src.cli audit-thumbnails --days 7
 
+      # Which competitors' topics work on our channels: our videos from their
+      # ideas against our own (views per day). Shown on the status page.
+      - name: Compare competitor topics with our own
+        if: ${{ always() && env.UPLOAD != 'false' }}
+        continue-on-error: true
+        run: python -m src.cli competitor-report --days 14
+
       - name: Report
         if: always()
         run: python -m src.cli quota-status

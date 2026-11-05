@@ -809,9 +809,21 @@ def _competitor_view(channel_id: str) -> dict:
     try:
         from src.competitors import overview
 
-        return overview(channel_id)
+        view = overview(channel_id)
     except Exception:
         return {"channels": [], "videos": []}
+    # How each competitor's topics did on OUR channel (src/competitor_report.py).
+    try:
+        from src.competitor_report import published
+
+        mine = (published().get("channels") or {}).get(channel_id) or {}
+        ours = {c["name"]: c for c in mine.get("competitors") or []}
+        for c in view["channels"]:
+            c["ours"] = ours.get(c.get("name"))
+        view["own"] = mine
+    except Exception:
+        pass
+    return view
 
 
 @app.post("/competitors/save")
@@ -2084,6 +2096,7 @@ PAGE = r"""
   .comp-av.all{background:linear-gradient(135deg,var(--accent),var(--accent2))}
   .comp-meta{display:flex;flex-direction:column;min-width:0}.comp-meta b{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .comp-meta small{font-size:11.5px;color:var(--muted)}
+  .comp-ours{font-weight:600}.comp-ours.strong{color:var(--ok,#3ecf8e)}.comp-ours.weak{color:var(--err,#ff6b6b)}.comp-ours.similar,.comp-ours.too-early{color:var(--warn,#e8b64a)}.comp-ours.none{font-weight:400}
   .comp-open{position:absolute;top:6px;right:9px;font-size:13px;color:var(--muted)}.comp-open:hover{color:var(--accent)}
   i.x{font-style:normal;font-weight:700;color:var(--warn)}i.x.hot{color:var(--ok)}
   .comp-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
@@ -2398,7 +2411,9 @@ PAGE = r"""
         {% if c.avatar %}<img class="comp-av" src="{{c.avatar}}" alt="" loading="lazy" referrerpolicy="no-referrer">{% else %}<span class="comp-av">{{ (c.name or c.url)[:1]|upper }}</span>{% endif %}
         <span class="comp-meta"><b>{{c.name or c.url}}</b>
           {% if c.error %}<small style="color:var(--err)">could not read</small>
-          {% else %}<small>{{c.subs_text}} subscribers</small><small>{{c.n}} videos in 30 days{% if c.best %} · best <i class="x {{'hot' if c.best >= 2 else ''}}">{{'%.1f'|format(c.best)}}×</i>{% endif %}</small>{% endif %}
+          {% else %}<small>{{c.subs_text}} subscribers</small><small>{{c.n}} videos in 30 days{% if c.best %} · best <i class="x {{'hot' if c.best >= 2 else ''}}">{{'%.1f'|format(c.best)}}×</i>{% endif %}</small>
+          {% if c.ours %}<small class="comp-ours {{c.ours.verdict|replace(' ', '-')}}" title="Our videos from this channel's topics, views per day against our own topics (last {{comp.own.days}} days)">ours: {{c.ours.videos}} video{{'s' if c.ours.videos != 1 else ''}}{% if c.ours.vs_own is not none %} · {{'%.1f'|format(c.ours.vs_own)}}× own{% endif %} · {{ {'strong': 'keep', 'weak': 'replace', 'similar': 'like own', 'too early': 'too early'}[c.ours.verdict] }}</small>
+          {% else %}<small class="comp-ours none">ours: no video yet</small>{% endif %}{% endif %}
         </span>
         {% if not c.error %}<a class="comp-open" href="{{c.link}}" target="_blank" title="Open on YouTube" onclick="event.stopPropagation()">↗</a>{% endif %}
       </button>

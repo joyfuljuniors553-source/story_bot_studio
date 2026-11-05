@@ -79,6 +79,10 @@ def main() -> None:
     comp = sub.add_parser("competitors", help="Read competitor channels and show their best recent topics.")
     comp.add_argument("--channel", required=True, help="Our channel id.")
     comp.add_argument("--add", default="", help="Comma-separated competitor URLs/@handles to save first.")
+    crep = sub.add_parser("competitor-report",
+                          help="Our videos from competitor topics vs our own: which competitors work.")
+    crep.add_argument("--days", default="14", help="How many days of our public videos to compare.")
+    crep.add_argument("--refresh", default="true", help="false = use the saved view counts.")
     audit = sub.add_parser("audit-thumbnails",
                            help="Check every connected channel's recent videos on YouTube; set a thumbnail where one is missing.")
     audit.add_argument("--days", default="7", help="How many days of uploads to check.")
@@ -368,6 +372,11 @@ def main() -> None:
             used = f" -> ours: {v['our_title']}" if v["our_title"] else (" (reserved)" if v["used_at"] else "")
             print(f"  {v['ratio']:>5.1f}x  {v['views']:>9,} views  {'Short' if v['short'] else 'long '}  "
                   f"[{v['competitor_name']}] {v['title'][:70]}{used}")
+        return
+    elif args.command == "competitor-report":
+        from .competitor_report import build, lines
+        for line in lines(build(days=int(args.days), refresh=str(args.refresh).lower() != "false")):
+            print(line)
         return
     elif args.command == "audit-thumbnails":
         from .thumbnail_audit import audit

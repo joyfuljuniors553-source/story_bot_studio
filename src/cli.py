@@ -239,15 +239,19 @@ def main() -> None:
             print(f"[{channel.id}] {topic}: {status}")
         return
     elif args.command == "daily-all":
-        from .daily_runner import _can_publish, short_videos_generated_today_count
-        from .slots import channel_slot, describe, wanted_slots
+        from .daily_runner import _can_publish, hours_since_last_short, short_videos_generated_today_count
+        from .slots import channel_slot, describe, missed_late_slot, wanted_slots
 
         override = str(getattr(args, "count", "") or "").strip()
         slot = wanted_slots(args.slot)
         print(f"Build slot: {describe(slot)}")
         for channel in load_channels():
             if slot is not None and channel_slot(channel) not in slot:
-                continue
+                # Only an automatic run catches up a late slot that was lost.
+                if str(args.slot).strip().lower() != "auto" or not missed_late_slot(
+                        channel, hours_since_last_short(channel.id)):
+                    continue
+                print(f"[{channel.id}] catching up: its last slot's run was lost")
             if not _can_publish(channel):
                 # Rendering for a channel nobody signed in to only wastes the run.
                 print(f"[{channel.id}] SKIPPED not connected")

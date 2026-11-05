@@ -126,6 +126,10 @@ jobs:
         if: ${{ env.LONG_VIDEOS != 'false' }}
         # A long video that dies must not cost the day's Shorts or the saved state.
         continue-on-error: true
+        # On 4 Nov a 12-minute documentary took 5.5 hours (clip searches and AI
+        # timeouts), hit the job's limit before the Shorts ever started, and the
+        # runs queued behind it were cancelled. Two hours, then the Shorts go on.
+        timeout-minutes: 120
         run: python -m src.cli daily-long-all --upload "$UPLOAD" --slot "$SLOT"
 
       - name: Build and upload today's Shorts

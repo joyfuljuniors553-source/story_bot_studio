@@ -182,6 +182,30 @@ def short_videos_generated_today_count(channel_id: str = "kids") -> int:
     )
 
 
+def hours_since_last_short(channel_id: str) -> float | None:
+    """Hours since this channel's newest Short was made, or None if it has none."""
+    if not settings.db_path.exists():
+        return None
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        row = conn.execute(
+            """SELECT MAX(created_at) FROM videos
+               WHERE channel = ? AND COALESCE(content_type, 'short') = 'short'
+                 AND status NOT IN ('quality_failed', 'duplicate_blocked')""",
+            (channel_id,),
+        ).fetchone()
+    except sqlite3.OperationalError:
+        row = None
+    finally:
+        conn.close()
+    if not row or not row[0]:
+        return None
+    try:
+        return (datetime.now() - datetime.fromisoformat(row[0]).replace(tzinfo=None)).total_seconds() / 3600
+    except ValueError:
+        return None
+
+
 def videos_generated_today_count(channel_id: str = "kids") -> int:
     if not settings.db_path.exists():
         return 0

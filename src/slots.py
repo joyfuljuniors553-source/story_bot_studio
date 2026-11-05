@@ -113,6 +113,28 @@ def due_slots(now: datetime | None = None) -> set[int]:
     return passed or {len(SLOTS_UTC) - 1}
 
 
+def missed_late_slot(channel, hours_since_last_short: float | None, now: datetime | None = None) -> bool:
+    """True when this run should also build a channel whose late slot was lost.
+
+    A slow run (a long documentary rendering for hours) holds the queue, and
+    GitHub cancels the runs waiting behind it, so the 20:30 and 22:30 UTC
+    channels got no video that day: the next run is already a new UTC day and
+    only builds its own early slots. A run before the first daytime slot
+    therefore also builds a channel whose slot has not come yet today when its
+    last Short is more than 20 hours old. That channel then counts today's
+    video as made and skips its own evening slot, so it never gets two.
+    """
+    now = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
+    minutes = now.hour * 60 + now.minute
+    first_daytime = SLOTS_UTC[3][0] * 60 + SLOTS_UTC[3][1]
+    if minutes >= first_daytime:
+        return False
+    hour, minute = SLOTS_UTC[channel_slot(channel)]
+    if hour * 60 + minute <= minutes:
+        return False  # its slot already came today; the normal rule covers it
+    return hours_since_last_short is None or hours_since_last_short > 20
+
+
 def wanted_slots(value: str | None) -> set[int] | None:
     """--slot as given on the command line: 'all' -> None, 'auto' -> due_slots(), '2' -> {2}."""
     wanted = str(value or "all").strip().lower()

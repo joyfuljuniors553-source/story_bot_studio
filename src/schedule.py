@@ -26,14 +26,19 @@ RELEASE_TIMES = {
     "trending":        (("07:00", "17:00"), ("12:00",)),
     "heroic history":  (("11:00", "18:00"), ("14:00",)),
     "bedtime stories": (("18:30", "20:30"), ("19:00",)),
-    # The current channels: Short, long, Short, each release 4 h from the
-    # channel's next one, and the channels 30 min apart so no two go live
-    # together.
-    "personal finance":       (("12:00", "20:00"), ("16:00",)),
-    "deep ocean":             (("12:30", "20:30"), ("16:30",)),
-    "celebrity":              (("13:00", "21:00"), ("17:00",)),
-    "space documentaries":    (("13:30", "21:30"), ("17:30",)),
-    "paleontology & history": (("14:00", "22:00"), ("18:00",)),
+    # The current channels: three Shorts a day 4 h apart at the hours each
+    # audience watches, and a long video on its two days a week. No two
+    # releases of any channels share a time (30 min apart at least).
+    # Finance: commute, lunch, after work; the long one in the evening.
+    "personal finance":       (("08:00", "12:00", "16:00"), ("20:00",)),
+    # Celebrity stories (adults, US/UK): morning, lunch, after work; prime time.
+    "celebrity":              (("09:30", "13:30", "17:30"), ("19:00",)),
+    # Ocean mysteries: late morning, afternoon, evening; a late-night long one.
+    "deep ocean":             (("10:30", "14:30", "18:30"), ("21:30",)),
+    # Prehistory (families, students): lunch, after school, evening.
+    "paleontology & history": (("12:30", "16:30", "20:30"), ("15:30",)),
+    # Space: afternoon, after work, night-sky hours.
+    "space documentaries":    (("13:00", "17:00", "21:00"), ("19:30",)),
     # Future-science channels (none yet): 09 / 13 / 17 / 21.
     "future science":         (("09:00", "13:00", "21:00"), ("17:00",)),
 }

@@ -1,8 +1,25 @@
 # Move To Another PC
 
+## Easiest: the full-setup zip
+
+On this PC, make one zip with everything (code, keys, YouTube logins,
+channels, database, brand files):
+
+```powershell
+.\.venv\Scripts\python.exe scripts\make_full_backup.py
+```
+
+It is saved in Downloads as `story_bot_studio_FULL_SETUP_<date>.zip`. Keep it
+private: it holds every key and login. Do not upload it to GitHub or share a
+public link. Copy it to the new PC (USB or your private Drive), unzip it, open
+the `story_bot_studio` folder and double-click `START_DASHBOARD.bat`. The first
+start installs Python packages by itself.
+
+## By hand
+
 Copy this full project folder to the new PC:
 
-`kids_learning_youtube_bot`
+`story_bot_studio`
 
 Then open PowerShell inside that folder and run:
 

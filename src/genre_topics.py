@@ -99,13 +99,19 @@ def _groq_json(prompt: str) -> dict:
         headers={
             "Content-Type": "application/json",
             "Authorization": f"Bearer {settings.groq_api_key}",
+            # Groq's edge answers 403 to Python's default "Python-urllib" agent.
+            "User-Agent": "StoryBotStudio/1.0",
         },
     )
     for attempt in range(1):
         try:
             with urllib.request.urlopen(req, timeout=90) as resp:
                 payload = json.loads(resp.read())
-            return _extract_json(payload["choices"][0]["message"]["content"])
+            text = payload["choices"][0]["message"]["content"]
+            # gpt-oss writes non-breaking hyphens and spaces ("Lyman‑alpha"); the
+            # fact checker then misses the article's "Lyman-alpha" and drops the line.
+            text = text.translate({0x2010: "-", 0x2011: "-", 0x00A0: " ", 0x202F: " "})
+            return _extract_json(text)
         except urllib.error.HTTPError as e:
             if e.code == 503 and attempt < 2:
                 time.sleep(4 * (attempt + 1))

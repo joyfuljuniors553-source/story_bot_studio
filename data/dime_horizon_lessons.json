@@ -1,0 +1,720 @@
+{
+  "how_compound_interest_quietly_builds_wealth": {
+    "title": "How Compound Interest Quietly Builds Wealth",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "$1,000 earns $1,050 after 1 year and grows to $1,102.50 after 2 years.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_01.jpg",
+        "image_prompt": "A stack of US dollar bills sitting neatly on a wooden desk inside a quiet office room., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Core Question",
+        "line": "How does compound interest calculate growth on a new value rather than the original principal?",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_02.jpg",
+        "image_prompt": "A person sitting at a desk with a blank notepad and a calculator under soft lighting., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Ancient Origins",
+        "line": "A clay tablet from Babylon dating from about 2000–1700 B.C. might display the first problem.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_03.jpg",
+        "image_prompt": "An ancient stone artifact with carved cuneiform symbols resting on a museum display stand., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Medieval Tables",
+        "line": "The Florentine merchant Francesco Balducci Pegolotti provided a table in his 1340 book Pratica della mercatura.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_04.jpg",
+        "image_prompt": "An old open manuscript with handwritten numbers and tables on aged parchment paper., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Rule of 72",
+        "line": "The Summa de arithmetica of Luca Pacioli in 1494 gives the Rule of 72 for doubling investments.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_05.jpg",
+        "image_prompt": "A classic leather-bound book lying open on a wooden table next to a brass inkwell., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Landmark Book",
+        "line": "Richard Witt published Arithmeticall Questions in 1613 as a landmark book wholly devoted to the subject.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_06.jpg",
+        "image_prompt": "An antique book with worn leather binding resting flat against a dark wooden background., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Constant Discovery",
+        "line": "Jacob Bernoulli discovered the constant e in 1683 by studying a question about compound interest.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_07.jpg",
+        "image_prompt": "A vintage globe and old scientific instruments placed on a dark wooden study table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Persian Approximation",
+        "line": "In the 19th century, Persian merchants used a linear Taylor approximation to compute monthly payments easily.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_08.jpg",
+        "image_prompt": "An ancient abacus with wooden beads placed on a worn wooden countertop inside a shop., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Defining Frequencies",
+        "line": "The compounding frequency is the number of times per given unit of time accumulated interest is capitalized.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_09.jpg",
+        "image_prompt": "A calendar hanging on a wall showing months and weeks with a simple black frame., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Effective Rates",
+        "line": "Many countries require financial institutions to disclose the annual compound interest rate for consumer comparison.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_10.jpg",
+        "image_prompt": "A modern financial office building viewed from the outside with glass windows reflecting the sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Basic Formula",
+        "line": "The total accumulated value is given by the formula where A is the final amount.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_11.jpg",
+        "image_prompt": "A white chalkboard filled with mathematical formulas and numbers written in clear white chalk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Final Growth",
+        "line": "The accumulation function shows what $1 grows to after any length of time through reinvestment.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_12.jpg",
+        "image_prompt": "A single US dollar bill resting neatly on a plain white wooden table surface., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Compound interest",
+    "source_url": "https://en.wikipedia.org/wiki/Compound_interest"
+  },
+  "inflation_explained": {
+    "title": "Inflation Explained",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "One of the earliest documented inflations occurred in Alexander the Great's empire 330 BC.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_01.jpg",
+        "image_prompt": "Ancient stone ruins under a bright clear sky, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Core Question",
+        "line": "How does an increase in the money supply actually reduce the purchasing power of money?",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_02.jpg",
+        "image_prompt": "Close up of old metallic coins resting on a wooden table, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Defining Inflation",
+        "line": "Inflation is an increase in the average price of goods and services in terms of money.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_03.jpg",
+        "image_prompt": "A modern storefront displaying various goods through a glass window, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Price Index",
+        "line": "This increase is measured using a price index, typically a consumer price index.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_04.jpg",
+        "image_prompt": "A person reviewing printed financial charts and notes on a desk, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Reduced Purchasing Power",
+        "line": "When the general price level rises, each unit of currency buys fewer goods and services.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_05.jpg",
+        "image_prompt": "A single coin sitting on top of a stack of papers, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Money Supply",
+        "line": "Changes in inflation are widely attributed to increases in the overall money supply.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_06.jpg",
+        "image_prompt": "A neat stack of paper currency notes on a dark surface, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Historical Debasement",
+        "line": "Governments could collect silver coins and mix them with less valuable metals like copper.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_07.jpg",
+        "image_prompt": "Raw silver and copper metal pieces lying on a workbench, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Coin Dilution",
+        "line": "By diluting the silver with other metals, the government could issue more coins.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_08.jpg",
+        "image_prompt": "An artisan workspace with metalworking tools and small metal discs, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Decreased Value",
+        "line": "As the relative value of the coins becomes lower, consumers would need to give more coins.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_09.jpg",
+        "image_prompt": "Hands counting out multiple metal coins on a counter, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Price Increase",
+        "line": "Goods and services would experience a price increase as the value of each coin is reduced.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_10.jpg",
+        "image_prompt": "Market stalls with various goods displayed for sale outdoors, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Modern Central Banks",
+        "line": "The task of keeping the rate of inflation low is usually given to central banks.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_11.jpg",
+        "image_prompt": "The exterior facade of a classic stone government or banking building, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Stable Management",
+        "line": "Central banks control monetary policy normally through the setting of interest rates.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_12.jpg",
+        "image_prompt": "A quiet office desk featuring a pen and a digital calculator, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Inflation",
+    "source_url": "https://en.wikipedia.org/wiki/Inflation"
+  },
+  "personal_finance_explained": {
+    "title": "Personal finance Explained",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Foundational Insight",
+        "line": "In 1920, Hazel Kyrk's dissertation laid groundwork for consumer and family economics.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_01.jpg",
+        "image_prompt": "Early 20th century university library with shelves of academic books and a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Key Question",
+        "line": "How did Hazel Kyrk’s 1920 work effectively influence today’s personal finance practices?",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_02.jpg",
+        "image_prompt": "A modern office with a person reviewing financial documents on a laptop., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Pioneer Insight",
+        "line": "Margaret Reid, a home economics professor, later recognized as a pioneer in studying consumer behavior.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_03.jpg",
+        "image_prompt": "University classroom with a professor lecturing students about household budgeting., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Decision Limits",
+        "line": "In 1947, Herbert A. Simon noted decision-makers often choose suboptimal financial actions due to limited education.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_04.jpg",
+        "image_prompt": "A person looking confused at a pile of bills on a kitchen table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Professional Growth",
+        "line": "American Association of Family and Consumer Sciences helped shape personal finance from the 1950s through the 1970s.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_05.jpg",
+        "image_prompt": "Conference hall with professionals networking and discussing financial charts., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Certifications",
+        "line": "The Association for Financial Counseling and Planning Education launched in 1984, soon followed by the Academy of Financial Services in 1985.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_06.jpg",
+        "image_prompt": "Office wall displaying framed certificates for financial counseling., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Academic Expansion",
+        "line": "Brigham Young University, Iowa State University, and San Francisco State University began personal finance degree programs in the 1990s.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_07.jpg",
+        "image_prompt": "University lecture hall with students taking notes on budgeting slides., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Literacy Push",
+        "line": "Early 2000s saw rise of financial literacy programs, culminating in the 2008 President’s Advisory Council on Financial Capability.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_08.jpg",
+        "image_prompt": "Community workshop with diverse adults learning budgeting on tablets., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Simple Rules",
+        "line": "Core advice includes paying credit cards monthly, saving 10-20% of post-tax income, and maintaining a six-month emergency fund.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_09.jpg",
+        "image_prompt": "Close-up of a savings jar, credit card statement, and a calendar., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Personal finance",
+    "source_url": "https://en.wikipedia.org/wiki/Personal_finance"
+  },
+  "understanding_how_credit_scores_work_and_determine_your_financial_options": {
+    "title": "Understanding How Credit Scores Work and Determine Your Financial Options",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "A credit score is a numerical expression representing the creditworthiness of an individual person.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_01.jpg",
+        "image_prompt": "An office desk with financial documents and a calculator., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Core Question",
+        "line": "How do lenders such as banks and credit card companies use credit scores to evaluate risk?",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_02.jpg",
+        "image_prompt": "A bank building exterior with glass doors and professional signage., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "First Clue",
+        "line": "A credit score is primarily based on a credit report sourced from credit bureaus.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_03.jpg",
+        "image_prompt": "A modern computer screen displaying statistical charts and numerical data., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Second Clue",
+        "line": "Lenders use credit scores to determine who qualifies for a loan and at what interest rate.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_04.jpg",
+        "image_prompt": "A person signing a formal financial document with a pen., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Third Clue",
+        "line": "Other organizations like mobile phone companies, insurance companies, and landlords employ the same techniques.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_05.jpg",
+        "image_prompt": "A city street with telecommunication infrastructure and residential apartments., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Fourth Clue",
+        "line": "In Brazil, scores generally range from 0 to 1000 indicating the chance of paying bills on time.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_06.jpg",
+        "image_prompt": "A close-up of a digital device showing consumer statistics and analytics., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Fifth Clue",
+        "line": "Equifax Beacon and Trans Union Emperica scores both range from 300 to 900 in Canada.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_07.jpg",
+        "image_prompt": "A quiet room with a closed laptop resting on a wooden table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Sixth Clue",
+        "line": "In India, the popular CIBIL credit score is a three digit number ranging from 300 to 900.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_08.jpg",
+        "image_prompt": "An urban financial district showing corporate office buildings., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Seventh Clue",
+        "line": "Individuals with no credit history will have a score of minus 1 in that system.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_09.jpg",
+        "image_prompt": "A blank digital ledger waiting for financial entries., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Eighth Clue",
+        "line": "In Ireland, credit scores run from 224 as the worst value to 581 as the best value.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_10.jpg",
+        "image_prompt": "A paper report displaying numerical score values on a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Final Awe",
+        "line": "Financial institutions utilize credit scores as the most important tool during credit analysis decisions.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_11.jpg",
+        "image_prompt": "A wide view of a modern financial institution interior during business hours., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Credit score",
+    "source_url": "https://en.wikipedia.org/wiki/Credit_score"
+  },
+  "john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets": {
+    "title": "John Bogle’s Index Fund Legacy: From $11 million to $22 trillion in U.S. Assets",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Massive Market Size",
+        "line": "Index funds hold $22 trillion in the U.S. as of May 2026.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_01.jpg",
+        "image_prompt": "A modern office with large screens displaying financial market data., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Key Question",
+        "line": "How did John Bogle’s Vanguard 500 Index Fund grow from $11 million to $100 billion?",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_02.jpg",
+        "image_prompt": "A person reading a financial newspaper at a kitchen table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Replication Goal",
+        "line": "Index funds aim to replicate a market index by holding identical securities in the same proportions.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_03.jpg",
+        "image_prompt": "Workers arranging identical stacks of stock certificates on a table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Passive Management",
+        "line": "They use passive management, simply mirroring the benchmark without any active stock-picking decisions.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_04.jpg",
+        "image_prompt": "An investor reviewing a simple portfolio chart on a laptop., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Early Theory",
+        "line": "The first theoretical index fund model was proposed in 1960 by Edward Renshaw and Paul Feldstein.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_05.jpg",
+        "image_prompt": "University of Chicago campus with students walking near a lecture hall., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "First Retail Fund",
+        "line": "Qualidex Fund launched in 1970 as the first open-end retail index mutual fund, tracking the Dow Jones.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_06.jpg",
+        "image_prompt": "A vintage 1970s brokerage office with a Dow Jones ticker display., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Bogle's Innovation",
+        "line": "John Bogle founded Vanguard in 1974 and started the First Index Investment Trust on December 31, 1975.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_07.jpg",
+        "image_prompt": "A 1970s conference room with John Bogle presenting a fund prospectus., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Growth Milestone",
+        "line": "The fund began with $11 million and grew to $100 billion in assets by November 1999.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_08.jpg",
+        "image_prompt": "A graph showing a rising bar chart from $11 million to $100 billion., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Investor Endorsements",
+        "line": "Many notable investors recommend index funds for diversification, low fees, and simple asset allocation.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_09.jpg",
+        "image_prompt": "Several well-known investors speaking on a panel discussing index funds., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Cost Efficiency",
+        "line": "Because they seek to match benchmarks, index funds minimize tracking error and keep turnover lower than active funds.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_10.jpg",
+        "image_prompt": "A side-by-side comparison of active and passive fund performance charts., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Current Impact",
+        "line": "Today, index funds hold $22 trillion, serving both individual investors and pension funds throughout the United States.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_11.jpg",
+        "image_prompt": "A bustling financial district with skyscrapers and people walking, representing trillions managed., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Index fund",
+    "source_url": "https://en.wikipedia.org/wiki/Index_fund"
+  },
+  "how_net_worth_quietly_measures_financial_strength": {
+    "title": "How Net Worth Quietly Measures Financial Strength",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Hook",
+        "line": "For the United States, this measure totalled $123.8 trillion as of 2014.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_01.jpg",
+        "image_prompt": "A wide view of a large modern city skyline under a clear sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Question",
+        "line": "How is net worth calculated for an individual, business, government, or country?",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_02.jpg",
+        "image_prompt": "A person sitting at a wooden desk reviewing paperwork with a calculator., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Asset Definition",
+        "line": "Net worth is the value of all non-financial and financial assets owned minus liabilities.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_03.jpg",
+        "image_prompt": "A neat stack of financial documents resting on a clean office table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Asset Types",
+        "line": "Assets that contribute can include homes, vehicles, various bank accounts, stocks, and bonds.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_04.jpg",
+        "image_prompt": "Keys resting on a wooden kitchen counter near a window., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Liabilities Included",
+        "line": "Liabilities are financial obligations such as loans, mortgages, and accounts payable that deplete resources.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_05.jpg",
+        "image_prompt": "A close-up of a pen resting on a printed financial ledger., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Business Equity",
+        "line": "Net worth in business is also referred to as equity and uses carrying value.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_06.jpg",
+        "image_prompt": "An open laptop displaying a spreadsheet inside a quiet office., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Excluded Assets",
+        "line": "Intangible assets such as educational degrees are typically not factored into net worth calculations.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_07.jpg",
+        "image_prompt": "A blank notebook and a metal pen placed on a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Government Measure",
+        "line": "Compared with government debt, a government net worth is an alternative measure of financial strength.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_08.jpg",
+        "image_prompt": "The exterior facade of a classical stone government building., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Country Calculation",
+        "line": "A country net worth is calculated as the sum of all resident companies, individuals, and government.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_09.jpg",
+        "image_prompt": "An aerial view showing suburban houses and roads under daylight., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Financial Standing",
+        "line": "Knowing an individual net worth is important to understand their current financial standing.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_10.jpg",
+        "image_prompt": "A person writing notes on a pad of paper at a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Actionable Wisdom",
+        "line": "This metric helps create budgets, influence spending, and motivate someone to save and invest.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_11.jpg",
+        "image_prompt": "A close-up of hands typing calculations on a modern laptop keyboard., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Net worth",
+    "source_url": "https://en.wikipedia.org/wiki/Net_worth"
+  },
+  "how_stock_splits_and_berkshire_hathaway_impact_share_prices": {
+    "title": "How Stock Splits and Berkshire Hathaway Impact Share Prices",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Stock Split Facts",
+        "line": "As of 2025, Berkshire Hathaway has never split its stock and trades at over US$750,000.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_01.jpg",
+        "image_prompt": "An empty trading floor with computer monitors displaying financial charts., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Understanding Stock Splits",
+        "line": "How does a stock split change individual share prices without altering total market capitalization?",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_02.jpg",
+        "image_prompt": "A modern office desk featuring a calculator and financial paperwork., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Shares And Value",
+        "line": "After a 2-for-1 split, each investor will own double the number of shares.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_03.jpg",
+        "image_prompt": "A close-up view of a calculator keyboard and green ledger sheets., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Price Adjustment",
+        "line": "Concurrently, each individual share will become worth exactly half as much as before.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_04.jpg",
+        "image_prompt": "A modern workspace showing stacked financial reports and a pen., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Market Capitalization",
+        "line": "A stock split causes a price decrease while total market capitalization remains completely unchanged.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_05.jpg",
+        "image_prompt": "A person reviewing printed financial statements at a wooden desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "High Share Prices",
+        "line": "A very high share price may deter small investors from buying the company shares.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_06.jpg",
+        "image_prompt": "A desktop computer displaying complex stock market graphs in an office., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Trading Liquidity",
+        "line": "The main effect of stock splits is an increase in the liquidity of a stock.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_07.jpg",
+        "image_prompt": "An open office workspace with natural light reflecting off a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Reducing Trading Volume",
+        "line": "Some companies avoid a stock split to obtain the opposite strategy by keeping prices high.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_08.jpg",
+        "image_prompt": "A closed office door with frosted glass and soft interior lighting., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Currency Analog",
+        "line": "An analog in currency would be redenomination, such as the Australian pound in 1966.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_09.jpg",
+        "image_prompt": "A wooden table holding vintage currency notes and metal coins., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Historical Charts",
+        "line": "When looking at historical charts, many platforms use what is known as an adjusted share price.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_10.jpg",
+        "image_prompt": "A computer screen showing historical trend lines and data points., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Adjusted Close Prices",
+        "line": "Both Yahoo historical price charts and Google historical price charts show these adjusted close prices.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_11.jpg",
+        "image_prompt": "A laptop displaying financial software on a clean white desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Final Insight",
+        "line": "Adjusted prices divide all closing prices before the split by the exact split ratio.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_12.jpg",
+        "image_prompt": "A focused professional reviewing numerical data on a computer screen., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Stock split",
+    "source_url": "https://en.wikipedia.org/wiki/Stock_split"
+  },
+  "how_digital_access_and_economic_opportunity_are_connected": {
+    "title": "How Digital Access and Economic Opportunity Are Connected",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Over 15.8 Million",
+        "line": "Over 15.8 million Americans lacked access to high-speed broadband according to 2026 data from the U.S. Census Bureau.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_01.jpg",
+        "image_prompt": "A suburban neighborhood viewed from above with power lines overhead., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Core Question",
+        "line": "How does the digital divide worsen inequality in access to information and vital economic resources today?",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_02.jpg",
+        "image_prompt": "A laptop computer sitting on a wooden desk near a window., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Information Age",
+        "line": "In the Information Age, people without internet access are less able to find and apply for jobs.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_03.jpg",
+        "image_prompt": "A person sitting at a simple wooden table looking thoughtfully ahead., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Poverty and Access",
+        "line": "People living in poverty, in insecure housing, or in rural communities often have limited internet access.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_04.jpg",
+        "image_prompt": "A rural countryside road stretching toward a distant horizon under a cloudy sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Federal Communications",
+        "line": "In 1996, the Federal Communications Commission adopted the Telecommunications Act of 1996 to address the problem.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_05.jpg",
+        "image_prompt": "The exterior facade of an official government building with stone columns., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Global Stage",
+        "line": "The topic soon moved onto a global stage centered on the World Trade Organization and regulatory strategies.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_06.jpg",
+        "image_prompt": "A large modern conference room with rows of empty chairs facing a podium., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Financial Solutions",
+        "line": "In 1999, the WTO hosted the Financial Solutions to Digital Divide in Seattle, US, to catalyze action.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_07.jpg",
+        "image_prompt": "A city skyline viewed across a large body of water on a clear day., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Presidential Mention",
+        "line": "In 2000, US president Bill Clinton mentioned the term in the State of the Union Address.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_08.jpg",
+        "image_prompt": "An American flag standing upright inside a formal government office room., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Pandemic Impact",
+        "line": "At the outset of the COVID-19 pandemic, governments worldwide issued stay-at-home orders that imposed lockdowns and closures.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_09.jpg",
+        "image_prompt": "An empty city street with closed storefronts during daylight hours., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Essential Internet",
+        "line": "A Pew Research Center study reports that 90% of Americans described internet use as essential during the pandemic.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_10.jpg",
+        "image_prompt": "A smartphone resting flat on a plain kitchen countertop next to a cup., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Homework Gap",
+        "line": "59% of children from lower-income families were likely to face digital obstacles in completing school assignments.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_11.jpg",
+        "image_prompt": "A stack of school textbooks and a pencil resting on a wooden table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Sequential Barriers",
+        "line": "Van Dijk's model identifies motivational, material, skills, and usage barriers that must be addressed to bridge the divide.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_12.jpg",
+        "image_prompt": "A narrow metal footbridge crossing over a small stream in a quiet park., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Digital divide",
+    "source_url": "https://en.wikipedia.org/wiki/Digital_divide"
+  }
+}

@@ -1,0 +1,925 @@
+{
+  "the_ghost_predator_of_the_amber_sea": {
+    "title": "The Ghost Predator of the Amber Sea",
+    "category": "Paleontology & History",
+    "intro": "This microscopic amber prison holds a predator science never expected to find.",
+    "outro": "Through a single drop of resin, the ancient invisible hunter finally claims eternity.",
+    "scenes": [
+      {
+        "label": "The Amber Prison",
+        "line": "This microscopic amber prison holds a predator science never expected to find.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_01.jpg",
+        "image_prompt": "A glowing piece of golden amber resting on dark stone, macro view of trapped insects inside., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Hidden Mystery",
+        "line": "How did a soft-bodied creature vanish completely without leaving any fossilized bones behind?",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_02.jpg",
+        "image_prompt": "An ancient forest floor dripping with thick golden tree resin in dappled sunlight., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Ancient Forest Floor",
+        "line": "Ninety-nine million years ago, a dense tropical forest teemed with bizarre prehistoric arthropods.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_03.jpg",
+        "image_prompt": "A lush Cretaceous jungle with giant ferns, towering conifers, and misty air., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Golden Drop",
+        "line": "A sudden cascade of sticky pine resin entombed a tiny hunter mid-stride.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_04.jpg",
+        "image_prompt": "A heavy drop of translucent golden resin falling down the rough bark of a pine tree., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Trapped in Time",
+        "line": "For nearly a hundred million years, the delicate specimen remained hidden in plain sight.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_05.jpg",
+        "image_prompt": "Deep underground strata layers of rock and sediment glowing softly with ancient light., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Microscopic Clues",
+        "line": "Modern synchrotron imaging peered deep inside the hardened amber to reveal impossible structures.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_06.jpg",
+        "image_prompt": "A high-tech laboratory laser scanning a glowing amber gemstone on a metallic stage., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Bizarre Anatomy",
+        "line": "Researchers discovered an elongated feeding tube unlike anything seen in modern insects.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_07.jpg",
+        "image_prompt": "A 3d scientific visualization of a strange microscopic prehistoric insect with specialized jaws., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Apex Ambush",
+        "line": "This ghost predator hunted microscopic prey in the damp moss of the Cretaceous underworld.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_08.jpg",
+        "image_prompt": "A tiny prehistoric bug stalking through dense green moss at extreme macro scale., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Missing Link Found",
+        "line": "The bizarre morphology finally bridged a massive evolutionary gap in the insect family tree.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_09.jpg",
+        "image_prompt": "An intricate branching diagram glowing in the dark with floating genetic strands., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Unseen Terror",
+        "line": "It was a specialized assassin designed to pierce the hardest shells of its microscopic rivals.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_10.jpg",
+        "image_prompt": "A dramatic close-up of a strange ancient insect mandible gleaming under ultraviolet light., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Final Secret",
+        "line": "Tree resin acted as nature's ultimate vault, preserving soft tissues with astonishing molecular fidelity.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_11.jpg",
+        "image_prompt": "Clear amber stone refracting beams of bright sunlight, showing trapped organic details., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Eternal Hunter",
+        "line": "Through a single drop of resin, the ancient invisible hunter finally claims eternity.",
+        "speech": "",
+        "image": "assets/generated/the_ghost_predator_of_the_amber_sea_12.jpg",
+        "image_prompt": "A brilliant amber gemstone held up against a starry night sky, glowing intensely., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ]
+  },
+  "the_skull_that_screamed_in_stone": {
+    "title": "The Skull That Screamed in Stone",
+    "category": "Paleontology & History",
+    "intro": "This frozen predator skull rewrote the apex history of our planet.",
+    "outro": "Silence reclaims the deep past, leaving only bone to whisper forgotten truths.",
+    "scenes": [
+      {
+        "label": "Frozen Predator",
+        "line": "This ancient predator skull rewrote Earth's apex history.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_01.jpg",
+        "image_prompt": "A massive, fossilized predator skull embedded in dark, weathered rock with dramatic side lighting., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Hidden Secret",
+        "line": "What monstrous force forged such terrifying power into bone?",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_02.jpg",
+        "image_prompt": "Close up of deep bite marks and serrated edges on a fossilized jawbone., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Ancient Sands",
+        "line": "Deep beneath desolate desert dunes, researchers uncovered the massive shattered cranium.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_03.jpg",
+        "image_prompt": "Paleontologists carefully brushing away fine red sand from a massive buried fossil., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Bone Architecture",
+        "line": "Unusual reinforced skull architecture hinted at an entirely unknown hunting strategy.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_04.jpg",
+        "image_prompt": "X-ray style visualization of dense bone structures inside a prehistoric skull., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Fatal Crush",
+        "line": "Microscopic fractures revealed an immense bite force capable of crushing solid steel.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_05.jpg",
+        "image_prompt": "Scientific microscopic view showing stress fracture lines in ancient fossilized enamel., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Silent Shadows",
+        "line": "This beast stalked prey through prehistoric darkness without making a single sound.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_06.jpg",
+        "image_prompt": "A massive shadowy creature moving stealthily through a dense, misty prehistoric fern forest., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Forgotten Epoch",
+        "line": "Geological data placed this apex hunter at the dawn of a forgotten epoch.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_07.jpg",
+        "image_prompt": "Stratigraphic rock layers exposed on a steep canyon wall under a dramatic stormy sky., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Final Clue",
+        "line": "Chemical isotopes trapped inside the teeth exposed its surprising migratory patterns.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_08.jpg",
+        "image_prompt": "Glowing colorful isotope data mapping overlays on a prehistoric tooth specimen., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Revelation",
+        "line": "It was the ultimate evolutionary precursor to the most feared hunters alive.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_09.jpg",
+        "image_prompt": "Side-by-side comparison of the ancient skull and a modern apex predator silhouette., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Last Roar",
+        "line": "Climate collapse ultimately silenced the reign of this magnificent apex terror.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_10.jpg",
+        "image_prompt": "A desolate ancient landscape under a harsh, drying sun with cracked earth., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Enduring Echo",
+        "line": "Only stone preserves the memory of jaws that once ruled the world.",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_11.jpg",
+        "image_prompt": "A single magnificent fossil tooth catching a sharp beam of light in a dark museum archive., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Final Mystery",
+        "line": "What other sleeping titans remain buried beneath our modern feet?",
+        "speech": "",
+        "image": "assets/generated/the_skull_that_screamed_in_stone_12.jpg",
+        "image_prompt": "A vast, endless desert landscape stretching out toward a distant mountain horizon at sunset., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ]
+  },
+  "smilodon_the_mystery_of_the_saber_toothed_cat": {
+    "title": "Smilodon: The Mystery of the Saber-Toothed Cat",
+    "category": "Paleontology & History",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Extinct Felid Predator",
+        "line": "Smilodon was one of the last surviving machairodonts alongside Homotherium.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_01.jpg",
+        "image_prompt": "prehistoric landscape with sparse vegetation and rocky ground, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Evolutionary Mystery",
+        "line": "What was the true evolutionary history of the genus Smilodon across the Americas?",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_02.jpg",
+        "image_prompt": "vast river valley in South America with dense forests, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Divergence Timeline",
+        "line": "The estimated date of divergence from the ancestor of living cats was around 20 million years ago.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_03.jpg",
+        "image_prompt": "close up of ancient tree bark in a thick forest, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Fossil Discovery",
+        "line": "The genus was named in 1842 based on fossils from Brazil.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_04.jpg",
+        "image_prompt": "rocky cave opening in a hilly region with green trees, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Anatomical Meaning",
+        "line": "The generic name means scalpel or two-edged knife combined with tooth.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_05.jpg",
+        "image_prompt": "sharp stones lying on the ground inside a dark cavern, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Recognized Species",
+        "line": "Three species are recognized today: S. gracilis, S. fatalis, and S. populator.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_06.jpg",
+        "image_prompt": "three distinct rock formations standing in an open field, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Robust Build",
+        "line": "Overall, Smilodon was more robustly built than any extant cat.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_07.jpg",
+        "image_prompt": "dense woodland floor covered in fallen branches and leaves, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "La Brea Collection",
+        "line": "The hundreds of specimens obtained from the La Brea Tar Pits in Los Angeles constitute the largest collection of Smilodon fossils.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_08.jpg",
+        "image_prompt": "dark asphalt pool reflecting the bright daylight outdoors, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Massive Size",
+        "line": "S. populator from South America was the largest species, at 220 to 470 kg in weight.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_09.jpg",
+        "image_prompt": "steep grassy hill under a vast open sky, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Prey Animals",
+        "line": "In North America, Smilodon hunted large herbivores such as bison and camels.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_10.jpg",
+        "image_prompt": "grassy plain with scattered bushes under bright sunlight, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Extinction Event",
+        "line": "Smilodon died out as part of the end-Pleistocene extinction event, which occurred around 13,000-9,000 years ago.",
+        "speech": "",
+        "image": "assets/generated/smilodon_the_mystery_of_the_saber_toothed_cat_11.jpg",
+        "image_prompt": "barren earth landscape during late afternoon sunlight, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ],
+    "verified": true,
+    "source_title": "Smilodon",
+    "source_url": "https://en.wikipedia.org/wiki/Smilodon"
+  },
+  "when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified": {
+    "title": "When Did the Woolly Mammoth Go Extinct and How Was It Identified?",
+    "category": "Paleontology & History",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "The woolly mammoth began to diverge from the steppe mammoth about 800,000 years ago in Siberia.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_01.jpg",
+        "image_prompt": "frozen landscape in Siberia with snow and ice, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Question",
+        "line": "How did Georges Cuvier identify the woolly mammoth in 1796?",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_02.jpg",
+        "image_prompt": "historic laboratory with old scientific instruments, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Frozen Carcasses",
+        "line": "Frozen carcasses discovered in Siberia and North America preserved the appearance and behaviour of the woolly mammoth.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_03.jpg",
+        "image_prompt": "snowy arctic ground with exposed ancient bones, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Physical Size",
+        "line": "Male woolly mammoths reached shoulder heights between 2.67 and 3.49 m and weighed up to 8.2 t.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_04.jpg",
+        "image_prompt": "vast icy tundra under a cold grey sky, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Cold Adaptations",
+        "line": "The woolly mammoth had an outer covering of long guard hairs and a shorter undercoat for cold environments.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_05.jpg",
+        "image_prompt": "thick brown animal fur close up in natural light, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Diet and Age",
+        "line": "Individuals could probably reach the age of 60 while feeding mainly on forbs and grasses.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_06.jpg",
+        "image_prompt": "dry grasses sticking out through a layer of snow, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Early Humans",
+        "line": "Early humans hunted the species for food and used its bones and tusks for making art.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_07.jpg",
+        "image_prompt": "ancient stone tools resting on dark soil, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Extinction Timeline",
+        "line": "Isolated populations of woolly mammoths survived on Wrangel Island until 4,000 years ago.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_08.jpg",
+        "image_prompt": "remote snowy island shoreline with cold ocean water, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Genome Project",
+        "line": "The completion of the mammoth genome project in 2015 sparked discussion about potentially reviving the species.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_09.jpg",
+        "image_prompt": "modern scientific laboratory with glowing computer screens, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Sloane Discovery",
+        "line": "The British physician Hans Sloane examined fossilised teeth and tusks from Siberia in 1728.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_10.jpg",
+        "image_prompt": "old fossilized animal teeth resting on a wooden table, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Cuvier Identification",
+        "line": "Georges Cuvier was the first to identify the remains as an entirely new species in 1796.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_11.jpg",
+        "image_prompt": "aged parchment document with handwritten notes and sketches, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Scientific Name",
+        "line": "Johann Friedrich Blumenbach gave the woolly mammoth its scientific name Elephas primigenius in 1799.",
+        "speech": "",
+        "image": "assets/generated/when_did_the_woolly_mammoth_go_extinct_and_how_was_it_identified_12.jpg",
+        "image_prompt": "vintage leather bound book opened to a page of text, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ],
+    "verified": true,
+    "source_title": "Woolly mammoth",
+    "source_url": "https://en.wikipedia.org/wiki/Woolly_mammoth"
+  },
+  "nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation": {
+    "title": "Nature Trying to Evolve a Crab: The Phenomenon of Carcinisation",
+    "category": "Paleontology & History",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "Carcinisation is a form of convergent evolution in which non-crab crustaceans evolve a crab-like body plan.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_01.jpg",
+        "image_prompt": "An ocean floor with sandy sediment and scattered rocks., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Core Question",
+        "line": "What are the mechanisms behind carcinisation as introduced by Lancelot Alexander Borradaile in 1916?",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_02.jpg",
+        "image_prompt": "A vintage scientific document resting on a wooden desk., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Carapace Features",
+        "line": "Keiler et al., 2017 defines a carcinised morphology where the carapace is flatter than it is broad.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_03.jpg",
+        "image_prompt": "A close-up view of a crustacean shell resting on a wet rock., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Anomura Evolution",
+        "line": "Carcinisation has been observed most often in species of infraorder Anomura.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_04.jpg",
+        "image_prompt": "Various crustaceans crawling near a rocky shoreline under shallow water., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "King Crab Ancestry",
+        "line": "Most scientists believe king crabs evolved from hermit crab ancestors, first appearing in the Late Cenozoic.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_05.jpg",
+        "image_prompt": "Cold ocean water washing over rocky underwater terrain., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Selective Advantages",
+        "line": "Carcinisation is hypothesized to offer selective advantages of protecting vital organs and escaping predators on the ocean floor.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_06.jpg",
+        "image_prompt": "A shallow coral reef environment lit by filtered sunlight., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Sideways Walking",
+        "line": "A lowered center of gravity allows these creatures to invest in sideways walking as an evasive adaptation.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_07.jpg",
+        "image_prompt": "Clear ocean water flowing over a sandy seabed., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Tail and Muscles",
+        "line": "The pleon is held tightly under the animal's cephalothorax with reduced musculature which protects vital organs.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_08.jpg",
+        "image_prompt": "Underwater crevices formed by dark volcanic rock., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Escape Reaction",
+        "line": "Brachyura and carcinised species have strongly bent and immobile tails preventing the caridoid escape reaction.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_09.jpg",
+        "image_prompt": "Sunlight piercing through the water surface onto the ocean floor., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Terrestrial Giants",
+        "line": "Carcinisation has evolved in the planet's largest land-dwelling invertebrate, coconut crabs.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_10.jpg",
+        "image_prompt": "Tropical foliage near a sandy beach with coconut palms., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Decarcinisation Process",
+        "line": "Some crab-shaped species have evolved away from the crab form in a process called decarcinisation.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_11.jpg",
+        "image_prompt": "Fossilized marine specimens embedded in ancient sedimentary rock., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Evolutionary Limits",
+        "line": "Matthew Wills comments that multiple groups have converged on a crablike body plan, but humans are not evolving that way.",
+        "speech": "",
+        "image": "assets/generated/nature_trying_to_evolve_a_crab_the_phenomenon_of_carcinisation_12.jpg",
+        "image_prompt": "An expansive sandy coastline meeting the open ocean at sunset., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ],
+    "verified": true,
+    "source_title": "Carcinisation",
+    "source_url": "https://en.wikipedia.org/wiki/Carcinisation"
+  },
+  "the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex": {
+    "title": "The Legacy of King Tyrant Lizard: What Defines Tyrannosaurus Rex?",
+    "category": "Paleontology & History",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "The most complete Tyrannosaurus skeleton specimen named Sue sold at auction for $7.6 million.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_01.jpg",
+        "image_prompt": "A massive dinosaur skeleton exhibited inside a vast museum hall., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Central Question",
+        "line": "How did Tyrannosaurus grow from fragmentary historical finds into the most iconic apex predator?",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_02.jpg",
+        "image_prompt": "Researchers carefully examining prehistoric fossil bones in a paleontology lab., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Early Discoveries",
+        "line": "Peter T. Dotson found a tooth from a Tyrannosaurus rex in July 1874 upon South Table Mountain.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_03.jpg",
+        "image_prompt": "An exposed rocky mountain slope under bright daylight., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Vertebra Fragments",
+        "line": "In 1892, Edward Drinker Cope found two vertebral fragments of a large dinosaur.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_04.jpg",
+        "image_prompt": "Ancient fossilized bone fragments resting on a wooden table., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "First Skeleton",
+        "line": "Barnum Brown found the first partial skeleton of T. rex in eastern Wyoming in 1900.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_05.jpg",
+        "image_prompt": "Arid landscape with exposed sedimentary rock layers in Wyoming., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Second Skeleton",
+        "line": "Brown found another partial skeleton in the Hell Creek Formation in Montana in 1902.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_06.jpg",
+        "image_prompt": "Rugged hills and badlands formations under an open sky., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Naming the King",
+        "line": "Henry Fairfield Osborn named the second skeleton T. rex in 1905, translating to tyrant lizard the king.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_07.jpg",
+        "image_prompt": "Old leather-bound scientific journals and maps on a wooden desk., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Carnegie Sale",
+        "line": "In 1941, the T. rex type specimen was sold to the Carnegie Museum of Natural History for $7,000.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_08.jpg",
+        "image_prompt": "Historic brick museum building exterior viewed from a quiet street., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Sue Discovery",
+        "line": "Sue Hendrickson discovered the most complete Tyrannosaurus skeleton in the Hell Creek Formation on August 12, 1990.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_09.jpg",
+        "image_prompt": "Paleontologists working carefully at a remote excavation site., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Age at Death",
+        "line": "A study of Sue showed that the specimen reached full size at age 19 and died at age 28.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_10.jpg",
+        "image_prompt": "Microscopic view of fossilized bone structure showing growth rings., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Stan Specimen",
+        "line": "Stan was recovered from the Hell Creek Formation in 1992 with 199 bones recovered representing 70% of the total.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_11.jpg",
+        "image_prompt": "A mounted dinosaur fossil skeleton standing in a modern exhibit room., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Apex Predator",
+        "line": "Most paleontologists today accept that Tyrannosaurus was an apex predator with the largest bite force among terrestrial animals.",
+        "speech": "",
+        "image": "assets/generated/the_legacy_of_king_tyrant_lizard_what_defines_tyrannosaurus_rex_12.jpg",
+        "image_prompt": "A vast prehistoric landscape featuring massive ancient trees and distant hills., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ],
+    "verified": true,
+    "source_title": "Tyrannosaurus",
+    "source_url": "https://en.wikipedia.org/wiki/Tyrannosaurus"
+  },
+  "basilosaurus_the_king_lizard_that_was_actually_a_whale": {
+    "title": "Basilosaurus: The King Lizard That Was Actually a Whale",
+    "category": "Paleontology & History",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "The Hook",
+        "line": "Basilosaurus means king lizard, yet this giant was actually an early marine mammal from 41.3 to 33.9 million years ago.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_01.jpg",
+        "image_prompt": "An ancient ocean landscape with shallow waters under a bright sky., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Question",
+        "line": "How did Richard Harlan and Richard Owen mistakenly identify the massive fossils of Basilosaurus cetoides and B. isis?",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_02.jpg",
+        "image_prompt": "Fossilized vertebrae resting partially exposed in desert sand., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "First Discovery",
+        "line": "Fossils attributed to the type species B. cetoides were discovered in the southeastern United States in Ouachita Parish, Louisiana.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_03.jpg",
+        "image_prompt": "A hillside featuring exposed layers of ancient sea shells and sediment., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Sea Monster",
+        "line": "Judge Henry Bry supplied a piece having the appearance of a tooth, speculating the bones belonged to a sea monster.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_04.jpg",
+        "image_prompt": "An isolated fossilized tooth resting on a weathered rock surface., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Mammal Discovery",
+        "line": "Richard Owen concluded the molar teeth were two-rooted, proving the specimen must be a mammal rather than a reptile.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_05.jpg",
+        "image_prompt": "Fossilized mammal teeth showing distinct roots on a dark background., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Second Species",
+        "line": "Hugh Beadnell named and described Zeuglodon isis in 1904 based on a partial mandible and several vertebrae from Wadi El Hitan.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_06.jpg",
+        "image_prompt": "A remote desert valley with sandstone formations stretching to the horizon., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Top Predator",
+        "line": "Basilosaurus was the top predator measuring around 17 to 20 m long and weighing up to 15 metric tons.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_07.jpg",
+        "image_prompt": "Deep blue ocean water viewed from beneath the surface looking upward., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Predatory Habits",
+        "line": "The smaller dolphin-like relative Dorudon seems to have been the predominant food source based on stomach contents and bite marks.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_08.jpg",
+        "image_prompt": "Fossilized prehistoric skull fragments showing clear markings on the bone., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Unique Teeth",
+        "line": "Basilosaurus had various types of teeth such as canines and molars, and probably was able to chew its food.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_09.jpg",
+        "image_prompt": "Close-up view of fossilized prehistoric jawbone structure., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Complete Skeleton",
+        "line": "In 2015, a complete skeleton was uncovered in Wadi El Hitan, preserved with the remains of its prey including a Dorudon.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_10.jpg",
+        "image_prompt": "Archaeologists working carefully around a large fossil skeleton embedded in the earth., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "The Answer",
+        "line": "Zoological nomenclature rules dictated using the original name Basilosaurus, cementing the king lizard moniker for this prehistoric whale.",
+        "speech": "",
+        "image": "assets/generated/basilosaurus_the_king_lizard_that_was_actually_a_whale_11.jpg",
+        "image_prompt": "An old scientific ledger opened to a handwritten page with sketches of fossils., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ],
+    "verified": true,
+    "source_title": "Basilosaurus",
+    "source_url": "https://en.wikipedia.org/wiki/Basilosaurus"
+  },
+  "unveiling_the_293_species_of_carnivora_across_the_globe": {
+    "title": "Unveiling the 293 Species of Carnivora Across the Globe",
+    "category": "Paleontology & History",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "Comprising at least 293 species, the order Carnivora is the sixth largest order of mammals.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_01.jpg",
+        "image_prompt": "A vast landscape showing diverse habitats from forests to open seas., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Central Question",
+        "line": "How did Carnivora and its suborders Feliformia and Caniformia evolve into global predators?",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_02.jpg",
+        "image_prompt": "A dense forest undergrowth with sunlight filtering through leaves., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Latin Roots",
+        "line": "The word Carnivora is derived from Latin caro meaning flesh and vorare to devour.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_03.jpg",
+        "image_prompt": "An ancient stone surface with carved Latin letters., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Laurasiatheria Group",
+        "line": "Carnivora belongs to a group of mammals known as Laurasiatheria, which also includes bats and ungulates.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_04.jpg",
+        "image_prompt": "A rocky terrain in a remote wilderness area., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Ferae Clade",
+        "line": "Within this group the carnivorans are placed in the clade Ferae alongside pangolins and extinct groups.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_05.jpg",
+        "image_prompt": "Soil and rocks on a steep riverbank., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Paleocene Origins",
+        "line": "Carnivoramorpha as a whole first appeared in the Paleocene of North America about 60 million years ago.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_06.jpg",
+        "image_prompt": "Exposed rock layers in a desert canyon., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Crown Group",
+        "line": "Crown carnivorans first appeared around 42 million years ago in the Middle Eocene.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_07.jpg",
+        "image_prompt": "An ancient valley floor covered in dry vegetation., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Linnaeus Classification",
+        "line": "In 1758, the Swedish botanist Carl Linnaeus placed all carnivorans into the group Ferae in Systema Naturae.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_08.jpg",
+        "image_prompt": "An old leather-bound book resting on a wooden table., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Modern Naming",
+        "line": "It was not until 1821 that the English writer and traveller Thomas Edward Bowdich gave the group its modern name.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_09.jpg",
+        "image_prompt": "A vintage quill pen lying beside aged paper maps., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Suborder Division",
+        "line": "Extant Carnivora are divided into cat-like feliforms and dog-like caniforms based on auditory bullae structures.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_10.jpg",
+        "image_prompt": "A close-up of weathered mammalian bone structure on stone., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Dentition Traits",
+        "line": "The canine teeth are usually large and conical, while the carnassial pair is made up of specific premolar and molar teeth.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_11.jpg",
+        "image_prompt": "A rugged mountain ridge under a clear daylight sky., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Global Presence",
+        "line": "Carnivorans are found on every major landmass in habitats ranging from polar regions to the Sahara Desert.",
+        "speech": "",
+        "image": "assets/generated/unveiling_the_293_species_of_carnivora_across_the_globe_12.jpg",
+        "image_prompt": "A sweeping view of a sandy desert stretching toward the horizon., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ],
+    "verified": true,
+    "source_title": "Carnivora",
+    "source_url": "https://en.wikipedia.org/wiki/Carnivora"
+  },
+  "otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago": {
+    "title": "Otodus megalodon lived approximately 23 to 3.58 million years ago",
+    "category": "Paleontology & History",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Giant Tooth",
+        "line": "Otodus megalodon is an extinct species of giant mackerel shark that lived approximately 23 to 3.58 million years ago.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_01.jpg",
+        "image_prompt": "a large shark tooth fossil resting on rocky shore, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Predator Size",
+        "line": "Proposed maximum length estimates range from 14.2 to 24.3 m, while estimated modal length is approximately 10.5 m.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_02.jpg",
+        "image_prompt": "ocean water seen from a low angle, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Bite Force",
+        "line": "Its thick teeth were adapted for grasping prey and breaking bone with a bite force of 108,500 to 182,200 newtons.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_03.jpg",
+        "image_prompt": "close up of shark teeth in a museum display, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Prey Animals",
+        "line": "It probably preyed on large marine animals, including whales, seals and sea turtles, while juveniles inhabited warm coastal waters.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_04.jpg",
+        "image_prompt": "open ocean waves with sunlight filtering down, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Extinction Date",
+        "line": "A 2019 assessment moves the extinction date back to earlier in the Pliocene, 3.6 million years ago.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_05.jpg",
+        "image_prompt": "layers of exposed sedimentary rock on a cliff, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Ancient Artifacts",
+        "line": "Teeth were used since ancient times by pre-Columbian cultures in the Americas for projectile points, knives, jewelry, and funeral accessories.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_06.jpg",
+        "image_prompt": "ancient stone tools arranged on a wooden table, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "First Account",
+        "line": "The earliest written account of megalodon teeth was by Pliny the Elder in an AD 73 volume of Historia Naturalis.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_07.jpg",
+        "image_prompt": "old leather bound book open on a desk, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Tongue Stones",
+        "line": "Roman folklorists believed teeth fell from the sky during lunar eclipses and called them glossopetrae or tongue stones.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_08.jpg",
+        "image_prompt": "night sky showing the moon through clouds, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Scientific View",
+        "line": "Italian naturalist Fabio Colonna published an illustration of a Maltese megalodon tooth in 1616 alongside a great white shark's.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_09.jpg",
+        "image_prompt": "historic scientific drawings on parchment paper, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Shark Dissection",
+        "line": "Danish naturalist Niels Steensen reported in 1667 on his dissection of the head of a great white caught in 1666.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_10.jpg",
+        "image_prompt": "seventeenth century desk with scientific instruments, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Scientific Name",
+        "line": "Swiss naturalist Louis Agassiz gave megalodon its scientific name in his seminal 1833 to 1843 work Recherches sur les poissons fossiles.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_11.jpg",
+        "image_prompt": "old library filled with scientific texts, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Classification",
+        "line": "Megalodon is considered to be a member of the family Otodontidae, genus Otodus, as opposed to its previous classification into Lamnidae.",
+        "speech": "",
+        "image": "assets/generated/otodus_megalodon_lived_approximately_23_to_3_58_million_years_ago_12.jpg",
+        "image_prompt": "detailed fossil exhibit in a natural history museum, cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ],
+    "verified": true,
+    "source_title": "Megalodon",
+    "source_url": "https://en.wikipedia.org/wiki/Megalodon"
+  },
+  "how_did_machairodontinae_evolve_their_iconic_saber_teeth": {
+    "title": "How Did Machairodontinae Evolve Their Iconic Saber Teeth?",
+    "category": "Paleontology & History",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Extinct Feline Subfamily",
+        "line": "Machairodontinae diverged from the ancestors of living cats around 20 million years ago.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_01.jpg",
+        "image_prompt": "An ancient prehistoric landscape with sparse dry vegetation under an overcast sky., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Evolutionary Mystery",
+        "line": "How did the Machairodontinae subfamily develop their greatly elongated upper maxillary canines over evolutionary time?",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_02.jpg",
+        "image_prompt": "Exposed rocky earth strata in a dry eroded valley showing ancient sediment layers., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Fossil Discoveries",
+        "line": "Until the discovery of Batallones-1 in the 1990s, specimens of Smilodontini and Homotheriini ancestors were rare.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_03.jpg",
+        "image_prompt": "A paleontological dig site with hand tools resting near exposed sediment., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Ancient Ancestors",
+        "line": "Batallones-1 unearthed new specimens of Promegantereon ogygia and Machairodus aphanistus.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_04.jpg",
+        "image_prompt": "Carefully brushed rock surfaces inside a shallow paleontological excavation trench., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Gradual Phenotype",
+        "line": "The saber-toothed phenotype arose gradually over time through mosaic evolution rather than rapidly through pleiotropic evolution.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_05.jpg",
+        "image_prompt": "Detailed close-up view of layered rock formations in a natural canyon wall., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Rapid Killing Pressure",
+        "line": "A need for the rapid killing of prey was the principal pressure driving the development of the phenotype.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_06.jpg",
+        "image_prompt": "An open expanse of dry grassland stretching toward distant hazy hills., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Intense Competition",
+        "line": "High instances of broken teeth indicate that the biotic environment of saber-toothed cats featured intense competition.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_07.jpg",
+        "image_prompt": "Sun-bleached animal bones resting on cracked desert earth., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Energy Costs",
+        "line": "If prey is taken away by competitors, the energetic cost of capturing that prey is not reimbursed.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_08.jpg",
+        "image_prompt": "Vast arid plains under a bright midday sun with sparse dry brush., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Evolutionary Favor",
+        "line": "Such a competitive environment would favor the faster killing of prey to prevent death by starvation.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_09.jpg",
+        "image_prompt": "Dry rolling hills covered in sparse yellow grass under a wide sky., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Skull Adaptations",
+        "line": "The earliest adaptations improving the speed at which prey was killed are present in the skull and mandible.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_10.jpg",
+        "image_prompt": "A weathered stone outcrop overlooking a wide dry river valley., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      },
+      {
+        "label": "Morphological Evidence",
+        "line": "The cervical vertebrae and forelimb of Promegantereon ogygia provide further morphological evidence for the importance of speed.",
+        "speech": "",
+        "image": "assets/generated/how_did_machairodontinae_evolve_their_iconic_saber_teeth_11.jpg",
+        "image_prompt": "A quiet rocky ridge beneath a broad expanse of open atmosphere., cinematic documentary style, dramatic lighting, photorealistic details, 8k resolution, National Geographic photography, moody atmosphere"
+      }
+    ],
+    "verified": true,
+    "source_title": "Machairodontinae",
+    "source_url": "https://en.wikipedia.org/wiki/Machairodontinae"
+  }
+}

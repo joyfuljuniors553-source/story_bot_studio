@@ -1,0 +1,79 @@
+{
+  "made_at": "2026-11-07T11:12+00:00",
+  "channels": {
+    "star_life_stories": {
+      "days": 14,
+      "own_videos": 12,
+      "own_views_per_day": 1.7,
+      "competitor_videos": 3,
+      "competitors": [
+        {
+          "name": "Facts Verse",
+          "videos": 3,
+          "views_per_day": 4.0,
+          "vs_own": 2.42,
+          "verdict": "strong"
+        }
+      ]
+    },
+    "quasorynth_space": {
+      "days": 14,
+      "own_videos": 1,
+      "own_views_per_day": 22.0,
+      "competitor_videos": 3,
+      "competitors": [
+        {
+          "name": "Astrum",
+          "videos": 1,
+          "views_per_day": 828.0,
+          "vs_own": 37.64,
+          "verdict": "too early"
+        },
+        {
+          "name": "Insane Curiosity",
+          "videos": 2,
+          "views_per_day": 109.1,
+          "vs_own": 4.96,
+          "verdict": "strong"
+        }
+      ]
+    },
+    "veylora_earth": {
+      "days": 14,
+      "own_videos": 9,
+      "own_views_per_day": 143.0,
+      "competitor_videos": 2,
+      "competitors": [
+        {
+          "name": "Ben G Thomas",
+          "videos": 2,
+          "views_per_day": 114.9,
+          "vs_own": 0.8,
+          "verdict": "similar"
+        }
+      ]
+    },
+    "dime_horizon": {
+      "days": 14,
+      "own_videos": 2,
+      "own_views_per_day": 20.9,
+      "competitor_videos": 0,
+      "competitors": []
+    },
+    "abyssoryn_earth_mysterie": {
+      "days": 14,
+      "own_videos": 3,
+      "own_views_per_day": 33.4,
+      "competitor_videos": 2,
+      "competitors": [
+        {
+          "name": "MBARI (Monterey Bay Aquarium Research Institute)",
+          "videos": 2,
+          "views_per_day": 16.2,
+          "vs_own": 0.48,
+          "verdict": "weak"
+        }
+      ]
+    }
+  }
+}

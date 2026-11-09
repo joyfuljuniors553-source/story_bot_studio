@@ -589,7 +589,9 @@ def run_pipeline(
                                               if thumbnail_required() else True),
                         )
                         status = "scheduled" if publish_at else "uploaded"
-                        if not thumbnail_upload_allowed(channel_id):
+                        from .pending_uploads import thumbnail_marked_disabled
+
+                        if thumbnail_marked_disabled(channel_id):
                             from .pending_uploads import enable_thumbnail_upload
 
                             enable_thumbnail_upload(channel_id)

@@ -336,23 +336,53 @@ def thumbnail_permission_denied(error: str | None) -> bool:
 _THUMBNAIL_DISABLED_PATH = settings.root / "data" / "thumbnail_disabled_channels.json"
 
 
-def _thumbnail_disabled_channels() -> set[str]:
+# A refusal is tried again after this long. DimeHorizon was refused once on
+# 3 Nov, before its phone verification counted, and every Short after that was
+# held for good: the flag never expired and the dashboard button that clears it
+# only changes this PC, while the GitHub run keeps its own copy (bot-state).
+THUMBNAIL_RETEST_HOURS = 24
+
+
+def _thumbnail_disabled_map() -> dict[str, str]:
+    """Channel id -> when YouTube last refused its thumbnail ('' = unknown, old list format)."""
     import json
     try:
         raw = json.loads(_THUMBNAIL_DISABLED_PATH.read_text(encoding="utf-8"))
-        return {str(item) for item in raw if str(item)}
     except Exception:
-        return set()
+        return {}
+    if isinstance(raw, dict):
+        return {str(k): str(v or "") for k, v in raw.items() if str(k)}
+    return {str(item): "" for item in raw or [] if str(item)}
+
+
+def _refusal_is_fresh(when: str) -> bool:
+    try:
+        at = datetime.fromisoformat(when)
+    except (TypeError, ValueError):
+        return False  # unknown age: try again now
+    if at.tzinfo is None:
+        at = at.replace(tzinfo=timezone.utc)
+    return datetime.now(timezone.utc) - at < timedelta(hours=THUMBNAIL_RETEST_HOURS)
+
+
+def _thumbnail_disabled_channels() -> set[str]:
+    """Channels YouTube refused custom thumbnails in the last THUMBNAIL_RETEST_HOURS."""
+    return {cid for cid, when in _thumbnail_disabled_map().items() if _refusal_is_fresh(when)}
+
+
+def thumbnail_marked_disabled(channel_id: str) -> bool:
+    """True while the channel is on the refused list at all, fresh or due a retest."""
+    return str(channel_id) in _thumbnail_disabled_map()
 
 
 def disable_thumbnail_upload(channel_id: str) -> None:
     import json
     with _UPLOAD_GATE:
-        disabled = _thumbnail_disabled_channels()
-        disabled.add(str(channel_id))
+        disabled = _thumbnail_disabled_map()
+        disabled[str(channel_id)] = datetime.now(timezone.utc).isoformat()
         _THUMBNAIL_DISABLED_PATH.parent.mkdir(parents=True, exist_ok=True)
         _THUMBNAIL_DISABLED_PATH.write_text(
-            json.dumps(sorted(disabled), indent=2), encoding="utf-8",
+            json.dumps(disabled, indent=2, sort_keys=True), encoding="utf-8",
         )
 
 _THUMBNAIL_REENABLED_PATH = settings.root / "data" / "thumbnail_reenabled_channels.json"
@@ -488,11 +518,11 @@ def enable_thumbnail_upload(channel_id: str) -> None:
     from datetime import datetime, timezone
 
     with _UPLOAD_GATE:
-        disabled = _thumbnail_disabled_channels()
-        disabled.discard(str(channel_id))
+        disabled = _thumbnail_disabled_map()
+        disabled.pop(str(channel_id), None)
         _THUMBNAIL_DISABLED_PATH.parent.mkdir(parents=True, exist_ok=True)
         _THUMBNAIL_DISABLED_PATH.write_text(
-            json.dumps(sorted(disabled), indent=2), encoding="utf-8",
+            json.dumps(disabled, indent=2, sort_keys=True), encoding="utf-8",
         )
         try:
             raw = json.loads(_THUMBNAIL_REENABLED_PATH.read_text(encoding="utf-8"))
@@ -509,6 +539,9 @@ def thumbnail_upload_allowed(channel_id: str) -> bool:
     if str(channel_id) in _thumbnail_disabled_channels():
         return False
     since = _thumbnail_reenabled_at(channel_id)
+    # Old refusals stop counting after the retest window as well.
+    window = (datetime.now(timezone.utc) - timedelta(hours=THUMBNAIL_RETEST_HOURS)).isoformat()
+    since = max(since or "", window)
     conn = sqlite3.connect(settings.db_path)
     try:
         needle = "%doesn't have permissions to upload and set custom video thumbnails%"
@@ -566,6 +599,37 @@ def _never_written(video_id: int) -> bool:
         )
         conn.commit()
         return True
+    finally:
+        conn.close()
+
+
+def _restore_waiting(video_id: int, is_daily: bool, error: str) -> None:
+    """Put a held video back in the upload queue with the reason it waits."""
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        conn.execute(
+            "UPDATE videos SET status = ?, error = ?, upload_progress = 0 WHERE id = ? AND video_url IS NULL",
+            ("daily_upload_pending" if is_daily else "rendered", error, video_id),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def requeue_held_uploads() -> int:
+    """Videos stuck at 'uploading' by an earlier hold go back to the queue; returns how many."""
+    if not settings.db_path.exists():
+        return 0
+    conn = sqlite3.connect(settings.db_path)
+    try:
+        done = conn.execute(
+            """UPDATE videos
+               SET status = CASE WHEN COALESCE(is_daily, 0) = 1 THEN 'daily_upload_pending' ELSE 'rendered' END,
+                   upload_progress = 0
+               WHERE status = 'uploading' AND video_url IS NULL AND error LIKE 'Held:%'"""
+        ).rowcount
+        conn.commit()
+        return int(done or 0)
     finally:
         conn.close()
 
@@ -721,6 +785,10 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
                 progress_callback=lambda value: set_upload_progress(video_id, value),
                 upload_thumbnail=thumbnail_upload_allowed(channel.id),
             )
+            if thumbnail_marked_disabled(channel.id) and thumbnail_upload_allowed(channel.id):
+                # The retest worked: the thumbnail went on, so the channel may again.
+                enable_thumbnail_upload(channel.id)
+                print(f"[thumbnail] {channel.id}: thumbnails work again; switched back on")
             if getattr(channel, "focus_country", ""):
                 try:
                     from .playlists import add_to_playlist
@@ -734,9 +802,11 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
         mark_uploaded(video_id, video_url)
         return f"{video_id}: uploaded {video_url}"
     except ThumbnailNotReady as exc:
-        # Raised before anything reached YouTube; other uploads carry on.
+        # Raised before anything reached YouTube; other uploads carry on. The
+        # status goes back to waiting: left at 'uploading' (set just before the
+        # upload) the video was never picked up again.
         cancel_publish_at(reservation_key)
-        _set_error(video_id, f"Held: {exc}")
+        _restore_waiting(video_id, bool(row["is_daily"]), f"Held: {exc}")
         return f"{video_id}: held, {exc}"
     except ThumbnailUploadError as exc:
         if thumbnail_permission_denied(str(exc)):
@@ -760,6 +830,9 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
 def retry_pending_uploads(
     limit: int = 20, channel_id: str | None = None, content_type: str | None = None,
 ) -> list[str]:
+    requeued = requeue_held_uploads()
+    if requeued:
+        print(f"[retry] {requeued} held video(s) back in the upload queue")
     return [
         _process_row(row)
         for row in pending_rows(limit, channel_id=channel_id, content_type=content_type)

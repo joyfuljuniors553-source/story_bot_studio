@@ -485,7 +485,12 @@ def _platform_line(channel: dict, video: dict) -> str:
         if row and row.get("status") == "submitted":
             chips.append(chip(name, "warn", _local(video["publish_at"])) if later else chip(name, "ok"))
         elif row and row.get("status") == "failed":
-            chips.append(chip(name, "bad", "failed"))
+            # A Page login Facebook stopped honouring fails every post the same way:
+            # say what fixes it rather than a bare "failed".
+            error = str(row.get("error") or "").lower()
+            login = any(word in error for word in ("impersonating", "no longer lets this page token",
+                                                    "pages_read_engagement", "oauthexception"))
+            chips.append(chip(name, "bad", "reconnect Facebook" if login else "failed"))
         elif later:
             chips.append(chip(name, "warn", _local(video["publish_at"])))
         else:

@@ -144,6 +144,44 @@ def _send_binary(url: str, data: bytes, headers: dict[str, str], method: str) ->
         raise RuntimeError(f"HTTP {exc.code}: {detail}") from exc
 
 
+FACEBOOK_RECONNECT = (
+    "Facebook no longer lets this Page token post (it still reads the Page's name, so it looked "
+    "fine). Get a new token: Graph API Explorer > Get User Access Token with pages_show_list, "
+    "pages_read_engagement, pages_manage_posts and business_management, tick every Page, extend it "
+    "in the Access Token Debugger, paste it in the dashboard's Facebook 'Fast way' box for all "
+    "channels, then press Send to GitHub."
+)
+_FB_HEALTH: dict[str, str] = {}  # channel id -> '' (can post) or why not, once per run
+
+
+def facebook_post_problem(channel_id: str, fresh: bool = False) -> str:
+    """'' when the saved Page token may act as the Page; otherwise why it may not.
+
+    Reading the Page's own feed needs the same "act as the Page" right as a
+    post. All four Pages' tokens lost it on 6 Nov while still passing the old
+    check (the Page's name), and every upload after that failed.
+    A network hiccup counts as fine: the upload itself will say more."""
+    if not fresh and channel_id in _FB_HEALTH:
+        return _FB_HEALTH[channel_id]
+    cfg = account(channel_id, "facebook")
+    page_id, token = cfg.get("page_id"), cfg.get("page_access_token")
+    problem = ""
+    if not page_id or not token:
+        problem = "No Facebook Page is saved for this channel."
+    else:
+        try:
+            _request_json(f"https://graph.facebook.com/{FB_API_VERSION}/{page_id}/feed?"
+                          + urlencode({"limit": "1", "fields": "id", "access_token": token}), timeout=30)
+        except RuntimeError as exc:
+            text = str(exc)
+            if text.startswith(("HTTP 400", "HTTP 401", "HTTP 403")):
+                problem = f"{FACEBOOK_RECONNECT} ({text[:160]})"
+        except Exception:
+            pass
+    _FB_HEALTH[channel_id] = problem
+    return problem
+
+
 def verify_facebook(channel_id: str) -> str:
     cfg = account(channel_id, "facebook")
     page_id, token = cfg.get("page_id"), cfg.get("page_access_token")
@@ -177,6 +215,9 @@ def verify_facebook(channel_id: str) -> str:
                 "and user ID were saved. Paste that same token into the 'Fast way' box below; it "
                 "finds the Page and saves the Page's own ID and token."
             )
+        problem = facebook_post_problem(channel_id, fresh=True)
+        if problem:
+            raise RuntimeError(problem)
     except Exception:
         mark_verified(channel_id, "facebook", "")
         raise
@@ -877,7 +918,12 @@ def auto_publish_video(video_id: int, channel_id: str,
                 video_override=facebook_video, title_override=facebook_title,
             ))
         except Exception as exc:
-            messages.append(f"Facebook failed: {exc}")
+            # The upload is always tried; when it fails and the token cannot act
+            # as the Page, the dashboard says what to do instead of a bare error.
+            problem = facebook_post_problem(channel_id)
+            if problem:
+                set_social_upload(video_id, "facebook", "failed", error=problem)
+            messages.append(f"Facebook failed: {problem or exc}")
     if tt.get("auto_upload") and tt.get("mode") == "zernio" and tt.get("zernio_api_key"):
         # Zernio's audited app posts publicly with no click per video.
         try:

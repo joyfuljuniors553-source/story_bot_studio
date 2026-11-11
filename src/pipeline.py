@@ -556,6 +556,12 @@ def run_pipeline(
                     duplicate = find_uploaded_duplicate(
                         channel_id, lesson.topic_key, content_type, Path(video_path),
                     )
+                    if not duplicate and channel is not None:
+                        from .pending_uploads import already_on_youtube
+
+                        existing = already_on_youtube(channel, metadata.get("title"))
+                        if existing:
+                            duplicate = (0, existing, "same title already on YouTube")
                     if duplicate:
                         status = "duplicate_blocked"
                         error = (
@@ -588,6 +594,9 @@ def run_pipeline(
                             upload_thumbnail=(thumbnail_upload_allowed(channel_id)
                                               if thumbnail_required() else True),
                         )
+                        from .pending_uploads import remember_upload
+
+                        remember_upload(channel_id, metadata.get("title"), video_url)
                         status = "scheduled" if publish_at else "uploaded"
                         from .pending_uploads import thumbnail_marked_disabled
 

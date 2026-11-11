@@ -106,6 +106,16 @@ def _visuals(channel) -> str:
     return VISUAL_WORDS["still"]
 
 
+def _older_than_a_day(when: object, now: datetime) -> bool:
+    try:
+        moment = datetime.fromisoformat(str(when).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return False
+    if moment.tzinfo is None:
+        moment = moment.replace(tzinfo=timezone.utc)
+    return now - moment > timedelta(hours=24)
+
+
 def _rows(conn: sqlite3.Connection, sql: str, params: tuple = ()) -> list[sqlite3.Row]:
     try:
         return conn.execute(sql, params).fetchall()
@@ -145,7 +155,7 @@ def collect() -> dict:
             tiktok = bool(tiktok_cfg.get("auto_upload") and (tiktok_cfg.get("zernio_api_key") or tiktok_cfg.get("access_token")))
             social = {
                 r["platform"]: dict(r) for r in _rows(
-                    conn, "SELECT platform, status, post_url, error FROM social_uploads WHERE video_id = ?",
+                    conn, "SELECT platform, status, post_url, error, updated_at FROM social_uploads WHERE video_id = ?",
                     (latest[0]["id"],),
                 )
             } if latest else {}
@@ -488,6 +498,9 @@ def _platform_line(channel: dict, video: dict) -> str:
         row = (channel.get("social") or {}).get(key)
         if row and row.get("status") == "submitted":
             chips.append(chip(name, "warn", _local(video["publish_at"])) if later else chip(name, "ok"))
+        elif row and row.get("status") == "failed" and _older_than_a_day(row.get("updated_at"), now):
+            # Fixed since, or shown again on the next video: not repeated on the card.
+            continue
         elif row and row.get("status") == "failed":
             # A Page login Facebook stopped honouring fails every post the same way:
             # say what fixes it rather than a bare "failed".

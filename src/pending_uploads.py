@@ -328,6 +328,92 @@ def mark_duplicate_blocked(video_id: int, duplicate: tuple[int, str, str]) -> No
     finally:
         conn.close()
 
+# ------------------------------------------------------------ already on YouTube
+# The database is the only memory of what went up, and a run that is cancelled
+# or times out never saves it. The next run then knew nothing of the videos it
+# had uploaded, built the same topics again and uploaded them a second time
+# (DimeHorizon, 9-11 Nov). YouTube's own list of the channel's uploads is
+# checked too: a video whose title is already there is not uploaded again.
+_ON_YOUTUBE: dict[str, dict[str, str]] = {}  # channel id -> normalized title -> video URL
+
+
+def _title_key(title: object) -> str:
+    return " ".join(re.sub(r"[^\w]+", " ", str(title or "").lower()).split())
+
+
+def youtube_titles(channel) -> dict[str, str]:
+    """This channel's recent uploads (any privacy) by title; read once per run, {} on any error."""
+    if channel.id in _ON_YOUTUBE:
+        return _ON_YOUTUBE[channel.id]
+    found: dict[str, str] = {}
+    try:
+        from .youtube_upload import _youtube
+
+        youtube = _youtube(channel.client_secret_path, channel.token_path)
+        uploads = youtube.channels().list(part="contentDetails", mine=True).execute()["items"][0][
+            "contentDetails"]["relatedPlaylists"]["uploads"]
+        token = None
+        for _ in range(4):  # the newest 200 uploads, 4 quota units
+            page = youtube.playlistItems().list(part="snippet", playlistId=uploads, maxResults=50,
+                                                pageToken=token).execute()
+            for item in page.get("items", []):
+                snippet = item.get("snippet") or {}
+                video_id = (snippet.get("resourceId") or {}).get("videoId")
+                if video_id:
+                    found.setdefault(_title_key(snippet.get("title")), f"https://www.youtube.com/watch?v={video_id}")
+            token = page.get("nextPageToken")
+            if not token:
+                break
+    except Exception as exc:
+        print(f"[duplicates] {channel.id}: could not read the channel's uploads ({exc})")
+        return {}
+    _ON_YOUTUBE[channel.id] = found
+    return found
+
+
+def remember_upload(channel_id: str, title: object, video_url: str) -> None:
+    if channel_id in _ON_YOUTUBE and video_url:
+        _ON_YOUTUBE[channel_id][_title_key(title)] = video_url
+
+
+def already_on_youtube(channel, title: object) -> str | None:
+    """The URL of this channel's upload with the same title, if there is one."""
+    key = _title_key(title)
+    return youtube_titles(channel).get(key) if key else None
+
+
+def adopt_existing_uploads(limit: int = 200) -> list[str]:
+    """Waiting videos that are in fact already on YouTube are recorded as uploaded."""
+    from .channels import get_channel
+    from .db import mark_uploaded
+
+    if not settings.db_path.exists():
+        return []
+    conn = sqlite3.connect(settings.db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        rows = conn.execute(
+            """SELECT id, channel, title FROM videos
+               WHERE video_url IS NULL AND hidden_at IS NULL
+                 AND status IN ('rendered', 'upload_failed', 'daily_upload_pending', 'uploading')
+               ORDER BY id LIMIT ?""", (limit,)).fetchall()
+    finally:
+        conn.close()
+    messages = []
+    for row in rows:
+        try:
+            channel = get_channel(row["channel"])
+        except Exception:
+            continue
+        if not channel.token_path.exists():
+            continue
+        url = already_on_youtube(channel, row["title"])
+        if url:
+            mark_uploaded(int(row["id"]), url)
+            messages.append(f"{row['id']}: already on YouTube ({url}); recorded instead of uploading again")
+    return messages
+
+
 def thumbnail_permission_denied(error: str | None) -> bool:
     text = str(error or "").lower()
     return "doesn't have permissions to upload and set custom video thumbnails" in text
@@ -762,6 +848,12 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
         if duplicate:
             mark_duplicate_blocked(video_id, duplicate)
             return f"{video_id}: duplicate upload blocked; existing video: {duplicate[1]}"
+        title_now = build_metadata(load_lesson_for(channel, row["topic"]), channel,
+                                   content_type=row["content_type"] or "short").get("title")
+        existing = already_on_youtube(channel, title_now)
+        if existing:
+            mark_duplicate_blocked(video_id, (0, existing, "same title already on YouTube"))
+            return f"{video_id}: duplicate upload blocked; same title already on YouTube: {existing}"
         # Safety cap: stop the unattended queue/retry once today's upload budget
         # is spent, so it never exhausts YouTube's daily quota. The video stays
         # pending and uploads automatically after the quota resets.
@@ -791,6 +883,7 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
                 progress_callback=lambda value: set_upload_progress(video_id, value),
                 upload_thumbnail=thumbnail_upload_allowed(channel.id),
             )
+            remember_upload(channel.id, metadata.get("title"), video_url)
             if thumbnail_marked_disabled(channel.id) and thumbnail_upload_allowed(channel.id):
                 # The retest worked: the thumbnail went on, so the channel may again.
                 enable_thumbnail_upload(channel.id)
@@ -836,6 +929,8 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
 def retry_pending_uploads(
     limit: int = 20, channel_id: str | None = None, content_type: str | None = None,
 ) -> list[str]:
+    for message in adopt_existing_uploads():
+        print(f"[duplicates] {message}")
     requeued = requeue_held_uploads()
     if requeued:
         print(f"[retry] {requeued} held video(s) back in the upload queue")

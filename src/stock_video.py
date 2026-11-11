@@ -216,6 +216,7 @@ def _commons_clip(scene: Scene, output_path: Path, run_dir: Path, landscape: boo
     """A real archival film clip from Wikimedia Commons, cut to this scene."""
     import subprocess
 
+    from .clip_sources import channel_clips, remember_clip
     from .page_posts import _FREE_LICENCE
     from .visuals import ffmpeg_bin
 
@@ -236,6 +237,10 @@ def _commons_clip(scene: Scene, output_path: Path, run_dir: Path, landscape: boo
             # category, and carry every word of it: one shared word let "Denzel
             # Washington" bring up a film of somebody else from Washington.
             if not query_words <= {w.lower() for w in re.findall(r"[A-Za-z]{3,}", title)}:
+                continue
+            # Another stretch of a film this video already uses is fine; a film
+            # one of the channel's other videos used is not.
+            if title not in used and f"commons:{title}" in channel_clips():
                 continue
             seconds = float(meta.get("Duration", {}).get("value") or info.get("duration") or 0) or 60.0
             renditions = [d for d in info.get("derivatives") or []
@@ -268,6 +273,7 @@ def _commons_clip(scene: Scene, output_path: Path, run_dir: Path, landscape: boo
                 output_path.unlink(missing_ok=True)
                 continue
             used_file.write_text(json.dumps(used), encoding="utf-8")
+            remember_clip(f"commons:{title}")
             artist = re.sub(r"<[^>]+>", "", str((meta.get("Artist") or {}).get("value") or "")).strip()
             gen = run_dir / "gen"
             gen.mkdir(exist_ok=True)
@@ -444,7 +450,7 @@ def fetch_scene_clip(
 
     set_context(topic=str(getattr(channel, "clip_subject", "") or ""),
                 strict=bool(getattr(channel, "clip_check_required", False)),
-                banned=off_topic_words(channel))
+                banned=off_topic_words(channel), channel=str(getattr(channel, "id", "") or ""))
     for source in sources:
         try:
             if source == "commons":
@@ -471,7 +477,7 @@ def fetch_scene_clip(
                 if str(q).strip()]
     if fallback:
         set_context(topic=str(getattr(channel, "clip_subject", "") or ""), strict=True, loose=True,
-                    banned=off_topic_words(channel))
+                    banned=off_topic_words(channel), channel=str(getattr(channel, "id", "") or ""))
         try:
             return nasa_clip(scene, output_path, run_dir,
                              [(query, query.split()[-1]) for query in fallback], min_seconds)
@@ -484,7 +490,7 @@ def fetch_scene_clip(
 def _pexels_clip(scene: Scene, output_path: Path, run_dir: Path, channel, landscape: bool,
                  min_seconds: float, no_people: bool, errors: list[str]) -> Path:
     """A Pexels clip for this scene, or RuntimeError."""
-    from .clip_sources import _mark_used, _used, frame_matches, off_topic
+    from .clip_sources import _mark_used, _used, frame_matches, off_topic, remember_clip
     from .thumbnails import pexels_api_key
 
     key = pexels_api_key()
@@ -540,6 +546,7 @@ def _pexels_clip(scene: Scene, output_path: Path, run_dir: Path, channel, landsc
                 _mark_used(run_dir, f"pexels:{video.get('id')}")
                 output_path.unlink(missing_ok=True)
                 continue
+            remember_clip(f"pexels:{video.get('id')}")
             creator = video.get("user") or {}
             output_path.with_suffix(".pexels.json").write_text(
                 json.dumps({

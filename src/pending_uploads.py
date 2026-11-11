@@ -376,10 +376,19 @@ def remember_upload(channel_id: str, title: object, video_url: str) -> None:
         _ON_YOUTUBE[channel_id][_title_key(title)] = video_url
 
 
-def already_on_youtube(channel, title: object) -> str | None:
-    """The URL of this channel's upload with the same title, if there is one."""
+def already_on_youtube(channel, title: object, similar: bool = False) -> str | None:
+    """The URL of this channel's upload with the same title, if there is one;
+    with `similar`, also one on the same subject (topic_similarity)."""
     key = _title_key(title)
-    return youtube_titles(channel).get(key) if key else None
+    if not key:
+        return None
+    titles = youtube_titles(channel)
+    if key in titles or not similar:
+        return titles.get(key)
+    from .topic_similarity import covered_by
+
+    earlier = covered_by(title, list(titles))
+    return titles.get(earlier) if earlier else None
 
 
 def adopt_existing_uploads(limit: int = 200) -> list[str]:
@@ -850,10 +859,10 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
             return f"{video_id}: duplicate upload blocked; existing video: {duplicate[1]}"
         title_now = build_metadata(load_lesson_for(channel, row["topic"]), channel,
                                    content_type=row["content_type"] or "short").get("title")
-        existing = already_on_youtube(channel, title_now)
+        existing = already_on_youtube(channel, title_now, similar=True)
         if existing:
-            mark_duplicate_blocked(video_id, (0, existing, "same title already on YouTube"))
-            return f"{video_id}: duplicate upload blocked; same title already on YouTube: {existing}"
+            mark_duplicate_blocked(video_id, (0, existing, "same subject already on YouTube"))
+            return f"{video_id}: duplicate upload blocked; same subject already on YouTube: {existing}"
         # Safety cap: stop the unattended queue/retry once today's upload budget
         # is spent, so it never exhausts YouTube's daily quota. The video stays
         # pending and uploads automatically after the quota resets.

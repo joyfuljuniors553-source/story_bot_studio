@@ -559,9 +559,9 @@ def run_pipeline(
                     if not duplicate and channel is not None:
                         from .pending_uploads import already_on_youtube
 
-                        existing = already_on_youtube(channel, metadata.get("title"))
+                        existing = already_on_youtube(channel, metadata.get("title"), similar=True)
                         if existing:
-                            duplicate = (0, existing, "same title already on YouTube")
+                            duplicate = (0, existing, "same subject already on YouTube")
                     if duplicate:
                         status = "duplicate_blocked"
                         error = (

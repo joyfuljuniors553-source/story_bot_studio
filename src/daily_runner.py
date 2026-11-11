@@ -337,10 +337,29 @@ def select_daily_topics(count: int = 2, channel: Channel | None = None) -> list[
 
     # Genre channels start with a small seed bank. Replenish it before selection
     # and never auto-publish a genre topic that already exists in video history.
+    # Subjects the channel already has (its database and its YouTube uploads):
+    # a script on one of them is not picked, however new its wording.
+    recent: list[str] = []
+    if not channel.builtin:
+        from .topic_similarity import recent_titles
+
+        try:
+            recent = recent_titles(channel)
+        except Exception as exc:
+            print(f"[daily_runner] {channel.id}: could not read recent titles ({exc})")
+
+    def repeats(key: str) -> bool:
+        if not recent:
+            return False
+        from .topic_similarity import covered_by
+
+        return covered_by(lessons[key].get("title"), recent) is not None
+
     if not channel.builtin:
         unused = [
             key for key in lessons
             if not key.startswith("long_") and key not in history and key not in today_topics
+            and not repeats(key)
         ]
         shortage = max(0, count - len(unused))
         if shortage:
@@ -376,6 +395,7 @@ def select_daily_topics(count: int = 2, channel: Channel | None = None) -> list[
         if key not in today_topics and not key.startswith("long_")
         and (channel.builtin or key not in history)
         and not any(_too_similar_signature(_lesson_signature(raw), sig) for sig in used_signatures)
+        and not repeats(key)
     ]
     from .trending import is_trending_channel
 

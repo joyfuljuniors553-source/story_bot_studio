@@ -48,14 +48,76 @@ _dead_pairs: set[tuple[str, str]] = set()  # (key, model) pairs that hit their q
 #             frame check said yes; with the check unavailable it is refused
 #   loose   - the frame only has to show the channel's subject, not this line
 #             (the last-resort space/ocean footage of stock_video)
-_context: dict = {"topic": "", "strict": False, "loose": False, "banned": set()}
+_context: dict = {"topic": "", "strict": False, "loose": False, "banned": set(), "channel": ""}
 
 
 #   banned  - words naming settings the channel never shows (clip_off_topic)
+#   channel - whose videos may not repeat a clip (remember_clip)
 def set_context(topic: str = "", strict: bool = False, loose: bool = False,
-                banned: set[str] | None = None) -> None:
+                banned: set[str] | None = None, channel: str = "") -> None:
     _context.update(topic=" ".join(str(topic or "").split())[:200], strict=strict, loose=loose,
-                    banned=set(banned or ()))
+                    banned=set(banned or ()), channel=str(channel or ""))
+
+
+# ------------------------------------------------------------ across videos
+# The clips used list lived in each video's own run folder, so the next video
+# could open on the same footage: three Veylora Earth Shorts in a row began on
+# one geode clip. A clip a channel used is now kept from its videos for a month.
+CLIP_MEMORY_DAYS = 30
+_CHANNEL_CLIPS: dict[str, set[str]] = {}
+
+
+def _clip_table(conn) -> None:
+    conn.execute("""CREATE TABLE IF NOT EXISTS used_clips (
+        channel TEXT NOT NULL, clip TEXT NOT NULL, used_at TEXT NOT NULL,
+        PRIMARY KEY (channel, clip))""")
+
+
+def channel_clips(channel_id: str | None = None) -> set[str]:
+    """Clips this channel used in the last CLIP_MEMORY_DAYS days ('pexels:123', 'nasa:...')."""
+    import sqlite3
+    from datetime import datetime, timedelta, timezone
+
+    channel_id = str(channel_id if channel_id is not None else _context["channel"])
+    if not channel_id:
+        return set()
+    if channel_id not in _CHANNEL_CLIPS:
+        since = (datetime.now(timezone.utc) - timedelta(days=CLIP_MEMORY_DAYS)).isoformat()
+        found: set[str] = set()
+        try:
+            conn = sqlite3.connect(settings.db_path)
+            try:
+                _clip_table(conn)
+                found = {row[0] for row in conn.execute(
+                    "SELECT clip FROM used_clips WHERE channel = ? AND used_at >= ?", (channel_id, since))}
+            finally:
+                conn.close()
+        except Exception as exc:
+            print(f"[clips] could not read the channel's used clips ({exc})")
+        _CHANNEL_CLIPS[channel_id] = found
+    return _CHANNEL_CLIPS[channel_id]
+
+
+def remember_clip(key: str) -> None:
+    """Record a clip the channel just used, so its other videos leave it out."""
+    import sqlite3
+    from datetime import datetime, timezone
+
+    channel_id = _context["channel"]
+    if not channel_id or not key:
+        return
+    channel_clips(channel_id).add(key)
+    try:
+        conn = sqlite3.connect(settings.db_path)
+        try:
+            _clip_table(conn)
+            conn.execute("INSERT OR REPLACE INTO used_clips (channel, clip, used_at) VALUES (?, ?, ?)",
+                         (channel_id, key, datetime.now(timezone.utc).isoformat()))
+            conn.commit()
+        finally:
+            conn.close()
+    except Exception as exc:
+        print(f"[clips] could not record clip {key} ({exc})")
 
 
 def off_topic(words: set[str]) -> bool:
@@ -92,15 +154,20 @@ def _names(words: set[str], must: str) -> bool:
     return bool({must, must + "s", must + "es"} & words) or (must.endswith("s") and must[:-1] in words)
 
 
-def _used(run_dir: Path) -> set[str]:
+def _run_used(run_dir: Path) -> set[str]:
     try:
         return set(json.loads((run_dir / _USED_FILE).read_text(encoding="utf-8")))
     except Exception:
         return set()
 
 
+def _used(run_dir: Path) -> set[str]:
+    """Clips this video tried or used, and those the channel's other videos used."""
+    return _run_used(run_dir) | channel_clips()
+
+
 def _mark_used(run_dir: Path, key: str) -> None:
-    used = _used(run_dir) | {key}
+    used = _run_used(run_dir) | {key}
     (run_dir / _USED_FILE).write_text(json.dumps(sorted(used)), encoding="utf-8")
 
 
@@ -304,6 +371,7 @@ def nasa_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[tup
                     raise RuntimeError("NASA: no clip fit the line")
                 continue
             _mark_used(run_dir, f"nasa:{nasa_id}")
+            remember_clip(f"nasa:{nasa_id}")
             _credit(run_dir, output_path, title, "NASA", "Public domain",
                     f"https://images.nasa.gov/details/{urllib.parse.quote(nasa_id)}")
             print(f"[clips] {output_path.stem}: NASA '{title[:60]}'")
@@ -384,6 +452,7 @@ def pixabay_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[
                 if misses >= _MAX_MISSES:
                     raise RuntimeError("Pixabay: no clip fit the line")
                 continue
+            remember_clip(f"pixabay:{hit.get('id')}")
             _credit(run_dir, output_path, str(hit.get("tags") or "Video")[:60],
                     str(hit.get("user") or "Pixabay"), "Pixabay Content License", str(hit.get("pageURL") or ""))
             print(f"[clips] {output_path.stem}: Pixabay '{hit.get('tags')}'")
@@ -476,6 +545,7 @@ def smithsonian_clip(scene: Scene, output_path: Path, run_dir: Path, searches: l
             title = str(row.get("title") or "Specimen")
             record = str(((row.get("content") or {}).get("descriptiveNonRepeating") or {})
                          .get("record_link") or "")
+            remember_clip(f"si:{row.get('id')}")
             _credit(run_dir, output_path, title, "Smithsonian National Museum of Natural History", "CC0",
                     record)
             print(f"[clips] {output_path.stem}: Smithsonian '{title[:60]}'")
@@ -540,6 +610,7 @@ def coverr_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[t
                 if misses >= _MAX_MISSES:
                     raise RuntimeError("Coverr: no clip fit the line")
                 continue
+            remember_clip(f"coverr:{hit.get('id')}")
             _credit(run_dir, output_path, str(hit.get("title") or "Video"), "Coverr", "Coverr License",
                     f"https://coverr.co/videos/{hit.get('slug') or ''}")
             print(f"[clips] {output_path.stem}: Coverr '{hit.get('title')}'")
@@ -591,6 +662,7 @@ def nps_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[tupl
                 if misses >= _MAX_MISSES:
                     raise RuntimeError("NPS: no clip fit the line")
                 continue
+            remember_clip(f"nps:{video.get('id')}")
             _credit(run_dir, output_path, str(video.get("title") or "Park video"), "U.S. National Park Service",
                     "Public domain", str(video.get("permalinkUrl") or ""))
             print(f"[clips] {output_path.stem}: NPS '{video.get('title')}'")

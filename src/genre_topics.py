@@ -920,6 +920,17 @@ def generate_genre_topics(channel: Channel, count: int = 5, scenes: int = SHORT_
     else:
         lessons = load_genre_lessons(channel)
     existing_titles = [v.get("title", "") for v in lessons.values()]
+    recent: list[str] = []
+    if not channel.builtin:
+        # What is really on the channel, not only what the bank remembers: a
+        # run whose state was never saved left its videos out of the bank.
+        from .topic_similarity import recent_titles
+
+        try:
+            recent = recent_titles(channel)
+        except Exception as exc:
+            print(f"[genre_topics] {channel.id}: could not read recent titles ({exc})")
+        existing_titles += [t for t in recent[:60] if t not in existing_titles]
     added: list[str] = []
     path = channel.custom_lessons_path if channel.builtin else channel.lessons_path
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -931,6 +942,13 @@ def generate_genre_topics(channel: Channel, count: int = 5, scenes: int = SHORT_
             print(f"[genre_topics] {channel.id}: generation failed ({e})")
             break
         key = one.pop("_key")
+        if recent:
+            from .topic_similarity import covered_by
+
+            earlier = covered_by(one.get("title"), recent)
+            if earlier:
+                print(f"[genre_topics] {channel.id}: '{one.get('title')}' repeats '{earlier}'; skipped")
+                continue
         source = str(one.get("source_title") or "").lower()
         if source and any(str(v.get("source_title") or "").lower() == source for v in lessons.values()):
             print(f"[genre_topics] {channel.id}: {one.get('source_title')} is already in the bank; skipped")

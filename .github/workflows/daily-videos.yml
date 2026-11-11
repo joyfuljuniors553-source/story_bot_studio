@@ -143,8 +143,12 @@ jobs:
 
       # A video left from an earlier run is fetched back from that run's kept
       # artifact first; the runner itself starts empty every time.
+      # Never the whole day: a slow retry once held the job for 5.5 hours and
+      # every run queued behind it was cancelled.
       - name: Upload anything still waiting
         if: always()
+        timeout-minutes: 45
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python -m src.cli retry-uploads --limit 20

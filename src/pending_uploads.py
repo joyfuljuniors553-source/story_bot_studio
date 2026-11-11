@@ -696,6 +696,12 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
             return f"{video_id}: thumbnail rate-limited today, will retry later"
         if not row["video_url"] and _never_written(video_id):
             return f"{video_id}: skipped for good; its script was never written (the title is the instruction)"
+        if not row["video_url"] and not bypass_safety_cap and daily_upload_cap_reached(channel.id, channel.account):
+            # Checked again before the upload; here it spares fetching a video
+            # from GitHub that could not go up today anyway.
+            return (f"{video_id}: {channel.name} app upload cap reached "
+                    f"({upload_limit_for_channel(channel.id, channel.account)}/day) "
+                    "— resumes after the YouTube quota day resets")
         # A video already on YouTube only needs its thumbnail back.
         missing = (not thumbnail_path.exists()) if row["video_url"] else not (
             thumbnail_path.exists() and video_path.exists())

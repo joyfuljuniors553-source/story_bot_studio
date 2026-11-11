@@ -238,8 +238,12 @@ def collect() -> dict:
                 """SELECT v.title, v.channel, COALESCE(v.content_type,'short') AS content_type,
                           s.status, s.post_url, s.error, s.updated_at
                    FROM social_uploads s JOIN videos v ON v.id = s.video_id
-                   WHERE s.platform = 'facebook' AND s.status IN ('submitted', 'failed')
+                   WHERE s.platform = 'facebook'
+                     AND (s.status = 'submitted' OR (s.status = 'failed' AND s.updated_at >= ?))
                    ORDER BY s.updated_at DESC LIMIT 20""",
+                # A failure stays listed for a day: after that it is either fixed
+                # (the login was reconnected) or still shows on the newer videos.
+                ((now - timedelta(hours=24)).isoformat(),),
             )
         ] + [
             {"title": r["subject"], "channel": r["channel"], "kind": "Picture post",

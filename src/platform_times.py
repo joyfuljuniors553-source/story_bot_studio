@@ -6,7 +6,7 @@ and the steps still to come (goes public at, next automatic try).
 """
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 def _when(value):
     if not value:
         return None
@@ -71,6 +71,11 @@ def platform_timeline(v, socials: dict, social_cfg: dict, upload_pause) -> list[
             elif item["status"] == "uploading":
                 steps.append({"state": "wait", "text": "Uploading now", "when": item["updated_at"]})
             else:
+                failed_at = _when(item.get("updated_at"))
+                if failed_at and now - failed_at > timedelta(hours=24):
+                    # An old failure is either fixed by now (a reconnected login)
+                    # or shows on the newer videos; it is not repeated here.
+                    continue
                 steps.append({"state": "fail", "text": "Failed: " + str(item.get("error") or "")[:90],
                               "when": item["updated_at"]})
         elif cfg.get("configured") and cfg.get("auto_upload"):

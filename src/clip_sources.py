@@ -39,6 +39,8 @@ _TALK_WORDS = {
     "briefing", "conference", "interview", "news", "update", "live", "talk", "panel", "webinar",
     "podcast", "lecture", "q&a", "remarks", "speech", "town", "hall", "meeting", "ceremony",
     "show", "episode", "minute", "chat", "explains", "discusses", "testimony", "hearing",
+    # Monthly series and how-to pieces: a presenter and a mix of unrelated shots.
+    "skywatching", "tips", "whats", "what", "highlights", "recap", "preview", "trailer",
 }
 _checks_off = False  # set once every Gemini key and model refuses (quota), for the rest of the run
 _dead_pairs: set[tuple[str, str]] = set()  # (key, model) pairs that hit their quota this run
@@ -265,7 +267,9 @@ def frame_matches(clip: Path, scene: Scene, no_people: bool = False, generic: bo
         else:
             question = ("Does every frame plainly show the thing or place the line is about (a fitting "
                         "illustration is fine; something unrelated, a person talking to camera, text "
-                        "on screen, subtitles or a logo is not)?")
+                        "on screen, subtitles or a logo is not)? A different thing of the same kind does "
+                        "NOT fit: another planet, place, animal or person than the one named (the night "
+                        "sky over Mars for a line about a galaxy, the Sun for a line about another star).")
         parts.append({"text": f"{'These frames are' if len(parts) > 1 else 'This frame is'} from a clip "
                               "shown while a narrator says:\n"
                               f"\"{line}\"\n" + question + channel + people
@@ -352,10 +356,14 @@ def nasa_clip(scene: Scene, output_path: Path, run_dir: Path, searches: list[tup
             data = (item.get("data") or [{}])[0]
             nasa_id = str(data.get("nasa_id") or "")
             title = str(data.get("title") or "")
-            words = _words(f"{title} {' '.join(data.get('keywords') or [])}")
-            if not nasa_id or f"nasa:{nasa_id}" in used or words & _TALK_WORDS or off_topic(words):
+            title_words = _words(title)
+            words = title_words | _words(" ".join(data.get("keywords") or []))
+            if not nasa_id or f"nasa:{nasa_id}" in used or title_words & _TALK_WORDS or off_topic(words):
                 continue
-            if not (_names(words, must) if must else words & wanted):
+            # The title itself must name the thing: NASA's keyword lists are wide,
+            # and "Mars After Dark: What NASA Rovers Really See" (keywords: stars)
+            # played under a line about the Triangulum Galaxy.
+            if not (_names(title_words, must) if must else title_words & wanted):
                 continue
             try:
                 source = _nasa_file(item)

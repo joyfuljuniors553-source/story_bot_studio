@@ -1,0 +1,143 @@
+{
+  "made_at": "2026-11-14T17:04+00:00",
+  "channels": {
+    "star_life_stories": {
+      "days": 14,
+      "own_videos": 16,
+      "own_views_per_day": 1.0,
+      "competitor_videos": 12,
+      "competitors": [
+        {
+          "name": "Hollywood Graveyard",
+          "videos": 1,
+          "views_per_day": 12.6,
+          "vs_own": 13.2,
+          "verdict": "too early"
+        },
+        {
+          "name": "Facts Verse",
+          "videos": 7,
+          "views_per_day": 2.2,
+          "vs_own": 2.26,
+          "verdict": "strong"
+        },
+        {
+          "name": "Biography",
+          "videos": 4,
+          "views_per_day": 1.1,
+          "vs_own": 1.18,
+          "verdict": "similar"
+        }
+      ]
+    },
+    "quasorynth_space": {
+      "days": 14,
+      "own_videos": 4,
+      "own_views_per_day": 1.9,
+      "competitor_videos": 11,
+      "competitors": [
+        {
+          "name": "Astrum",
+          "videos": 2,
+          "views_per_day": 91.1,
+          "vs_own": 48.49,
+          "verdict": "strong"
+        },
+        {
+          "name": "Insane Curiosity",
+          "videos": 9,
+          "views_per_day": 54.0,
+          "vs_own": 28.77,
+          "verdict": "strong"
+        }
+      ]
+    },
+    "veylora_earth": {
+      "days": 14,
+      "own_videos": 18,
+      "own_views_per_day": 24.4,
+      "competitor_videos": 5,
+      "competitors": [
+        {
+          "name": "Ben G Thomas",
+          "videos": 2,
+          "views_per_day": 23.1,
+          "vs_own": 0.95,
+          "verdict": "similar"
+        },
+        {
+          "name": "PBS Eons",
+          "videos": 2,
+          "views_per_day": 1.4,
+          "vs_own": 0.06,
+          "verdict": "weak"
+        },
+        {
+          "name": "ExtinctZoo ",
+          "videos": 1,
+          "views_per_day": 0.0,
+          "vs_own": 0.0,
+          "verdict": "too early"
+        }
+      ]
+    },
+    "dime_horizon": {
+      "days": 14,
+      "own_videos": 7,
+      "own_views_per_day": 7.6,
+      "competitor_videos": 6,
+      "competitors": [
+        {
+          "name": "Humphrey Yang",
+          "videos": 5,
+          "views_per_day": 9.5,
+          "vs_own": 1.25,
+          "verdict": "similar"
+        },
+        {
+          "name": "The Financial Diet",
+          "videos": 1,
+          "views_per_day": 4.0,
+          "vs_own": 0.53,
+          "verdict": "too early"
+        }
+      ]
+    },
+    "abyssoryn_earth_mysterie": {
+      "days": 14,
+      "own_videos": 6,
+      "own_views_per_day": 17.1,
+      "competitor_videos": 10,
+      "competitors": [
+        {
+          "name": "EVNautilus",
+          "videos": 3,
+          "views_per_day": 54.4,
+          "vs_own": 3.18,
+          "verdict": "strong"
+        },
+        {
+          "name": "Schmidt Ocean Institute",
+          "videos": 2,
+          "views_per_day": 27.7,
+          "vs_own": 1.62,
+          "verdict": "strong"
+        },
+        {
+          "name": "MBARI (Monterey Bay Aquarium Research Institute)",
+          "videos": 4,
+          "views_per_day": 11.9,
+          "vs_own": 0.7,
+          "verdict": "weak"
+        },
+        {
+          "name": "BeyondTheBlue",
+          "videos": 1,
+          "views_per_day": 3.0,
+          "vs_own": 0.18,
+          "verdict": "too early"
+        }
+      ]
+    }
+  }
+}

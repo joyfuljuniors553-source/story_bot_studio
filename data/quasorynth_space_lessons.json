@@ -1,0 +1,1498 @@
+{
+  "mars_explained": {
+    "title": "Mars Explained",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Stunning Fact",
+        "line": "Olympus Mons towers as an enormous extinct volcano reaching a height of 21.9 km on Mars.",
+        "speech": "",
+        "image": "assets/generated/mars_explained_01.jpg",
+        "image_prompt": "A massive rocky volcano peak rising high above a dusty orange desert plain., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Mystery",
+        "line": "What geological processes created the colossal features and the vast canyons across the planet Mars?",
+        "speech": "",
+        "image": "assets/generated/mars_explained_02.jpg",
+        "image_prompt": "A deep canyon cutting through the rocky red terrain under a dim sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Planet Dimensions",
+        "line": "The desert-like rocky planet Mars features a mean diameter of 6,779 km.",
+        "speech": "",
+        "image": "assets/generated/mars_explained_03.jpg",
+        "image_prompt": "A wide angle view of a barren rocky horizon stretching into the distance., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Surface Appearance",
+        "line": "Iron oxide and goethite create the orange-red appearance across the surface of Mars.",
+        "speech": "",
+        "image": "assets/generated/mars_explained_04.jpg",
+        "image_prompt": "Close up details of red dust and fine rocks scattered on the ground., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Interior Structure",
+        "line": "Mars is differentiated into a dense metallic core overlaid by less dense rocky layers.",
+        "speech": "",
+        "image": "assets/generated/mars_explained_05.jpg",
+        "image_prompt": "Cross section diagram of rocky layers showing a metallic core inside a planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Northern Hemisphere",
+        "line": "The northern hemisphere mainly consists of relatively flat, low lying plains.",
+        "speech": "",
+        "image": "assets/generated/mars_explained_06.jpg",
+        "image_prompt": "A vast flat desert plain stretching out toward a distant horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Volcanic Eras",
+        "line": "The Hesperian period was dominated by widespread volcanic activity and flooding that carved immense channels.",
+        "speech": "",
+        "image": "assets/generated/mars_explained_07.jpg",
+        "image_prompt": "Dry ancient river channels carved deeply into the rocky orange ground., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Seismic Activity",
+        "line": "In 2019, it was reported that InSight had detected and recorded over 450 marsquakes.",
+        "speech": "",
+        "image": "assets/generated/mars_explained_08.jpg",
+        "image_prompt": "A scientific instrument resting quietly upon the dusty ground of a barren plain., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Scientific Awe",
+        "line": "Active scientific investigation continues to examine the possibility of past or present life on Mars.",
+        "speech": "",
+        "image": "assets/generated/mars_explained_09.jpg",
+        "image_prompt": "A remote robotic rover tracking tracks across the endless red desert sand., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Mars",
+    "source_url": "https://en.wikipedia.org/wiki/Mars"
+  },
+  "how_scholz_s_star_crossed_the_solar_system": {
+    "title": "Scholz's Star Explained",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Stellar Encounter",
+        "line": "Scholz's Star passed through the Solar System's Oort cloud roughly 70,000 years ago.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_01.jpg",
+        "image_prompt": "An empty expanse of deep space with distant stars and faint nebulae., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Stellar Mystery",
+        "line": "How did Scholz's Star approach so close to our Sun in prehistorical times?",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_02.jpg",
+        "image_prompt": "A dark astronomical observatory dome open against a starry night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "System Details",
+        "line": "Scholz's Star is a dim binary stellar system 22 light-years from the Sun.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_03.jpg",
+        "image_prompt": "Two faint red and brown celestial bodies orbiting each other in the dark., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Discovery Date",
+        "line": "Astronomer Ralf-Dieter Scholz discovered this nearby star system in 2013.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_04.jpg",
+        "image_prompt": "A computer monitor displaying complex star maps and astronomical data charts., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mass and Type",
+        "line": "The primary star is a red dwarf with 86 Jupiter masses.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_05.jpg",
+        "image_prompt": "A glowing red dwarf star radiating faint light in deep space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Secondary Dwarf",
+        "line": "The secondary is probably a T5 brown dwarf with 65 Jupiter masses.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_06.jpg",
+        "image_prompt": "A dark brown dwarf object faintly reflecting light in the void., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbit Period",
+        "line": "The pair orbit at a distance of about 0.8 astronomical units with a period of roughly 4 years.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_07.jpg",
+        "image_prompt": "Diagram showing two small celestial bodies revolving around a shared center point., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Trajectory Simulations",
+        "line": "Ninety-eight percent of mathematical simulations indicated it passed through the Oort cloud.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_08.jpg",
+        "image_prompt": "A computer screen showing glowing mathematical trajectories and orbital lines., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Distance Estimate",
+        "line": "Estimates indicate the system passed about 52,000 astronomical units from the Sun.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_09.jpg",
+        "image_prompt": "A vast field of icy comets and debris drifting far out in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Apparent Magnitude",
+        "line": "Even at closest approach the system had an apparent magnitude of about 11.4.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_10.jpg",
+        "image_prompt": "A telescope pointing upward into a dark nighttime sky filled with tiny stars., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Recent Research",
+        "line": "A later recalculation showed perihelion distance during the encounter had a median value of 0.330 pc.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_11.jpg",
+        "image_prompt": "Scientific papers and notes covered in mathematical equations and star coordinates., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cosmic Frequency",
+        "line": "A star is expected to pass through the Oort cloud every 100,000 years or so.",
+        "speech": "",
+        "image": "assets/generated/how_scholz_s_star_crossed_the_solar_system_12.jpg",
+        "image_prompt": "A wide shot of a starry night sky viewed from a high northern latitude., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Scholz's Star",
+    "source_url": "https://en.wikipedia.org/wiki/Scholz%27s_Star"
+  },
+  "titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere": {
+    "title": "Titan is Larger Than Mercury and Possesses a Dense Atmosphere",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "Titan is the largest moon of Saturn and larger than the planet Mercury in the Solar System.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_01.jpg",
+        "image_prompt": "A distant rocky celestial body illuminated by faint sunlight in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Core Question",
+        "line": "How did the Dutch astronomer Christiaan Huygens discover Titan in 1655 using early telescopes?",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_02.jpg",
+        "image_prompt": "An old brass telescope pointed toward the night sky in a dark room., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Discovery Clue",
+        "line": "Christiaan Huygens named his discovery Saturni Luna and published his findings in a 1655 scientific tract.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_03.jpg",
+        "image_prompt": "Ancient parchment paper covered in handwritten Latin text and astronomical sketches., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Naming Clue",
+        "line": "John Herschel gave Titan its name in an 1847 publication referencing mythological deities.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_04.jpg",
+        "image_prompt": "An old hardcover book opened to a page filled with nineteenth century star charts., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbital Clue",
+        "line": "Titan orbits Saturn at 20 Saturn radii or 1.2 million km above Saturn's apparent surface.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_05.jpg",
+        "image_prompt": "A massive gas giant planet with prominent rings viewed from deep space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Physical Clue",
+        "line": "Titan is 5,149.53 km in diameter and is primarily composed of ice and rocky material.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_06.jpg",
+        "image_prompt": "A frozen sphere showing a textured crust of water ice and rock., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Clue",
+        "line": "A dense opaque atmosphere prevented understanding of Titan's surface until the Cassini Huygens mission in 2004.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_07.jpg",
+        "image_prompt": "A planetary globe enveloped in a thick opaque orange atmospheric haze layer., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Surface Clue",
+        "line": "The Cassini Huygens mission provided information including the discovery of liquid hydrocarbon lakes in polar regions.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_08.jpg",
+        "image_prompt": "A dark reflective liquid surface situated within a cold polar landscape., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Climatic Clue",
+        "line": "The atmosphere of Titan is mainly nitrogen and methane with minor components leading to hydrocarbon clouds.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_09.jpg",
+        "image_prompt": "Swirling atmospheric bands and clouds floating above a distant horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Internal Clue",
+        "line": "Titan is probably partially differentiated into distinct layers with a 3,400 km rocky center.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_10.jpg",
+        "image_prompt": "A cutaway diagram showing the internal rocky core and icy layers of a moon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Answering the Mystery",
+        "line": "The interior may still be hot enough for a liquid layer consisting of water and ammonia.",
+        "speech": "",
+        "image": "assets/generated/titan_is_larger_than_mercury_and_possesses_a_dense_atmosphere_11.jpg",
+        "image_prompt": "Subsurface liquid water glowing faintly beneath thick crusts of solid ice., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Titan (moon)",
+    "source_url": "https://en.wikipedia.org/wiki/Titan_(moon)"
+  },
+  "the_andromeda_milky_way_collision_will_our_galaxies_actually_crash": {
+    "title": "The Andromeda–Milky Way Collision: Will Our Galaxies Actually Crash?",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Galactic Approach",
+        "line": "The Andromeda Galaxy is approaching the Milky Way at about 110 kilometres per second as indicated by blueshift.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_01.jpg",
+        "image_prompt": "Deep space showing distant spiral galaxies against a background of stars., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Collision Mystery",
+        "line": "What are the true chances of a head-on collision between the Milky Way and Andromeda galaxies?",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_02.jpg",
+        "image_prompt": "A modern scientific control room with glowing monitors and astronomical charts., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Simulation Data",
+        "line": "In 2025, Till Sawala and colleagues found that data gathered from the Gaia spacecraft and Hubble telescope showed lower chances.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_03.jpg",
+        "image_prompt": "A large space telescope orbiting high above the bright curve of planet Earth., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Variables Tested",
+        "line": "Astronomers considered 22 different variables which could affect the potential collision and ran 100,000 simulations.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_04.jpg",
+        "image_prompt": "Computer screens displaying complex 3D orbital trajectory models and graphs., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Low Probability",
+        "line": "These simulations showed that the chances of a head-on collision between the two galaxies is only 50 percent.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_05.jpg",
+        "image_prompt": "A wide starfield showing two massive spiral galaxies separated by vast darkness., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbital Decay",
+        "line": "Half the time the two galaxies fly past each other with roughly half a million lightyears worth of space between them.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_06.jpg",
+        "image_prompt": "Two massive galaxies passing close to each other in deep space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Gravitational Pulls",
+        "line": "When gravitational pulls from the Large Magellanic Cloud and the Triangulum Galaxy are taken into account, there is only a 2 percent chance.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_07.jpg",
+        "image_prompt": "Several smaller satellite galaxies orbiting near a large swirling spiral galaxy., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Stellar Distances",
+        "line": "While Andromeda contains about 1 trillion stars and the Milky Way about 300 billion, the chance of even two stars colliding is negligible.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_08.jpg",
+        "image_prompt": "A dense star cluster viewed against the black expanse of outer space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar System Odds",
+        "line": "Harvard Smithsonian Center for Astrophysics scientists predict a 12 percent chance that the Solar System will be ejected from the new galaxy.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_09.jpg",
+        "image_prompt": "A lone yellow star with orbiting planets drifting through deep interstellar space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Milkomeda Formation",
+        "line": "The hypothetical galaxy product of the collision has been named Milkomeda or Milkdromeda.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_10.jpg",
+        "image_prompt": "A massive elliptical galaxy formed from the merger of two distinct cosmic systems., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Local Group Future",
+        "line": "Over the course of the next 150 billion years, the remaining galaxies of the Local Group will coalesce into this object.",
+        "speech": "",
+        "image": "assets/generated/the_andromeda_milky_way_collision_will_our_galaxies_actually_crash_11.jpg",
+        "image_prompt": "A vast cluster of distant galaxies shining across the enormous expanse of the universe., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Andromeda–Milky Way collision",
+    "source_url": "https://en.wikipedia.org/wiki/Andromeda%E2%80%93Milky_Way_collision"
+  },
+  "how_ton_618_became_one_of_the_brightest_objects_in_the_universe": {
+    "title": "How TON 618 Became One of the Brightest Objects in the Universe",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "TON 618 shines with a luminosity of 4x1040 watts, as brilliantly as 140 trillion suns.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_01.jpg",
+        "image_prompt": "A telescope dome opening toward a dark night sky filled with distant stars., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Core Question",
+        "line": "What are the properties and measurements of the distant quasar known as TON 618?",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_02.jpg",
+        "image_prompt": "A modern computer screen displaying complex astronomical graphs and charts in a dark room., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "First Clue",
+        "line": "In 1957, a survey of faint blue stars at the Tonantzintla Observatory first noted this object.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_03.jpg",
+        "image_prompt": "An old astronomical photographic glass plate resting on a glowing light table., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Second Clue",
+        "line": "Mexican astronomers Braulio Iriarte and Enrique Chavira listed it as entry number 618.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_04.jpg",
+        "image_prompt": "A vintage paper catalogue book opened to a page filled with handwritten columns of numbers., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Third Clue",
+        "line": "Thirteen years later, in 1970, a radio survey at Bologna discovered radio emissions from it.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_05.jpg",
+        "image_prompt": "A large radio telescope dish pointing upward against a twilight sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Fourth Clue",
+        "line": "Marie-Helene Ulrich obtained optical spectra at the McDonald Observatory showing typical quasar emission lines.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_06.jpg",
+        "image_prompt": "An interior view of a large optical telescope control room with glowing monitors., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Fifth Clue",
+        "line": "Given its observed redshift of 2.219, its light travel time is estimated at 10.8 billion years.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_07.jpg",
+        "image_prompt": "A starry expanse showing a faint reddish shift in the light spectrum., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Sixth Clue",
+        "line": "Observations in 2021 revealed an enormous surrounding cloud of gas making it a Lyman-alpha blob.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_08.jpg",
+        "image_prompt": "A glowing cloud of interstellar gas floating in deep space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Seventh Clue",
+        "line": "The surrounding nebula has a diameter of at least 100 kiloparsecs, triple the size of the Milky Way.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_09.jpg",
+        "image_prompt": "A vast cosmic nebula stretching across a dark field of stars., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Eighth Clue",
+        "line": "Its central black hole has been estimated at 66 billion times the mass of the Sun.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_10.jpg",
+        "image_prompt": "A swirling dark accretion disk of glowing hot gas and matter in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ninth Clue",
+        "line": "A more recent measurement in 2019 by Xue Ge et al. found a lower mass of 40.7 billion solar masses.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_11.jpg",
+        "image_prompt": "Scientists reviewing digital data tables on a modern laboratory computer terminal., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Final Answer",
+        "line": "This immense engine sits at the center of a galaxy as one of the most massive black holes ever found.",
+        "speech": "",
+        "image": "assets/generated/how_ton_618_became_one_of_the_brightest_objects_in_the_universe_12.jpg",
+        "image_prompt": "A majestic spiral galaxy viewed from a distant perspective in the universe., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "TON 618",
+    "source_url": "https://en.wikipedia.org/wiki/TON_618"
+  },
+  "where_is_everybody_in_the_fermi_paradox": {
+    "title": "Where Is Everybody In The Fermi Paradox?",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Numbers",
+        "line": "There are an estimated 200 to 400 billion stars in the Milky Way alone.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_01.jpg",
+        "image_prompt": "A vast field of bright stars glowing against the dark night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Paradox Question",
+        "line": "Why is there no clear evidence of extraterrestrial civilizations given this vast number of stars?",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_02.jpg",
+        "image_prompt": "A single powerful telescope pointed upward toward the distant galaxy., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Lunchtime At Los Alamos",
+        "line": "In 1950, physicist Enrico Fermi visited Los Alamos National Laboratory in New Mexico.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_03.jpg",
+        "image_prompt": "Vintage brick laboratory buildings surrounded by trees under bright daylight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Famous Question",
+        "line": "Fermi blurted out the question during lunchtime with colleagues Emil Konopinski, Edward Teller, and Herbert York.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_04.jpg",
+        "image_prompt": "Four wooden chairs seated around an empty outdoor wooden picnic table., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Calculations And Conclusions",
+        "line": "Fermi concluded on the basis of calculations that we ought to have been visited long ago.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_05.jpg",
+        "image_prompt": "A person writing handwritten calculations and notes on a paper notebook., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Early Formulations",
+        "line": "Early formulations of the paradox were identified in 1686 writings by Bernard Le Bovier de Fontenelle.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_06.jpg",
+        "image_prompt": "An antique open book with weathered pages lying on a wooden desk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Rocket Scientist Views",
+        "line": "Konstantin Tsiolkovsky noted in the 1930s that advanced extraterrestrial life should have visited humanity.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_07.jpg",
+        "image_prompt": "An old metallic rocket model resting inside a dusty scientific workshop., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Print Appearance",
+        "line": "The question first appeared in print in a 1963 paper by Carl Sagan.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_08.jpg",
+        "image_prompt": "A stack of old scientific journals resting on a wooden library table., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Detailed Examinations",
+        "line": "Michael Hart published a detailed examination of the paradox in the Quarterly Journal of the Royal Astronomical Society.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_09.jpg",
+        "image_prompt": "A library archive room filled with rows of bound academic journals., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Proposing Solutions",
+        "line": "Hart concluded that we are the first civilization in our Galaxy and proposed four broad categories.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_10.jpg",
+        "image_prompt": "A solitary desk lamp illuminating a blank sheet of white paper., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Scaling Conflict",
+        "line": "The Fermi paradox is a conflict between scale and the total lack of evidence of intelligent life.",
+        "speech": "",
+        "image": "assets/generated/where_is_everybody_in_the_fermi_paradox_11.jpg",
+        "image_prompt": "A modern scientific control room with large computer monitors glowing., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Fermi paradox",
+    "source_url": "https://en.wikipedia.org/wiki/Fermi_paradox"
+  },
+  "unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole": {
+    "title": "Unveiling Sagittarius A, the 4.297 Million Solar Mass Black Hole",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Cosmic Monster",
+        "line": "Sagittarius A contains a massive black hole with a current best estimate mass of 4.297 million solar masses.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_01.jpg",
+        "image_prompt": "Dark starry night sky with dense clouds of galactic dust and bright glowing stars., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Hidden Core",
+        "line": "How did astronomers finally reveal the supermassive black hole hidden at the center of the Milky Way?",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_02.jpg",
+        "image_prompt": "Modern radio telescope dishes pointed toward the night sky during twilight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Early Signals",
+        "line": "In April 1933, Karl Jansky discovered a radio signal coming from the direction of the constellation of Sagittarius.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_03.jpg",
+        "image_prompt": "Vintage metal radio antenna standing in an open field under a cloudy sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Stellar Orbits",
+        "line": "On October 16, 2002, Reinhard Genzel led a team observing the motion of the star S2 near Sagittarius A.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_04.jpg",
+        "image_prompt": "Astronomer looking through the eyepiece of a large professional observatory telescope., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Massive Concentration",
+        "line": "By 1994, studies showed that the mass of Sagittarius A was tightly concentrated and on the order of 3 million Suns.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_05.jpg",
+        "image_prompt": "Glowing cluster of dense stars shining brightly against deep cosmic space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ruling Out Alternatives",
+        "line": "The analysis ruled out the possibility that Sagittarius A contains a cluster of dark stellar objects or degenerate fermions.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_06.jpg",
+        "image_prompt": "Complex mathematical formulas and astronomical data charts written on a chalkboard., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Nobel Recognition",
+        "line": "Reinhard Genzel and Andrea Ghez were awarded the 2020 Nobel Prize in Physics for their groundbreaking discovery.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_07.jpg",
+        "image_prompt": "Empty wood-paneled academic lecture hall with a large projection screen at the front., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "First Image",
+        "line": "On May 12, 2022, the Event Horizon Telescope Collaboration released the first image of Sagittarius A.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_08.jpg",
+        "image_prompt": "Row of high-tech radio observatory dishes networked together across a desolate mountain landscape., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Accretion Disk",
+        "line": "The observed radio and infrared energy emanates from gas and dust heated to millions of degrees falling inward.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_09.jpg",
+        "image_prompt": "Swirling vortex of bright glowing orange gas and dust particles in deep space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Einstein Tested",
+        "line": "The telescope measurements of these black holes tested Einstein's theory of relativity and the results match perfectly.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_10.jpg",
+        "image_prompt": "Classic brass pocket watch resting on top of old scientific papers and star maps., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Definitive Proof",
+        "line": "Stellar orbits in the galactic center provide the best empirical evidence that supermassive black holes truly exist.",
+        "speech": "",
+        "image": "assets/generated/unveiling_sagittarius_a_the_4_297_million_solar_mass_black_hole_11.jpg",
+        "image_prompt": "Vast panoramic view of the Milky Way galaxy stretching across a dark mountain horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Sagittarius A*",
+    "source_url": "https://en.wikipedia.org/wiki/Sagittarius_A*"
+  },
+  "the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets": {
+    "title": "The Secrets of Alpha Centauri: Three Stars, Ancient Names, and Hidden Planets",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "Proxima Centauri is the closest star to the Sun at 4.2465 light-years away.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_01.jpg",
+        "image_prompt": "Deep night sky filled with distant stars and a faint red glow., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Mystery Question",
+        "line": "What stars make up the Alpha Centauri system and what worlds orbit them?",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_02.jpg",
+        "image_prompt": "Astronomical observatory dome open toward a southern constellation., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Three Stars",
+        "line": "Alpha Centauri consists of three stars named Rigil Kentaurus, Toliman, and Proxima Centauri.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_03.jpg",
+        "image_prompt": "Three bright stars shining together in a dark celestial sphere., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Binary Pair",
+        "line": "Rigil Kentaurus and Toliman together form the binary star system alpha Centauri AB.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_04.jpg",
+        "image_prompt": "Two distinct stars orbiting closely near each other in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbital Dance",
+        "line": "The pair orbit around a common centre with an orbital period of 79 years.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_05.jpg",
+        "image_prompt": "Graphical depiction of elliptical orbits in deep dark space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Confirmed Planets",
+        "line": "Proxima Centauri has two confirmed planets named Proxima b and Proxima d.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_06.jpg",
+        "image_prompt": "A rocky alien exoplanet viewed from a distance in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Habitable Zone",
+        "line": "Proxima b is an Earth-sized planet located in the habitable zone of the star.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_07.jpg",
+        "image_prompt": "An earth-sized rocky planet with a hazy atmosphere lit by a red star., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Historical Designation",
+        "line": "The system designation alpha Centauri was given by J. Bayer in 1603.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_08.jpg",
+        "image_prompt": "Old leather-bound star atlas open to an antique constellation page., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Arabic Roots",
+        "line": "The name Rigil Kentaurus comes from Arabic meaning the foot of the centaur.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_09.jpg",
+        "image_prompt": "An ancient stone map carved with classical constellation figures., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Binary Discovery",
+        "line": "The binary nature of alpha Centauri AB was recognized in December 1689 by Jean Richaud.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_10.jpg",
+        "image_prompt": "An antique brass telescope pointing up at the night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Stellar Wonder",
+        "line": "Alpha Centauri remains the third-brightest star in the night sky visible to the naked eye.",
+        "speech": "",
+        "image": "assets/generated/the_secrets_of_alpha_centauri_three_stars_ancient_names_and_hidden_planets_11.jpg",
+        "image_prompt": "The bright southern constellation of Centaurus shining over a dark horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Alpha Centauri",
+    "source_url": "https://en.wikipedia.org/wiki/Alpha_Centauri"
+  },
+  "how_mathematical_prediction_revealed_neptune_the_farthest_known_planet": {
+    "title": "How Mathematical Prediction Revealed Neptune, the Farthest Known Planet",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "Neptune orbits the Sun once every 164.8 years at an orbital distance of 30.1 astronomical units.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_01.jpg",
+        "image_prompt": "An empty night sky filled with distant stars., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Mystery",
+        "line": "How did unexpected changes in the orbit of Uranus lead Alexis Bouvard to hypothesize an unknown planet?",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_02.jpg",
+        "image_prompt": "Old astronomical charts and tables on a wooden desk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Gravitational Clues",
+        "line": "In 1821, Alexis Bouvard published tables revealing substantial deviations from the predicted orbit of Uranus.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_03.jpg",
+        "image_prompt": "Handwritten mathematical formulas and calculations on parchment., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Independent Math",
+        "line": "John Couch Adams and Urbain Le Verrier independently predicted the position of Neptune using mathematics.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_04.jpg",
+        "image_prompt": "A brass telescope pointing toward the night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Telescopic Search",
+        "line": "In June 1846, James Challis vainly scoured the sky throughout August and September to find the planet.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_05.jpg",
+        "image_prompt": "An old observatory dome opening up to twilight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Missed Sighting",
+        "line": "James Challis had actually observed Neptune on two occasions in August 1845 without recognizing it.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_06.jpg",
+        "image_prompt": "Faded paper star maps illuminated by candlelight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Berlin Discovery",
+        "line": "On 23 September 1846, Johann Gottfried Galle directly observed Neptune with a telescope at the Berlin Observatory.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_07.jpg",
+        "image_prompt": "A vintage brass refractor telescope lens., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Massive World",
+        "line": "Neptune is 17 times the mass of Earth and is composed primarily of gases and liquids.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_08.jpg",
+        "image_prompt": "Swirling blue atmospheric gases in deep space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Extreme Winds",
+        "line": "Neptune features the strongest sustained winds of any planet in the Solar System, as high as 2,100 km/h.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_09.jpg",
+        "image_prompt": "Turbulent storm clouds swirling across a planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Only Spacecraft",
+        "line": "Voyager 2 flew by Neptune on 25 August 1989 as the only spacecraft to visit the planet.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_10.jpg",
+        "image_prompt": "A robotic spacecraft traveling through the dark void of space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Naming the Planet",
+        "line": "Urbain Le Verrier quickly proposed the name Neptune, while Struve favoured it for the planet's colour.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_11.jpg",
+        "image_prompt": "An antique globe showing mythological ocean drawings., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Final Answer",
+        "line": "Neptune was named after the Roman god of the sea in keeping with the nomenclature of other planets.",
+        "speech": "",
+        "image": "assets/generated/how_mathematical_prediction_revealed_neptune_the_farthest_known_planet_12.jpg",
+        "image_prompt": "Deep blue ocean waves crashing against dark rocks., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Neptune",
+    "source_url": "https://en.wikipedia.org/wiki/Neptune"
+  },
+  "the_9460730472580_8_km_journey_of_a_light_year": {
+    "title": "The 9460730472580.8 km Journey of a Light-Year",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "A light-year equals exactly 9460730472580.8 km, which is approximately 9.46 trillion kilometres or 5.88 trillion miles.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_01.jpg",
+        "image_prompt": "Deep night sky filled with distant stars and glowing cosmic dust., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Question",
+        "line": "How does the International Astronomical Union define this unit of length used to express astronomical distances?",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_02.jpg",
+        "image_prompt": "Modern astronomical observatory dome open to the night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Julian Year",
+        "line": "The International Astronomical Union defines a light-year as the distance light travels in vacuum in one Julian year.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_03.jpg",
+        "image_prompt": "Abstract representation of light rays traveling through a dark vacuum., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Speed Constants",
+        "line": "Both the Julian year of 365.25 days and the speed of light of 299792458 m/s are included in the IAU 1976 System of Astronomical Constants.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_04.jpg",
+        "image_prompt": "Complex mathematical formulas and astronomical data glowing softly., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Historical Roots",
+        "line": "Friedrich Bessel successfully measured the distance to the star 61 Cygni in 1838 using a 160-millimetre heliometre.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_05.jpg",
+        "image_prompt": "Vintage brass astronomical instrument resting on a wooden desk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Astronomical Units",
+        "line": "Calculations based on 61 Cygni showed the distance to be 660000 astronomical units.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_06.jpg",
+        "image_prompt": "Diagram of Earth orbit and stellar parallax lines on old parchment., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Transit Time",
+        "line": "Bessel added that light takes 10.3 years to traverse this distance but refrained from using the light-year as a unit.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_07.jpg",
+        "image_prompt": "Close-up of old handwritten scientific journals and calculations., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Unknown Speed",
+        "line": "The speed of light was not yet precisely known in 1838 and changed in estimates by Fizeau in 1849 and Foucault in 1862.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_08.jpg",
+        "image_prompt": "Antique laboratory equipment with glass lenses and mirrors., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "First Appearance",
+        "line": "The light-year unit appeared in 1851 in a German popular astronomical article written by Otto Ule.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_09.jpg",
+        "image_prompt": "Pages of an old 19th-century German book with gothic typography., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Popular Science",
+        "line": "Although modern astronomers often prefer to use the parsec, light-years are popularly used to gauge interstellar and intergalactic space.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_10.jpg",
+        "image_prompt": "Spiral galaxy viewed through a large professional telescope., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Final Truth",
+        "line": "Despite its inclusion of the word year, the term is a unit of distance, not a unit of time.",
+        "speech": "",
+        "image": "assets/generated/the_9460730472580_8_km_journey_of_a_light_year_11.jpg",
+        "image_prompt": "Detailed view of planet Earth shining peacefully in the black void of space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Light-year",
+    "source_url": "https://en.wikipedia.org/wiki/Light-year"
+  },
+  "how_uranus_was_discovered_as_a_planet_in_1781": {
+    "title": "How Uranus Was Discovered As A Planet In 1781",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "Uranus has the lowest minimum temperature of all of the Solar System's planets at 49 K.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_01.jpg",
+        "image_prompt": "A deep space view of a gaseous cyan-coloured ice giant planet with layered clouds., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Mystery Question",
+        "line": "How did William Herschel first observe Uranus on 13 March 1781 from his house in Bath, Somerset, England?",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_02.jpg",
+        "image_prompt": "An old English house garden at night with a telescope pointed toward the stars., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Initial Sighting",
+        "line": "Before its recognition as a planet, Uranus had been observed many times by John Flamsteed and James Bradley.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_03.jpg",
+        "image_prompt": "A historical parchment star catalog laid out on a dark wooden table with an old brass compass., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Early Confusion",
+        "line": "William Herschel initially reported his discovery on 26 April 1781 as a comet using a homemade telescope.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_04.jpg",
+        "image_prompt": "A homemade reflecting telescope lens resting on a workbench next to handwritten notes., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Magnification Clue",
+        "line": "Herschel found that the diameter of the comet increased in proportion to higher powers of magnification.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_05.jpg",
+        "image_prompt": "Close up of old optical glass lenses and brass telescope parts under candlelight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Astronomer Reply",
+        "line": "Nevil Maskelyne replied to Herschel on 23 April 1781 stating he saw no coma or tail to it.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_06.jpg",
+        "image_prompt": "A handwritten letter on aged paper with ink and a quill pen on a desk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbital Calculation",
+        "line": "Anders Johan Lexell was the first to compute the nearly circular orbit of the new object.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_07.jpg",
+        "image_prompt": "Mathematical calculations and geometric orbit circles drawn on parchment paper., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Planet Conclusion",
+        "line": "Johann Elert Bode described the discovery as a moving star that can be deemed a hitherto unknown planet.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_08.jpg",
+        "image_prompt": "An astronomer looking through a large brass telescope inside an old observatory dome., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Royal Recognition",
+        "line": "King George III gave Herschel an annual stipend of £200 on condition that he move to Windsor.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_09.jpg",
+        "image_prompt": "A royal British document with a wax seal resting on a dark velvet surface., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Naming The Planet",
+        "line": "Herschel decided to name the object Georgium Sidus or the Georgian Planet in honour of King George III.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_10.jpg",
+        "image_prompt": "A vintage globe of the Solar System showing planetary orbits., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Greek Deity Origin",
+        "line": "Consensus on the name Uranus referencing the ancient Greek deity of the sky took almost 70 years.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_11.jpg",
+        "image_prompt": "An ancient stone carving of a Greek mythological figure in low light., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Final Answer",
+        "line": "William Herschel expanded the known boundaries of the Solar System and made Uranus the first planet discovered with a telescope.",
+        "speech": "",
+        "image": "assets/generated/how_uranus_was_discovered_as_a_planet_in_1781_12.jpg",
+        "image_prompt": "A vast starry night sky viewed through the historic window of an old observatory., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Uranus",
+    "source_url": "https://en.wikipedia.org/wiki/Uranus"
+  },
+  "how_the_sun_accounts_for_99_86_of_the_solar_system": {
+    "title": "How the Sun Accounts for 99.86% of the Solar System",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Stunning Fact",
+        "line": "The Sun accounts for 99.86% of the Solar System's total mass.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_01.jpg",
+        "image_prompt": "Bright star in deep space glowing intensely, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Question",
+        "line": "How did the Sun and the Solar System form about 4.6 billion years ago?",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_02.jpg",
+        "image_prompt": "Swirling cloud of cosmic dust and gas, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Molecular Cloud Collapse",
+        "line": "A dense region of a molecular cloud collapsed, creating the Sun and a protoplanetary disc.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_03.jpg",
+        "image_prompt": "Massive nebula collapsing into a glowing center, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Protosar Discs",
+        "line": "The contracting nebula spun faster and flattened into a protoplanetary disc with a hot protostar.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_04.jpg",
+        "image_prompt": "Rotating disk of space debris around a bright core, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Accretion Process",
+        "line": "Planets formed by accretion from this disc as dust and gas gravitationally attracted each other.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_05.jpg",
+        "image_prompt": "Particles of dust and rock colliding in space, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Inner Planets",
+        "line": "Mercury, Venus, Earth, and Mars formed as rocky terrestrial planets mainly from metals and silicates.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_06.jpg",
+        "image_prompt": "Barren rocky planet surface with craters, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Outer Giants",
+        "line": "Jupiter, Saturn, Uranus, and Neptune formed further out beyond the frost line from icy compounds.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_07.jpg",
+        "image_prompt": "Massive gas giant planet with swirling bands, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Capture",
+        "line": "The giant planets grew massive enough to capture large atmospheres of hydrogen and helium.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_08.jpg",
+        "image_prompt": "Large planet shrouded in thick gas layers, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Thermonuclear Fusion",
+        "line": "Within 50 million years, hydrogen pressure became great enough for thermonuclear fusion to begin.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_09.jpg",
+        "image_prompt": "Nuclear energy flares bursting from a star surface, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar Wind",
+        "line": "Solar wind from the Sun swept away remaining gas and dust from the protoplanetary disc.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_10.jpg",
+        "image_prompt": "Charged plasma particles streaming through space, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Current Stability",
+        "line": "The Solar System remains in a relatively stable, slowly evolving state following gravitational orbits.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_11.jpg",
+        "image_prompt": "Planets orbiting calmly around a central star, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Final Wonder",
+        "line": "The Solar System is an isolated single-star planetary system within the Milky Way Galaxy.",
+        "speech": "",
+        "image": "assets/generated/how_the_sun_accounts_for_99_86_of_the_solar_system_12.jpg",
+        "image_prompt": "Vast star field of the Milky Way galaxy view, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Solar System",
+    "source_url": "https://en.wikipedia.org/wiki/Solar_System"
+  },
+  "mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year": {
+    "title": "Mercury’s 176-Day Solar Day: Why One Sunrise Takes Twice Its Year",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Stunning Fact",
+        "line": "Mercury's solar day spans roughly 176 Earth days, twice the length of its year.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_01.jpg",
+        "image_prompt": "Rocky, cratered landscape under bright sunlight, resembling Mercury's surface, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Question",
+        "line": "Why does Mercury experience a solar day twice as long as its 88-day year?",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_02.jpg",
+        "image_prompt": "Horizon at dawn with a bright star close to the Sun, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "First Planet",
+        "line": "Mercury is the first planet from the Sun and the smallest in the Solar System.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_03.jpg",
+        "image_prompt": "Solar system model showing Mercury closest to the Sun, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Moon-Like Surface",
+        "line": "Its surface resembles Earth's Moon, heavily cratered with an expansive rupes system formed by thrust faults.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_04.jpg",
+        "image_prompt": "Lunar-like terrain with long ridges and numerous craters, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Gigantic Crater",
+        "line": "The planet’s largest crater, Caloris Planitia, spans 1,550 km, about one-third the planet’s diameter.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_05.jpg",
+        "image_prompt": "Vast circular basin on a rocky planet surface, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Temperature Extremes",
+        "line": "Mercury’s surface temperature swings from −170 °C at night to 420 °C in daylight, despite its proximity to the Sun.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_06.jpg",
+        "image_prompt": "Contrast of icy shadowed region and scorching sunlit rock on a barren world, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Thin Exosphere",
+        "line": "Above the planet lies an extremely tenuous exosphere and a faint magnetic field that barely deflects solar wind.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_07.jpg",
+        "image_prompt": "Spacecraft instrumentation panel showing faint magnetic field lines around a planet, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbital Rhythm",
+        "line": "Mercury’s sidereal year lasts 88.0 Earth days, while its sidereal day is 58.65 Earth days, creating a 3:2 resonance.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_08.jpg",
+        "image_prompt": "Diagram of Mercury orbiting the Sun with markers for year and day intervals, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar Day Length",
+        "line": "Consequently, one solar day—from sunrise to sunrise—covers roughly 176 Earth days, twice Mercury’s orbital period.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_09.jpg",
+        "image_prompt": "Sunrise over a barren horizon, with a clock indicating many Earth days passing, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Morning Star",
+        "line": "This explains why Mercury appears as a morning or evening star, always near the Sun in Earth’s sky.",
+        "speech": "",
+        "image": "assets/generated/mercury_s_176_day_solar_day_why_one_sunrise_takes_twice_its_year_10.jpg",
+        "image_prompt": "Twilight sky with a bright star just beside the rising Sun, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Mercury (planet)",
+    "source_url": "https://en.wikipedia.org/wiki/Mercury_(planet)"
+  },
+  "the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system": {
+    "title": "The Mysterious Oort Cloud and the Outer Edge of the Solar System",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Billions of Icy Bodies",
+        "line": "The Oort cloud is theorized to be a cloud of billions of icy planetesimals surrounding the Sun.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_01.jpg",
+        "image_prompt": "vast starfield with distant sun glowing faintly, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Proposing the Reservoir",
+        "line": "What led Dutch astronomer Jan Oort to propose this distant reservoir of comets in 1950?",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_02.jpg",
+        "image_prompt": "astronomer desk with old papers and star charts under desk lamp, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Inner Solar System",
+        "line": "Oort proposed that these bodies replenish the long-period comets entering the inner Solar System.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_03.jpg",
+        "image_prompt": "icy comet traveling through dark space towards glowing sun, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Destruction Near the Sun",
+        "line": "Comets entering the inner system are eventually consumed and destroyed during close approaches to the Sun.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_04.jpg",
+        "image_prompt": "bright glowing comet with tail near the sun, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Two Regions",
+        "line": "The cloud is thought to encompass a disc-shaped inner Oort cloud and a spherical outer Oort cloud.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_05.jpg",
+        "image_prompt": "diagrammatic view of solar system surrounded by two layered cloud rings, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Hills Cloud Existence",
+        "line": "In 1981, Jack G. Hills proposed the inner Oort cloud, also known as the Hills cloud.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_06.jpg",
+        "image_prompt": "telescope dome observatory opening at night under starry sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Denser Inner Cloud",
+        "line": "Models predict the inner cloud to have tens or hundreds of times as many cometary nuclei.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_07.jpg",
+        "image_prompt": "dense cluster of rocky icy bodies floating in dark space, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Galactic Gravitational Pull",
+        "line": "Passing stars and the Milky Way itself affect the outer Oort cloud with gravitational pulls.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_08.jpg",
+        "image_prompt": "milky way galaxy arm glowing across a dark night sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Dislodging Comets",
+        "line": "Galactic interference occasionally dislodges comets from their orbits within the cloud, sending them inward.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_09.jpg",
+        "image_prompt": "streak of light from a moving comet against distant stars, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Formed Near the Sun",
+        "line": "Astronomers hypothesize that the material presently in the cloud formed much closer to the Sun.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_10.jpg",
+        "image_prompt": "swirling disc of gas and dust around a young star, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Scattered by Planets",
+        "line": "This material was scattered far into space through the gravitational influence of the giant planets.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_11.jpg",
+        "image_prompt": "gas giant planet casting shadow in deep space, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "No Direct Observation",
+        "line": "No direct observation of the Oort cloud is possible with present imaging technology.",
+        "speech": "",
+        "image": "assets/generated/the_mysterious_oort_cloud_and_the_outer_edge_of_the_solar_system_12.jpg",
+        "image_prompt": "modern scientific telescope equipment inside dark observatory control room, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Oort cloud",
+    "source_url": "https://en.wikipedia.org/wiki/Oort_cloud"
+  },
+  "unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system": {
+    "title": "Unveiling Planet Nine: The Hidden World Shaping the Outer Solar System",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "The Astonishing Clues",
+        "line": "Planet Nine is a hypothetical ninth planet theorized to shape the orbits of distant trans-Neptunian objects.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_01.jpg",
+        "image_prompt": "Deep space telescope dome under a starry night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Core Mystery",
+        "line": "What gravitational mysteries explain the peculiar clustering and tilted orbits of bodies beyond Neptune?",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_02.jpg",
+        "image_prompt": "Distant icy celestial bodies drifting through the dark void., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Historical Speculation",
+        "line": "Following the discovery of Neptune in 1846, considerable speculation arose that another planet might exist.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_03.jpg",
+        "image_prompt": "Old brass astronomical instruments resting on a wooden desk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Early Searches",
+        "line": "Percival Lowell predicted the possible orbit of a trans-Neptunian planet and began an extensive search in 1906.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_04.jpg",
+        "image_prompt": "Vintage star charts and handwritten mathematical calculations on parchment., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "The Discovery of Sedna",
+        "line": "The discovery of Sedna in 2003 led to speculation about encounters with a massive unknown body.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_05.jpg",
+        "image_prompt": "A cold, distant dwarf planet illuminated by faint sunlight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Modern Hypotheses",
+        "line": "In early 2016, Konstantin Batygin and Michael Brown described how Planet Nine could explain similar ETNO orbits.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_06.jpg",
+        "image_prompt": "Modern computer monitors displaying complex orbital simulations., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mass and Radius",
+        "line": "Planet Nine is estimated to have five to ten times the mass and two to four times Earth's radius.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_07.jpg",
+        "image_prompt": "Scientific diagrams comparing planetary sizes in scale., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbit and Timeline",
+        "line": "It would take the planet between 10,000 and 20,000 years to make one full orbit around the Sun.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_08.jpg",
+        "image_prompt": "An elliptical orbital path diagram floating in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Refined Calculations",
+        "line": "Simulations by Amir Siraj and colleagues in 2025 refined estimates of the planet's mass.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_09.jpg",
+        "image_prompt": "A researcher analyzing data graphs in a modern laboratory., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Composition Theories",
+        "line": "Internal composition estimates suggest a core of iron with a mantle filled with magnesium silicate.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_10.jpg",
+        "image_prompt": "Detailed cross-section model of a rocky planetary interior., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ongoing Surveys",
+        "line": "Further surveys of remaining regions were conducted using NEOWISE and are ongoing using the Subaru Telescope.",
+        "speech": "",
+        "image": "assets/generated/unveiling_planet_nine_the_hidden_world_shaping_the_outer_solar_system_11.jpg",
+        "image_prompt": "Large astronomical telescope pointing toward the night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Planet Nine",
+    "source_url": "https://en.wikipedia.org/wiki/Planet_Nine"
+  },
+  "polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward": {
+    "title": "Polar Vortex: How a Weakening Giant Sends Arctic Cold Southward",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "High altitude vortex",
+        "line": "The stratospheric Polar vortex extends up to 50 kilometres high, circling the Arctic winter sky.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_01.jpg",
+        "image_prompt": "view of a high-altitude cloud formation above the Arctic horizon, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Key question",
+        "line": "Why does the Polar vortex sometimes weaken and unleash frigid Arctic air across the mid-latitudes?",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_02.jpg",
+        "image_prompt": "map showing Arctic region and mid-latitude continents, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Tropospheric layer",
+        "line": "The tropospheric Polar vortex sits poleward of the jet stream, extending from the surface up to about 15 km.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_03.jpg",
+        "image_prompt": "cross-section illustration of atmospheric layers over the North Pole, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Winter strength",
+        "line": "In winter, the vortex is strongest, forming a near-circular jet near 50° latitude that traps cold air.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_04.jpg",
+        "image_prompt": "satellite image of a circular jet stream around the polar region, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Vortex split",
+        "line": "When the vortex weakens, it can split into smaller vortices over Baffin Island and northeast Siberia.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_05.jpg",
+        "image_prompt": "aerial view of Baffin Island coastline with swirling cloud patterns, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cold surge",
+        "line": "These weaker structures let Arctic air move equatorward, producing rapid temperature drops and cold snaps.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_06.jpg",
+        "image_prompt": "snow-covered plains with a distant cold front line, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Temperature jump",
+        "line": "Such breakdowns can raise stratospheric temperatures by 30–50 °C within days, reshaping surface weather.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_07.jpg",
+        "image_prompt": "graph showing rapid temperature increase in the stratosphere over several days, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Media spotlight",
+        "line": "The 2013–14 North American winter popularized the term, linking extreme cold to a weakened vortex.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_08.jpg",
+        "image_prompt": "news studio with a weather map highlighting the United States and Canada, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Vortex weakening",
+        "line": "Thus, a weakened Polar vortex disrupts its circular jet, allowing frigid Arctic air to surge southward.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_09.jpg",
+        "image_prompt": "wind arrows moving from the Arctic toward lower latitudes on a global map, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cold snap impact",
+        "line": "This mechanism explains sudden cold snaps and historic frostbite events across the United States and Canada.",
+        "speech": "",
+        "image": "assets/generated/polar_vortex_how_a_weakening_giant_sends_arctic_cold_southward_10.jpg",
+        "image_prompt": "frost-covered street lamps and empty sidewalks in a northern city, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Polar vortex",
+    "source_url": "https://en.wikipedia.org/wiki/Polar_vortex"
+  },
+  "why_earth_alone_holds_liquid_surface_water": {
+    "title": "Why Earth Alone Holds Liquid Surface Water?",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "Earth is the only known ocean world sustaining liquid surface water in the Solar System.",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_01.jpg",
+        "image_prompt": "blue oceans covering Earth seen from space, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Central Question",
+        "line": "How does Earth manage to sustain liquid surface water despite its position in the Solar System?",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_02.jpg",
+        "image_prompt": "researcher examining a planetary model in a laboratory, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ocean Dominance",
+        "line": "Earth’s ocean covers roughly 70.8% of its crust, making it an ocean world unlike any other.",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_03.jpg",
+        "image_prompt": "satellite image highlighting Earth's water covering most of the surface, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Composition",
+        "line": "The planet’s atmosphere, primarily nitrogen and oxygen, traps solar energy, sustaining temperatures that keep water liquid.",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_04.jpg",
+        "image_prompt": "a landscape under a clear sky illustrating Earth's atmosphere, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Greenhouse Vapor",
+        "line": "Water vapor in this atmosphere acts as a greenhouse gas, reinforcing the conditions for surface liquid water.",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_05.jpg",
+        "image_prompt": "clouds forming over oceans, representing water vapor greenhouse effect, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Magnetic Generation",
+        "line": "Earth’s liquid outer core generates a magnetosphere that deflects most destructive solar wind and cosmic radiation.",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_06.jpg",
+        "image_prompt": "scientists observing a laboratory demonstration of magnetic field generation, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Protection",
+        "line": "This magnetic shield preserves the atmosphere, preventing it from being stripped away by the Sun’s wind.",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_07.jpg",
+        "image_prompt": "aurora borealis over polar region showing magnetic interaction, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar Orbit",
+        "line": "Orbiting the Sun at about one astronomical unit, Earth receives steady sunlight that fuels its climate system.",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_08.jpg",
+        "image_prompt": "Earth seen from space with sunlight illuminating half the planet, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Temperature Balance",
+        "line": "All these factors combine to keep the average surface temperature at 14.76 °C, allowing widespread liquid water.",
+        "speech": "",
+        "image": "assets/generated/why_earth_alone_holds_liquid_surface_water_09.jpg",
+        "image_prompt": "scientist measuring water temperature in a calm lake, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Earth",
+    "source_url": "https://en.wikipedia.org/wiki/Earth"
+  }
+}

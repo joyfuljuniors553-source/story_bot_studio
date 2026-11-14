@@ -1,0 +1,2068 @@
+{
+  "how_compound_interest_quietly_builds_wealth": {
+    "title": "How Compound Interest Quietly Builds Wealth",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "$1,000 earns $1,050 after 1 year and grows to $1,102.50 after 2 years.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_01.jpg",
+        "image_prompt": "A stack of US dollar bills sitting neatly on a wooden desk inside a quiet office room., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Core Question",
+        "line": "How does compound interest calculate growth on a new value rather than the original principal?",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_02.jpg",
+        "image_prompt": "A person sitting at a desk with a blank notepad and a calculator under soft lighting., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Ancient Origins",
+        "line": "A clay tablet from Babylon dating from about 2000–1700 B.C. might display the first problem.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_03.jpg",
+        "image_prompt": "An ancient stone artifact with carved cuneiform symbols resting on a museum display stand., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Medieval Tables",
+        "line": "The Florentine merchant Francesco Balducci Pegolotti provided a table in his 1340 book Pratica della mercatura.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_04.jpg",
+        "image_prompt": "An old open manuscript with handwritten numbers and tables on aged parchment paper., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Rule of 72",
+        "line": "The Summa de arithmetica of Luca Pacioli in 1494 gives the Rule of 72 for doubling investments.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_05.jpg",
+        "image_prompt": "A classic leather-bound book lying open on a wooden table next to a brass inkwell., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Landmark Book",
+        "line": "Richard Witt published Arithmeticall Questions in 1613 as a landmark book wholly devoted to the subject.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_06.jpg",
+        "image_prompt": "An antique book with worn leather binding resting flat against a dark wooden background., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Constant Discovery",
+        "line": "Jacob Bernoulli discovered the constant e in 1683 by studying a question about compound interest.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_07.jpg",
+        "image_prompt": "A vintage globe and old scientific instruments placed on a dark wooden study table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Persian Approximation",
+        "line": "In the 19th century, Persian merchants used a linear Taylor approximation to compute monthly payments easily.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_08.jpg",
+        "image_prompt": "An ancient abacus with wooden beads placed on a worn wooden countertop inside a shop., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Defining Frequencies",
+        "line": "The compounding frequency is the number of times per given unit of time accumulated interest is capitalized.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_09.jpg",
+        "image_prompt": "A calendar hanging on a wall showing months and weeks with a simple black frame., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Effective Rates",
+        "line": "Many countries require financial institutions to disclose the annual compound interest rate for consumer comparison.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_10.jpg",
+        "image_prompt": "A modern financial office building viewed from the outside with glass windows reflecting the sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Basic Formula",
+        "line": "The total accumulated value is given by the formula where A is the final amount.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_11.jpg",
+        "image_prompt": "A white chalkboard filled with mathematical formulas and numbers written in clear white chalk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Final Growth",
+        "line": "The accumulation function shows what $1 grows to after any length of time through reinvestment.",
+        "speech": "",
+        "image": "assets/generated/how_compound_interest_quietly_builds_wealth_12.jpg",
+        "image_prompt": "A single US dollar bill resting neatly on a plain white wooden table surface., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Compound interest",
+    "source_url": "https://en.wikipedia.org/wiki/Compound_interest"
+  },
+  "inflation_explained": {
+    "title": "Inflation Explained",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "One of the earliest documented inflations occurred in Alexander the Great's empire 330 BC.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_01.jpg",
+        "image_prompt": "Ancient stone ruins under a bright clear sky, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Core Question",
+        "line": "How does an increase in the money supply actually reduce the purchasing power of money?",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_02.jpg",
+        "image_prompt": "Close up of old metallic coins resting on a wooden table, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Defining Inflation",
+        "line": "Inflation is an increase in the average price of goods and services in terms of money.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_03.jpg",
+        "image_prompt": "A modern storefront displaying various goods through a glass window, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Price Index",
+        "line": "This increase is measured using a price index, typically a consumer price index.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_04.jpg",
+        "image_prompt": "A person reviewing printed financial charts and notes on a desk, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Reduced Purchasing Power",
+        "line": "When the general price level rises, each unit of currency buys fewer goods and services.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_05.jpg",
+        "image_prompt": "A single coin sitting on top of a stack of papers, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Money Supply",
+        "line": "Changes in inflation are widely attributed to increases in the overall money supply.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_06.jpg",
+        "image_prompt": "A neat stack of paper currency notes on a dark surface, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Historical Debasement",
+        "line": "Governments could collect silver coins and mix them with less valuable metals like copper.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_07.jpg",
+        "image_prompt": "Raw silver and copper metal pieces lying on a workbench, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Coin Dilution",
+        "line": "By diluting the silver with other metals, the government could issue more coins.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_08.jpg",
+        "image_prompt": "An artisan workspace with metalworking tools and small metal discs, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Decreased Value",
+        "line": "As the relative value of the coins becomes lower, consumers would need to give more coins.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_09.jpg",
+        "image_prompt": "Hands counting out multiple metal coins on a counter, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Price Increase",
+        "line": "Goods and services would experience a price increase as the value of each coin is reduced.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_10.jpg",
+        "image_prompt": "Market stalls with various goods displayed for sale outdoors, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Modern Central Banks",
+        "line": "The task of keeping the rate of inflation low is usually given to central banks.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_11.jpg",
+        "image_prompt": "The exterior facade of a classic stone government or banking building, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Stable Management",
+        "line": "Central banks control monetary policy normally through the setting of interest rates.",
+        "speech": "",
+        "image": "assets/generated/inflation_explained_12.jpg",
+        "image_prompt": "A quiet office desk featuring a pen and a digital calculator, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Inflation",
+    "source_url": "https://en.wikipedia.org/wiki/Inflation"
+  },
+  "personal_finance_explained": {
+    "title": "Personal finance Explained",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Foundational Insight",
+        "line": "In 1920, Hazel Kyrk's dissertation laid groundwork for consumer and family economics.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_01.jpg",
+        "image_prompt": "Early 20th century university library with shelves of academic books and a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Key Question",
+        "line": "How did Hazel Kyrk’s 1920 work effectively influence today’s personal finance practices?",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_02.jpg",
+        "image_prompt": "A modern office with a person reviewing financial documents on a laptop., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Pioneer Insight",
+        "line": "Margaret Reid, a home economics professor, later recognized as a pioneer in studying consumer behavior.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_03.jpg",
+        "image_prompt": "University classroom with a professor lecturing students about household budgeting., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Decision Limits",
+        "line": "In 1947, Herbert A. Simon noted decision-makers often choose suboptimal financial actions due to limited education.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_04.jpg",
+        "image_prompt": "A person looking confused at a pile of bills on a kitchen table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Professional Growth",
+        "line": "American Association of Family and Consumer Sciences helped shape personal finance from the 1950s through the 1970s.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_05.jpg",
+        "image_prompt": "Conference hall with professionals networking and discussing financial charts., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Certifications",
+        "line": "The Association for Financial Counseling and Planning Education launched in 1984, soon followed by the Academy of Financial Services in 1985.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_06.jpg",
+        "image_prompt": "Office wall displaying framed certificates for financial counseling., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Academic Expansion",
+        "line": "Brigham Young University, Iowa State University, and San Francisco State University began personal finance degree programs in the 1990s.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_07.jpg",
+        "image_prompt": "University lecture hall with students taking notes on budgeting slides., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Literacy Push",
+        "line": "Early 2000s saw rise of financial literacy programs, culminating in the 2008 President’s Advisory Council on Financial Capability.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_08.jpg",
+        "image_prompt": "Community workshop with diverse adults learning budgeting on tablets., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Simple Rules",
+        "line": "Core advice includes paying credit cards monthly, saving 10-20% of post-tax income, and maintaining a six-month emergency fund.",
+        "speech": "",
+        "image": "assets/generated/personal_finance_explained_09.jpg",
+        "image_prompt": "Close-up of a savings jar, credit card statement, and a calendar., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Personal finance",
+    "source_url": "https://en.wikipedia.org/wiki/Personal_finance"
+  },
+  "understanding_how_credit_scores_work_and_determine_your_financial_options": {
+    "title": "Understanding How Credit Scores Work and Determine Your Financial Options",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "A credit score is a numerical expression representing the creditworthiness of an individual person.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_01.jpg",
+        "image_prompt": "An office desk with financial documents and a calculator., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Core Question",
+        "line": "How do lenders such as banks and credit card companies use credit scores to evaluate risk?",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_02.jpg",
+        "image_prompt": "A bank building exterior with glass doors and professional signage., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "First Clue",
+        "line": "A credit score is primarily based on a credit report sourced from credit bureaus.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_03.jpg",
+        "image_prompt": "A modern computer screen displaying statistical charts and numerical data., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Second Clue",
+        "line": "Lenders use credit scores to determine who qualifies for a loan and at what interest rate.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_04.jpg",
+        "image_prompt": "A person signing a formal financial document with a pen., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Third Clue",
+        "line": "Other organizations like mobile phone companies, insurance companies, and landlords employ the same techniques.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_05.jpg",
+        "image_prompt": "A city street with telecommunication infrastructure and residential apartments., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Fourth Clue",
+        "line": "In Brazil, scores generally range from 0 to 1000 indicating the chance of paying bills on time.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_06.jpg",
+        "image_prompt": "A close-up of a digital device showing consumer statistics and analytics., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Fifth Clue",
+        "line": "Equifax Beacon and Trans Union Emperica scores both range from 300 to 900 in Canada.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_07.jpg",
+        "image_prompt": "A quiet room with a closed laptop resting on a wooden table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Sixth Clue",
+        "line": "In India, the popular CIBIL credit score is a three digit number ranging from 300 to 900.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_08.jpg",
+        "image_prompt": "An urban financial district showing corporate office buildings., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Seventh Clue",
+        "line": "Individuals with no credit history will have a score of minus 1 in that system.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_09.jpg",
+        "image_prompt": "A blank digital ledger waiting for financial entries., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Eighth Clue",
+        "line": "In Ireland, credit scores run from 224 as the worst value to 581 as the best value.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_10.jpg",
+        "image_prompt": "A paper report displaying numerical score values on a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Final Awe",
+        "line": "Financial institutions utilize credit scores as the most important tool during credit analysis decisions.",
+        "speech": "",
+        "image": "assets/generated/understanding_how_credit_scores_work_and_determine_your_financial_options_11.jpg",
+        "image_prompt": "A wide view of a modern financial institution interior during business hours., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Credit score",
+    "source_url": "https://en.wikipedia.org/wiki/Credit_score"
+  },
+  "john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets": {
+    "title": "John Bogle’s Index Fund Legacy: From $11 million to $22 trillion in U.S. Assets",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Massive Market Size",
+        "line": "Index funds hold $22 trillion in the U.S. as of May 2026.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_01.jpg",
+        "image_prompt": "A modern office with large screens displaying financial market data., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Key Question",
+        "line": "How did John Bogle’s Vanguard 500 Index Fund grow from $11 million to $100 billion?",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_02.jpg",
+        "image_prompt": "A person reading a financial newspaper at a kitchen table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Replication Goal",
+        "line": "Index funds aim to replicate a market index by holding identical securities in the same proportions.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_03.jpg",
+        "image_prompt": "Workers arranging identical stacks of stock certificates on a table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Passive Management",
+        "line": "They use passive management, simply mirroring the benchmark without any active stock-picking decisions.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_04.jpg",
+        "image_prompt": "An investor reviewing a simple portfolio chart on a laptop., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Early Theory",
+        "line": "The first theoretical index fund model was proposed in 1960 by Edward Renshaw and Paul Feldstein.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_05.jpg",
+        "image_prompt": "University of Chicago campus with students walking near a lecture hall., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "First Retail Fund",
+        "line": "Qualidex Fund launched in 1970 as the first open-end retail index mutual fund, tracking the Dow Jones.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_06.jpg",
+        "image_prompt": "A vintage 1970s brokerage office with a Dow Jones ticker display., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Bogle's Innovation",
+        "line": "John Bogle founded Vanguard in 1974 and started the First Index Investment Trust on December 31, 1975.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_07.jpg",
+        "image_prompt": "A 1970s conference room with John Bogle presenting a fund prospectus., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Growth Milestone",
+        "line": "The fund began with $11 million and grew to $100 billion in assets by November 1999.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_08.jpg",
+        "image_prompt": "A graph showing a rising bar chart from $11 million to $100 billion., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Investor Endorsements",
+        "line": "Many notable investors recommend index funds for diversification, low fees, and simple asset allocation.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_09.jpg",
+        "image_prompt": "Several well-known investors speaking on a panel discussing index funds., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Cost Efficiency",
+        "line": "Because they seek to match benchmarks, index funds minimize tracking error and keep turnover lower than active funds.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_10.jpg",
+        "image_prompt": "A side-by-side comparison of active and passive fund performance charts., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Current Impact",
+        "line": "Today, index funds hold $22 trillion, serving both individual investors and pension funds throughout the United States.",
+        "speech": "",
+        "image": "assets/generated/john_bogle_s_index_fund_legacy_from_11_million_to_22_trillion_in_u_s_assets_11.jpg",
+        "image_prompt": "A bustling financial district with skyscrapers and people walking, representing trillions managed., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Index fund",
+    "source_url": "https://en.wikipedia.org/wiki/Index_fund"
+  },
+  "how_net_worth_quietly_measures_financial_strength": {
+    "title": "How Net Worth Quietly Measures Financial Strength",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Hook",
+        "line": "For the United States, this measure totalled $123.8 trillion as of 2014.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_01.jpg",
+        "image_prompt": "A wide view of a large modern city skyline under a clear sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Question",
+        "line": "How is net worth calculated for an individual, business, government, or country?",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_02.jpg",
+        "image_prompt": "A person sitting at a wooden desk reviewing paperwork with a calculator., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Asset Definition",
+        "line": "Net worth is the value of all non-financial and financial assets owned minus liabilities.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_03.jpg",
+        "image_prompt": "A neat stack of financial documents resting on a clean office table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Asset Types",
+        "line": "Assets that contribute can include homes, vehicles, various bank accounts, stocks, and bonds.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_04.jpg",
+        "image_prompt": "Keys resting on a wooden kitchen counter near a window., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Liabilities Included",
+        "line": "Liabilities are financial obligations such as loans, mortgages, and accounts payable that deplete resources.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_05.jpg",
+        "image_prompt": "A close-up of a pen resting on a printed financial ledger., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Business Equity",
+        "line": "Net worth in business is also referred to as equity and uses carrying value.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_06.jpg",
+        "image_prompt": "An open laptop displaying a spreadsheet inside a quiet office., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Excluded Assets",
+        "line": "Intangible assets such as educational degrees are typically not factored into net worth calculations.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_07.jpg",
+        "image_prompt": "A blank notebook and a metal pen placed on a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Government Measure",
+        "line": "Compared with government debt, a government net worth is an alternative measure of financial strength.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_08.jpg",
+        "image_prompt": "The exterior facade of a classical stone government building., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Country Calculation",
+        "line": "A country net worth is calculated as the sum of all resident companies, individuals, and government.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_09.jpg",
+        "image_prompt": "An aerial view showing suburban houses and roads under daylight., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Financial Standing",
+        "line": "Knowing an individual net worth is important to understand their current financial standing.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_10.jpg",
+        "image_prompt": "A person writing notes on a pad of paper at a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Actionable Wisdom",
+        "line": "This metric helps create budgets, influence spending, and motivate someone to save and invest.",
+        "speech": "",
+        "image": "assets/generated/how_net_worth_quietly_measures_financial_strength_11.jpg",
+        "image_prompt": "A close-up of hands typing calculations on a modern laptop keyboard., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Net worth",
+    "source_url": "https://en.wikipedia.org/wiki/Net_worth"
+  },
+  "how_stock_splits_and_berkshire_hathaway_impact_share_prices": {
+    "title": "How Stock Splits and Berkshire Hathaway Impact Share Prices",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Stock Split Facts",
+        "line": "As of 2025, Berkshire Hathaway has never split its stock and trades at over US$750,000.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_01.jpg",
+        "image_prompt": "An empty trading floor with computer monitors displaying financial charts., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Understanding Stock Splits",
+        "line": "How does a stock split change individual share prices without altering total market capitalization?",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_02.jpg",
+        "image_prompt": "A modern office desk featuring a calculator and financial paperwork., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Shares And Value",
+        "line": "After a 2-for-1 split, each investor will own double the number of shares.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_03.jpg",
+        "image_prompt": "A close-up view of a calculator keyboard and green ledger sheets., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Price Adjustment",
+        "line": "Concurrently, each individual share will become worth exactly half as much as before.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_04.jpg",
+        "image_prompt": "A modern workspace showing stacked financial reports and a pen., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Market Capitalization",
+        "line": "A stock split causes a price decrease while total market capitalization remains completely unchanged.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_05.jpg",
+        "image_prompt": "A person reviewing printed financial statements at a wooden desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "High Share Prices",
+        "line": "A very high share price may deter small investors from buying the company shares.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_06.jpg",
+        "image_prompt": "A desktop computer displaying complex stock market graphs in an office., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Trading Liquidity",
+        "line": "The main effect of stock splits is an increase in the liquidity of a stock.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_07.jpg",
+        "image_prompt": "An open office workspace with natural light reflecting off a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Reducing Trading Volume",
+        "line": "Some companies avoid a stock split to obtain the opposite strategy by keeping prices high.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_08.jpg",
+        "image_prompt": "A closed office door with frosted glass and soft interior lighting., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Currency Analog",
+        "line": "An analog in currency would be redenomination, such as the Australian pound in 1966.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_09.jpg",
+        "image_prompt": "A wooden table holding vintage currency notes and metal coins., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Historical Charts",
+        "line": "When looking at historical charts, many platforms use what is known as an adjusted share price.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_10.jpg",
+        "image_prompt": "A computer screen showing historical trend lines and data points., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Adjusted Close Prices",
+        "line": "Both Yahoo historical price charts and Google historical price charts show these adjusted close prices.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_11.jpg",
+        "image_prompt": "A laptop displaying financial software on a clean white desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Final Insight",
+        "line": "Adjusted prices divide all closing prices before the split by the exact split ratio.",
+        "speech": "",
+        "image": "assets/generated/how_stock_splits_and_berkshire_hathaway_impact_share_prices_12.jpg",
+        "image_prompt": "A focused professional reviewing numerical data on a computer screen., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Stock split",
+    "source_url": "https://en.wikipedia.org/wiki/Stock_split"
+  },
+  "how_digital_access_and_economic_opportunity_are_connected": {
+    "title": "How Digital Access and Economic Opportunity Are Connected",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Over 15.8 Million",
+        "line": "Over 15.8 million Americans lacked access to high-speed broadband according to 2026 data from the U.S. Census Bureau.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_01.jpg",
+        "image_prompt": "A suburban neighborhood viewed from above with power lines overhead., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Core Question",
+        "line": "How does the digital divide worsen inequality in access to information and vital economic resources today?",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_02.jpg",
+        "image_prompt": "A laptop computer sitting on a wooden desk near a window., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Information Age",
+        "line": "In the Information Age, people without internet access are less able to find and apply for jobs.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_03.jpg",
+        "image_prompt": "A person sitting at a simple wooden table looking thoughtfully ahead., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Poverty and Access",
+        "line": "People living in poverty, in insecure housing, or in rural communities often have limited internet access.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_04.jpg",
+        "image_prompt": "A rural countryside road stretching toward a distant horizon under a cloudy sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Federal Communications",
+        "line": "In 1996, the Federal Communications Commission adopted the Telecommunications Act of 1996 to address the problem.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_05.jpg",
+        "image_prompt": "The exterior facade of an official government building with stone columns., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Global Stage",
+        "line": "The topic soon moved onto a global stage centered on the World Trade Organization and regulatory strategies.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_06.jpg",
+        "image_prompt": "A large modern conference room with rows of empty chairs facing a podium., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Financial Solutions",
+        "line": "In 1999, the WTO hosted the Financial Solutions to Digital Divide in Seattle, US, to catalyze action.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_07.jpg",
+        "image_prompt": "A city skyline viewed across a large body of water on a clear day., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Presidential Mention",
+        "line": "In 2000, US president Bill Clinton mentioned the term in the State of the Union Address.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_08.jpg",
+        "image_prompt": "An American flag standing upright inside a formal government office room., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Pandemic Impact",
+        "line": "At the outset of the COVID-19 pandemic, governments worldwide issued stay-at-home orders that imposed lockdowns and closures.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_09.jpg",
+        "image_prompt": "An empty city street with closed storefronts during daylight hours., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Essential Internet",
+        "line": "A Pew Research Center study reports that 90% of Americans described internet use as essential during the pandemic.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_10.jpg",
+        "image_prompt": "A smartphone resting flat on a plain kitchen countertop next to a cup., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Homework Gap",
+        "line": "59% of children from lower-income families were likely to face digital obstacles in completing school assignments.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_11.jpg",
+        "image_prompt": "A stack of school textbooks and a pencil resting on a wooden table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Sequential Barriers",
+        "line": "Van Dijk's model identifies motivational, material, skills, and usage barriers that must be addressed to bridge the divide.",
+        "speech": "",
+        "image": "assets/generated/how_digital_access_and_economic_opportunity_are_connected_12.jpg",
+        "image_prompt": "A narrow metal footbridge crossing over a small stream in a quiet park., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Digital divide",
+    "source_url": "https://en.wikipedia.org/wiki/Digital_divide"
+  },
+  "fire_movement_explained": {
+    "title": "FIRE movement Explained",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "High Savings Rates",
+        "line": "Participants in the financial independence retire early movement often exceed the 10 to 15 percent savings rate.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_01.jpg",
+        "image_prompt": "calculator and piggy bank on a wooden table, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Understanding Financial Independence",
+        "line": "How do individuals accumulate sufficient assets to cover living expenses without traditional employment?",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_02.jpg",
+        "image_prompt": "open laptop showing financial charts, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Origins in Books",
+        "line": "The main ideas originate from the 1992 book Your Money or Your Life written by Vicki Robin and Joe Dominguez.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_03.jpg",
+        "image_prompt": "stack of old books on a desk, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The 4% Rule",
+        "line": "Financial planner William Bengen introduced the 4 percent rule in 1994 for sustainable retirement portfolio withdrawals.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_04.jpg",
+        "image_prompt": "notebook with handwritten financial notes, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Savings Mathematics",
+        "line": "At a savings rate of 50 percent, it takes 1 year of work to save for 1 year of living expenses.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_05.jpg",
+        "image_prompt": "modern minimalist desk with a pen and notepad, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Mr Money Mustache",
+        "line": "Peter Adeney started the Mr Money Mustache blog in 2011 and helped popularize the movement.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_06.jpg",
+        "image_prompt": "laptop keyboard close up in daylight, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Geographic Arbitrage",
+        "line": "Tim Ferriss popularized geographic arbitrage in his 2007 book The 4 Hour Workweek.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_07.jpg",
+        "image_prompt": "globe and passport on a wooden surface, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "International Destinations",
+        "line": "Popular destinations for Americans pursuing this lifestyle include Mexico, Portugal, Thailand and Colombia.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_08.jpg",
+        "image_prompt": "sunlit room with a travel planner open, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Healthcare Challenges",
+        "line": "Early retirees in the United States face significant challenges securing health insurance before becoming eligible for Medicare at age 65.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_09.jpg",
+        "image_prompt": "medical bills and a pen on a table, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Retirement Accounts",
+        "line": "Early retirees must navigate rules governing access to tax advantaged retirement accounts which impose a 10 percent penalty.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_10.jpg",
+        "image_prompt": "bank statements piled on a clean desk, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Penalty Free Strategies",
+        "line": "The rule of 55 allows penalty free withdrawals from an employer sponsored plan.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_11.jpg",
+        "image_prompt": "calendar pages flipped to retirement date, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Building Passive Income",
+        "line": "Structured budgeting and consistent investing generate passive income to cover living expenses without traditional employment.",
+        "speech": "",
+        "image": "assets/generated/fire_movement_explained_12.jpg",
+        "image_prompt": "glass jar filled with coins on a table, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "FIRE movement",
+    "source_url": "https://en.wikipedia.org/wiki/FIRE_movement"
+  },
+  "how_real_estate_wealth_and_property_markets_work": {
+    "title": "How Real Estate Wealth and Property Markets Work",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Core Question",
+        "line": "How do ownership structures, historical milestones, and market forces shape real estate and property investments?",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_01.jpg",
+        "image_prompt": "A suburban street lined with diverse residential homes and buildings., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Defining Property",
+        "line": "Real estate is property consisting of land and buildings along with natural resources like water and minerals.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_02.jpg",
+        "image_prompt": "A rural landscape showing green land, trees, and a water source., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Ownership Types",
+        "line": "Real estate includes land and buildings under private, public state, or commercial business ownership.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_03.jpg",
+        "image_prompt": "A mix of commercial office buildings and residential houses in a city., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Historical Roots",
+        "line": "The profession of appraisal began in England during the 1500s as agricultural needs required land clearing.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_04.jpg",
+        "image_prompt": "An open agricultural field being prepared for farming activity., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Economic Shocks",
+        "line": "The stock market crash of 1929 caused a major drop in real estate value resulting in a 50% depreciation.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_05.jpg",
+        "image_prompt": "A historic brick commercial building exterior during daytime., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Financing Systems",
+        "line": "In 1938, Fannie Mae was established to serve as a secondary market for mortgages and fund new homes.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_06.jpg",
+        "image_prompt": "A residential construction site with wooden framing for new houses., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Fair Housing",
+        "line": "Title VIII of the Civil Rights Act in 1968 dealt with discrimination in renting, buying, and financing.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_07.jpg",
+        "image_prompt": "Residential neighborhood sidewalk with mature trees and family homes., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Occupier Statistics",
+        "line": "According to the Congressional Research Service, in 2021, 65% of homes in the U.S. are owned by the occupier.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_08.jpg",
+        "image_prompt": "A well-maintained single-family home with a front yard and driveway., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Market Forces",
+        "line": "The price of real estate increases with demand and decreases with supply according to demand and supply.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_09.jpg",
+        "image_prompt": "A modern apartment building exterior viewed from street level., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Investment Risks",
+        "line": "Investment in real estate can be categorized by financial risk into core, value-added, and opportunistic types.",
+        "speech": "",
+        "image": "assets/generated/how_real_estate_wealth_and_property_markets_work_10.jpg",
+        "image_prompt": "A contemporary multi-unit residential complex with parking spaces., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Real estate",
+    "source_url": "https://en.wikipedia.org/wiki/Real_estate"
+  },
+  "how_the_debt_snowball_method_uses_small_wins_to_clear_balances": {
+    "title": "How the Debt Snowball Method Uses Small Wins to Clear Balances",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Smallest Balances First",
+        "line": "The debt snowball method is a debt-reduction strategy where one pays off accounts starting with the smallest balances first.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_01.jpg",
+        "image_prompt": "A stack of coins sitting on a clean wooden table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Understanding the Strategy",
+        "line": "How does focusing on the smallest balances create ongoing positive feedback and motivation to eliminate debt?",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_02.jpg",
+        "image_prompt": "A person looking at a notebook with calculations., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Minimum Payments",
+        "line": "The basic steps require you to commit to pay the minimum payment on every debt while targeting the smallest balance.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_03.jpg",
+        "image_prompt": "A close up of a hand holding a pen near a calculator., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Adding Extra Funds",
+        "line": "For example, a debtor with an additional $100 per month can direct those extra funds toward a $250 credit card balance.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_04.jpg",
+        "image_prompt": "A calculator displaying numbers next to a notepad., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Gaining Momentum",
+        "line": "Once the smallest debt is paid in full, the old minimum payment and extra amount are added to the next debt.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_05.jpg",
+        "image_prompt": "A row of small jars labeled with savings goals., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Snowball Effect",
+        "line": "The extra amount paid toward larger debts grows quickly, similar to a snowball rolling downhill gathering more snow.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_06.jpg",
+        "image_prompt": "A snowy hill viewed from a quiet neighborhood sidewalk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Human Psychology",
+        "line": "The theory appeals to human psychology because paying smaller debts first results in fewer bills and visible progress.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_07.jpg",
+        "image_prompt": "A person crossing off items on a structured checklist., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Behavioral Motivation",
+        "line": "There is an emotional reward associated with quickly paying off a small debt, motivating people to continue with the plan.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_08.jpg",
+        "image_prompt": "A smiling person closing a document binder., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Mathematical Comparison",
+        "line": "In contrast, the debt avalanche method focuses on paying off the highest interest rate first to reduce interest payments.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_09.jpg",
+        "image_prompt": "A digital tablet displaying graphs and percentages in an office., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Research Findings",
+        "line": "A 2012 study found consumers who tackle small balances first are likelier to eliminate their overall debt.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_10.jpg",
+        "image_prompt": "A stack of academic research papers on a wooden desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Behavior Over Math",
+        "line": "Personal finance experts argue that reduction strategies depend heavily on human behavior and quick wins rather than pure math.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_11.jpg",
+        "image_prompt": "A person typing financial figures into a laptop computer., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Tangible Progress",
+        "line": "Targeting small balances gives individuals a tangible sense of progress and helps change financial habits for the better.",
+        "speech": "",
+        "image": "assets/generated/how_the_debt_snowball_method_uses_small_wins_to_clear_balances_12.jpg",
+        "image_prompt": "A clear glass jar being filled with coins over time., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Debt snowball method",
+    "source_url": "https://en.wikipedia.org/wiki/Debt_snowball_method"
+  },
+  "how_personal_budgets_quietly_build_wealth_and_control": {
+    "title": "How Personal Budgets Quietly Build Wealth and Control",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Controlling Spending",
+        "line": "A personal budget is a plan for the coordination of income and expenses.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_01.jpg",
+        "image_prompt": "A person sitting at a wooden desk writing notes in a paper notebook next to a calculator., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Managing Finances",
+        "line": "How does a personal budget help an individual control their spending and achieve financial goals?",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_02.jpg",
+        "image_prompt": "A close up view of hands organizing paper receipts and cash on a clean table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Basic Form",
+        "line": "To create a basic budget, the person calculates net income and tracks spending over time.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_03.jpg",
+        "image_prompt": "A modern computer screen displaying a simple financial spreadsheet with columns of numbers., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Setting Categories",
+        "line": "The 50/30/20 budget sorts personal expenses into needs, wants, and savings categories.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_04.jpg",
+        "image_prompt": "Three clear glass jars placed on a kitchen counter containing different amounts of coins., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "First Savings",
+        "line": "In the pay yourself first budget, people first save at least 20% of net income.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_05.jpg",
+        "image_prompt": "A person putting paper money into a savings box on a living room table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Specific Goals",
+        "line": "People create multiple savings accounts, each for one specific goal such as a new car.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_06.jpg",
+        "image_prompt": "A set of small labeled envelopes arranged in a neat row on an office desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Using Cash",
+        "line": "People can allocate net income into categories and withdraw the cash for each category.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_07.jpg",
+        "image_prompt": "A person withdrawing paper currency from an automated teller machine., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Zero Balance",
+        "line": "In zero-based budgeting, all of one's net income must be allocated ahead of spending.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_08.jpg",
+        "image_prompt": "A clean desk with a laptop and a pen resting on top of a blank notepad., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Logging Expenses",
+        "line": "Users keep a paper notebook or digital ledger in which all take-home earnings are logged.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_09.jpg",
+        "image_prompt": "A close up of a hand writing financial figures into a lined paper notebook., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Prompt Tracking",
+        "line": "The prompt logging of expenditures and answering related questions encourage mindfulness and reduce impulse buys.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_10.jpg",
+        "image_prompt": "A person reviewing a digital tablet screen while sitting on a comfortable couch., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Social Care",
+        "line": "Personal budgets are also used by public authorities to give individuals autonomy over care needs.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_11.jpg",
+        "image_prompt": "A person walking down a quiet residential sidewalk carrying a reusable shopping bag., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Homelessness Impact",
+        "line": "In 2024 the Centre for Homelessness Impact began an evaluation of personal budgets for homelessness.",
+        "speech": "",
+        "image": "assets/generated/how_personal_budgets_quietly_build_wealth_and_control_12.jpg",
+        "image_prompt": "A modern office building exterior viewed from across a city street during daytime., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Personal budget",
+    "source_url": "https://en.wikipedia.org/wiki/Personal_budget"
+  },
+  "how_retirement_systems_and_pensions_shape_your_future_financial_security": {
+    "title": "How Retirement Systems and Pensions Shape Your Future Financial Security",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Historical Origins",
+        "line": "Germany was the first country to introduce retirement benefits in 1889 under Otto von Bismarck.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_01.jpg",
+        "image_prompt": "An old European government building facade during daylight hours., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Modern Systems",
+        "line": "How do modern retirement systems and pension structures actually function across different countries today?",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_02.jpg",
+        "image_prompt": "A modern financial district street with pedestrians walking near office towers., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Private Sector Shift",
+        "line": "Only about 15% of private industry workers in the US had access to traditional defined benefit pension plans.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_03.jpg",
+        "image_prompt": "An empty modern corporate office workspace with desks and chairs., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Defined Contribution",
+        "line": "Most companies now offer defined contribution plans like 401(k)s instead of traditional pensions.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_04.jpg",
+        "image_prompt": "A close-up of a calculator and financial documents resting on a wooden desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Public Coverage",
+        "line": "Public sector workers have much higher pension coverage, with about 75% participating in pension plans.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_05.jpg",
+        "image_prompt": "A public municipal building exterior with classical stone pillars., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Standard Ages",
+        "line": "The standard retirement age generally ranges between 50 and 70 according to latest statistics from 2011.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_06.jpg",
+        "image_prompt": "A calendar resting on a wooden table next to a pair of glasses., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Age Adjustments",
+        "line": "As life expectancy increases, the retirement age for public pensions has been increased in the 21st century.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_07.jpg",
+        "image_prompt": "An elderly person walking outdoors along a paved city sidewalk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "US Social Security",
+        "line": "In the United States, the normal retirement age for Social Security is gradually increasing to age 67 by 2027.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_08.jpg",
+        "image_prompt": "A government office building entrance sign mounted on a brick wall., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Alternative Options",
+        "line": "Individuals find more reliable retirement options such as Individual Retirement Accounts or employer-sponsored plans.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_09.jpg",
+        "image_prompt": "A person reviewing personal financial statements at a wooden dining table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Research Studies",
+        "line": "The ongoing Health and Retirement Study was first fielded in 1992 as a nationally representative survey.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_10.jpg",
+        "image_prompt": "A university research library interior filled with rows of bookshelves., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Financial Literacy",
+        "line": "Retirement funding education remains a big factor that affects the success of an individual retirement experience.",
+        "speech": "",
+        "image": "assets/generated/how_retirement_systems_and_pensions_shape_your_future_financial_security_11.jpg",
+        "image_prompt": "An open textbook and a pen sitting on a quiet library desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Retirement",
+    "source_url": "https://en.wikipedia.org/wiki/Retirement"
+  },
+  "how_interest_rates_and_central_bank_policies_shape_borrowing_costs": {
+    "title": "How Interest Rates and Central Bank Policies Shape Borrowing Costs",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Rates",
+        "line": "The Federal Reserve federal funds rate varied between about 0.25% and 19% from 1954 to 2008.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_01.jpg",
+        "image_prompt": "A view of a large financial district street with tall office buildings., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Understanding Interest",
+        "line": "How do principal sum, compounding frequency, and length of time determine total interest alongside rates?",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_02.jpg",
+        "image_prompt": "A person reviewing financial documents and calculations at a wooden desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Defining Rates",
+        "line": "An interest rate is the amount of interest due per period as a proportion of the amount borrowed.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_03.jpg",
+        "image_prompt": "A modern calculator resting on top of signed financial papers., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Borrowing and Return",
+        "line": "Companies borrow capital from a bank in the expectation of generating a return greater than the interest rates.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_04.jpg",
+        "image_prompt": "An empty conference room inside a corporate office building., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Default Risks",
+        "line": "Failure to continue paying interest is an example of default which may be followed by bankruptcy proceedings.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_05.jpg",
+        "image_prompt": "A gavel resting beside legal paperwork on a dark table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Nominal Versus Real",
+        "line": "The nominal interest rate is the rate without adjusting for inflation while the real rate takes inflation into account.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_06.jpg",
+        "image_prompt": "A close-up view of currency notes stacked neatly on a flat surface., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Historical Extremes",
+        "line": "Germany experienced rates close to 90% in the 1920s down to about 2% in the 2000s.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_07.jpg",
+        "image_prompt": "An old vintage clock ticking on a wooden wall panel., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Tackling Inflation",
+        "line": "During an attempt to tackle spiraling hyperinflation in 2007 the Central Bank of Zimbabwe increased rates to 800%.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_08.jpg",
+        "image_prompt": "A stack of various international paper currencies on a clean table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Economic Policy",
+        "line": "Central banks generally tend to reduce interest rates when they wish to increase investment and consumption.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_09.jpg",
+        "image_prompt": "A view of a bustling city street from a high-rise office window., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Avoiding Bubbles",
+        "line": "A low interest rate as a macro-economic policy can be risky and may lead to the creation of an economic bubble.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_10.jpg",
+        "image_prompt": "A wide shot of residential real estate rooftops under a cloudy sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Zero Policy",
+        "line": "A zero interest-rate policy was used in the United States in 2008-2015 and 2020-2022.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_11.jpg",
+        "image_prompt": "A quiet banking hall with polished marble floors and large glass doors., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Real Returns",
+        "line": "Real interest rates measure the interest accumulated and repayment of principal in real terms.",
+        "speech": "",
+        "image": "assets/generated/how_interest_rates_and_central_bank_policies_shape_borrowing_costs_12.jpg",
+        "image_prompt": "A balanced scale sitting on a wooden desk near a window., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Interest rate",
+    "source_url": "https://en.wikipedia.org/wiki/Interest_rate"
+  },
+  "why_millennials_endured_more_recessions_than_any_other_generation": {
+    "title": "Why Millennials Endured More Recessions Than Any Other Generation",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Staggering Recession Record",
+        "line": "Millennials have endured more recessions than any other generation in history so far.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_01.jpg",
+        "image_prompt": "City skyline with closed storefronts under a cloudy sky, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Core Question",
+        "line": "Why have Millennials faced such unprecedented economic disruption compared to earlier cohorts?",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_02.jpg",
+        "image_prompt": "Empty conference room with a large whiteboard, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Cohort Definition",
+        "line": "Millennials are the demographic cohort born between 1981 and 1996, following Generation X.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_03.jpg",
+        "image_prompt": "Statistical chart showing generational age ranges, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Childhood Tech Rise",
+        "line": "As children in the late 1980s to 2000s, they witnessed the rise of the Information Age.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_04.jpg",
+        "image_prompt": "Kids using early home computers in a living room, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Early Social Media",
+        "line": "Adolescents used early social media like AOL Instant Messenger, LiveJournal, and Myspace during the late 1990s.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_05.jpg",
+        "image_prompt": "Teenagers gathered around a desktop computer with chat windows, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Global Education Boost",
+        "line": "From the 1990s to 2010s, developing countries saw increased technological education, boosting their economic growth.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_06.jpg",
+        "image_prompt": "Classroom in a developing country with students using laptops, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Workforce Challenges",
+        "line": "Entering the workforce, Millennials faced high youth unemployment, substantial student debt, and rising childcare costs.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_07.jpg",
+        "image_prompt": "Young adults reviewing job listings on a laptop in a coffee shop, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Recession Label",
+        "line": "The Great Recession and COVID-19 recession caused slower economic growth, labeling them the Unluckiest Generation.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_08.jpg",
+        "image_prompt": "Closed factory gates with a 'Closed' sign, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Delayed Family Life",
+        "line": "Millennials postponed marriage and childbearing, resulting in fewer children compared to previous generations.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_09.jpg",
+        "image_prompt": "Empty wedding venue with decorative chairs, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Naming Origin",
+        "line": "The term Millennials was coined in 1987, reflecting the cohort’s coming of age around the new millennium.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_10.jpg",
+        "image_prompt": "1970s newspaper headline announcing new generational term, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Economic Answer",
+        "line": "Because they entered adulthood during back-to-back recessions, Millennials endured more economic shocks than any cohort.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_11.jpg",
+        "image_prompt": "Timeline graphic showing overlapping recession periods, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Future Implications",
+        "line": "Millennials will continue constituting the bulk of global population growth in developing countries.",
+        "speech": "",
+        "image": "assets/generated/why_millennials_endured_more_recessions_than_any_other_generation_12.jpg",
+        "image_prompt": "Crowded street market in a rapidly growing city, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Millennials",
+    "source_url": "https://en.wikipedia.org/wiki/Millennials"
+  },
+  "car_finance_why_78_choose_dealer_loans_over_independent_lenders": {
+    "title": "Car Finance: Why 78% Choose Dealer Loans Over Independent Lenders",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Shocking Scale",
+        "line": "78 percent of cars are financed through dealer financing, making it a major purchase method.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_01.jpg",
+        "image_prompt": "car dealership parking lot with many new vehicles waiting for buyers, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Core Question",
+        "line": "How does dealer financing affect a buyer’s total vehicle cost compared to independent lenders?",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_02.jpg",
+        "image_prompt": "person reviewing financing documents at a desk, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Loan Types",
+        "line": "Direct loans involve borrowers arranging terms with a lender, while indirect loans are facilitated by the dealership.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_03.jpg",
+        "image_prompt": "two separate offices, one bank, one car showroom, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Contract Mechanics",
+        "line": "Dealers sign a Retail Installment Sales Contract, then assign it to a bank or credit union.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_04.jpg",
+        "image_prompt": "hand signing a contract on a desk with a car brochure, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Rate Markup",
+        "line": "The indirect lender sets a buy rate, and the dealer adds a markup to create the contract rate.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_05.jpg",
+        "image_prompt": "calculator and spreadsheet showing interest rate calculations in a dealership office, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Regulatory Scrutiny",
+        "line": "These markups have drawn regulatory scrutiny because rates can vary without reflecting the borrower’s credit risk.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_06.jpg",
+        "image_prompt": "government regulator office with files labeled finance oversight, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Dealer Profit Share",
+        "line": "Dealer financing accounts for an estimated 78 percent of all car purchases, a significant profit source for dealerships.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_07.jpg",
+        "image_prompt": "busy car lot with salespeople assisting customers, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Cost Difference",
+        "line": "Studies show average per-unit finance cost is higher with dealer financing, increasing price by $674 on average.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_08.jpg",
+        "image_prompt": "financial report chart highlighting $674 increase, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Add-On Packages",
+        "line": "The higher cost often includes about 4.63 add-ons per deal, adding services and products.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_09.jpg",
+        "image_prompt": "display of optional car accessories like warranties and protection plans, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Financing Prevalence",
+        "line": "Over 85 percent of new cars and half of used cars are financed rather than paid cash.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_10.jpg",
+        "image_prompt": "new car showroom with price tags indicating financing options, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Answer Summary",
+        "line": "Thus, dealer financing typically adds $674 and extra add-ons, making it more expensive than independent lenders.",
+        "speech": "",
+        "image": "assets/generated/car_finance_why_78_choose_dealer_loans_over_independent_lenders_11.jpg",
+        "image_prompt": "side-by-side comparison of dealer financing and independent loan documents, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Car finance",
+    "source_url": "https://en.wikipedia.org/wiki/Car_finance"
+  },
+  "time_value_of_money_why_a_dollar_today_beats_tomorrow": {
+    "title": "Time Value of Money: Why a Dollar Today Beats Tomorrow",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "A dollar today is worth more than a dollar in the future.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_01.jpg",
+        "image_prompt": "Stacks of cash on a table highlighting a single dollar bill, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Core Question",
+        "line": "How does the time value of money affect everyday financial decisions?",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_02.jpg",
+        "image_prompt": "Person pondering financial decisions at a desk with papers, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Investment Growth",
+        "line": "Money you have today can be invested, earning a positive rate of return that grows tomorrow.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_03.jpg",
+        "image_prompt": "Investor reviewing charts on a laptop beside a growing plant, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Discounting Explained",
+        "line": "Thus a future sum must be discounted back to present value using the factor (1+i)⁻ⁿ.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_04.jpg",
+        "image_prompt": "Calculator displaying a discount factor equation on a screen, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Accumulation Factor",
+        "line": "The accumulation factor (1+i)ⁿ converts present dollars into future dollars after n equal periods.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_05.jpg",
+        "image_prompt": "Graph showing upward curve representing future value over time, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Interest Compensation",
+        "line": "Interest paid on deposits or loans compensates for the loss of using money before its future value.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_06.jpg",
+        "image_prompt": "Bank teller handing cash to a customer with a contract, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Rate Consistency",
+        "line": "Nominal cash flows require nominal discount rates; mixing nominal and real rates changes results mechanically.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_07.jpg",
+        "image_prompt": "Financial analyst comparing nominal and real interest rate tables, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Historical Roots",
+        "line": "Historical records show compound interest used in business since the Middle Ages, predating modern terminology.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_08.jpg",
+        "image_prompt": "Old ledger book with handwritten entries and quill, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Fisher's Theory",
+        "line": "Irving Fisher formalized intertemporal valuation in 1930, linking interest to time preference and investment opportunities.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_09.jpg",
+        "image_prompt": "Shelf with Irving Fisher's 1930 book The Theory of Interest among other economics volumes, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Key Insight",
+        "line": "Therefore, because a dollar today can earn interest, its present value exceeds the same amount received later.",
+        "speech": "",
+        "image": "assets/generated/time_value_of_money_why_a_dollar_today_beats_tomorrow_10.jpg",
+        "image_prompt": "Someone holding a present value chart illustrating higher current worth, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Time value of money",
+    "source_url": "https://en.wikipedia.org/wiki/Time_value_of_money"
+  },
+  "how_zero_based_budgeting_works_to_control_expenses": {
+    "title": "How Zero-Based Budgeting Works to Control Expenses",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Zero Base Start",
+        "line": "Zero-based budgeting requires all expenses to be justified and approved in each new budget period.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_01.jpg",
+        "image_prompt": "An empty desk with a calculator and a blank notepad in an office., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Method Creator",
+        "line": "How did Peter Pyhrr develop zero-based budgeting while working as an accounting manager for Texas Instruments?",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_02.jpg",
+        "image_prompt": "A calculator sitting on top of financial documents on a wooden table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Strategic Objectives",
+        "line": "Peter Pyhrr created the system to help incorporate strategic objectives into the budgeting process.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_03.jpg",
+        "image_prompt": "Financial charts and graphs displayed across a clean office desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Current Needs",
+        "line": "Under his system, costs are grouped and measured against previous results and current expectations.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_04.jpg",
+        "image_prompt": "A stack of organized financial reports and printed spreadsheets on a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Resource Allocation",
+        "line": "This enables management to allocate funds by current needs instead of historical expenditures.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_05.jpg",
+        "image_prompt": "A modern workspace with a computer monitor displaying business metrics., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Public Sector",
+        "line": "Then-Georgia governor Jimmy Carter appointed Peter Pyhrr to manage the state budgetary process.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_06.jpg",
+        "image_prompt": "A traditional wooden desk inside a large government office building., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Federal Adoption",
+        "line": "President Carter later required the adoption of zero-based budgeting by the federal government.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_07.jpg",
+        "image_prompt": "The exterior view of a large classical government building with columns., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Three Elements",
+        "line": "There are three elements that make up the concept including decision unit determination.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_08.jpg",
+        "image_prompt": "Printed documents neatly sorted into distinct folders on a clean table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Alternative Levels",
+        "line": "ZBB established within federal budgeting a requirement to present alternative levels of funding.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_09.jpg",
+        "image_prompt": "A set of comparative financial tables printed on white paper., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Time Constraints",
+        "line": "Agencies believed that inadequate time had been allowed to implement the new initiative.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_10.jpg",
+        "image_prompt": "A close-up of a traditional wall clock ticking in a quiet office., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Official Elimination",
+        "line": "Zero-based budgeting was officially eliminated in federal budgeting on August 7, 1981.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_11.jpg",
+        "image_prompt": "An empty meeting room with chairs arranged around a wooden table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Resource Efficiency",
+        "line": "The intended outcome is to assess the efficient use of resources by determining lower costs.",
+        "speech": "",
+        "image": "assets/generated/how_zero_based_budgeting_works_to_control_expenses_12.jpg",
+        "image_prompt": "A balanced scale resting on a wooden surface in a well-lit room., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Zero-based budgeting",
+    "source_url": "https://en.wikipedia.org/wiki/Zero-based_budgeting"
+  },
+  "how_budgets_quietly_build_strategic_financial_success": {
+    "title": "How Budgets Quietly Build Strategic Financial Success",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Astonishing Fact",
+        "line": "The first budget of India was submitted on 18 February 1860 by James Wilson.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_01.jpg",
+        "image_prompt": "An old wooden desk with vintage papers and a pen inside a study room., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Core Question",
+        "line": "How do companies, governments, and families use budgets to establish priorities and evaluate objectives?",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_02.jpg",
+        "image_prompt": "A person sitting at a desk reviewing financial documents and papers., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Calculation Plan",
+        "line": "A budget is a calculation plan for a defined period, often one year or a month.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_03.jpg",
+        "image_prompt": "A modern office calendar and notebook placed on a clean wooden table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Expressing Plans",
+        "line": "Organizations use budgets to express strategic plans of activities in measurable terms.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_04.jpg",
+        "image_prompt": "A meeting room with charts and graphs displayed on a white wall., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Surplus or Deficit",
+        "line": "To achieve goals it may be necessary to incur a deficit or present a surplus.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_05.jpg",
+        "image_prompt": "A simple scale balancing coins and financial documents on a table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Personal Finance Plan",
+        "line": "A personal budget is a finance plan that allocates future personal income towards expenses.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_06.jpg",
+        "image_prompt": "A calculator and bills resting neatly on a cozy living room table., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Income Sources",
+        "line": "For example, jobs are an income source, while bills and rent payments are expenses.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_07.jpg",
+        "image_prompt": "A set of house keys and residential bills placed near a window., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Asset Reserves",
+        "line": "Assets such as property or investments represent a potential reserve for funds during shortfalls.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_08.jpg",
+        "image_prompt": "A view of residential property through a bright, clean glass window., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Business Forecast",
+        "line": "The budget of a business is a financial forecast for the near-term future accounting period.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_09.jpg",
+        "image_prompt": "An office workspace featuring a computer screen showing numerical data., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Master Budget",
+        "line": "The master budget aggregates expected revenues and expenses of the various departments together.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_10.jpg",
+        "image_prompt": "A collection of structured financial reports stacked on an office desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Monitoring Success",
+        "line": "Monitoring is ongoing, with financial and operational adjustments made as warranted by management.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_11.jpg",
+        "image_prompt": "A person reviewing line graphs on a computer monitor in an office., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Actionable Wisdom",
+        "line": "Preparing a budget allows entities to establish priorities and evaluate the achievement of their objectives.",
+        "speech": "",
+        "image": "assets/generated/how_budgets_quietly_build_strategic_financial_success_12.jpg",
+        "image_prompt": "A focused individual organizing financial notes and schedules on a desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Budget",
+    "source_url": "https://en.wikipedia.org/wiki/Budget"
+  },
+  "how_risk_and_return_shape_your_investments": {
+    "title": "How Risk and Return Shape Your Investments",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "The Historical Hook",
+        "line": "Investments can be traced back to as early as 1700 BCE during the Code of Hammurabi.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_01.jpg",
+        "image_prompt": "Ancient stone tablet carved with ancient writing displayed in a museum room., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "The Core Question",
+        "line": "How does committing resources to generate a return actually work in modern financial markets?",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_02.jpg",
+        "image_prompt": "Financial documents and a pen resting on a wooden office desk., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Defining Investment",
+        "line": "Investment is traditionally defined as the commitment of resources into something expected to gain value over time.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_03.jpg",
+        "image_prompt": "A person reviewing financial growth charts on a computer screen., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Generating Returns",
+        "line": "In finance, the purpose of investing is to generate a return on the invested asset.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_04.jpg",
+        "image_prompt": "Calculator and financial paperwork sitting near a window in office light., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Risk and Reward",
+        "line": "Investors generally expect higher returns from riskier investments, while low risk brings low return.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_05.jpg",
+        "image_prompt": "A modern office building exterior viewed from street level on a clear day., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Biotechnology Risk",
+        "line": "In biotechnology, for example, approximately 90% of products researched do not make it to market.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_06.jpg",
+        "image_prompt": "Microscope sitting on a clean laboratory table with glassware in the background., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Traditional Options",
+        "line": "In modern economies, traditional investments include stocks, bonds, cash, and real estate.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_07.jpg",
+        "image_prompt": "Tall corporate office towers reflecting sunlight against a blue sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Alternative Assets",
+        "line": "Alternative investments include private equity, other loans, commodities, collectables, and digital entities.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_08.jpg",
+        "image_prompt": "Gold bullion bars arranged neatly on a dark wooden display surface., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Valuation Metrics",
+        "line": "The price to earnings ratio divides the share price of the stock by its earnings per share.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_09.jpg",
+        "image_prompt": "Financial graphs and numerical data displayed on a computer monitor., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Comparing Sectors",
+        "line": "For example, it is reasonable for a telecommunications stock to show a P/E in the low teens.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_10.jpg",
+        "image_prompt": "Telecommunication towers standing against an open daytime sky., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Conservative Metrics",
+        "line": "The price-to-book ratio is a reliable indication of how much investors spend on company assets.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_11.jpg",
+        "image_prompt": "An open ledger book filled with columns of numbers and financial records., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Understanding Risk",
+        "line": "An investor may bear a risk of loss of some or all of their capital invested.",
+        "speech": "",
+        "image": "assets/generated/how_risk_and_return_shape_your_investments_12.jpg",
+        "image_prompt": "A professional analyzing financial data at a desk with natural lighting., minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Investment",
+    "source_url": "https://en.wikipedia.org/wiki/Investment"
+  },
+  "how_high_yield_savings_accounts_earn_ten_times_more_interest": {
+    "title": "How High Yield Savings Accounts Earn Ten Times More Interest",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Surprising Yield",
+        "line": "High yield savings accounts earn ten times more interest than normal savings accounts.",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_01.jpg",
+        "image_prompt": "Bank interior with computers displaying interest rates, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Key Question",
+        "line": "How can you use a high yield savings account to boost your short-term investing?",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_02.jpg",
+        "image_prompt": "Person reviewing financial statements on laptop, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Basic Definition",
+        "line": "A savings account is a retail bank product that holds cash safely and accrues compound interest.",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_03.jpg",
+        "image_prompt": "Bank vault door with cash inside, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Account Type",
+        "line": "High yield savings accounts are a specific savings account type offering higher interest rates than standard accounts.",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_04.jpg",
+        "image_prompt": "Spreadsheet showing interest rate comparison, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Higher Returns",
+        "line": "These accounts typically earn ten times more interest than a normal savings account, enhancing returns quickly.",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_05.jpg",
+        "image_prompt": "Graph rising steeply, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Deposit Freedom",
+        "line": "Unlike checking, savings accounts allow unlimited deposits and historically limited withdrawals, a rule relaxed in April 2020.",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_06.jpg",
+        "image_prompt": "Bank deposit slip being filled, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Short-Term Fit",
+        "line": "Because rates are high and funds stay liquid, HYSA serve as a strong short-term investment vehicle.",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_07.jpg",
+        "image_prompt": "Person planning budget with calculator, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Safety Net",
+        "line": "Most accounts are insured, protecting deposits up to a government-specified limit, adding security for savers.",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_08.jpg",
+        "image_prompt": "Bank building with security badge, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Actionable Answer",
+        "line": "Place cash in a high yield savings account to earn higher, compounded returns while retaining easy access.",
+        "speech": "",
+        "image": "assets/generated/how_high_yield_savings_accounts_earn_ten_times_more_interest_09.jpg",
+        "image_prompt": "Open laptop showing online banking dashboard, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Savings account",
+    "source_url": "https://en.wikipedia.org/wiki/Savings_account"
+  },
+  "why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing": {
+    "title": "Why Benjamin Graham’s Dollar-Cost Averaging Beats Market Timing",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Origin Fact",
+        "line": "Benjamin Graham coined the term “dollar-cost averaging” in his 1949 book The Intelligent Investor.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_01.jpg",
+        "image_prompt": "Vintage book cover on a library shelf beside a 1940s desk, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Key Question",
+        "line": "How does Benjamin Graham’s dollar-cost averaging actually lower an investor’s average share price over time?",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_02.jpg",
+        "image_prompt": "Person looking at a financial chart on a laptop, pondering, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Definition",
+        "line": "Dollar-cost averaging means investing a fixed dollar amount in common stocks each month or quarter.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_03.jpg",
+        "image_prompt": "Hands placing identical cash envelopes into a stock investment folder, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Low Price Benefit",
+        "line": "Because the same money buys more shares at low prices, investors purchase more when markets dip.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_04.jpg",
+        "image_prompt": "Graph showing stock price dip with multiple share icons accumulating, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Cost Reduction",
+        "line": "This pattern lowers the total average cost per share compared to buying at a single price point.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_05.jpg",
+        "image_prompt": "Calculator beside a stack of share certificates with decreasing average cost label, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Math Basis",
+        "line": "Mathematically, the harmonic mean of purchase prices is lower than the arithmetic mean, reducing per-share cost.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_06.jpg",
+        "image_prompt": "Mathematical chalkboard displaying harmonic and arithmetic mean formulas, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Fixed Share Compare",
+        "line": "Thus, dollar-cost averaging outperforms the alternate strategy of buying a fixed number of shares each interval.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_07.jpg",
+        "image_prompt": "Comparison chart with two columns: fixed share count vs dollar-cost averaging, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Market Rise Edge",
+        "line": "When markets historically rise, dollar-cost averaging also beats keeping funds out of the market until later.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_08.jpg",
+        "image_prompt": "Rising market line on a screen with investor silhouette smiling, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Automation Simplicity",
+        "line": "Investors only set amount and frequency, allowing automatic payroll deductions without timing decisions.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_09.jpg",
+        "image_prompt": "Payroll slip next to an automatic bank transfer screen on a phone, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Fee Consideration",
+        "line": "Frequent small purchases may incur brokerage fees that outweigh returns, so larger intervals can reduce drag.",
+        "speech": "",
+        "image": "assets/generated/why_benjamin_graham_s_dollar_cost_averaging_beats_market_timing_10.jpg",
+        "image_prompt": "Brokerage statement highlighting small transaction fees next to a larger investment schedule, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Dollar-cost averaging",
+    "source_url": "https://en.wikipedia.org/wiki/Dollar-cost_averaging"
+  },
+  "liquidity_trap_why_zero_interest_rates_render_money_powerless": {
+    "title": "Liquidity Trap: Why Zero Interest Rates Render Money Powerless",
+    "category": "Personal Finance",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Zero Rate Shock",
+        "line": "When rates hit zero, people overwhelmingly choose cash, rendering monetary policy ineffective.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_01.jpg",
+        "image_prompt": "central bank building with empty chairs and piles of cash on a table, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Core Question",
+        "line": "Why does a liquidity trap make conventional monetary policy powerless in modern economies?",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_02.jpg",
+        "image_prompt": "economists gathered around a table in a policy institute, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Keynes Definition",
+        "line": "Keynes described a liquidity trap as cash preference when interest rates fall to a certain low level.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_03.jpg",
+        "image_prompt": "John Maynard Keynes' 1936 General Theory book open on a desk beside stacks of papers, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Necessary Conditions",
+        "line": "A zero lower bound and negative natural interest rates are necessary conditions for a liquidity trap.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_04.jpg",
+        "image_prompt": "graph showing interest rates hitting zero line on a monitor in a bank office, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Causes Overview",
+        "line": "Temporary disruptions like banking crises, or structural factors such as demographic decline, can produce negative natural rates.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_05.jpg",
+        "image_prompt": "closed bank vault with a sign indicating zero interest rates, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Historical Cases",
+        "line": "The Great Depression, the Great Recession, and Japan's Lost Decades are examples of liquidity traps.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_06.jpg",
+        "image_prompt": "black-and-white collage of Great Depression crowds, 2008 recession lines, and Japan city skyline, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Krugman View",
+        "line": "Paul Krugman says conventional policies become impotent when nominal rates are near zero, so new money has no effect.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_07.jpg",
+        "image_prompt": "podium with microphone and stack of papers in a lecture hall, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Mechanism Detail",
+        "line": "People treat cash and bonds as perfect substitutes, so adding monetary base does not raise bond prices or lower yields.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_08.jpg",
+        "image_prompt": "trading floor where people exchange cash for bonds with screens showing bond yields, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "2008 Evidence",
+        "line": "During 2008-2011 the US monetary base tripled yet domestic price indices showed only minimal movement.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_09.jpg",
+        "image_prompt": "exterior of the Federal Reserve building with a banner indicating monetary policy, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "QE Impact",
+        "line": "Fed economists note $3.5 trillion of QE from 2009–2013 cut expected inflation to roughly half of the projected increase.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_10.jpg",
+        "image_prompt": "massive stack of printed money beside a chart showing modest inflation, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Final Answer",
+        "line": "Therefore, in a liquidity trap the central bank loses interest-rate control, and cash hoarding keeps inflation subdued.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_11.jpg",
+        "image_prompt": "central bank governor's empty office with a large empty chair and a clock stopped at zero, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      },
+      {
+        "label": "Takeaway Insight",
+        "line": "Recognizing this mechanism explains why simply printing money cannot revive an economy stuck in overwhelming cash preference.",
+        "speech": "",
+        "image": "assets/generated/liquidity_trap_why_zero_interest_rates_render_money_powerless_12.jpg",
+        "image_prompt": "sunrise over a quiet city street with people walking past a bank, minimalist flat vector illustration, clean modern financial infographics, dark slate and emerald green color palette, professional aesthetic"
+      }
+    ],
+    "verified": true,
+    "source_title": "Liquidity trap",
+    "source_url": "https://en.wikipedia.org/wiki/Liquidity_trap"
+  }
+}

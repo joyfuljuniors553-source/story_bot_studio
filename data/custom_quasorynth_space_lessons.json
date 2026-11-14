@@ -1,0 +1,552 @@
+{
+  "long_what_secret_lies_within_mars_the_red_planet": {
+    "title": "What Secret Lies Within Mars, the Red Planet?",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Fourth Planet",
+        "line": "Mars is the fourth planet from the Sun and is also known as the Red Planet for its orange-red appearance. Mars is a desert-like rocky planet with a tenuous atmosphere that is primarily carbon dioxide.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_01.jpg",
+        "image_prompt": "A desert rocky landscape under a dim sky with orange hues., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Temperature Extremes",
+        "line": "Atmospheric temperature ranges from -153 to 20 °C and cosmic radiation is high across the surface. Mars retains some water in the ground as well as thinly in the atmosphere forming clouds, fog, and frost.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_02.jpg",
+        "image_prompt": "Barren rocky ground with frost crystals under a cold, distant sun., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Polar Caps",
+        "line": "Larger polar regions consist of permafrost and ice caps with seasonal carbon dioxide snow, but no bodies of liquid surface water exist. Its surface gravity is roughly a third of Earth's or double that of the Moon.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_03.jpg",
+        "image_prompt": "A vast sheet of white ice and layered frost stretching across a polar landscape., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Diameter Comparison",
+        "line": "Its mean diameter of 6,779 km is about half the Earth's, or twice the Moon's. Fine dust is prevalent across the surface and the atmosphere, being picked up and spread by weak wind.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_04.jpg",
+        "image_prompt": "An expanse of rust-colored stone and fine dust under daylight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Martian Dichotomy",
+        "line": "The terrain roughly follows a north-south divide known as the Martian dichotomy. The northern hemisphere mainly consists of relatively flat, low lying plains.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_05.jpg",
+        "image_prompt": "An elevated view showing a boundary between smooth lowlands and a rugged cratered region., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Southern Highlands",
+        "line": "The southern hemisphere consists of cratered highlands bearing the scars of impacts. Geologically the planet is fairly active with marsquakes trembling underneath the ground.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_06.jpg",
+        "image_prompt": "Rugged highlands heavily pitted with ancient circular impact craters., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Towering Volcanoes",
+        "line": "The planet hosts many enormous volcanoes that are extinct. The tallest volcano is Olympus Mons, which stands at 21.9 km tall.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_07.jpg",
+        "image_prompt": "A massive volcanic mountain rising above the surrounding rust-colored terrain., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Valles Marineris",
+        "line": "Valles Marineris is one of the largest canyons in the Solar System, measuring 4,000 km long. Mars has two natural satellites that are small and irregular in shape named Phobos and Deimos.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_08.jpg",
+        "image_prompt": "A gigantic canyon system with steep layered walls cutting deep into the red planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Axial Tilt",
+        "line": "With a significant axial tilt of 25 degrees, Mars experiences seasons like Earth. A Martian solar year is equal to 1.88 Earth years or 687 Earth days.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_09.jpg",
+        "image_prompt": "A dusty orange landscape illuminated by a low-angled sun casting long shadows., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar Day",
+        "line": "A Martian solar day, or sol, is equal to 24.6 hours. Mars formed along with the other planets approximately 4.5 billion years ago.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_10.jpg",
+        "image_prompt": "The Martian landscape transitioning from daylight into a dim twilight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Noachian Period",
+        "line": "During the Martian Noachian period from 4.5 to 3.5 billion years ago, its surface was marked by meteor impacts and valley formation. Erosion, the possible presence of water oceans, and the loss of its magnetosphere also marked the Noachian period.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_11.jpg",
+        "image_prompt": "An ancient landscape scarred by heavy meteor strikes and carved channels., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Hesperian Period",
+        "line": "The Hesperian period began 3.5 billion years ago and ended between 3.3 and 2.9 billion years ago. The Hesperian period was dominated by widespread volcanic activity and flooding that carved immense outflow channels.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_12.jpg",
+        "image_prompt": "Vast fields of hardened dark lava plains stretching toward the horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Amazonian Period",
+        "line": "The Amazonian period continues to the present and is the currently dominating influence on geological processes. The possibility of past or present life on Mars remains an area of active scientific investigation.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_13.jpg",
+        "image_prompt": "A modern wind-swept Martian desert with ripples of fine reddish dust., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Historical Observation",
+        "line": "Being visible with the naked eye in Earth's sky as a red wandering star, Mars has been observed throughout history. In 1963 the first flight to Mars took place with Mars 1, but communication was lost en route.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_14.jpg",
+        "image_prompt": "A dark night sky filled with stars and a distinct reddish wandering point of light., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "First Flyby",
+        "line": "The first successful flyby exploration of Mars was conducted in 1965 with Mariner 4. In 1971 Mariner 9 entered orbit around Mars, being the first spacecraft to orbit any body other than the Moon, Sun or Earth.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_15.jpg",
+        "image_prompt": "A robotic spacecraft passing above a distant, cratered planetary limb., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "First Landings",
+        "line": "Following in the same year were the first uncontrolled impact by Mars 2 and first successful landing by Mars 3. Probes have been active on Mars continuously since 1997.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_16.jpg",
+        "image_prompt": "A landing module resting on the rocky, dust-covered Martian soil., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Multiple Spacecraft",
+        "line": "At times, more than ten probes have simultaneously operated in orbit or on the surface. Mars is an often proposed target for future crewed exploration missions, though no such mission is currently planned.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_17.jpg",
+        "image_prompt": "An orbital satellite looking down at the swirling weather patterns of a distant planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Accretion Origin",
+        "line": "Scientists have theorized that during the Solar System's formation, Mars was created as the result of runaway accretion. Mars has many distinctive chemical features caused by its position in the Solar System.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_18.jpg",
+        "image_prompt": "Molten rock and planetary building blocks coalescing in orbit around a young star., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Volatile Elements",
+        "line": "Elements with comparatively low boiling points, such as chlorine, phosphorus, and sulfur, are much more common on Mars than on Earth. These elements were probably pushed outward by the young Sun's energetic solar wind.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_19.jpg",
+        "image_prompt": "Yellowish mineral crusts formed on the surface of volcanic rocks., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Late Heavy Bombardment",
+        "line": "After the formation of the planets, the inner Solar System may have been subjected to the Late Heavy Bombardment. About 60% of the surface of Mars shows a record of impacts from that era.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_20.jpg",
+        "image_prompt": "Numerous large meteorites striking the surface of a young, forming planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Disputed Modeling",
+        "line": "More recent modeling has disputed the existence ofal of the Late Heavy Bombardment. There is evidence of an enormous impact basin in the Northern Hemisphere of Mars.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_21.jpg",
+        "image_prompt": "Computer-generated topographic maps displaying elevation data of a planetary surface., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Pluto-Sized Impact",
+        "line": "It has been hypothesized that the basin was formed when Mars was struck by a Pluto-sized body about four billion years ago. The event created the smooth Borealis basin that covers 40% of the planet.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_22.jpg",
+        "image_prompt": "A massive dwarf planet colliding with the northern hemisphere of a rocky world., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ring System Evidence",
+        "line": "A 2023 study shows evidence, based on the orbital inclination of Deimos, that Mars may once have had a ring system. The ring system may have existed 3.5 billion years to 4 billion years ago.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_23.jpg",
+        "image_prompt": "A faint ring of rocky debris encircling a rust-colored planet in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Phobos Origin",
+        "line": "The ring system may have been formed from a moon 20 times more massive than Phobos. Phobos would be a remnant of that ancient ring system.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_24.jpg",
+        "image_prompt": "A large ancient moon fracturing under tidal forces above a red horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Noachian Surfaces",
+        "line": "The Noachian period saw the formation of the oldest extant surfaces of Mars, 4.5 to 3.5 billion years ago. The Tharsis bulge, a volcanic upland, is thought to have formed during this period with extensive flooding by liquid water late in the era.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_25.jpg",
+        "image_prompt": "Ancient, heavily weathered rock formations exposed on a hillside., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Volcanic Upland",
+        "line": "The Tharsis bulge, a volcanic upland, is thought to have formed during this period with extensive flooding by liquid water late in the era. The large canyon, Valles Marineris, has a length of 4,000 kilometres and a depth of up to 7 kilometres.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_26.jpg",
+        "image_prompt": "vast volcanic upland plain on a barren planet, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Canyon Scale",
+        "line": "The length of Valles Marineris is equivalent to the length of Europe and extends across one-fifth the circumference of Mars. By comparison, the Grand Canyon on Earth is only 446 kilometres long and nearly 2 kilometres deep.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_27.jpg",
+        "image_prompt": "aerial view of a colossal rift valley on a red planet, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Crust Collapse",
+        "line": "Valles Marineris was formed due to the swelling of the Tharsis area, which caused the crust in the area of Valles Marineris to collapse. In 2012, it was proposed that Valles Marineris is not just a graben, but a plate boundary where 150 kilometres of transverse motion has occurred.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_28.jpg",
+        "image_prompt": "fractured planetary crust with deep chasms, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Volcano Caves",
+        "line": "Images from the Thermal Emission Imaging System aboard NASA's Mars Odyssey orbiter have revealed seven possible cave entrances on the flanks of the volcano Arsia Mons. The caves, named after loved ones of their discoverers, are collectively known as the seven sisters.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_29.jpg",
+        "image_prompt": "dark volcanic mountain slopes under a thin atmosphere, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cave Widths",
+        "line": "Cave entrances measure from 100 to 252 metres wide and they are estimated to be at least 73 to 96 metres deep. Dena is the only exception; its floor is visible and was measured to be 130 metres deep.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_30.jpg",
+        "image_prompt": "large circular sinkhole on a barren hillside, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Radiation Shield",
+        "line": "The interiors of these caverns may be protected from micrometeoroids, UV radiation, solar flares and high energy particles that bombard the planet's surface. Mars lost its magnetosphere 4 billion years ago, possibly because of numerous asteroid strikes, so the solar wind interacts directly with the Martian ionosphere.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_31.jpg",
+        "image_prompt": "dark cavern entrance sheltered by overhangs, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Loss",
+        "line": "Both Mars Global Surveyor and Mars Express have detected ionized atmospheric particles trailing off into space behind Mars, and this atmospheric loss is being studied by the MAVEN orbiter. Atmospheric pressure on the surface today ranges from a low of 30 Pa on Olympus Mons to over 1,155 Pa in Hellas Planitia, with a mean pressure at the surface level of 600 Pa.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_32.jpg",
+        "image_prompt": "spacecraft orbiting a rust-colored planet, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Dusty Air",
+        "line": "The atmosphere of Mars consists of about 96% carbon dioxide, 1.93% argon and 1.89% nitrogen along with traces of oxygen and water. The atmosphere is quite dusty, containing particulates about 1.5 um in diameter which give the Martian sky a tawny color when seen from the surface.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_33.jpg",
+        "image_prompt": "dusty hazy atmosphere over a flat desert floor, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Methane Mystery",
+        "line": "Despite repeated detections of methane on Mars, there is no scientific consensus as to its origin. Using acoustic recordings collected by the Perseverance rover, researchers concluded that the speed of sound there is approximately 240 m/s for frequencies below 240 Hz, and 250 m/s for those above.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_34.jpg",
+        "image_prompt": "scientific instruments on a robotic rover in a desert, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Global Aurora",
+        "line": "Because Mars lacks a global magnetic field, the types and distribution of auroras there differ from those on Earth; rather than being mostly restricted to polar regions, a Martian aurora can encompass the planet. In September 2017, NASA reported radiation levels on the surface of the planet Mars were temporarily doubled, and were associated with an aurora 25 times brighter than any observed earlier.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_35.jpg",
+        "image_prompt": "faint glowing light emission across a night sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Southern Summer",
+        "line": "Additionally the orbit of Mars has, compared to Earth's, a large eccentricity and approaches perihelion when it is summer in its southern hemisphere and winter in its northern. Mars has the largest dust storms in the Solar System, reaching speeds of over 160 km/h.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_36.jpg",
+        "image_prompt": "sunlit rocky ground with long shadows, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Polar Water Ice",
+        "line": "While Mars contains water in larger amounts, most of it is dust covered water ice at the Martian polar ice caps. The volume of water ice in the south polar ice cap, if melted, would be enough to cover most of the surface of the planet with a depth of 11 metres.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_37.jpg",
+        "image_prompt": "white ice cap bordered by dark rocky soil, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Outflow Channels",
+        "line": "Huge linear swathes of scoured ground, known as outflow channels, cut across the surface in about 25 places. One of the larger examples, Ma'adim Vallis, is 700 kilometres long, much greater than the Grand Canyon, with a width of 20 kilometres and a depth of 2 kilometres in places.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_38.jpg",
+        "image_prompt": "deep carved channels running through a dry plateau, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Dendritic Networks",
+        "line": "Elsewhere, particularly on the oldest areas of the Martian surface, finer-scale, dendritic networks of valleys are spread across significant proportions of the landscape. Along craters and canyon walls, there are thousands of features that appear similar to terrestrial gullies.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_39.jpg",
+        "image_prompt": "intricate network of dry riverbeds from above, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Jarosite Discovery",
+        "line": "In 2004, Opportunity detected the mineral jarosite. The Spirit rover found concentrated deposits of silica in 2007 that indicated wet conditions in the past.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_40.jpg",
+        "image_prompt": "robotic wheels resting on fine soil and small rocks, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mineral Gypsum",
+        "line": "and in December 2011, the mineral gypsum, which also forms in the presence of water, was found on the surface by NASA's Mars rover Opportunity. On 18 March 2013, NASA reported evidence from instruments on the Curiosity rover of mineral hydration, likely hydrated calcium sulfate, in several rock samples.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_41.jpg",
+        "image_prompt": "pale mineral veins crisscrossing dark bedrock, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Tintina and Sutton",
+        "line": "including the broken fragments of Tintina rock and Sutton Inlier rock as well as in veins and nodules in other rocks like Knorr rock and Wernicke rock. Analysis using the rover's DAN instrument provided evidence of subsurface water, amounting to as much as 4% water content, down to a depth of 60 centimetres.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_42.jpg",
+        "image_prompt": "scattered rock fragments on a sandy flat, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Brine Flows",
+        "line": "In September 2015, NASA announced that they had found strong evidence of hydrated brine flows in recurring slope lineae, based on spectrometer readings of the darkened areas of slopes. Researchers suspect much of the low northern plains of the planet were covered with an ocean hundreds of meters deep, though this theory remains controversial.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_43.jpg",
+        "image_prompt": "dark streaks running down a steep hillside, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Deuterium Ratio",
+        "line": "The amount of Martian deuterium is five to seven times the amount on Earth, suggesting that ancient Mars had significantly higher levels of water. Near the northern polar cap is the 81.4 kilometres wide Korolev Crater, which the Mars Express orbiter found to be filled with approximately 2,200 cubic kilometres of water ice.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_44.jpg",
+        "image_prompt": "spectrometer equipment glowing in a laboratory, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Utopia Planitia",
+        "line": "In November 2016, NASA reported finding a large amount of underground ice in the Utopia Planitia region. The axial tilt of Mars is 25.19° relative to its orbital plane, which is similar to the axial tilt of Earth.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_45.jpg",
+        "image_prompt": "smooth desert plain with subtle surface cracks, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbital Eccentricity",
+        "line": "Mars has a relatively pronounced orbital eccentricity of about 0.09; of the seven other planets in the Solar System, only Mercury has a larger orbital eccentricity. The average time between the successive oppositions of Mars, its synodic period, is 780 days; but the number of days between successive oppositions can range from 764 to 812.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_46.jpg",
+        "image_prompt": "elliptical orbit diagram in space, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Opposition Distance",
+        "line": "The distance at close approach varies between about 54 and 103 million km due to the planets' elliptical orbits, which causes comparable variation in angular size. The mean apparent magnitude of Mars is +0.71 with a standard deviation of 1.05.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_47.jpg",
+        "image_prompt": "distant bright star in a dark night sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Retrograde Motion",
+        "line": "As Mars approaches opposition, it begins a period of retrograde motion, which means it will appear to move backwards in a looping curve with respect to the background stars. Mars has two relatively small natural moons, Phobos and Deimos, which orbit at 9,376 km and 23,460 km around the planet.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_48.jpg",
+        "image_prompt": "star trails looping across the night sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Discovery Year",
+        "line": "Both satellites were discovered in 1877 by Asaph Hall and were named after the characters Phobos and Deimos. From the surface of Mars, the motions of Phobos and Deimos appear different from that of the Earth's satellite, the Moon.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_49.jpg",
+        "image_prompt": "historic telescope dome under a starry sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Tidal Forces",
+        "line": "Because the orbit of Phobos is below a synchronous altitude, tidal forces from Mars are gradually lowering its orbit. In about 50 million years, it could either crash into Mars's surface or break up into a ring structure around the planet.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_50.jpg",
+        "image_prompt": "irregular rocky asteroid illuminated by sunlight, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Porous Interior",
+        "line": "More-recent lines of evidence for Phobos having a highly porous interior, and suggesting a composition containing mainly phyllosilicates and other minerals known from Mars. point toward an origin of Phobos from material ejected by an impact on Mars that reaccreted in Martian orbit.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_51.jpg",
+        "image_prompt": "cratered surface of a small rocky moon close up, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Lost Moon",
+        "line": "A study conducted by a team of researchers from multiple countries suggests that a lost moon, at least fifteen times the size of Phobos, may have existed in the past. By analyzing rocks which point to tidal processes on the planet, it is possible that these tides may have been regulated by a past moon.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_52.jpg",
+        "image_prompt": "A desolate rocky expanse under a twilight sky with a distant celestial body., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Oppositions",
+        "line": "The history of observations of Mars is marked by oppositions of Mars when the planet is closest to Earth and hence is most easily visible, which occur every couple of years. Even more notable are the perihelic oppositions of Mars, which are distinguished because Mars is close to perihelion, making it even closer to Earth.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_53.jpg",
+        "image_prompt": "An observatory dome open to a starry night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Nergal Worship",
+        "line": "The ancient Sumerians named Mars Nergal, the god of war and plague. In Mesopotamian texts, Mars is referred to as the star of judgement of the fate of the dead.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_54.jpg",
+        "image_prompt": "Ancient stone carvings depicting a mythical deity., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Retrograde Motion",
+        "line": "The existence of Mars as a wandering object in the night sky was also recorded by the ancient Egyptian astronomers and, by 1534 BCE, they were familiar witharsis retrograde motion of the planet. By the period of the Neo-Babylonian Empire, the Babylonian astronomers were making regular records of the positions of the planets and systematic observations of their behavior.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_55.jpg",
+        "image_prompt": "Ancient papyrus scrolls featuring astronomical diagrams., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Synodic Periods",
+        "line": "For Mars, they knew that the planet made 37 synodic periods, or 42 circuits of the zodiac, every 79 years. It was the Romans who named the planet Mars, for their god of war, often represented by the sword and shield of the planet's namesake.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_56.jpg",
+        "image_prompt": "An ancient stone calendar wheel resting on desert sand., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Aristotle Discovery",
+        "line": "In the fourth century BCE, Aristotle noted that Mars disappeared behind the Moon during an occultation, indicating that the planet was farther away. Ptolemy's model and his collective work on astronomy was presented in the multi-volume collection later called the Almagest, which became the authoritative treatise on Western astronomy for the next fourteen centuries.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_57.jpg",
+        "image_prompt": "A weathered stone pillar in an ancient Greek ruin., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Fire Star",
+        "line": "In the East Asian cultures, Mars is traditionally referred to as the fire star based on the Wuxing system. In 1609 Johannes Kepler published a 10-year study of Martian orbit, using the diurnal parallax of Mars, measured by Tycho Brahe, to make a preliminary calculation of the relative distance to the planet.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_58.jpg",
+        "image_prompt": "Traditional East Asian ink wash painting of a starry night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Elliptical Path",
+        "line": "From Brahe's observations of Mars, Kepler deduced that the planet orbited the Sun not in a circle, but in an ellipse. In 1610 the first use of a telescope for astronomical observation, including Mars, was performed by Italian astronomer Galileo Galilei.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_59.jpg",
+        "image_prompt": "A parchment page showing hand-drawn geometric elliptical orbits., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cassini Parallax",
+        "line": "The diurnal parallax of Mars was again measured in an effort to determine the Sun-Earth distance, which was first performed by Giovanni Domenico Cassini in 1672. On 5 September 1877, a perihelic opposition to Mars occurred, and the Italian astronomer Giovanni Schiaparelli used a 22-centimetre telescope in Milan to help produce the first detailed map of Mars.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_60.jpg",
+        "image_prompt": "An ornate 17th-century astrolabe resting on a wooden table., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Canali Observation",
+        "line": "These maps notably contained features he called canali, which, with the possible exception of the natural canyon Valles Marineris, were later shown to be an optical illusion. Influenced by the observations, the orientalist Percival Lowell founded an observatory which had 30- and 45-centimetre telescopes used for the exploration of Mars during the last good opportunity in 1894.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_61.jpg",
+        "image_prompt": "A deep rocky canyon stretching across a desolate red landscape., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Antoniadi Telescope",
+        "line": "During observations in 1909 by Antoniadi with an 84-centimetre telescope, irregular patterns were observed, but no canali were seen. The first spacecraft from Earth to visit Mars was Mars 1 of the Soviet Union, which flew by in 1963, but contact was lost en route.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_62.jpg",
+        "image_prompt": "A large vintage observatory refracting telescope lens., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mariner 4 Success",
+        "line": "NASA's Mariner 4 followed and became the first spacecraft to successfully transmit from Mars after launching on 28 November 1964 and making its closest approach on 15 July 1965. Mariner 4 detected the weak Martian radiation belt, measured at about 0.1% that of Earth, and captured the first images of another planet from deep space.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_63.jpg",
+        "image_prompt": "A vintage robotic spacecraft with solar panels in a clean room., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Viking Results",
+        "line": "After the results of the Viking life-detection experiments, the hypothesis of a dead planet was generally accepted, though data from Mariner 9 and Viking allowed better maps of Mars to be made. In 1997 Mars Pathfinder became the first successful rover mission beyond the Moon and started together with Mars Global Surveyor an uninterrupted active robotic presence at Mars that has lasted until today.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_64.jpg",
+        "image_prompt": "A robotic lander sitting on a barren, reddish-brown dirt plain., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Global Mapping",
+        "line": "It produced complete, extremely detailed maps of the Martian topography, magnetic field and surface minerals. As of 2023, Mars is host to ten functioning spacecraft, with eight in orbit and another two on the surface including the Mars Science Laboratory Curiosity rover and the Perseverance rover.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_65.jpg",
+        "image_prompt": "A computer screen displaying a digital elevation map of a planet in orange tones., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Online Tools",
+        "line": "NASA provides two online tools: Mars Trek, which provides visualizations of the planet using data from 50 years of exploration, and Experience Curiosity, which simulates traveling on Mars in 3-D with Curiosity. Planned missions to Mars include NASA's EscaPADE spacecraft, launched on 13 November 2025.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_66.jpg",
+        "image_prompt": "A computer monitor showing a three-dimensional terrain rendering., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Rosalind Franklin Rover",
+        "line": "The Rosalind Franklin rover mission, designed to search for evidence of past life, was intended to be launched in 2018 but has been repeatedly delayed, with a launch date pushed to 2028 at the earliest. China's Tianwen-3, a sample return mission, scheduled to launch in either 2028 or 2030.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_67.jpg",
+        "image_prompt": "A wheeled robotic chassis inside a specialized testing laboratory., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Space Debris",
+        "line": "As of February 2024, debris from these types of missions has reached over seven tons, consisting mostly of crashed and inactive spacecraft as well as discarded components. In April 2024, NASA selected several companies to begin studies on providing commercial services to further enable robotic science on Mars, focusing on telecommunications, payload delivery and surface imaging.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_68.jpg",
+        "image_prompt": "Scattered metallic debris fragments resting on a dusty surface., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "NASEM Committee",
+        "line": "In 2025, an ad hoc committee was convened by the National Academies of Sciences, Engineering, and Medicine to prioritize science objectives to guide human exploration on Mars. Out of hundreds of possible projects, the four panels highlighted eleven as the top science objectives to pursue, with the top priority being searching for current or extinct indigenous life on Mars.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_69.jpg",
+        "image_prompt": "A conference room with empty chairs and a presentation screen., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Vapor",
+        "line": "In 1894 W. W. Campbell at Lick Observatory observed the planet and found that if water vapor or oxygen occur in the atmosphere of Mars it is in quantities too small to have been detected by spectroscopes then available. It was not until the findings were confirmed by W. S. Adams in 1925 that the myth of the Earth-like habitability of Mars was finally broken.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_70.jpg",
+        "image_prompt": "A large brass spectroscope mounted in a historical observatory., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Thin Atmosphere",
+        "line": "During perihelion, Mars dips inside this region, but Mars's thin atmosphere prevents liquid water from existing over large regions for extended periods. Recent evidence has suggested that any water on the Martian surface may have been too salty and acidic to support regular terrestrial life.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_71.jpg",
+        "image_prompt": "A thin hazy horizon line above a dusty red landscape., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Geologically Dead",
+        "line": "Mars is nearly, or perhaps totally, geologically dead; the end of volcanic activity has apparently stopped the recycling of chemicals and minerals between the surface and interior of the planet. The Viking probes of the mid-1970s carried experiments designed to detect microorganisms in Martian soil at their respective landing sites and had positive results, including a temporary increase in CO2 production.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_72.jpg",
+        "image_prompt": "An extinct volcanic crater filled with dark solidified lava flows., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Methane Detection",
+        "line": "Small quantities of methane and formaldehyde detected by Mars orbiters are both claimed to be possible evidence for life, as these chemical compounds would quickly break down in the Martian atmosphere. Impact glass, formed by the impact of meteors, which on Earth can preserve signs of life, has also been found on the surface of the impact craters on Mars.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_73.jpg",
+        "image_prompt": "A digital spectral graph displaying gas emission lines on a screen., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cheyava Falls Rock",
+        "line": "The Cheyava Falls rock discovered on Mars in June 2024 has been designated by NASA as a potential biosignature and was core sampled by the Perseverance rover for possible return to Earth. The NASA Authorization Act of 2017 directed NASA to study the feasibility of a crewed Mars mission in the early 2030s; the resulting report concluded that this would be unfeasible.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_74.jpg",
+        "image_prompt": "A textured multi-colored rock outcrop with a small circular drill hole., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "SpaceX Development",
+        "line": "As of 2024, SpaceX has proceeded with the development of the Starship launch vehicle with the goal of Mars colonization, with Elon Musk envisioning the beginning of a Mars colony within the next twenty years. Any future human mission to Mars will likely take place within the optimal Mars launch window, which occurs every 26 months.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_75.jpg",
+        "image_prompt": "A massive stainless steel rocket standing tall at a launch site., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Phobos Elevator",
+        "line": "The moon Phobos has been proposed as an anchor point for a space elevator. The idea that Mars was populated by intelligent Martians became widespread in the late 19th century, adding to what has been termed Mars Fever.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_76.jpg",
+        "image_prompt": "A small irregularly shaped natural moon floating in the blackness of space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mythic Arena",
+        "line": "In his book Cosmos, planetary astronomer Carl Sagan wrote that Mars has become a kind of mythic arena onto which we have projected our Earthly hopes and fears. The depiction of Mars in fiction has been stimulated by its dramatic red color and by nineteenth-century scientific speculations that its surface conditions might support intelligent life.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_77.jpg",
+        "image_prompt": "A classic hardbound astronomy book resting on a dark wooden shelf., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Mars",
+    "source_url": "https://en.wikipedia.org/wiki/Mars"
+  }
+}

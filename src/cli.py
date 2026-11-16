@@ -19,6 +19,14 @@ def _bool(value: str) -> bool:
 
 
 def main() -> None:
+    import os
+    import socket
+
+    # Google's client and some uploads wait for ever when a connection stalls:
+    # on 16 Nov one upload sat silent for five hours and the run was cancelled.
+    # Every network read or write without its own timeout now gives up after
+    # this long (each chunk, not the whole upload) and the usual retry follows.
+    socket.setdefaulttimeout(float(os.getenv("NETWORK_TIMEOUT_SECONDS", "300")))
     parser = argparse.ArgumentParser(description="Story YouTube Bot (multi-channel)")
     sub = parser.add_subparsers(dest="command", required=True)
 

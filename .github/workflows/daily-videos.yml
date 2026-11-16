@@ -134,6 +134,11 @@ jobs:
 
       - name: Build and upload today's Shorts
         if: ${{ env.SHORTS_PER_CHANNEL != '0' }}
+        # On 16 Nov one upload hung for 5 hours after its video was finished;
+        # the run was cancelled with nothing after it done. 150 minutes, then
+        # the rest of the run (and the saved state) carries on.
+        continue-on-error: true
+        timeout-minutes: 150
         run: python -m src.cli daily-all --upload "$UPLOAD" --count "$SHORTS_PER_CHANNEL" --slot "$SLOT"
 
       # One picture post a day for each Page that has it switched on.

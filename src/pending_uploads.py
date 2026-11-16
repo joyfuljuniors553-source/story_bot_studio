@@ -335,6 +335,10 @@ def mark_duplicate_blocked(video_id: int, duplicate: tuple[int, str, str]) -> No
 # (DimeHorizon, 9-11 Nov). YouTube's own list of the channel's uploads is
 # checked too: a video whose title is already there is not uploaded again.
 _ON_YOUTUBE: dict[str, dict[str, str]] = {}  # channel id -> normalized title -> video URL
+_LONG_ON_YOUTUBE: dict[str, set[str]] = {}  # channel id -> normalized titles of its long videos
+# A long video is built from a Short that did well, on the same subject: only
+# the channel's other long videos count as its repeats (three were blocked).
+_LONG_SECONDS = 180
 
 
 def _title_key(title: object) -> str:
@@ -353,17 +357,27 @@ def youtube_titles(channel) -> dict[str, str]:
         uploads = youtube.channels().list(part="contentDetails", mine=True).execute()["items"][0][
             "contentDetails"]["relatedPlaylists"]["uploads"]
         token = None
-        for _ in range(4):  # the newest 200 uploads, 4 quota units
+        long_titles: set[str] = set()
+        for _ in range(4):  # the newest 200 uploads, 8 quota units with their lengths
             page = youtube.playlistItems().list(part="snippet", playlistId=uploads, maxResults=50,
                                                 pageToken=token).execute()
+            titles_by_id: dict[str, str] = {}
             for item in page.get("items", []):
                 snippet = item.get("snippet") or {}
                 video_id = (snippet.get("resourceId") or {}).get("videoId")
                 if video_id:
-                    found.setdefault(_title_key(snippet.get("title")), f"https://www.youtube.com/watch?v={video_id}")
+                    key = _title_key(snippet.get("title"))
+                    found.setdefault(key, f"https://www.youtube.com/watch?v={video_id}")
+                    titles_by_id[video_id] = key
+            if titles_by_id:
+                details = youtube.videos().list(part="contentDetails", id=",".join(titles_by_id)).execute()
+                for video in details.get("items", []):
+                    if _iso_seconds((video.get("contentDetails") or {}).get("duration")) > _LONG_SECONDS:
+                        long_titles.add(titles_by_id.get(video.get("id"), ""))
             token = page.get("nextPageToken")
             if not token:
                 break
+        _LONG_ON_YOUTUBE[channel.id] = long_titles
     except Exception as exc:
         print(f"[duplicates] {channel.id}: could not read the channel's uploads ({exc})")
         return {}
@@ -371,14 +385,26 @@ def youtube_titles(channel) -> dict[str, str]:
     return found
 
 
-def remember_upload(channel_id: str, title: object, video_url: str) -> None:
+def _iso_seconds(value: object) -> int:
+    """'PT1M23S' -> 83."""
+    match = re.fullmatch(r"P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", str(value or ""))
+    if not match:
+        return 0
+    days, hours, minutes, seconds = (int(part or 0) for part in match.groups())
+    return ((days * 24 + hours) * 60 + minutes) * 60 + seconds
+
+
+def remember_upload(channel_id: str, title: object, video_url: str, content_type: str = "short") -> None:
     if channel_id in _ON_YOUTUBE and video_url:
         _ON_YOUTUBE[channel_id][_title_key(title)] = video_url
+        if content_type == "long":
+            _LONG_ON_YOUTUBE.setdefault(channel_id, set()).add(_title_key(title))
 
 
-def already_on_youtube(channel, title: object, similar: bool = False) -> str | None:
+def already_on_youtube(channel, title: object, similar: bool = False,
+                       content_type: str = "short") -> str | None:
     """The URL of this channel's upload with the same title, if there is one;
-    with `similar`, also one on the same subject (topic_similarity)."""
+    with `similar`, also one of the same length kind on the same subject."""
     key = _title_key(title)
     if not key:
         return None
@@ -387,7 +413,9 @@ def already_on_youtube(channel, title: object, similar: bool = False) -> str | N
         return titles.get(key)
     from .topic_similarity import covered_by
 
-    earlier = covered_by(title, list(titles))
+    longs = _LONG_ON_YOUTUBE.get(channel.id, set())
+    same_kind = [t for t in titles if (t in longs) == (content_type == "long")]
+    earlier = covered_by(title, same_kind)
     return titles.get(earlier) if earlier else None
 
 
@@ -711,6 +739,40 @@ def _restore_waiting(video_id: int, is_daily: bool, error: str) -> None:
         conn.close()
 
 
+def requeue_wrongly_blocked(days: int = 7) -> list[str]:
+    """Videos blocked as 'same subject' under the old rule that the current one lets through.
+
+    Long videos were compared with the Shorts they are built from, and three
+    were blocked on 14 Nov. Their files are kept a week, so they can still go up."""
+    from .channels import get_channel
+
+    if not settings.db_path.exists():
+        return []
+    since = (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
+    conn = sqlite3.connect(settings.db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        rows = conn.execute(
+            """SELECT id, channel, title, content_type, COALESCE(is_daily, 0) AS is_daily FROM videos
+               WHERE status = 'duplicate_blocked' AND video_url IS NULL AND created_at >= ?
+                 AND error LIKE '%same subject already on YouTube%'""", (since,)).fetchall()
+    finally:
+        conn.close()
+    messages = []
+    for row in rows:
+        try:
+            channel = get_channel(row["channel"])
+        except Exception:
+            continue
+        if already_on_youtube(channel, row["title"], similar=True,
+                              content_type=str(row["content_type"] or "short")):
+            continue
+        _restore_waiting(int(row["id"]), bool(row["is_daily"]),
+                         "Back in the queue: its subject is only on the channel's other kind of video")
+        messages.append(f"{row['id']}: '{str(row['title'])[:60]}' back in the upload queue")
+    return messages
+
+
 def requeue_held_uploads() -> int:
     """Videos stuck at 'uploading' by an earlier hold go back to the queue; returns how many."""
     if not settings.db_path.exists():
@@ -859,7 +921,8 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
             return f"{video_id}: duplicate upload blocked; existing video: {duplicate[1]}"
         title_now = build_metadata(load_lesson_for(channel, row["topic"]), channel,
                                    content_type=row["content_type"] or "short").get("title")
-        existing = already_on_youtube(channel, title_now, similar=True)
+        existing = already_on_youtube(channel, title_now, similar=True,
+                                      content_type=str(row["content_type"] or "short"))
         if existing:
             mark_duplicate_blocked(video_id, (0, existing, "same subject already on YouTube"))
             return f"{video_id}: duplicate upload blocked; same subject already on YouTube: {existing}"
@@ -892,7 +955,8 @@ def _process_row(row: sqlite3.Row, *, bypass_safety_cap: bool = False) -> str:
                 progress_callback=lambda value: set_upload_progress(video_id, value),
                 upload_thumbnail=thumbnail_upload_allowed(channel.id),
             )
-            remember_upload(channel.id, metadata.get("title"), video_url)
+            remember_upload(channel.id, metadata.get("title"), video_url,
+                            str(row["content_type"] or "short"))
             if thumbnail_marked_disabled(channel.id) and thumbnail_upload_allowed(channel.id):
                 # The retest worked: the thumbnail went on, so the channel may again.
                 enable_thumbnail_upload(channel.id)
@@ -939,6 +1003,8 @@ def retry_pending_uploads(
     limit: int = 20, channel_id: str | None = None, content_type: str | None = None,
 ) -> list[str]:
     for message in adopt_existing_uploads():
+        print(f"[duplicates] {message}")
+    for message in requeue_wrongly_blocked():
         print(f"[duplicates] {message}")
     requeued = requeue_held_uploads()
     if requeued:

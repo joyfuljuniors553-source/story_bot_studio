@@ -559,7 +559,8 @@ def run_pipeline(
                     if not duplicate and channel is not None:
                         from .pending_uploads import already_on_youtube
 
-                        existing = already_on_youtube(channel, metadata.get("title"), similar=True)
+                        existing = already_on_youtube(channel, metadata.get("title"), similar=True,
+                                                      content_type=content_type)
                         if existing:
                             duplicate = (0, existing, "same subject already on YouTube")
                     if duplicate:
@@ -596,7 +597,7 @@ def run_pipeline(
                         )
                         from .pending_uploads import remember_upload
 
-                        remember_upload(channel_id, metadata.get("title"), video_url)
+                        remember_upload(channel_id, metadata.get("title"), video_url, content_type)
                         status = "scheduled" if publish_at else "uploaded"
                         from .pending_uploads import thumbnail_marked_disabled
 

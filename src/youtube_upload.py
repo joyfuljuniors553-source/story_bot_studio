@@ -101,7 +101,8 @@ def _youtube(client_secret_file: Path | None = None, token_file: Path | None = N
 
 
 def set_thumbnail(video_id: str, thumbnail_path: Path, attempts: int = 4,
-                  client_secret_file: Path | None = None, token_file: Path | None = None) -> None:
+                  client_secret_file: Path | None = None, token_file: Path | None = None,
+                  channel_id: str = "") -> None:
     youtube = _youtube(client_secret_file, token_file)
     last_error: Exception | None = None
     for attempt in range(1, attempts + 1):
@@ -110,6 +111,14 @@ def set_thumbnail(video_id: str, thumbnail_path: Path, attempts: int = 4,
                 videoId=video_id,
                 media_body=MediaFileUpload(str(thumbnail_path), mimetype="image/jpeg"),
             ).execute()
+            # Kept so a later run can check that YouTube shows this very card,
+            # and set it again if not (thumbnail_memory).
+            try:
+                from .thumbnail_memory import remember
+
+                remember(video_id, Path(thumbnail_path), token_file=token_file, channel_id=channel_id)
+            except Exception as exc:
+                print(f"[thumb-memory] {video_id}: not remembered ({exc})")
             return
         except Exception as exc:
             last_error = exc
@@ -216,7 +225,8 @@ def upload_video(video_path: Path, thumbnail_path: Path, metadata: dict[str, obj
 
     if upload_thumbnail:
         try:
-            set_thumbnail(video_id, thumbnail_path, client_secret_file=client_secret_file, token_file=token_file)
+            set_thumbnail(video_id, thumbnail_path, client_secret_file=client_secret_file, token_file=token_file,
+                          channel_id=str(getattr(channel, "id", "") or ""))
         except Exception as exc:
             held = " (video kept private until its thumbnail is set)" if required else ""
             raise ThumbnailUploadError(video_url, f"{exc}{held}") from exc

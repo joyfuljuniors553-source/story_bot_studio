@@ -54,7 +54,10 @@ def thumbnail_state(video_id: str) -> str:
     if shown is None:
         return "unknown"
     differences = []
-    for name in ("hq1", "hq2", "hq3"):
+    # hq1 is YouTube's frame from the very start, and every Short now opens on
+    # its own thumbnail (video.add_cover_frame): hq1 looks like the card, and
+    # five good thumbnails were called missing because of it.
+    for name in ("hq2", "hq3"):
         frame = _picture(video_id, name)
         if frame is not None:
             differences.append(float(abs(shown - frame).mean()))
@@ -256,10 +259,31 @@ def audit(days: int = 7, fix: bool = True, channel_id: str | None = None) -> lis
                 messages.append(f"{tag} could not list the channel's videos: {exc}")
                 continue
             fixes, counts = 0, {"custom": 0, "missing": 0, "unknown": 0, "fixed": 0}
+            from . import thumbnail_memory
+
             for video in videos:
-                state = thumbnail_state(video["id"])
                 kind = "Short" if video["short"] else "long"
                 label = f"{tag} {video['id']} ({kind}) '{video['title'][:50]}'"
+                if thumbnail_memory.known(video["id"]):
+                    # The card the bot set is remembered: YouTube's picture is
+                    # compared with it, and it is set again if another shows.
+                    result, note = thumbnail_memory.check(video["id"], channel, fix=fix)
+                    state = {"verified": "custom", "not_public": "unknown"}.get(result, "missing")
+                    if result == "fixed":
+                        counts["missing"] += 1
+                        counts["fixed"] += 1
+                        _record(video["id"], base.id, video["title"], "fixed", "stored card set again",
+                                fixed=True)
+                        messages.append(f"{label}: another picture was shown; our stored card set again")
+                    elif state in ("custom", "unknown"):
+                        counts[state] += 1
+                        _record(video["id"], base.id, video["title"], state, note)
+                    else:
+                        counts["missing"] += 1
+                        _record(video["id"], base.id, video["title"], result, note)
+                        messages.append(f"{label}: {result}: {note}")
+                    continue
+                state = thumbnail_state(video["id"])
                 if state != "missing":
                     counts[state] += 1
                     _record(video["id"], base.id, video["title"], state,
@@ -286,7 +310,7 @@ def audit(days: int = 7, fix: bool = True, channel_id: str | None = None) -> lis
                 try:
                     path = thumbnail_for(channel, video)
                     set_thumbnail(video["id"], path, attempts=2, client_secret_file=channel.client_secret_path,
-                                  token_file=channel.token_path)
+                                  token_file=channel.token_path, channel_id=base.id)
                 except Exception as exc:
                     error = str(exc)
                     _record(video["id"], base.id, video["title"], "fix_failed", error[:300])
@@ -313,4 +337,10 @@ def audit(days: int = 7, fix: bool = True, channel_id: str | None = None) -> lis
                 f"{counts['custom']} with thumbnail, {counts['fixed']} fixed now, "
                 f"{counts['missing'] - counts['fixed']} still missing, {counts['unknown']} not public yet"
             )
+    try:
+        from .thumbnail_memory import prune
+
+        prune()
+    except Exception as exc:
+        messages.append(f"thumbnail memory not pruned ({exc})")
     return messages

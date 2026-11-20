@@ -103,7 +103,7 @@ def _groq_json(prompt: str) -> dict:
             "User-Agent": "StoryBotStudio/1.0",
         },
     )
-    for attempt in range(1):
+    for attempt in range(2):
         try:
             with urllib.request.urlopen(req, timeout=90) as resp:
                 payload = json.loads(resp.read())
@@ -113,8 +113,19 @@ def _groq_json(prompt: str) -> dict:
             text = text.translate({0x2010: "-", 0x2011: "-", 0x00A0: " ", 0x202F: " "})
             return _extract_json(text)
         except urllib.error.HTTPError as e:
-            if e.code == 503 and attempt < 2:
-                time.sleep(4 * (attempt + 1))
+            if e.code == 400 and attempt == 0:
+                # JSON mode answers 400 when the model's reply is not clean JSON
+                # (every long script on GitHub failed so): ask again without
+                # it and take the JSON out of the reply ourselves.
+                detail = e.read().decode("utf-8", "replace")[:200]
+                print(f"[genre_topics] Groq 400 in JSON mode ({detail}); asking again without it")
+                plain = json.loads(body)
+                plain.pop("response_format", None)
+                req = urllib.request.Request(req.full_url, data=json.dumps(plain).encode("utf-8"),
+                                             headers=dict(req.header_items()))
+                continue
+            if e.code == 503 and attempt == 0:
+                time.sleep(4)
                 continue
             raise
     raise RuntimeError("Groq failed after retries")
@@ -935,7 +946,11 @@ def generate_genre_topics(channel: Channel, count: int = 5, scenes: int = SHORT_
     path = channel.custom_lessons_path if channel.builtin else channel.lessons_path
     path.parent.mkdir(parents=True, exist_ok=True)
 
-    for _ in range(count):
+    # A dropped script (a repeat, a person already in the bank) does not end
+    # the day: up to three tries per wanted script.
+    for _ in range(count * 3):
+        if len(added) >= count:
+            break
         try:
             one = _generate_one(channel, existing_titles + added_titles(lessons, added), scenes=scenes)
         except Exception as e:
@@ -948,6 +963,11 @@ def generate_genre_topics(channel: Channel, count: int = 5, scenes: int = SHORT_
             earlier = covered_by(one.get("title"), recent)
             if earlier:
                 print(f"[genre_topics] {channel.id}: '{one.get('title')}' repeats '{earlier}'; skipped")
+                existing_titles.append(str(one.get("title") or ""))
+                if one.get("source_title"):
+                    from .verified_facts import _FAILED
+
+                    _FAILED.setdefault((channel.id, False), set()).add(str(one["source_title"]).lower())
                 continue
         source = str(one.get("source_title") or "").lower()
         if source and any(str(v.get("source_title") or "").lower() == source for v in lessons.values()):

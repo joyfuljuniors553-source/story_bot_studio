@@ -165,6 +165,22 @@ def _bank_rows(channel: Channel) -> dict:
 _FAILED: dict[tuple[str, bool], set[str]] = {}
 
 
+def _covered_recently(channel: Channel, name: str, long_form: bool) -> str | None:
+    """A recent title of this channel (database or YouTube) that names this subject.
+
+    Long videos are built from Shorts on the same subject, so only Shorts are
+    checked against; a long video's subject is left to the long-video seeds."""
+    if long_form or getattr(channel, "builtin", False):
+        return None
+    try:
+        from .topic_similarity import name_covered, recent_titles
+
+        return name_covered(name, recent_titles(channel))
+    except Exception as exc:
+        print(f"[verified_facts] {channel.id}: recent titles not checked ({exc})")
+        return None
+
+
 def _used_subjects(channel: Channel, long_form: bool) -> set[str]:
     used = {
         str(raw.get("source_title") or "").lower()
@@ -665,6 +681,10 @@ def competitor_article(channel: Channel, their_title: str, long_form: bool) -> A
     )
     name = " ".join(str(raw.get("wikipedia") or "").split())
     used = _used_subjects(channel, long_form)
+    covered = _covered_recently(channel, name, long_form) if name else None
+    if covered:
+        print(f"[competitors] {channel.id}: {name} is already on the channel ('{covered[:60]}')")
+        return None
     if not name or name.lower() in used:
         print(f"[competitors] {channel.id}: no new subject in '{their_title[:60]}' "
               f"({'already covered' if name else 'does not fit this channel'})")
@@ -715,8 +735,18 @@ def write_next_lesson(channel: Channel, scenes: int, long_form: bool,
     # Words a person typed name the subject they want; that one is not swapped.
     asked_for = bool(text) and not _looks_like_instruction_title(text)
     error = "No verified script could be written"
-    for _attempt in range(1 if asked_for else 3):
+    failures, picks = 0, 0
+    while failures < (1 if asked_for else 3) and picks < 10:
+        picks += 1
         article = article_for_prompt(channel, text, long_form)
+        covered = None if asked_for else _covered_recently(channel, article.title, long_form)
+        if covered:
+            # Not counted as a failure: the next person is simply taken.
+            print(f"[verified_facts] {channel.id}: {article.title} is already on the channel "
+                  f"('{covered[:60]}'); taking the next subject")
+            _FAILED.setdefault((channel.id, long_form), set()).add(article.title.lower())
+            continue
+        failures += 1
         try:
             return write_lesson(channel, article, scenes, long_form)
         except Exception as exc:

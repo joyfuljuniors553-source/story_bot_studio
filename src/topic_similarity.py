@@ -110,3 +110,20 @@ def covered_by(title: object, titles: list[str]) -> str | None:
         if same_subject(title, other, common):
             return other
     return None
+
+
+def name_covered(name: object, titles: list[str]) -> str | None:
+    """The recent title that already names this subject ("Brigitte Bardot"), if any.
+
+    The subject's words must all be in one title, and not be words that run
+    through most of the channel's titles. The topic bank is the usual memory
+    of who was covered, but runs whose state was never saved left people out
+    of it (Brigitte Bardot was picked three times in a day)."""
+    common = common_words(titles)
+    words = subject(name, common)
+    if not words:
+        return None
+    for title in titles:
+        if words <= subject(title, common):
+            return title
+    return None

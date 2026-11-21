@@ -1,0 +1,1610 @@
+{
+  "long_what_secret_lies_within_mars_the_red_planet": {
+    "title": "What Secret Lies Within Mars, the Red Planet?",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Fourth Planet",
+        "line": "Mars is the fourth planet from the Sun and is also known as the Red Planet for its orange-red appearance. Mars is a desert-like rocky planet with a tenuous atmosphere that is primarily carbon dioxide.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_01.jpg",
+        "image_prompt": "A desert rocky landscape under a dim sky with orange hues., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Temperature Extremes",
+        "line": "Atmospheric temperature ranges from -153 to 20 °C and cosmic radiation is high across the surface. Mars retains some water in the ground as well as thinly in the atmosphere forming clouds, fog, and frost.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_02.jpg",
+        "image_prompt": "Barren rocky ground with frost crystals under a cold, distant sun., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Polar Caps",
+        "line": "Larger polar regions consist of permafrost and ice caps with seasonal carbon dioxide snow, but no bodies of liquid surface water exist. Its surface gravity is roughly a third of Earth's or double that of the Moon.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_03.jpg",
+        "image_prompt": "A vast sheet of white ice and layered frost stretching across a polar landscape., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Diameter Comparison",
+        "line": "Its mean diameter of 6,779 km is about half the Earth's, or twice the Moon's. Fine dust is prevalent across the surface and the atmosphere, being picked up and spread by weak wind.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_04.jpg",
+        "image_prompt": "An expanse of rust-colored stone and fine dust under daylight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Martian Dichotomy",
+        "line": "The terrain roughly follows a north-south divide known as the Martian dichotomy. The northern hemisphere mainly consists of relatively flat, low lying plains.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_05.jpg",
+        "image_prompt": "An elevated view showing a boundary between smooth lowlands and a rugged cratered region., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Southern Highlands",
+        "line": "The southern hemisphere consists of cratered highlands bearing the scars of impacts. Geologically the planet is fairly active with marsquakes trembling underneath the ground.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_06.jpg",
+        "image_prompt": "Rugged highlands heavily pitted with ancient circular impact craters., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Towering Volcanoes",
+        "line": "The planet hosts many enormous volcanoes that are extinct. The tallest volcano is Olympus Mons, which stands at 21.9 km tall.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_07.jpg",
+        "image_prompt": "A massive volcanic mountain rising above the surrounding rust-colored terrain., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Valles Marineris",
+        "line": "Valles Marineris is one of the largest canyons in the Solar System, measuring 4,000 km long. Mars has two natural satellites that are small and irregular in shape named Phobos and Deimos.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_08.jpg",
+        "image_prompt": "A gigantic canyon system with steep layered walls cutting deep into the red planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Axial Tilt",
+        "line": "With a significant axial tilt of 25 degrees, Mars experiences seasons like Earth. A Martian solar year is equal to 1.88 Earth years or 687 Earth days.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_09.jpg",
+        "image_prompt": "A dusty orange landscape illuminated by a low-angled sun casting long shadows., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar Day",
+        "line": "A Martian solar day, or sol, is equal to 24.6 hours. Mars formed along with the other planets approximately 4.5 billion years ago.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_10.jpg",
+        "image_prompt": "The Martian landscape transitioning from daylight into a dim twilight., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Noachian Period",
+        "line": "During the Martian Noachian period from 4.5 to 3.5 billion years ago, its surface was marked by meteor impacts and valley formation. Erosion, the possible presence of water oceans, and the loss of its magnetosphere also marked the Noachian period.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_11.jpg",
+        "image_prompt": "An ancient landscape scarred by heavy meteor strikes and carved channels., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Hesperian Period",
+        "line": "The Hesperian period began 3.5 billion years ago and ended between 3.3 and 2.9 billion years ago. The Hesperian period was dominated by widespread volcanic activity and flooding that carved immense outflow channels.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_12.jpg",
+        "image_prompt": "Vast fields of hardened dark lava plains stretching toward the horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Amazonian Period",
+        "line": "The Amazonian period continues to the present and is the currently dominating influence on geological processes. The possibility of past or present life on Mars remains an area of active scientific investigation.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_13.jpg",
+        "image_prompt": "A modern wind-swept Martian desert with ripples of fine reddish dust., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Historical Observation",
+        "line": "Being visible with the naked eye in Earth's sky as a red wandering star, Mars has been observed throughout history. In 1963 the first flight to Mars took place with Mars 1, but communication was lost en route.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_14.jpg",
+        "image_prompt": "A dark night sky filled with stars and a distinct reddish wandering point of light., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "First Flyby",
+        "line": "The first successful flyby exploration of Mars was conducted in 1965 with Mariner 4. In 1971 Mariner 9 entered orbit around Mars, being the first spacecraft to orbit any body other than the Moon, Sun or Earth.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_15.jpg",
+        "image_prompt": "A robotic spacecraft passing above a distant, cratered planetary limb., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "First Landings",
+        "line": "Following in the same year were the first uncontrolled impact by Mars 2 and first successful landing by Mars 3. Probes have been active on Mars continuously since 1997.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_16.jpg",
+        "image_prompt": "A landing module resting on the rocky, dust-covered Martian soil., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Multiple Spacecraft",
+        "line": "At times, more than ten probes have simultaneously operated in orbit or on the surface. Mars is an often proposed target for future crewed exploration missions, though no such mission is currently planned.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_17.jpg",
+        "image_prompt": "An orbital satellite looking down at the swirling weather patterns of a distant planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Accretion Origin",
+        "line": "Scientists have theorized that during the Solar System's formation, Mars was created as the result of runaway accretion. Mars has many distinctive chemical features caused by its position in the Solar System.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_18.jpg",
+        "image_prompt": "Molten rock and planetary building blocks coalescing in orbit around a young star., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Volatile Elements",
+        "line": "Elements with comparatively low boiling points, such as chlorine, phosphorus, and sulfur, are much more common on Mars than on Earth. These elements were probably pushed outward by the young Sun's energetic solar wind.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_19.jpg",
+        "image_prompt": "Yellowish mineral crusts formed on the surface of volcanic rocks., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Late Heavy Bombardment",
+        "line": "After the formation of the planets, the inner Solar System may have been subjected to the Late Heavy Bombardment. About 60% of the surface of Mars shows a record of impacts from that era.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_20.jpg",
+        "image_prompt": "Numerous large meteorites striking the surface of a young, forming planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Disputed Modeling",
+        "line": "More recent modeling has disputed the existence ofal of the Late Heavy Bombardment. There is evidence of an enormous impact basin in the Northern Hemisphere of Mars.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_21.jpg",
+        "image_prompt": "Computer-generated topographic maps displaying elevation data of a planetary surface., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Pluto-Sized Impact",
+        "line": "It has been hypothesized that the basin was formed when Mars was struck by a Pluto-sized body about four billion years ago. The event created the smooth Borealis basin that covers 40% of the planet.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_22.jpg",
+        "image_prompt": "A massive dwarf planet colliding with the northern hemisphere of a rocky world., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ring System Evidence",
+        "line": "A 2023 study shows evidence, based on the orbital inclination of Deimos, that Mars may once have had a ring system. The ring system may have existed 3.5 billion years to 4 billion years ago.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_23.jpg",
+        "image_prompt": "A faint ring of rocky debris encircling a rust-colored planet in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Phobos Origin",
+        "line": "The ring system may have been formed from a moon 20 times more massive than Phobos. Phobos would be a remnant of that ancient ring system.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_24.jpg",
+        "image_prompt": "A large ancient moon fracturing under tidal forces above a red horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Noachian Surfaces",
+        "line": "The Noachian period saw the formation of the oldest extant surfaces of Mars, 4.5 to 3.5 billion years ago. The Tharsis bulge, a volcanic upland, is thought to have formed during this period with extensive flooding by liquid water late in the era.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_25.jpg",
+        "image_prompt": "Ancient, heavily weathered rock formations exposed on a hillside., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Volcanic Upland",
+        "line": "The Tharsis bulge, a volcanic upland, is thought to have formed during this period with extensive flooding by liquid water late in the era. The large canyon, Valles Marineris, has a length of 4,000 kilometres and a depth of up to 7 kilometres.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_26.jpg",
+        "image_prompt": "vast volcanic upland plain on a barren planet, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Canyon Scale",
+        "line": "The length of Valles Marineris is equivalent to the length of Europe and extends across one-fifth the circumference of Mars. By comparison, the Grand Canyon on Earth is only 446 kilometres long and nearly 2 kilometres deep.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_27.jpg",
+        "image_prompt": "aerial view of a colossal rift valley on a red planet, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Crust Collapse",
+        "line": "Valles Marineris was formed due to the swelling of the Tharsis area, which caused the crust in the area of Valles Marineris to collapse. In 2012, it was proposed that Valles Marineris is not just a graben, but a plate boundary where 150 kilometres of transverse motion has occurred.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_28.jpg",
+        "image_prompt": "fractured planetary crust with deep chasms, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Volcano Caves",
+        "line": "Images from the Thermal Emission Imaging System aboard NASA's Mars Odyssey orbiter have revealed seven possible cave entrances on the flanks of the volcano Arsia Mons. The caves, named after loved ones of their discoverers, are collectively known as the seven sisters.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_29.jpg",
+        "image_prompt": "dark volcanic mountain slopes under a thin atmosphere, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cave Widths",
+        "line": "Cave entrances measure from 100 to 252 metres wide and they are estimated to be at least 73 to 96 metres deep. Dena is the only exception; its floor is visible and was measured to be 130 metres deep.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_30.jpg",
+        "image_prompt": "large circular sinkhole on a barren hillside, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Radiation Shield",
+        "line": "The interiors of these caverns may be protected from micrometeoroids, UV radiation, solar flares and high energy particles that bombard the planet's surface. Mars lost its magnetosphere 4 billion years ago, possibly because of numerous asteroid strikes, so the solar wind interacts directly with the Martian ionosphere.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_31.jpg",
+        "image_prompt": "dark cavern entrance sheltered by overhangs, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Loss",
+        "line": "Both Mars Global Surveyor and Mars Express have detected ionized atmospheric particles trailing off into space behind Mars, and this atmospheric loss is being studied by the MAVEN orbiter. Atmospheric pressure on the surface today ranges from a low of 30 Pa on Olympus Mons to over 1,155 Pa in Hellas Planitia, with a mean pressure at the surface level of 600 Pa.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_32.jpg",
+        "image_prompt": "spacecraft orbiting a rust-colored planet, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Dusty Air",
+        "line": "The atmosphere of Mars consists of about 96% carbon dioxide, 1.93% argon and 1.89% nitrogen along with traces of oxygen and water. The atmosphere is quite dusty, containing particulates about 1.5 um in diameter which give the Martian sky a tawny color when seen from the surface.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_33.jpg",
+        "image_prompt": "dusty hazy atmosphere over a flat desert floor, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Methane Mystery",
+        "line": "Despite repeated detections of methane on Mars, there is no scientific consensus as to its origin. Using acoustic recordings collected by the Perseverance rover, researchers concluded that the speed of sound there is approximately 240 m/s for frequencies below 240 Hz, and 250 m/s for those above.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_34.jpg",
+        "image_prompt": "scientific instruments on a robotic rover in a desert, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Global Aurora",
+        "line": "Because Mars lacks a global magnetic field, the types and distribution of auroras there differ from those on Earth; rather than being mostly restricted to polar regions, a Martian aurora can encompass the planet. In September 2017, NASA reported radiation levels on the surface of the planet Mars were temporarily doubled, and were associated with an aurora 25 times brighter than any observed earlier.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_35.jpg",
+        "image_prompt": "faint glowing light emission across a night sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Southern Summer",
+        "line": "Additionally the orbit of Mars has, compared to Earth's, a large eccentricity and approaches perihelion when it is summer in its southern hemisphere and winter in its northern. Mars has the largest dust storms in the Solar System, reaching speeds of over 160 km/h.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_36.jpg",
+        "image_prompt": "sunlit rocky ground with long shadows, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Polar Water Ice",
+        "line": "While Mars contains water in larger amounts, most of it is dust covered water ice at the Martian polar ice caps. The volume of water ice in the south polar ice cap, if melted, would be enough to cover most of the surface of the planet with a depth of 11 metres.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_37.jpg",
+        "image_prompt": "white ice cap bordered by dark rocky soil, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Outflow Channels",
+        "line": "Huge linear swathes of scoured ground, known as outflow channels, cut across the surface in about 25 places. One of the larger examples, Ma'adim Vallis, is 700 kilometres long, much greater than the Grand Canyon, with a width of 20 kilometres and a depth of 2 kilometres in places.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_38.jpg",
+        "image_prompt": "deep carved channels running through a dry plateau, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Dendritic Networks",
+        "line": "Elsewhere, particularly on the oldest areas of the Martian surface, finer-scale, dendritic networks of valleys are spread across significant proportions of the landscape. Along craters and canyon walls, there are thousands of features that appear similar to terrestrial gullies.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_39.jpg",
+        "image_prompt": "intricate network of dry riverbeds from above, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Jarosite Discovery",
+        "line": "In 2004, Opportunity detected the mineral jarosite. The Spirit rover found concentrated deposits of silica in 2007 that indicated wet conditions in the past.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_40.jpg",
+        "image_prompt": "robotic wheels resting on fine soil and small rocks, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mineral Gypsum",
+        "line": "and in December 2011, the mineral gypsum, which also forms in the presence of water, was found on the surface by NASA's Mars rover Opportunity. On 18 March 2013, NASA reported evidence from instruments on the Curiosity rover of mineral hydration, likely hydrated calcium sulfate, in several rock samples.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_41.jpg",
+        "image_prompt": "pale mineral veins crisscrossing dark bedrock, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Tintina and Sutton",
+        "line": "including the broken fragments of Tintina rock and Sutton Inlier rock as well as in veins and nodules in other rocks like Knorr rock and Wernicke rock. Analysis using the rover's DAN instrument provided evidence of subsurface water, amounting to as much as 4% water content, down to a depth of 60 centimetres.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_42.jpg",
+        "image_prompt": "scattered rock fragments on a sandy flat, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Brine Flows",
+        "line": "In September 2015, NASA announced that they had found strong evidence of hydrated brine flows in recurring slope lineae, based on spectrometer readings of the darkened areas of slopes. Researchers suspect much of the low northern plains of the planet were covered with an ocean hundreds of meters deep, though this theory remains controversial.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_43.jpg",
+        "image_prompt": "dark streaks running down a steep hillside, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Deuterium Ratio",
+        "line": "The amount of Martian deuterium is five to seven times the amount on Earth, suggesting that ancient Mars had significantly higher levels of water. Near the northern polar cap is the 81.4 kilometres wide Korolev Crater, which the Mars Express orbiter found to be filled with approximately 2,200 cubic kilometres of water ice.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_44.jpg",
+        "image_prompt": "spectrometer equipment glowing in a laboratory, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Utopia Planitia",
+        "line": "In November 2016, NASA reported finding a large amount of underground ice in the Utopia Planitia region. The axial tilt of Mars is 25.19° relative to its orbital plane, which is similar to the axial tilt of Earth.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_45.jpg",
+        "image_prompt": "smooth desert plain with subtle surface cracks, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbital Eccentricity",
+        "line": "Mars has a relatively pronounced orbital eccentricity of about 0.09; of the seven other planets in the Solar System, only Mercury has a larger orbital eccentricity. The average time between the successive oppositions of Mars, its synodic period, is 780 days; but the number of days between successive oppositions can range from 764 to 812.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_46.jpg",
+        "image_prompt": "elliptical orbit diagram in space, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Opposition Distance",
+        "line": "The distance at close approach varies between about 54 and 103 million km due to the planets' elliptical orbits, which causes comparable variation in angular size. The mean apparent magnitude of Mars is +0.71 with a standard deviation of 1.05.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_47.jpg",
+        "image_prompt": "distant bright star in a dark night sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Retrograde Motion",
+        "line": "As Mars approaches opposition, it begins a period of retrograde motion, which means it will appear to move backwards in a looping curve with respect to the background stars. Mars has two relatively small natural moons, Phobos and Deimos, which orbit at 9,376 km and 23,460 km around the planet.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_48.jpg",
+        "image_prompt": "star trails looping across the night sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Discovery Year",
+        "line": "Both satellites were discovered in 1877 by Asaph Hall and were named after the characters Phobos and Deimos. From the surface of Mars, the motions of Phobos and Deimos appear different from that of the Earth's satellite, the Moon.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_49.jpg",
+        "image_prompt": "historic telescope dome under a starry sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Tidal Forces",
+        "line": "Because the orbit of Phobos is below a synchronous altitude, tidal forces from Mars are gradually lowering its orbit. In about 50 million years, it could either crash into Mars's surface or break up into a ring structure around the planet.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_50.jpg",
+        "image_prompt": "irregular rocky asteroid illuminated by sunlight, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Porous Interior",
+        "line": "More-recent lines of evidence for Phobos having a highly porous interior, and suggesting a composition containing mainly phyllosilicates and other minerals known from Mars. point toward an origin of Phobos from material ejected by an impact on Mars that reaccreted in Martian orbit.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_51.jpg",
+        "image_prompt": "cratered surface of a small rocky moon close up, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Lost Moon",
+        "line": "A study conducted by a team of researchers from multiple countries suggests that a lost moon, at least fifteen times the size of Phobos, may have existed in the past. By analyzing rocks which point to tidal processes on the planet, it is possible that these tides may have been regulated by a past moon.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_52.jpg",
+        "image_prompt": "A desolate rocky expanse under a twilight sky with a distant celestial body., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Oppositions",
+        "line": "The history of observations of Mars is marked by oppositions of Mars when the planet is closest to Earth and hence is most easily visible, which occur every couple of years. Even more notable are the perihelic oppositions of Mars, which are distinguished because Mars is close to perihelion, making it even closer to Earth.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_53.jpg",
+        "image_prompt": "An observatory dome open to a starry night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Nergal Worship",
+        "line": "The ancient Sumerians named Mars Nergal, the god of war and plague. In Mesopotamian texts, Mars is referred to as the star of judgement of the fate of the dead.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_54.jpg",
+        "image_prompt": "Ancient stone carvings depicting a mythical deity., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Retrograde Motion",
+        "line": "The existence of Mars as a wandering object in the night sky was also recorded by the ancient Egyptian astronomers and, by 1534 BCE, they were familiar witharsis retrograde motion of the planet. By the period of the Neo-Babylonian Empire, the Babylonian astronomers were making regular records of the positions of the planets and systematic observations of their behavior.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_55.jpg",
+        "image_prompt": "Ancient papyrus scrolls featuring astronomical diagrams., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Synodic Periods",
+        "line": "For Mars, they knew that the planet made 37 synodic periods, or 42 circuits of the zodiac, every 79 years. It was the Romans who named the planet Mars, for their god of war, often represented by the sword and shield of the planet's namesake.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_56.jpg",
+        "image_prompt": "An ancient stone calendar wheel resting on desert sand., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Aristotle Discovery",
+        "line": "In the fourth century BCE, Aristotle noted that Mars disappeared behind the Moon during an occultation, indicating that the planet was farther away. Ptolemy's model and his collective work on astronomy was presented in the multi-volume collection later called the Almagest, which became the authoritative treatise on Western astronomy for the next fourteen centuries.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_57.jpg",
+        "image_prompt": "A weathered stone pillar in an ancient Greek ruin., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Fire Star",
+        "line": "In the East Asian cultures, Mars is traditionally referred to as the fire star based on the Wuxing system. In 1609 Johannes Kepler published a 10-year study of Martian orbit, using the diurnal parallax of Mars, measured by Tycho Brahe, to make a preliminary calculation of the relative distance to the planet.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_58.jpg",
+        "image_prompt": "Traditional East Asian ink wash painting of a starry night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Elliptical Path",
+        "line": "From Brahe's observations of Mars, Kepler deduced that the planet orbited the Sun not in a circle, but in an ellipse. In 1610 the first use of a telescope for astronomical observation, including Mars, was performed by Italian astronomer Galileo Galilei.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_59.jpg",
+        "image_prompt": "A parchment page showing hand-drawn geometric elliptical orbits., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cassini Parallax",
+        "line": "The diurnal parallax of Mars was again measured in an effort to determine the Sun-Earth distance, which was first performed by Giovanni Domenico Cassini in 1672. On 5 September 1877, a perihelic opposition to Mars occurred, and the Italian astronomer Giovanni Schiaparelli used a 22-centimetre telescope in Milan to help produce the first detailed map of Mars.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_60.jpg",
+        "image_prompt": "An ornate 17th-century astrolabe resting on a wooden table., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Canali Observation",
+        "line": "These maps notably contained features he called canali, which, with the possible exception of the natural canyon Valles Marineris, were later shown to be an optical illusion. Influenced by the observations, the orientalist Percival Lowell founded an observatory which had 30- and 45-centimetre telescopes used for the exploration of Mars during the last good opportunity in 1894.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_61.jpg",
+        "image_prompt": "A deep rocky canyon stretching across a desolate red landscape., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Antoniadi Telescope",
+        "line": "During observations in 1909 by Antoniadi with an 84-centimetre telescope, irregular patterns were observed, but no canali were seen. The first spacecraft from Earth to visit Mars was Mars 1 of the Soviet Union, which flew by in 1963, but contact was lost en route.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_62.jpg",
+        "image_prompt": "A large vintage observatory refracting telescope lens., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mariner 4 Success",
+        "line": "NASA's Mariner 4 followed and became the first spacecraft to successfully transmit from Mars after launching on 28 November 1964 and making its closest approach on 15 July 1965. Mariner 4 detected the weak Martian radiation belt, measured at about 0.1% that of Earth, and captured the first images of another planet from deep space.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_63.jpg",
+        "image_prompt": "A vintage robotic spacecraft with solar panels in a clean room., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Viking Results",
+        "line": "After the results of the Viking life-detection experiments, the hypothesis of a dead planet was generally accepted, though data from Mariner 9 and Viking allowed better maps of Mars to be made. In 1997 Mars Pathfinder became the first successful rover mission beyond the Moon and started together with Mars Global Surveyor an uninterrupted active robotic presence at Mars that has lasted until today.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_64.jpg",
+        "image_prompt": "A robotic lander sitting on a barren, reddish-brown dirt plain., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Global Mapping",
+        "line": "It produced complete, extremely detailed maps of the Martian topography, magnetic field and surface minerals. As of 2023, Mars is host to ten functioning spacecraft, with eight in orbit and another two on the surface including the Mars Science Laboratory Curiosity rover and the Perseverance rover.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_65.jpg",
+        "image_prompt": "A computer screen displaying a digital elevation map of a planet in orange tones., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Online Tools",
+        "line": "NASA provides two online tools: Mars Trek, which provides visualizations of the planet using data from 50 years of exploration, and Experience Curiosity, which simulates traveling on Mars in 3-D with Curiosity. Planned missions to Mars include NASA's EscaPADE spacecraft, launched on 13 November 2025.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_66.jpg",
+        "image_prompt": "A computer monitor showing a three-dimensional terrain rendering., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Rosalind Franklin Rover",
+        "line": "The Rosalind Franklin rover mission, designed to search for evidence of past life, was intended to be launched in 2018 but has been repeatedly delayed, with a launch date pushed to 2028 at the earliest. China's Tianwen-3, a sample return mission, scheduled to launch in either 2028 or 2030.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_67.jpg",
+        "image_prompt": "A wheeled robotic chassis inside a specialized testing laboratory., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Space Debris",
+        "line": "As of February 2024, debris from these types of missions has reached over seven tons, consisting mostly of crashed and inactive spacecraft as well as discarded components. In April 2024, NASA selected several companies to begin studies on providing commercial services to further enable robotic science on Mars, focusing on telecommunications, payload delivery and surface imaging.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_68.jpg",
+        "image_prompt": "Scattered metallic debris fragments resting on a dusty surface., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "NASEM Committee",
+        "line": "In 2025, an ad hoc committee was convened by the National Academies of Sciences, Engineering, and Medicine to prioritize science objectives to guide human exploration on Mars. Out of hundreds of possible projects, the four panels highlighted eleven as the top science objectives to pursue, with the top priority being searching for current or extinct indigenous life on Mars.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_69.jpg",
+        "image_prompt": "A conference room with empty chairs and a presentation screen., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Vapor",
+        "line": "In 1894 W. W. Campbell at Lick Observatory observed the planet and found that if water vapor or oxygen occur in the atmosphere of Mars it is in quantities too small to have been detected by spectroscopes then available. It was not until the findings were confirmed by W. S. Adams in 1925 that the myth of the Earth-like habitability of Mars was finally broken.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_70.jpg",
+        "image_prompt": "A large brass spectroscope mounted in a historical observatory., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Thin Atmosphere",
+        "line": "During perihelion, Mars dips inside this region, but Mars's thin atmosphere prevents liquid water from existing over large regions for extended periods. Recent evidence has suggested that any water on the Martian surface may have been too salty and acidic to support regular terrestrial life.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_71.jpg",
+        "image_prompt": "A thin hazy horizon line above a dusty red landscape., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Geologically Dead",
+        "line": "Mars is nearly, or perhaps totally, geologically dead; the end of volcanic activity has apparently stopped the recycling of chemicals and minerals between the surface and interior of the planet. The Viking probes of the mid-1970s carried experiments designed to detect microorganisms in Martian soil at their respective landing sites and had positive results, including a temporary increase in CO2 production.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_72.jpg",
+        "image_prompt": "An extinct volcanic crater filled with dark solidified lava flows., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Methane Detection",
+        "line": "Small quantities of methane and formaldehyde detected by Mars orbiters are both claimed to be possible evidence for life, as these chemical compounds would quickly break down in the Martian atmosphere. Impact glass, formed by the impact of meteors, which on Earth can preserve signs of life, has also been found on the surface of the impact craters on Mars.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_73.jpg",
+        "image_prompt": "A digital spectral graph displaying gas emission lines on a screen., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cheyava Falls Rock",
+        "line": "The Cheyava Falls rock discovered on Mars in June 2024 has been designated by NASA as a potential biosignature and was core sampled by the Perseverance rover for possible return to Earth. The NASA Authorization Act of 2017 directed NASA to study the feasibility of a crewed Mars mission in the early 2030s; the resulting report concluded that this would be unfeasible.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_74.jpg",
+        "image_prompt": "A textured multi-colored rock outcrop with a small circular drill hole., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "SpaceX Development",
+        "line": "As of 2024, SpaceX has proceeded with the development of the Starship launch vehicle with the goal of Mars colonization, with Elon Musk envisioning the beginning of a Mars colony within the next twenty years. Any future human mission to Mars will likely take place within the optimal Mars launch window, which occurs every 26 months.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_75.jpg",
+        "image_prompt": "A massive stainless steel rocket standing tall at a launch site., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Phobos Elevator",
+        "line": "The moon Phobos has been proposed as an anchor point for a space elevator. The idea that Mars was populated by intelligent Martians became widespread in the late 19th century, adding to what has been termed Mars Fever.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_76.jpg",
+        "image_prompt": "A small irregularly shaped natural moon floating in the blackness of space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mythic Arena",
+        "line": "In his book Cosmos, planetary astronomer Carl Sagan wrote that Mars has become a kind of mythic arena onto which we have projected our Earthly hopes and fears. The depiction of Mars in fiction has been stimulated by its dramatic red color and by nineteenth-century scientific speculations that its surface conditions might support intelligent life.",
+        "speech": "",
+        "image": "assets/generated/what_secret_lies_within_mars_the_red_planet_77.jpg",
+        "image_prompt": "A classic hardbound astronomy book resting on a dark wooden shelf., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Mars",
+    "source_url": "https://en.wikipedia.org/wiki/Mars"
+  },
+  "long_what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth": {
+    "title": "What Makes Saturn Less Dense Than Water While Weighing Over 95 Times Earth?",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Gas Giant Scale",
+        "line": "Saturn is the sixth planet from the Sun, and is the second largest planet in the Solar System, after Jupiter. It is a gas giant, with an average radius of about 9 times that of Earth.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_01.jpg",
+        "image_prompt": "A distant view of a large ringed planet in dark space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mass Comparison",
+        "line": "It has an eighth of the average density of Earth, but is over 95 times more massive. Saturn orbits the Sun at a distance of 9.59 AU (1,434 million km), with an orbital period of 29.45 years.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_02.jpg",
+        "image_prompt": "Abstract representation of planetary mass and volume comparison., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Interior Layers",
+        "line": "Saturn's interior is thought to be composed of a rocky core, surrounded by a deep layer of metallic hydrogen. An intermediate layer of liquid hydrogen and liquid helium sits beneath an outer layer of gas.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_03.jpg",
+        "image_prompt": "Cutaway diagram of a gas giant planet showing internal layers., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Pale Hue",
+        "line": "Saturn has a pale yellow hue, due to ammonia crystals in its upper atmosphere. An electrical current in the metallic hydrogen layer is thought to give rise to Saturn's planetary magnetic field.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_04.jpg",
+        "image_prompt": "Soft yellowish cloud tops of a gas giant atmosphere., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Winds",
+        "line": "Wind speeds on Saturn can reach 1,800 kilometers per hour (1,100 miles per hour). The planet has a bright and extensive system of rings, composed mainly of ice particles.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_05.jpg",
+        "image_prompt": "High-speed atmospheric banding and cloud movement., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Debris and Dust",
+        "line": "The rings also contain a smaller amount of rocky debris and dust. At least 293 moons orbit the planet, of which 63 are officially named.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_06.jpg",
+        "image_prompt": "Close-up of rocky and icy ring material in orbit., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Titan Size",
+        "line": "Titan, Saturn's largest moon, is larger than the planet Mercury and is the second largest moon in the Solar System. Saturn is named after the Roman god of wealth and agriculture, who was the father of the god Jupiter.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_07.jpg",
+        "image_prompt": "A hazy, thick-atmosphere moon orbiting a distant giant planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Astronomical Symbol",
+        "line": "Its astronomical symbol has been traced back to the Greek Oxyrhynchus Papyri. The symbol is a Greek kappa-rho ligature with a horizontal stroke, as an abbreviation for Κρονος.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_08.jpg",
+        "image_prompt": "Ancient papyrus manuscript fragment with faded Greek lettering., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Christian Cross",
+        "line": "It later came to look like a lower-case Greek eta, with the cross added at the top in the 16th century. The Romans named the seventh day of the week Saturday, Sāturni diēs, for the planet Saturn.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_09.jpg",
+        "image_prompt": "Old historical text with handwritten marginalia and symbols., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Surface Absence",
+        "line": "Saturn is a gas giant, composed predominantly of hydrogen and helium, and lacks a definite surface. Saturn is the only planet of the Solar System that is less dense than water—about 30% less.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_10.jpg",
+        "image_prompt": "Deep churning clouds fading into infinity without ground., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Specific Density",
+        "line": "The average specific density of the planet is 0.69 g/cm3 due to its atmosphere. Together, Jupiter and Saturn hold 92% of the total planetary mass in the Solar System.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_11.jpg",
+        "image_prompt": "Scientific density calculation notes written on a chalkboard., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Non-Ideal Liquid",
+        "line": "Hydrogen becomes a non-ideal liquid when the density is above 0.01 g/cm3 inside the planet. The temperature, pressure, and density inside Saturn all rise steadily toward the core.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_12.jpg",
+        "image_prompt": "Laboratory flask showing high-pressure fluid phase changes., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Metallic State",
+        "line": "This rise causes hydrogen to become a metal in the deeper layers of Saturn. Its gravitational harmonics and oblateness reveal it to be significantly more centrally condensed than Jupiter.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_13.jpg",
+        "image_prompt": "Gleaming metallic liquid under intense laboratory lighting., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Hydrogen Fraction",
+        "line": "Saturn's central regions are about 50% hydrogen by mass, while Jupiter's are about 67% hydrogen. In 2004, scientists estimated that the core must be 9–22 times the mass of Earth.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_14.jpg",
+        "image_prompt": "Pie chart graphic showing elemental composition percentages., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ring Measurements",
+        "line": "Measurements of Saturn's rings suggest a much more diffuse core equal to about 17 Earths. The outermost layer spans about 1,000 km (620 mi) and consists entirely of gas.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_15.jpg",
+        "image_prompt": "Detailed spectral analysis charts of planetary rings., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Internal Heat",
+        "line": "Saturn has a hot interior, reaching 11,700 °C (21,100 °F) at its core. The planet radiates 2.5 times more energy into space than it receives from the Sun.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_16.jpg",
+        "image_prompt": "Extreme heat radiation glow simulation in dark space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Helium Rain",
+        "line": "An additional mechanism may be the generation of heat through the raining out of droplets of helium deep inside. Rainfalls of diamonds have been suggested to occur within Saturn, as well as in Jupiter and ice giants.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_17.jpg",
+        "image_prompt": "Liquid droplets descending through dense atmospheric layers., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Rotation Zones",
+        "line": "System I has a period of 10h 14m 00s and encompasses the Equatorial Zone and major belts. All other Saturnian latitudes have been assigned a rotation period of 10h 38m 25.4s.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_18.jpg",
+        "image_prompt": "Rotating latitudinal bands on a gas giant disk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Voyager Emissions",
+        "line": "System III refers to Saturn's internal rotation rate based on radio emissions detected by Voyager 1 and Voyager 2. A precise value for the rotation period of the interior remains elusive to modern science.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_19.jpg",
+        "image_prompt": "Old spacecraft telemetry console with glowing oscilloscope screens., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cassini Approach",
+        "line": "While approaching Saturn in 2004, Cassini found that the radio rotation period had increased appreciably. An estimate of Saturn's rotation based on a compilation of various measurements is 10h 32m 35s.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_20.jpg",
+        "image_prompt": "A robotic spacecraft cruising through interplanetary space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Geyser Activity",
+        "line": "In March 2007, it was found that the variation in radio emissions did not match Saturn's rotation rate due to Enceladus. Water vapor emitted into Saturn's orbit creates a drag upon Saturn's magnetic field.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_21.jpg",
+        "image_prompt": "Cryovolcanic plumes erupting from an icy moon's surface., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Oblate Spheroid",
+        "line": "The planet's rotation makes it an oblate spheroid, which is flattened at the poles and bulging at the equator. Its equatorial radius is more than 10% longer than the polar radius: 60,268 km versus 54,364 km.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_22.jpg",
+        "image_prompt": "A bulging sphere model demonstrating centrifugal distortion., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Surface Gravity",
+        "line": "The effective surface gravity along the equator is 8.96 m/s2, which is 74% of what it is at the poles. However, the equatorial escape velocity, nearly 36 km/s, is much higher than that of Earth.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_23.jpg",
+        "image_prompt": "A conceptual gravity vector diagram over a curved surface., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Volume",
+        "line": "The outer atmosphere of Saturn contains 96.3% molecular hydrogen and 3.25% helium by volume. Trace amounts of ammonia, acetylene, ethane, propane, phosphine, and methane have been detected.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_24.jpg",
+        "image_prompt": "Molecular structure models floating against a gaseous background., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cloud Layers",
+        "line": "The upper clouds are composed of ammonia crystals, while the lower level clouds consist of ammonium hydrosulfide or water. Cassini observed a series of cloud features found in northern latitudes, nicknamed the String of Pearls.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_25.jpg",
+        "image_prompt": "Layered multi-tiered cloud formations in a stormy sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Banded Patterns",
+        "line": "Saturn's atmosphere exhibits a banded pattern similar to Jupiter's, but Saturn's bands are much fainter and wider near the equator. Saturn's usually bland atmosphere occasionally exhibits long-lived ovals and other features common on Jupiter.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_26.jpg",
+        "image_prompt": "Wide, muted atmospheric stripes wrapping around a giant planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "HST White Cloud",
+        "line": "In 1990, the Hubble Space Telescope imaged an enormous white cloud near Saturn's equator that was not present during the Voyager encounters. In 1994 another smaller storm was observed.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_27.jpg",
+        "image_prompt": "An orbiting space telescope pointed toward a ringed planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Great White Spot",
+        "line": "The 1990 storm was an example of a Great White Spot, a short-lived phenomenon that occurs once every Saturnian year. The phenomenon occurs roughly every 30 Earth years, around the time of the northern hemisphere's summer solstice.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_28.jpg",
+        "image_prompt": "A massive white storm feature erupting across planetary cloud tops., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Past Observations",
+        "line": "Previous Great White Spots were observed in 1876, 1903, 1933, and 1960, with the 1933 storm being the best observed. The latest giant storm was observed in 2010.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_29.jpg",
+        "image_prompt": "Historic astronomical observatory dome under a starry night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Very Large Array",
+        "line": "In 2015, researchers used Very Large Array telescope to study Saturnian atmosphere. Researchers reported that they found long-lasting signatures of all mid-latitude giant storms, a mixture of equatorial storms up to hundreds of years old.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_30.jpg",
+        "image_prompt": "Large radio telescope antennas pointed upward in a desert valley., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Older Storm",
+        "line": "They also found potentially an unreported older storm at 70°N. The winds on Saturn are the second fastest among the Solar System's planets, after Neptune's.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_31.jpg",
+        "image_prompt": "A high-latitude atmospheric band on a gas giant viewed from orbit., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Peak Easterly Winds",
+        "line": "Voyager data indicate peak easterly winds of 500 m/s, or 1,800 km/h. In images from the Cassini spacecraft during 2007, Saturn's northern hemisphere displayed a bright blue hue, similar to Uranus.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_32.jpg",
+        "image_prompt": "A robotic spacecraft flying past a distant gas giant planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Rayleigh Scattering",
+        "line": "The color was most likely caused by Rayleigh scattering. Thermography has shown that Saturn's south pole has a warm polar vortex, the only known example of such a phenomenon in the Solar System.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_33.jpg",
+        "image_prompt": "Sunlight filtering through planetary atmospheric gases., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Vortex Temperatures",
+        "line": "Whereas temperatures on Saturn are normally −185 °C, temperatures on the vortex often reach as high as −122 °C. This is suspected to be the warmest spot on Saturn.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_34.jpg",
+        "image_prompt": "A color-coded thermal map of a planet's polar region., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Hexagonal Wave",
+        "line": "A persisting hexagonal wave pattern around the north polar vortex in the atmosphere at about 78°N was first noted in the Voyager images. The sides of the hexagon are each about 14,500 km, or 9,000 mi, long, which is longer than the diameter of Earth.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_35.jpg",
+        "image_prompt": "A distinct geometric cloud pattern centered over a planetary pole., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Structure Rotation",
+        "line": "The entire structure rotates with a period of 10h 39m 24s, the same period as that of the planet's radio emissions. This rotation period is assumed to be equal to the period of rotation of Saturn's interior.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_36.jpg",
+        "image_prompt": "Radio wave frequency graphs displayed on a scientific instrument screen., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Fixed Longitude",
+        "line": "The hexagonal feature does not shift in longitude like the other clouds in the visible atmosphere. The pattern's origin is a matter of much speculation.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_37.jpg",
+        "image_prompt": "Cloud bands moving past a stable geometric vortex from above., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Standing Wave",
+        "line": "Most scientists think it is a standing wave pattern in the atmosphere. Polygonal shapes have been replicated in the laboratory via differential rotation of fluids.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_38.jpg",
+        "image_prompt": "Fluid dynamics wave patterns moving across a laboratory tank., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "South Pole Region",
+        "line": "HST imaging of the south polar region indicates the presence of a jet stream, but no strong polar vortex nor any hexagonal standing wave. NASA reported in November 2006 that Cassini had observed a hurricane-like storm locked to the south pole that had a clearly defined eyewall.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_39.jpg",
+        "image_prompt": "Space telescope observing a planet through a starry background., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Eyewall Clouds",
+        "line": "Eyewall clouds had not previously been seen on any planet other than Earth. For example, images from the Galileo spacecraft did not show an eyewall in the Great Red Spot of Jupiter.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_40.jpg",
+        "image_prompt": "Detailed cloud structures surrounding the eye of a severe storm., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ancient Storm",
+        "line": "The south pole storm may have been present for billions of years. This vortex is comparable to the size of Earth, and it has winds of 550 km/h.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_41.jpg",
+        "image_prompt": "An ancient cratered surface under a distant planetary sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Decagon Development",
+        "line": "Between 2017 and 2023, a ten-sided atmospheric wave began to develop on the south pole. This feature, labelled the decagon, was discovered via HST observations, and was first reported in September 2026.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_42.jpg",
+        "image_prompt": "Atmospheric bands shifting near a planet's southern pole., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Decagon Position",
+        "line": "The decagon is centered around 63°S latitude, with each of its ten sides measuring ~17,000 km. Its apparent position shifts slightly depending upon the wavelength of light observed.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_43.jpg",
+        "image_prompt": "A geometric overlay on a southern planetary hemisphere., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Difficult Observation",
+        "line": "Due to its location on the south pole, the decagon is difficult to observe from Earth. The south pole was almost completely hidden from 2012 to 2023 because of Saturn's observed tilt.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_44.jpg",
+        "image_prompt": "An optical telescope dome opening toward the night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Increasing Visibility",
+        "line": "The pole thereafter becomes more visible from Earth through each year to 2032. Saturn has an intrinsic magnetic field that has a simple, symmetric shape—a magnetic dipole.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_45.jpg",
+        "image_prompt": "A planet's tilt slowly changing orientation over time in orbit., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Equator Strength",
+        "line": "Its strength at the equator—0.2 gauss, or 20 μT—is approximately one twentieth of that of the field around Jupiter and slightly weaker than Earth's magnetic field. As a result, Saturn's magnetosphere is much smaller than Jupiter's.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_46.jpg",
+        "image_prompt": "Scientific instruments measuring electromagnetic field strength., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Voyager 2 Entry",
+        "line": "When Voyager 2 entered the magnetosphere, the solar wind pressure was high and the magnetosphere extended only 19 Saturn radii, or 1.1 million km, which is 684,000 mi. The magnetosphere enlarged within several hours, and remained so for about three days.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_47.jpg",
+        "image_prompt": "A robotic spacecraft cruising through interplanetary space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Metallic Dynamo",
+        "line": "Most probably, the magnetic field is generated similarly to that of Jupiter—by currents in the liquid metallic-hydrogen layer called a metallic-hydrogen dynamo. This magnetosphere is efficient at deflecting the solar wind particles from the Sun.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_48.jpg",
+        "image_prompt": "Flowing liquid metal swirling inside a high-pressure core., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Titan Orbit",
+        "line": "The moon Titan orbits within the outer part of Saturn's magnetosphere and contributes plasma from the ionized particles in Titan's outer atmosphere. Saturn's magnetosphere, like Earth's, produces aurorae.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_49.jpg",
+        "image_prompt": "A hazy moon orbiting within the outer reaches of a giant planet's field., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar Distance",
+        "line": "The average distance between Saturn and the Sun is over 1.4 billion kilometers, or 9 AU. With an average orbital speed of 9.68 km/s, it takes Saturn 10,759 Earth days, or about 29+1⁄2 years, to finish one revolution around the Sun.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_50.jpg",
+        "image_prompt": "A vast expanse of space with a distant Sun shining brightly., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Resonance with Jupiter",
+        "line": "As a consequence, it forms a near 5:2 mean-motion resonance with Jupiter. The elliptical orbit of Saturn is inclined 2.48° relative to the orbital plane of Earth.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_51.jpg",
+        "image_prompt": "Two giant planets aligned in their respective orbits., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Perihelion Distances",
+        "line": "The perihelion and aphelion distances are, respectively, 9.195 and 9.957 AU, on average. Saturn is probably best known for the system of planetary rings that makes it visually unique.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_52.jpg",
+        "image_prompt": "An elliptical orbit diagram showing closest and farthest points., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ring Dimensions",
+        "line": "The rings extend from 6,630 to 120,700 kilometers outward from Saturn's equator and average approximately 20 meters in thickness. They are composed predominantly of water ice, with trace amounts of tholin impurities and a peppered coating of approximately 7% amorphous carbon.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_53.jpg",
+        "image_prompt": "A thin, wide disk of icy particles surrounding a vast planetary sphere., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Particle Sizes",
+        "line": "The particles that make up the rings range in size from specks of dust up to 10 m. While the other gas giants also have ring systems, Saturn's is the largest and most visible.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_54.jpg",
+        "image_prompt": "A cluster of rocky and icy debris drifting in orbit., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Age Debate",
+        "line": "There is a debate on the age of the rings. One side supports that they are ancient, and were created simultaneously with Saturn from the original nebular material around 4.6 billion years ago, or shortly after the LHB around 4.1 to 3.8 billion years ago.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_55.jpg",
+        "image_prompt": "An empty observatory dome open to the starry night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Young Origin Theory",
+        "line": "The other side supports that they are much younger, created around 100 million years ago. An MIT research team, supporting the latter theory, proposed that the rings are remnant of a destroyed moon of Saturn, named Chrysalis.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_56.jpg",
+        "image_prompt": "A turbulent ring of debris orbiting a bright gaseous world., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Phoebe Ring",
+        "line": "Beyond the main rings, at a distance of 12 million km from the planet is the sparse Phoebe ring. It is tilted at an angle of 27° to the other rings and, like Phoebe, orbits in retrograde fashion.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_57.jpg",
+        "image_prompt": "A faint, distant ring of particles circling far outside a planet's main ring system., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Shepherd Moons",
+        "line": "Some of the moons of Saturn, including Pandora and Prometheus, act as shepherd moons to confine the rings and prevent them from spreading out. Pan and Atlas cause weak, linear density waves in Saturn's rings that have yielded more reliable calculations of their masses.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_58.jpg",
+        "image_prompt": "Small irregularly shaped moons drifting near the edge of a planetary ring., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Historical Phases",
+        "line": "The observation and exploration of Saturn can be divided into three phases: pre-modern observations with the naked eye, telescopic observations from Earth beginning in the 17th century, and visitation by space probes, in orbit or on flyby. Saturn has been known since prehistoric times, and in early recorded history it was a major character in various mythologies.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_59.jpg",
+        "image_prompt": "An old brass telescope pointed toward the night sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Babylonian Tracking",
+        "line": "Babylonian astronomers systematically observed and recorded the movements of Saturn. In ancient Greek, the planet was known as Φαίνων Phainon, and in Roman times it was known as the star of Saturn or the star of the Sun.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_60.jpg",
+        "image_prompt": "Clay tablets inscribed with ancient cuneiform script on a wooden table., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Huygens Discovery",
+        "line": "Saturn's rings require at least a 15-mm-diameter telescope to resolve and were not known to exist until Christiaan Huygens saw them in 1655 and published his observations in 1659. Galileo, with his primitive telescope in 1610, incorrectly thought of Saturn's appearing not quite round as two moons on Saturn's sides.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_61.jpg",
+        "image_prompt": "A historic wooden telescope resting on a desk next to old leather-bound books., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cassini Division",
+        "line": "Giovanni Domenico Cassini discovered four other moons and in 1675 discovered the gap now known as the Cassini Division. No further discoveries of significance were made until 1789 when William Herschel discovered two further moons, Mimas and Enceladus.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_62.jpg",
+        "image_prompt": "A large dark gap splitting a bright planetary ring system in two., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Hyperion Discovery",
+        "line": "The irregularly shaped satellite Hyperion, which has a resonance with Titan, was discovered in 1848 by a British team. In 1899, William Henry Pickering discovered Phoebe, a highly irregular satellite that does not rotate synchronously with Saturn as the larger moons do.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_63.jpg",
+        "image_prompt": "A potato-shaped rocky asteroid tumbling through space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Titan Atmosphere",
+        "line": "During the early 20th century, research on Titan led to the confirmation in 1944 that it had a thick atmosphere—a feature unique among the Solar System's moons. Pioneer 11 made the first flyby of Saturn in September 1979, when it passed within 20,000 km of the planet's cloud tops.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_64.jpg",
+        "image_prompt": "A hazy, orange-shrouded moon glowing against a black background., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Pioneer Findings",
+        "line": "The spacecraft also studied Saturn's rings, revealing the thin F-ring and the fact that dark gaps in the rings are bright when viewed at a high phase angle. In November 1980, the Voyager 1 probe visited the Saturn system and sent back the first high-resolution images of the planet, its rings and satellites.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_65.jpg",
+        "image_prompt": "A narrow strand of particles running parallel to a main planetary ring., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Voyager 2 Study",
+        "line": "Almost a year later, in August 1981, Voyager 2 continued the study of the Saturn system, acquiring more close-up images of Saturn's moons as well as evidence of changes in the atmosphere and the rings. The Cassini–Huygens space probe entered orbit around Saturn on 1 July 2004.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_66.jpg",
+        "image_prompt": "Control room monitors displaying telemetry data from a distant space mission., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Titan Lakes",
+        "line": "Cassini's flyby of Saturn's largest moon, Titan, captured radar images of large lakes and their coastlines with numerous islands and mountains. The orbiter completed two Titan flybys before releasing the Huygens probe on 25 December 2004, which descended onto the surface of Titan on 14 January 2005.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_67.jpg",
+        "image_prompt": "A dark liquid shoreline beneath a thick, heavy atmospheric haze., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Lightning Detection",
+        "line": "Starting in early 2005, scientists used Cassini to track lightning on Saturn, with power approximately 1,000 times that of lightning on Earth. In 2006, NASA reported that Cassini had found evidence of liquid water reservoirs no more than tens of meters below the surface that erupt in geysers on Saturn's moon Enceladus.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_68.jpg",
+        "image_prompt": "Bright electrical discharges flashing across the dark cloud tops of a massive planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Habitable Spot",
+        "line": "In May 2011, NASA scientists reported that Enceladus is emerging as the most habitable spot beyond Earth in the Solar System for life as we know it. Cassini photographs have revealed a previously undiscovered planetary ring, outside the brighter main rings of Saturn and inside the G and E rings.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_69.jpg",
+        "image_prompt": "An icy satellite reflecting pale sunlight against the blackness of space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Hydrocarbon Seas",
+        "line": "In March 2007, hydrocarbon seas were found near the North pole, the largest of which is almost the size of the Caspian Sea. In October 2006, the probe detected an 8,000 km diameter cyclone-like storm with an eyewall at Saturn's south pole.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_70.jpg",
+        "image_prompt": "A vast expanse of still dark liquid framed by icy terrain., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "North Pole Hurricane",
+        "line": "In April 2013, Cassini sent back images of a hurricane at the planet's north pole 20 times larger than those found on Earth, with winds faster than 530 km/h. On 15 September 2017, the Cassini–Huygens spacecraft performed the Grand Finale of its mission: a number of passes through gaps between Saturn and Saturn's inner rings.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_71.jpg",
+        "image_prompt": "A giant hexagonal cloud pattern surrounding a deep polar storm vortex., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Mission End",
+        "line": "The atmospheric entry of Cassini ended the mission. NASA's Dragonfly mission—the fourth in the New Frontiers program—is a rotorcraft probe designed to explore Saturn's moon Titan, and to search for signs of prebiotic chemical processes.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_72.jpg",
+        "image_prompt": "A bright streak of light burning up in the dense upper atmosphere of a gas giant., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Orbital Speed",
+        "line": "With an average orbital speed of 9.68 km/s, it takes Saturn 10,759 Earth days, or about 29+1⁄2 years, to finish one revolution around the Sun. As a consequence, it forms a near 5:2 mean-motion resonance with Jupiter, and the elliptical orbit of Saturn is inclined 2.48° relative to the orbital plane of Earth.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_73.jpg",
+        "image_prompt": "A diagrammatic representation of a planet following a long elliptical path around a distant star., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Perihelion and Aphelion",
+        "line": "The perihelion and aphelion distances are, respectively, 9.195 and 9.957 AU, on average. Early works in fiction generally depicted it as solid, whereas Saturn is later correctly described as a gaseous planet.",
+        "speech": "",
+        "image": "assets/generated/what_makes_saturn_less_dense_than_water_while_weighing_over_95_times_earth_74.jpg",
+        "image_prompt": "A glowing sun viewed from the distant outer reaches of the solar system., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Saturn",
+    "source_url": "https://en.wikipedia.org/wiki/Saturn"
+  },
+  "long_what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide": {
+    "title": "What Forces Formed Jupiter, the Massive Gas Giant 142,976 Kilometers Wide?",
+    "category": "Space Documentaries",
+    "intro": "",
+    "outro": "",
+    "scenes": [
+      {
+        "label": "Colossal Scale",
+        "line": "Jupiter has a mass nearly 2.5 times that of all the other planets in the Solar System combined. What dynamic forces drove the ancient formation and migration of the giant planet known as Jupiter?",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_01.jpg",
+        "image_prompt": "A massive dark sphere floating in deep space next to smaller rocky planets., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar Proximity",
+        "line": "Jupiter is the fifth planet from the Sun and holds the title of the largest in the Solar System. The mass of Jupiter is slightly less than one-thousandth the mass of the Sun itself.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_02.jpg",
+        "image_prompt": "A vast gas giant planet viewed from a distant perspective in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Planetary Diameter",
+        "line": "The diameter of Jupiter is 11 times that of Earth and a tenth that of the Sun. It orbits the Sun at a distance of 5.20 AU, which equals 778.5 Gm.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_03.jpg",
+        "image_prompt": "A large spherical gas planet contrasted against the vastness of the cosmos., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Night Sky",
+        "line": "Jupiter stands as the third-brightest natural object in the Earth's night sky. The bright body has been observed by human eyes since prehistoric times.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_04.jpg",
+        "image_prompt": "A bright point of light shining intensely in a dark night sky filled with stars., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Deity Name",
+        "line": "It was named after Jupiter, who was the chief deity of ancient Roman religion. Jupiter was the very first of the Sun's planets to form in the system.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_05.jpg",
+        "image_prompt": "An ancient stone statue carved with classical Roman artistic features., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Primordial Migration",
+        "line": "Its inward migration during the primordial phase affected the formation history of other planets. Jupiter's atmosphere consists of 76% hydrogen and 24% helium by mass.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_06.jpg",
+        "image_prompt": "A bright celestial body moving through a dense field of cosmic dust and debris., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Denser Interior",
+        "line": "Beneath the outer gas layers lies a denser and more compact interior structure. It contains traces of carbon, oxygen, sulfur, neon, and various chemical compounds.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_07.jpg",
+        "image_prompt": "A cutaway conceptual view showing the dense layered interior of a gas giant., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Vapor and Hydrocarbons",
+        "line": "Compounds such as ammonia, water vapour, phosphine, hydrogen sulfide, and hydrocarbons are present. Jupiter's helium abundance is 80% of the Sun's, similar to the composition of Saturn.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_08.jpg",
+        "image_prompt": "Close-up of turbulent cloud formations shifting in a dense planetary atmosphere., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Latitudinal Bands",
+        "line": "The outer atmosphere is divided into a series of distinct latitudinal bands. The most obvious result of this activity is the Great Red Spot giant storm.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_09.jpg",
+        "image_prompt": "Parallel stripes of turbulent weather patterns across a curved planetary horizon., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Rapid Rotation",
+        "line": "Because of a rapid rotation rate, one turn of the planet takes ten hours. The shape of the planet is an oblate spheroid due to this fast spin.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_10.jpg",
+        "image_prompt": "A time-lapse view of a massive gaseous sphere spinning rapidly in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Equatorial Radius",
+        "line": "The radius at the equator is about 7% larger than the radius at its poles. Its internal structure is believed to consist of an outer mantle of fluid metallic hydrogen.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_11.jpg",
+        "image_prompt": "A wireframe rendering of a planet highlighting an elongated equatorial bulge., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Diffuse Core",
+        "line": "The interior also features a diffuse inner core composed of denser material. The ongoing contraction of Jupiter's interior generates more heat than it receives from the Sun.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_12.jpg",
+        "image_prompt": "A dense central core surrounded by swirling layers of glowing material., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Magnetic Field",
+        "line": "Jupiter's magnetic field is the strongest and second-largest contiguous structure in the Solar System. The magnetic field is generated by eddy currents within the fluid metallic hydrogen core.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_13.jpg",
+        "image_prompt": "Invisible magnetic field lines visualized glowing around a large planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Solar Wind",
+        "line": "The solar wind interacts with the magnetosphere, extending it outward and affecting the orbit. At least 115 moons orbit the planet in the surrounding space environment.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_14.jpg",
+        "image_prompt": "Charged particles streaming from a bright star toward a planetary magnetosphere., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Four Largest",
+        "line": "The four largest moons are Io, Europa, Ganymede, and Callisto. These four major moons orbit within the magnetosphere and are visible with common binoculars.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_15.jpg",
+        "image_prompt": "Four diverse planetary satellites shown in a composite row against darkness., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ganymede Scale",
+        "line": "Ganymede, the largest of the four, is actually larger than the planet Mercury. Jupiter is surrounded by a faint system of planetary rings.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_16.jpg",
+        "image_prompt": "A cratered icy moon floating in the blackness of deep space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ring Segments",
+        "line": "The rings consist mainly of dust and have three main segments. An inner torus of particles is known as the halo.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_17.jpg",
+        "image_prompt": "Dust particles illuminated by sunlight in the orbital plane of a planet., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Main Ring",
+        "line": "The system features a relatively bright main ring alongside the halo. An outer gossamer ring completes the three main structural segments.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_18.jpg",
+        "image_prompt": "A narrow ring of illuminated debris shining against the dark background., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Reddish Rings",
+        "line": "The rings exhibit a reddish colour in visible and near-infrared light. The exact age of the ring system remains unknown, possibly dating back to the planet's formation.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_19.jpg",
+        "image_prompt": "Spectroscopic imaging showing reddish hues across a faint planetary ring., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Robotic Probes",
+        "line": "Since 1973, Jupiter has been visited by nine robotic probes. These visits comprise seven flybys and two dedicated orbiters, with more currently en route.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_20.jpg",
+        "image_prompt": "A robotic spacecraft equipped with scientific instruments flying through space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Exoplanet Analogs",
+        "line": "Jupiter-like exoplanets have also been found orbiting other distant planetary systems. In ancient Greek and Roman civilizations, the planet was named after the chief god.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_21.jpg",
+        "image_prompt": "An artist concept of a large gas giant orbiting a distant alien star., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "IAU Adoption",
+        "line": "The International Astronomical Union formally adopted the name Jupiter for the planet in 1976. Newly discovered satellites have since been named for the god's lovers, favourites, and descendants.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_22.jpg",
+        "image_prompt": "Modern astronomical documents and star charts resting on a wooden desk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Planetary Symbol",
+        "line": "The planetary symbol descends from a Greek zeta with a horizontal stroke used as an abbreviation. In Latin, Iovis is the genitive case of Iuppiter, associated with the etymology of Zeus.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_23.jpg",
+        "image_prompt": "An ancient Greek manuscript page covered in handwritten alphabetic characters., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Poetic Name",
+        "line": "The English equivalent, Jove, came into use as a poetic name around the 14th century. The older adjectival form jovial was employed by astrologers in the Middle Ages.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_24.jpg",
+        "image_prompt": "Medieval parchment manuscript showing ornate hand-lettered text., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Root Words",
+        "line": "The original Greek deity Zeus supplies the root zeno- used to form words like zenography. Rain-like droplets of helium and neon precipitate downward through the lower atmosphere, depleting the abundance of these elements in the upper atmosphere.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_25.jpg",
+        "image_prompt": "A modern scientific workstation displaying planetary cartography data., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Metallic Hydrogen",
+        "line": "Calculations suggest that helium drops separate from metallic hydrogen at a radius of 60,000 km and merge again at 50,000 km. Rainfalls of diamonds have been suggested to occur, as well as on Saturn and the ice giants Uranus and Neptune.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_26.jpg",
+        "image_prompt": "Abstract representation of glowing metallic fluid layers in a deep planetary interior, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Composition",
+        "line": "The atmosphere of Jupiter is primarily composed of molecular hydrogen and helium, with a smaller amount of other compounds such as water, methane, hydrogen sulfide, and ammonia. Jupiter's atmosphere extends to a depth of approximately 3,000 kilometres below the cloud layers.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_27.jpg",
+        "image_prompt": "Swirling gasses in shades of blue and white captured in a laboratory glass cylinder, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ammonia Clouds",
+        "line": "Jupiter is perpetually covered with clouds of ammonia crystals, which may contain ammonium hydrosulfide as well. The clouds are located in the tropopause layer of the atmosphere, forming bands at different latitudes, known as tropical regions.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_28.jpg",
+        "image_prompt": "White crystalline frost patterns spreading across a cold glass pane, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Storms and Turbulence",
+        "line": "The interactions of these conflicting circulation patterns cause storms and turbulence. Wind speeds of 100 metres per second are common in zonal jet streams.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_29.jpg",
+        "image_prompt": "Swirling vortex of grey smoke moving in opposing horizontal directions, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cloud Layer Depth",
+        "line": "The cloud layer is about 50 km deep and consists of at least two decks of ammonia clouds: a thin, clearer region on top and a thicker, lower deck. There may be a thin layer of water clouds underlying the ammonia clouds, as suggested by flashes of lightning detected in the atmosphere of Jupiter.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_30.jpg",
+        "image_prompt": "Stacked layers of translucent white vapor floating inside a transparent container, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Powerful Discharges",
+        "line": "These electrical discharges can be up to a thousand times as powerful as lightning on Earth. The water clouds are assumed to generate thunderstorms in the same way as terrestrial thunderstorms, driven by the heat rising from the interior.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_31.jpg",
+        "image_prompt": "High-voltage electrical arc bridging a wide gap in a dark testing room, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Shallow Lightning",
+        "line": "The Juno mission revealed the presence of shallow lightning which originates from ammonia-water clouds relatively high in the atmosphere. These discharges carry mushballs of water-ammonia slushes covered in ice, which fall deep into the atmosphere.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_32.jpg",
+        "image_prompt": "Bright flash of blue light illuminating high-altitude atmospheric mist, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Upper Lightning",
+        "line": "Upper-atmospheric lightning has been observed in Jupiter's upper atmosphere, bright flashes of light that last around 1.4 milliseconds. These are known as elves or sprites and appear blue or pink due to the hydrogen.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_33.jpg",
+        "image_prompt": "High-speed photographic capture of a sudden burst of light against a dark sky, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Chromophores",
+        "line": "The orange and brown colours in the clouds of Jupiter are caused by upwelling compounds that change colour when they are exposed to ultraviolet light from the Sun. The light-coloured zones are formed when rising convection cells form crystallising ammonia that hides the chromophores from view.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_34.jpg",
+        "image_prompt": "Chemical solution changing color under an ultraviolet lamp in a dark room, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Axial Tilt",
+        "line": "Jupiter has a low axial tilt, thus ensuring that the poles always receive less solar radiation than the planet's equatorial region. Convection within the interior of the planet transports energy to the poles, balancing out temperatures at the cloud layer.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_35.jpg",
+        "image_prompt": "Gleaming metallic globe tilted slightly on a brass axis in a dark room, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Great Red Spot",
+        "line": "A well-known feature of Jupiter is the Great Red Spot, a persistent anticyclonic storm located 22 south of the equator. It was first observed in 1831, and possibly as early as 1665.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_36.jpg",
+        "image_prompt": "Circular storm vortex rendered in deep crimson tones on a banded surface, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Additional Spots",
+        "line": "Images by the Hubble Space Telescope have shown two more red spots adjacent to the Great Red Spot. The storm rotates counterclockwise, with a period of about six days.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_37.jpg",
+        "image_prompt": "High-resolution digital screen displaying three distinct red oval storm systems, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Storm Altitude",
+        "line": "The maximum altitude of this storm is about 8 kilometres above the surrounding cloud tops. The Spot's composition and the source of its red colour remain uncertain.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_38.jpg",
+        "image_prompt": "Side profile view of a raised storm cloud protruding above a flat cloud deck, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Size Comparison",
+        "line": "The Great Red Spot is larger than the Earth. However, it has significantly decreased in size since its discovery.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_39.jpg",
+        "image_prompt": "Globe of the Earth placed next to a much larger swirling red vortex graphic, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Historical Measurements",
+        "line": "Initial observations in the late 1800s showed it to be approximately 41,000 km across. In October 2021, a Juno flyby mission measured the depth of the Great Red Spot, putting it at around 300–500 kilometres.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_40.jpg",
+        "image_prompt": "Old parchment map with handwritten measurements and grid lines, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Cyclone Groups",
+        "line": "Juno missions found several cyclone groups at Jupiter's poles. The northern group contains nine cyclones, with a large one in the centre and eight others around it.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_41.jpg",
+        "image_prompt": "Cluster of rotating storm vortices viewed from directly overhead, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Southern Cyclones",
+        "line": "At the same time, its southern counterpart also consists of a central vortex but is surrounded by five large storms and a single smaller one. In 2000, an atmospheric feature formed in the southern hemisphere that is similar in appearance to the Great Red Spot, but smaller.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_42.jpg",
+        "image_prompt": "Asymmetrical cluster of swirling circular storm patterns on a flat plane, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "White Ovals",
+        "line": "This was created when smaller, white oval-shaped storms merged to form a single feature—these three smaller white ovals were formed in 1939–1940. The merged feature was named Oval BA and has since increased in intensity and changed from white to red, earning it the nickname Little Red Spot.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_43.jpg",
+        "image_prompt": "Three distinct white pill-shaped cloud formations drifting together on a dark blue background, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Great Cold Spot",
+        "line": "In April 2017, a Great Cold Spot was discovered in Jupiter's thermosphere near its north pole via infrared observations of the trihydrogen cation. This feature is approximately 24,000 km across, 12,000 km wide, and was thought to be 200 C cooler than surrounding material.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_44.jpg",
+        "image_prompt": "Infrared thermal scan showing a dark blue cooling region near a planetary pole, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Depleted Ion Density",
+        "line": "A series of global maps of Jupiter's thermospheric temperature and ion density have shown this cold spot is instead a region of depleted ion density. The Great Cold Spot is one of many structures in Jupiter's thermosphere seemingly created from vertical plasma motion driven by neutral wind-magnetic field interactions.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_45.jpg",
+        "image_prompt": "Digital density map showing a large hollow depression in glowing particle data, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Strongest Magnetic Field",
+        "line": "Jupiter's magnetic field is the strongest of any planet in the Solar System, with a dipole moment of 4.170 gauss that is tilted at an angle of 10.31 to the pole of rotation. The surface magnetic field strength varies from 2 gauss up to 20 gauss.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_46.jpg",
+        "image_prompt": "Iron filings forming a dense magnetic field pattern around a glowing sphere, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Metallic Core Eddy Currents",
+        "line": "This field is thought to be generated by eddy currents—swirling movements of conducting materials—within the fluid, metallic hydrogen core. At about 75 Jupiter radii from the planet, the interaction of the magnetosphere with the solar wind generates a bow shock.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_47.jpg",
+        "image_prompt": "Swirling vortex of liquid mercury flowing in a dark circular basin, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Magnetopause",
+        "line": "Surrounding Jupiter's magnetosphere is a magnetopause, located at the inner edge of a magnetosheath. The solar wind interacts with these regions, elongating the magnetosphere on Jupiter's lee side and extending it outward until it nearly reaches the orbit of Saturn.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_48.jpg",
+        "image_prompt": "Layered spherical boundary shields glowing in soft ultraviolet light, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Protected Moons",
+        "line": "The four largest moons of Jupiter all orbit within the magnetosphere, which protects them from the solar wind. The volcanoes on the moon Io emit large amounts of sulfur dioxide, forming a gas torus along its orbit.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_49.jpg",
+        "image_prompt": "Four small rocky spheres orbiting safely inside a glowing magnetic shield, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Plasma Sheet",
+        "line": "The gas is ionized in Jupiter's magnetosphere, producing sulfur and oxygen ions that form a plasma sheet in Jupiter's equatorial plane. Electrons within the plasma sheet generate a strong radio signature, with short, superimposed bursts in the range of 0.6–30 MHz.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_50.jpg",
+        "image_prompt": "Flat disc of glowing green and purple plasma rotating around a central sphere, cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Comet Impact",
+        "line": "In July 1994, the Comet Shoemaker–Levy 9 comet collided with Jupiter. The impacts were closely observed by observatories around the world, including the Hubble Space Telescope and Galileo spacecraft.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_51.jpg",
+        "image_prompt": "A dark planet with a bright atmospheric scar visible in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Historical Records",
+        "line": "Surveys of early astronomical records and drawings produced eight examples of potential impact observations between 1664 and 1839. Further investigation by this team revealed that a dark surface feature discovered by astronomer Giovanni Cassini in 1690 may have been an impact scar.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_52.jpg",
+        "image_prompt": "Old paper manuscripts covered in faint handwritten astronomical notes and sketches., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ancient Astronomy",
+        "line": "Observations of Jupiter are attested by the Babylonian astronomers during the 7th–8th centuries BC. The ancient Chinese knew Jupiter as the 'sui star' and established their cycle of twelve earthly branches based on its orbital period.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_53.jpg",
+        "image_prompt": "Ancient stone tablets carved with cuneiform script depicting celestial bodies., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Zodiac Origins",
+        "line": "By the 4th century BC, these observations had developed into the Chinese zodiac, and each year became associated with a Tai Sui star. The Chinese historian Xi Zezong has claimed that Gan De, an ancient Chinese astronomer, reported a small star in alliance with the planet.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_54.jpg",
+        "image_prompt": "Traditional Chinese calligraphy scrolls hanging on a wooden wall., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Babylonian Math",
+        "line": "A 2016 paper reports that the trapezoidal rule was used by Babylonians before 50 BC for integrating the velocity of Jupiter along the ecliptic. In his 2nd century work the Almagest, the Hellenistic astronomer Claudius Ptolemaeus constructed a geocentric planetary model.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_55.jpg",
+        "image_prompt": "Clay mathematical tables marked with geometric wedge impressions., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Galilean Moons",
+        "line": "In 1610, Italian polymath Galileo Galilei discovered the four largest moons of Jupiter using a telescope. Just one day after Galileo, Simon Marius independently discovered moons around Jupiter, though he did not publish his discovery until 1614.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_56.jpg",
+        "image_prompt": "A simple wooden spyglass resting on a velvet cloth next to a star chart., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Moon Names",
+        "line": "It was Marius's names for the major moons, however, that stuck: Io, Europa, Ganymede, and Callisto. In the autumn of 1639, the Neapolitan optician Francesco Fontana tested a 22-palm telescope and discovered the characteristic bands of the planet's atmosphere.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_57.jpg",
+        "image_prompt": "Four distinct rocky and icy satellite spheres floating against a star field., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Rotation Period",
+        "line": "During the 1660s, Giovanni Cassini used a new telescope to discover spots in Jupiter's atmosphere and estimate its rotation period. In 1692, Cassini noticed that the atmosphere undergoes a differential rotation.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_58.jpg",
+        "image_prompt": "An oil painting style interior study with old scientific instruments on a wooden desk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Great Red Spot",
+        "line": "The pharmacist Heinrich Schwabe produced the earliest known drawing to show details of the Great Red Spot in 1831. By the 1670s, Cassini observed timing discrepancies in moon eclipses that Ole Rømer used to estimate the speed of light.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_59.jpg",
+        "image_prompt": "A detailed pencil drawing of a circular storm feature on aged parchment paper., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Amalthea Discovery",
+        "line": "In 1892, E. E. Barnard observed a fifth satellite of Jupiter with the 36-inch refractor at Lick Observatory in California. In 1932, Rupert Wildt identified absorption bands of ammonia and methane in the spectra of Jupiter.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_60.jpg",
+        "image_prompt": "A massive historic white telescope dome standing on a mountain ridge at dusk., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "White Ovals",
+        "line": "Three long-lived anticyclonic features called white ovals were observed in 1938. Finally, two of the ovals merged in 1998, then absorbed the third in 2000, becoming Oval BA.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_61.jpg",
+        "image_prompt": "Bright oval cloud formations drifting across a banded planetary atmosphere., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Radio Bursts",
+        "line": "In 1955, Bernard Burke and Kenneth Franklin discovered that Jupiter emits bursts of radio waves at a frequency of 22.2 MHz. Decimetric radio emission was first observed by Frank Drake and Hein Hvatum in 1959.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_62.jpg",
+        "image_prompt": "Large wire mesh radio telescope antennas aimed at the sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Pioneer 10",
+        "line": "Jupiter has been visited by automated spacecraft since 1973, when the space probe Pioneer 10 passed close enough to send back revelations. Gravity assists through planetary flybys can be used to reduce the energy required to reach Jupiter.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_63.jpg",
+        "image_prompt": "A gold-trimmed space probe model drifting through deep space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Pioneer Flybys",
+        "line": "The Pioneer missions obtained the first close-up images of Jupiter's atmosphere and several of its moons. Six years later, the Voyager missions vastly improved the understanding of the Galilean moons and discovered Jupiter's rings.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_64.jpg",
+        "image_prompt": "Early pixelated digital photographs of a striped planet displayed on a retro monitor., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Volcanic Moons",
+        "line": "A torus of ionized atoms was discovered along Io's orbital path, which was found to come from erupting volcanoes on the moon's surface. As the spacecraft passed behind the planet, it observed flashes of lightning in the night side atmosphere.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_65.jpg",
+        "image_prompt": "A rocky moon surface with active volcanic plumes erupting into a black sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ulysses Probe",
+        "line": "In February 1992, the Ulysses solar probe performed a flyby manoeuvre to attain a polar orbit around the Sun. In 2000, the Cassini probe flew by Jupiter on its way to Saturn and provided higher-resolution images.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_66.jpg",
+        "image_prompt": "A compact scientific satellite with RTG power booms floating in space., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "New Horizons",
+        "line": "The New Horizons probe flew by Jupiter in 2007 for a gravity assist en route to Pluto. The first spacecraft to orbit Jupiter was the Galileo mission, which reached the planet on December 7, 1995.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_67.jpg",
+        "image_prompt": "A high-speed space probe with a large circular communications dish cruising through the cosmos., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Probe",
+        "line": "A 340-kilogram titanium atmospheric probe was released from the spacecraft in July 1995, entering Jupiter's atmosphere on December 7. It parachuted through 150 km of the atmosphere at a speed of about 2,575 km/h and collected data for 57.6 minutes.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_68.jpg",
+        "image_prompt": "A conical heat shield capsule plunging into a dense planetary atmosphere., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Atmospheric Composition",
+        "line": "Data from this mission revealed that hydrogen composes up to 90% of Jupiter's atmosphere. NASA's Juno mission arrived at Jupiter on July 4, 2016, with the goal of studying the planet in detail from a polar orbit.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_69.jpg",
+        "image_prompt": "A glowing chemical composition diagram floating against a dark background., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "JunoCam Damage",
+        "line": "During the mission, the spacecraft has been exposed to high levels of radiation, causing the failure of certain instruments like JunoCam. In January of that year the mission was extended to September 2025 with four lunar flybys.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_70.jpg",
+        "image_prompt": "Electronic circuit boards glowing faintly under intense radiation exposure., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Future Explorers",
+        "line": "These plans have been realized as the European Space Agency's JUICE launched on April 14, 2023, followed by Europa Clipper in 2024. Other proposed missions include the Chinese National Space Administration's Tianwen-4 mission to launch an orbiter around 2035.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_71.jpg",
+        "image_prompt": "A modern rocket lifting off from a launch pad into a clear blue sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Ancient Names",
+        "line": "The existence of the planet Jupiter has been known since ancient times and was visible to the naked eye. To the Babylonians, this planet represented their god Marduk, chief of their pantheon from the Hammurabi period.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_72.jpg",
+        "image_prompt": "A bright star shining brightly in the vast expanse of a dark evening sky., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Greek Zeus",
+        "line": "The mythical Greek name for this planet is Zeus, also referred to as Dias, the planetary name of which is retained in modern Greek. The god Jupiter is the Roman counterpart of Zeus, and he is the principal god of Roman mythology.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_73.jpg",
+        "image_prompt": "Classical Greek marble statues standing against a weathered stone wall., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      },
+      {
+        "label": "Vedic Guru",
+        "line": "In Vedic astrology, Hindu astrologers named the planet after Brihaspati, the religious teacher of the gods. The Chinese, Japanese, Koreans, and Vietnamese called it the wood star based on the Chinese Five Elements.",
+        "speech": "",
+        "image": "assets/generated/what_forces_formed_jupiter_the_massive_gas_giant_142_976_kilometers_wide_74.jpg",
+        "image_prompt": "Traditional Indian manuscript pages painted with detailed miniature illustrations., cinematic space documentary style, highly detailed 8k resolution, dramatic cosmic lighting, photorealistic astronomy imagery"
+      }
+    ],
+    "verified": true,
+    "source_title": "Jupiter",
+    "source_url": "https://en.wikipedia.org/wiki/Jupiter"
+  }
+}

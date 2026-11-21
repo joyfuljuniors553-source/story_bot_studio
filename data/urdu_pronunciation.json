@@ -1,0 +1,27 @@
+{
+  "_how": "Words the Urdu voice says wrong -> a spelling it says right. Whole words only; add a word whenever a video says it wrong. Aerab (zer, zabar, pesh) may be used on the right side. Words with two meanings (ملک mulk/malik, علم ilm/alam) are left to the script writer, who marks them by context.",
+  "replace": {
+    "AI": "اے آئی",
+    "A.I.": "اے آئی",
+    "NASA": "ناسا",
+    "UN": "یو این",
+    "USA": "یو ایس اے",
+    "UK": "یو کے",
+    "DNA": "ڈی این اے",
+    "CEO": "سی ای او",
+    "GDP": "جی ڈی پی",
+    "km": "کلومیٹر",
+    "kg": "کلوگرام",
+    "cm": "سینٹی میٹر",
+    "mm": "ملی میٹر",
+    "°C": "ڈگری سیلسیئس",
+    "YouTube": "یوٹیوب",
+    "Facebook": "فیس بک",
+    "WhatsApp": "واٹس ایپ",
+    "Google": "گوگل",
+    "Karachi": "کراچی",
+    "Lahore": "لاہور",
+    "Islamabad": "اسلام آباد",
+    "Pakistan": "پاکستان"
+  }
+}

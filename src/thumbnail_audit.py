@@ -54,10 +54,10 @@ def thumbnail_state(video_id: str) -> str:
     if shown is None:
         return "unknown"
     differences = []
-    # hq1 is YouTube's frame from the very start, and every Short now opens on
-    # its own thumbnail (video.add_cover_frame): hq1 looks like the card, and
-    # five good thumbnails were called missing because of it.
-    for name in ("hq2", "hq3"):
+    # hq1 is YouTube's frame from the start and hq2 from the middle, and every
+    # Short now shows its own thumbnail at both (video.add_cover_frame): they
+    # look like the card, and good thumbnails were called missing because of it.
+    for name in ("hq3",):
         frame = _picture(video_id, name)
         if frame is not None:
             differences.append(float(abs(shown - frame).mean()))

@@ -302,13 +302,34 @@ _SUGGEST_BRIEF = {
 }
 
 
+# Names the model proposed in this run, per channel: one call serves every
+# subject of the day instead of a new call (and a new chance of a busy model)
+# for each.
+_SUGGESTED: dict[str, list[str]] = {}
+
+
+def _recent_titles_text(channel: Channel) -> str:
+    try:
+        from .topic_similarity import recent_titles
+
+        return "; ".join(t.split(" | ")[0] for t in recent_titles(channel)[:80])
+    except Exception:
+        return ""
+
+
 def _suggested_subjects(channel: Channel, used: set[str]) -> list[str]:
     """More real people, asked from the script model once the list is used up.
 
     The model only proposes names. Each still has to be a Wikipedia article,
     and the script is written from that article, so a made-up name ends here.
+    The model is shown the channel's recent video titles too: told only the
+    topic bank, it kept offering subjects already on YouTube (the Moon, Mars,
+    the Neanderthals) and the day ran out of topics.
     """
     from .genre_topics import _script_json
+
+    if _SUGGESTED.get(channel.id):
+        return _SUGGESTED[channel.id]
 
     genre = str(channel.genre).lower()
     # The dashboard names a genre in its own words ("deep ocean & unknown earth").
@@ -324,12 +345,18 @@ def _suggested_subjects(channel: Channel, used: set[str]) -> list[str]:
     country = current_country(channel)
     if country:
         brief += f" All 15 must be from {country} (born there or best known as its citizens)."
+    recent = _recent_titles_text(channel)
     raw = _script_json(
-        brief + "\n"
+        brief.replace("Name 15 ", "Name 25 ") + "\n"
+        "Give 25 names, and prefer specific, less obvious subjects over the most famous ones.\n"
         f"Do not repeat any of these: {'; '.join(sorted(used))[:3000] or 'none'}.\n"
-        'Return ONLY JSON: {"names": [str]}'
+        + (f"The channel already has videos on these, so none of their subjects either: {recent[:3000]}.\n"
+           if recent else "")
+        + 'Return ONLY JSON: {"names": [str]}'
     )
-    return [str(name).strip() for name in raw.get("names") or [] if str(name).strip()]
+    names = [str(name).strip() for name in raw.get("names") or [] if str(name).strip()]
+    _SUGGESTED[channel.id] = names
+    return names
 
 
 def next_article(channel: Channel, long_form: bool = False) -> Article:
@@ -339,13 +366,21 @@ def next_article(channel: Channel, long_form: bool = False) -> Article:
     # Each channel walks the list in its own order, and its long videos in
     # another, so a channel's Short and long video are not the same person.
     random.Random(f"{channel.id}:{long_form}").shuffle(names)
+    def fresh(pool: list[str]) -> list[str]:
+        # A name already in one of the channel's titles is not looked up at all.
+        return [name for name in pool
+                if name.lower() not in used and not _covered_recently(channel, name, long_form)]
+
+    names = fresh(names)
     for pool in (names, None):
         if pool is None:
             try:
-                pool = [name for name in _suggested_subjects(channel, used) if name.lower() not in used]
+                pool = fresh(_suggested_subjects(channel, used))
             except Exception as exc:
                 raise RuntimeError(f"No unused real subject left and none could be suggested ({exc})") from exc
-        for name in pool[:12]:
+            if not pool:
+                _SUGGESTED.pop(channel.id, None)  # all used up: a new list next time
+        for name in pool[:25]:
             try:
                 article = fetch_article(name, long_form, _documentary(channel, long_form))
             except Exception as exc:

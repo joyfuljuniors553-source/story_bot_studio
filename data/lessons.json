@@ -1,0 +1,15 @@
+{
+  "celebrity_intro": {
+    "title": "Star Life Stories",
+    "category": "Celebrity",
+    "intro": "Welcome to Star Life Stories.",
+    "outro": "Subscribe for more true stories.",
+    "scenes": [
+      {
+        "label": "True stories",
+        "line": "True life stories of famous people from America and Europe.",
+        "image": "assets/celebrity/intro.jpg"
+      }
+    ]
+  }
+}
